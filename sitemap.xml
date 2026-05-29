@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/integration/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/integration/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/security/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/security/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/recipes/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/recipes/add-kuira-to-an-android-project/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/add-kuira-to-an-android-project/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/recipes/deploy-and-call-a-compact-contract/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/deploy-and-call-a-compact-contract/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
     <url>
-         <loc>https://kuiralabs.github.io/kuira-sdk/recipes/set-up-sigil-identity/</loc>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/set-up-sigil-identity/</loc>
          <lastmod>2026-05-29</lastmod>
     </url>
 </urlset>
