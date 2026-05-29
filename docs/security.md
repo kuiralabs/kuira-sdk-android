@@ -190,9 +190,11 @@ to rely on during alpha.
 Every Maven Central artifact is signed with the maintainer's PGP key. To
 verify a downloaded artifact:
 
+**Key fingerprint:** `189C70EE67261AF5866CF1D052D6F3437CF490FA`
+
 ```bash
 # Fetch the public key
-gpg --keyserver keyserver.ubuntu.com --recv-keys <FILL IN: 40-char fingerprint>
+gpg --keyserver keyserver.ubuntu.com --recv-keys 189C70EE67261AF5866CF1D052D6F3437CF490FA
 
 # Download the artifact and its signature
 ARTIFACT=midnight-sdk-0.1.0-alpha01.aar
@@ -203,10 +205,12 @@ curl -O https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-al
 gpg --verify $ARTIFACT.asc $ARTIFACT
 ```
 
-A successful verification output ends with
-`Good signature from "nel349 <…>"`. Any other outcome means the
-artifact does **not** correspond to a release the maintainer published —
-do not use it.
+A successful verification output names the key as
+`Good signature from "nel349 <kuiralabs@gmail.com>"`, optionally
+followed by an `aka` line for a secondary UID on the same key — both
+identify the maintainer. Any other outcome means the artifact does
+**not** correspond to a release the maintainer published — do not
+use it.
 
 The fingerprint is also published in this file and in the project's
 GitHub repository description, so an attacker would have to compromise
