@@ -1,0 +1,442 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MidnightLedger</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:compact-engine:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:compact-engine:dokkaHtmlPartial/release" data-filter=":core:compact-engine:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="compact-engine::com.midnight.kuira.core.compact/MidnightLedger///PointingToDeclaration//30582046">
+  <div class="breadcrumbs"><a href="../../index.html">compact-engine</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.compact</a><span class="delimiter">/</span><span class="current">MidnightLedger</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Midnight</span><wbr><span><span>Ledger</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MidnightLedger</a></div><p class="paragraph">A typed, eagerly-evaluated snapshot of a deployed contract's ledger.</p><p class="paragraph">Obtained via <a href="../-midnight-contract/ledger.html">MidnightContract.ledger</a>. Each top-level Compact ledger field is decoded ONCE at construction (a single QuickJs round-trip through the contract's <code class="lang-kotlin">ledger()</code> getter object — see <a href="../../../../core/compact-engine/com.midnight.kuira.core.compact/-ledger-evaluator/index.html">LedgerEvaluator</a> for the runtime flow) and stored in <a href="../../../../core/compact-engine/com.midnight.kuira.core.compact/-midnight-ledger/fields.html">fields</a> keyed by the field's <code class="lang-kotlin">.compact</code> name.</p><p class="paragraph"><strong>Why typed accessors instead of a generic </strong><code class="strong lang-kotlin"><strong>get(name): Any?</strong></code><strong>.</strong> The runtime returns each type as a specific Kotlin shape — <a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a> for any Uint, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><code class="lang-kotlin">&lt;BigInteger&gt;</code> for <code class="lang-kotlin">Vector&lt;N, Uint&lt;8&gt;&gt;</code>, etc. Callers shouldn't have to know that; the typed accessors enforce the expected shape AND validate range (e.g. Uint&lt;8&gt; must be 0..255). If the chain returns something incompatible with the requested type — schema drift, version mismatch — we throw <a href="../-wrong-ledger-field-type-exception/index.html">WrongLedgerFieldTypeException</a> loudly rather than silently truncating.</p><p class="paragraph"><strong>Missing-field semantics.</strong> A typo or version-mismatch field name throws <a href="../-missing-ledger-field-exception/index.html">MissingLedgerFieldException</a>. For forward-compatible feature detection, every typed accessor has a <code class="lang-kotlin">*OrNull</code> sibling.</p><p class="paragraph"><strong>Zero-value semantics.</strong> A field whose value is the type's zero (Uint=0, Boolean=false, Bytes=zeros) is still present — the contract's getter returned the decoded zero. <code class="lang-kotlin">*OrNull</code> returns null ONLY for missing field names, not for zero values.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1584972496%2FClasslikes%2F30582046" anchor-label="Companion" id="1584972496%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1584972496%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1702546237%2FFunctions%2F30582046" anchor-label="fieldNames" id="-1702546237%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="field-names.html"><span>field</span><wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1702546237%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="field-names.html"><span class="token function">fieldNames</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">All ledger field names exposed by the contract.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1986886747%2FFunctions%2F30582046" anchor-label="getBoolean" id="-1986886747%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-boolean.html"><span>get</span><wbr><span><span>Boolean</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1986886747%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-boolean.html"><span class="token function">getBoolean</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Read a Boolean field. Accepts a native JS <code class="lang-kotlin">boolean</code> or a <code class="lang-kotlin">BigInteger</code> of value 0/1 (the JS marshaller in <a href="../../../../core/compact-engine/com.midnight.kuira.core.compact/-ledger-evaluator/index.html">LedgerEvaluator</a> normalizes integer Numbers to bigint envelopes, and some Compact runtime paths return 0/1 for Boolean cells). Any other value throws <a href="../-wrong-ledger-field-type-exception/index.html">WrongLedgerFieldTypeException</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-363841585%2FFunctions%2F30582046" anchor-label="getBooleanOrNull" id="-363841585%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-boolean-or-null.html"><span>get</span><wbr><span>Boolean</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-363841585%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-boolean-or-null.html"><span class="token function">getBooleanOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="178567477%2FFunctions%2F30582046" anchor-label="getBytes" id="178567477%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-bytes.html"><span>get</span><wbr><span><span>Bytes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="178567477%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-bytes.html"><span class="token function">getBytes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedLength<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Read a Bytes<n> field. The chain MAY pad shorter values to N bytes (e.g. an unwritten cell decodes as N zero bytes), so we validate against <a href="get-bytes.html">expectedLength</a> explicitly. A mismatch is a schema drift or a wrong call (e.g. asked for Bytes&lt;32&gt; on a Bytes&lt;20&gt; field).</n></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-258474741%2FFunctions%2F30582046" anchor-label="getBytesOrNull" id="-258474741%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-bytes-or-null.html"><span>get</span><wbr><span>Bytes</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-258474741%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-bytes-or-null.html"><span class="token function">getBytesOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedLength<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1218147754%2FFunctions%2F30582046" anchor-label="getMaybeString" id="-1218147754%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-maybe-string.html"><span>get</span><wbr><span>Maybe</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1218147754%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-maybe-string.html"><span class="token function">getMaybeString</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Read a <code class="lang-kotlin">Maybe&lt;Opaque&lt;String&gt;&gt;</code> field as nullable <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a>:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-348867136%2FFunctions%2F30582046" anchor-label="getMaybeStringOrNull" id="-348867136%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-maybe-string-or-null.html"><span>get</span><wbr><span>Maybe</span><wbr><span>String</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-348867136%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-maybe-string-or-null.html"><span class="token function">getMaybeStringOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-523384155%2FFunctions%2F30582046" anchor-label="getRaw" id="-523384155%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-raw.html"><span>get</span><wbr><span><span>Raw</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-523384155%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-raw.html"><span class="token function">getRaw</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Raw decoded value for <a href="get-raw.html">name</a>. Returns one of: <a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><code class="lang-kotlin">&lt;Any?&gt;</code>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><code class="lang-kotlin">&lt;String, Any?&gt;</code>, or <code class="lang-kotlin">null</code>. Useful for debugging / unknown types. Most callers should use the typed <code class="lang-kotlin">getX</code> methods instead.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2084946225%2FFunctions%2F30582046" anchor-label="getRawOrNull" id="-2084946225%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-raw-or-null.html"><span>get</span><wbr><span>Raw</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2084946225%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-raw-or-null.html"><span class="token function">getRawOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Same as <a href="get-raw.html">getRaw</a> but returns <code class="lang-kotlin">null</code> when <a href="get-raw-or-null.html">name</a> is not in the schema instead of throwing. NOTE: a field that exists in the schema with a literal <code class="lang-kotlin">null</code> value is indistinguishable from a missing field through this accessor — the underlying <code class="lang-kotlin">Map</code> collapses both cases. Prefer the typed <code class="lang-kotlin">*OrNull</code> accessors (<code class="lang-kotlin">getUint8OrNull</code>, etc.) when this distinction matters; those use <code class="lang-kotlin">name in fields</code> and unambiguously mean "absent."</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="402238434%2FFunctions%2F30582046" anchor-label="getString" id="402238434%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-string.html"><span>get</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="402238434%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-string.html"><span class="token function">getString</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Read an <code class="lang-kotlin">Opaque&lt;String&gt;</code> field as <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a>. Compact's runtime decodes the bytes through <code class="lang-kotlin">TextDecoder("utf-8")</code>, so this is already a JVM-native string — no manual decode needed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1670741580%2FFunctions%2F30582046" anchor-label="getStringOrNull" id="1670741580%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-string-or-null.html"><span>get</span><wbr><span>String</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1670741580%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-string-or-null.html"><span class="token function">getStringOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1752052183%2FFunctions%2F30582046" anchor-label="getUint64" id="-1752052183%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-uint64.html"><span>get</span><wbr><span><span>Uint64</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1752052183%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-uint64.html"><span class="token function">getUint64</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Read any Uint up to 64 bits as <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a>. Includes Counter (which is internally Uint&lt;64&gt;). Throws if the chain value exceeds <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/-companion/-m-a-x_-v-a-l-u-e.html">Long.MAX_VALUE</a> — at that point the caller should use <a href="get-uint-big.html">getUintBig</a> for full-range access.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="283545427%2FFunctions%2F30582046" anchor-label="getUint64OrNull" id="283545427%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-uint64-or-null.html"><span>get</span><wbr><span>Uint64Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="283545427%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-uint64-or-null.html"><span class="token function">getUint64OrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-205397861%2FFunctions%2F30582046" anchor-label="getUint8" id="-205397861%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-uint8.html"><span>get</span><wbr><span><span>Uint8</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-205397861%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-uint8.html"><span class="token function">getUint8</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Read a Uint&lt;8&gt; field as <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a>. Value must fit in 0..255. Compact's runtime decodes any Uint as <a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a>; we narrow here with an explicit range check so callers don't get silent truncation on a schema mismatch (e.g. asked for Uint&lt;8&gt; but the field is actually a Uint&lt;16&gt;).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1204257861%2FFunctions%2F30582046" anchor-label="getUint8OrNull" id="1204257861%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-uint8-or-null.html"><span>get</span><wbr><span>Uint8Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1204257861%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-uint8-or-null.html"><span class="token function">getUint8OrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-941516733%2FFunctions%2F30582046" anchor-label="getUintBig" id="-941516733%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-uint-big.html"><span>get</span><wbr><span>Uint</span><wbr><span><span>Big</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-941516733%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-uint-big.html"><span class="token function">getUintBig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></div><div class="brief "><p class="paragraph">Read a Uint of arbitrary precision as <a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a>. Use for Uint&lt;128&gt;+ fields where <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a> would overflow. Lossless; recommended whenever the contract field width is unknown.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1810309651%2FFunctions%2F30582046" anchor-label="getUintBigOrNull" id="-1810309651%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-uint-big-or-null.html"><span>get</span><wbr><span>Uint</span><wbr><span>Big</span><wbr><span>Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1810309651%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-uint-big-or-null.html"><span class="token function">getUintBigOrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1230410629%2FFunctions%2F30582046" anchor-label="getVectorUint8" id="1230410629%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-vector-uint8.html"><span>get</span><wbr><span>Vector</span><wbr><span><span>Uint8</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1230410629%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-vector-uint8.html"><span class="token function">getVectorUint8</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedLength<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int-array/index.html">IntArray</a></div><div class="brief "><p class="paragraph">Read a <code class="lang-kotlin">Vector&lt;N, Uint&lt;8&gt;&gt;</code> losslessly. Each element comes from Compact's runtime as <a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a>; we narrow to <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a> with a 0..255 range check per element. List length must equal <a href="get-vector-uint8.html">expectedLength</a> — mismatch indicates schema drift; throws.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1022417755%2FFunctions%2F30582046" anchor-label="getVectorUint8OrNull" id="1022417755%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-vector-uint8-or-null.html"><span>get</span><wbr><span>Vector</span><wbr><span>Uint8Or</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1022417755%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-vector-uint8-or-null.html"><span class="token function">getVectorUint8OrNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">expectedLength<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int-array/index.html">IntArray</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-280663163%2FFunctions%2F30582046" anchor-label="toString" id="-280663163%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-280663163%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

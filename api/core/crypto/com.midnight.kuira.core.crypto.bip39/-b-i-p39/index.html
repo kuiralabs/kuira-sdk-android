@@ -1,0 +1,198 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BIP39</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:crypto:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:crypto:dokkaHtmlPartial/release" data-filter=":core:crypto:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="crypto::com.midnight.kuira.core.crypto.bip39/BIP39///PointingToDeclaration//-443179671">
+  <div class="breadcrumbs"><a href="../../index.html">crypto</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.crypto.bip39</a><span class="delimiter">/</span><span class="current">BIP39</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>BIP39</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">BIP39</a></div><p class="paragraph">Convenience object for BIP-39 mnemonic operations.</p><p class="paragraph">This is a facade that delegates to a <a href="../-mnemonic-service/index.html">MnemonicService</a> implementation. Uses BitcoinJ implementation which is BIP-39 compliant and battle-tested.</p><p class="paragraph"><strong>Reference:</strong> https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki</p><p class="paragraph"><strong>Usage:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">// Generate 24-word mnemonic<br>val mnemonic = BIP39.generateMnemonic()<br><br>// Convert to seed (CRITICAL: wipe seed after use!)<br>val seed = BIP39.mnemonicToSeed(mnemonic)<br>try {<br>    // Use seed...<br>} finally {<br>    Arrays.fill(seed, 0.toByte())<br>}<br><br>// Validate mnemonic<br>val isValid = BIP39.validateMnemonic(mnemonic)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><strong>Thread Safety:</strong> All methods are thread-safe. The service implementation is immutable.</p><p class="paragraph"><strong>Testing:</strong> For testing with custom implementations, use constructor injection in your components rather than relying on this global object.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1656605946%2FFunctions%2F-443179671" anchor-label="entropyToMnemonic" id="1656605946%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entropy-to-mnemonic.html"><span>entropy</span><wbr><span>To</span><wbr><span><span>Mnemonic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1656605946%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="entropy-to-mnemonic.html"><span class="token function">entropyToMnemonic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entropy<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Reconstructs a mnemonic phrase from raw entropy. Inverse of <a href="mnemonic-to-entropy.html">mnemonicToEntropy</a>. See <a href="../-mnemonic-service/entropy-to-mnemonic.html">MnemonicService.entropyToMnemonic</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-813000651%2FFunctions%2F-443179671" anchor-label="generateMnemonic" id="-813000651%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="generate-mnemonic.html"><span>generate</span><wbr><span><span>Mnemonic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-813000651%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="generate-mnemonic.html"><span class="token function">generateMnemonic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">wordCount<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">24</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Generates a random BIP-39 mnemonic phrase.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1243207564%2FFunctions%2F-443179671" anchor-label="mnemonicToEntropy" id="1243207564%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mnemonic-to-entropy.html"><span>mnemonic</span><wbr><span>To</span><wbr><span><span>Entropy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1243207564%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mnemonic-to-entropy.html"><span class="token function">mnemonicToEntropy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mnemonic<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Extracts raw entropy from a mnemonic phrase. Inverse of <a href="generate-mnemonic.html">generateMnemonic</a>. See <a href="../-mnemonic-service/mnemonic-to-entropy.html">MnemonicService.mnemonicToEntropy</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-619376375%2FFunctions%2F-443179671" anchor-label="mnemonicToSeed" id="-619376375%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mnemonic-to-seed.html"><span>mnemonic</span><wbr><span>To</span><wbr><span><span>Seed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-619376375%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mnemonic-to-seed.html"><span class="token function">mnemonicToSeed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mnemonic<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">passphrase<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Derives a seed from a mnemonic phrase and optional passphrase.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="305473774%2FFunctions%2F-443179671" anchor-label="validateMnemonic" id="305473774%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="validate-mnemonic.html"><span>validate</span><wbr><span><span>Mnemonic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="305473774%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="validate-mnemonic.html"><span class="token function">validateMnemonic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mnemonic<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Validates a mnemonic phrase.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

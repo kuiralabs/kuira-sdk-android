@@ -1,0 +1,281 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>UnshieldedOffer</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:ledger:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:ledger:dokkaHtmlPartial/release" data-filter=":core:ledger:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ledger::com.midnight.kuira.core.ledger.model/UnshieldedOffer///PointingToDeclaration//714266561">
+  <div class="breadcrumbs"><a href="../../index.html">ledger</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.ledger.model</a><span class="delimiter">/</span><span class="current">UnshieldedOffer</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Unshielded</span><wbr><span><span>Offer</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">UnshieldedOffer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-utxo-spend/index.html">UtxoSpend</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>outputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-utxo-output/index.html">UtxoOutput</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>signatures<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()</span></span><span class="token punctuation">)</span></div><p class="paragraph">Represents an unshielded offer in a Midnight transaction.</p><p class="paragraph"><strong>Source:</strong> Based on midnight-ledger <code class="lang-kotlin">UnshieldedOffer</code> structure <strong>File:</strong> <code class="lang-kotlin">midnight-ledger/ledger/src/structure.rs:666</code></p><p class="paragraph"><strong>Purpose:</strong></p><ul><li><p class="paragraph">Contains inputs (UTXOs being spent)</p></li><li><p class="paragraph">Contains outputs (new UTXOs being created)</p></li><li><p class="paragraph">Will contain signatures (added in Phase 2D)</p></li></ul><p class="paragraph"><strong>Midnight SDK Equivalent:</strong></p><div class="sample-container"><pre><code class="block lang-typescript" theme="idea">interface UnshieldedOffer {<br>  inputs: UtxoSpend[];<br>  outputs: UtxoOutput[];<br>  signatures: Signature[];<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><strong>Important:</strong></p><ul><li><p class="paragraph">Inputs and outputs are automatically SORTED by midnight-ledger</p></li><li><p class="paragraph">Signatures must match the sorted input order</p></li><li><p class="paragraph">Source: <code class="lang-kotlin">midnight-ledger/ledger/src/unshielded.rs:191-192</code></p></li></ul><p class="paragraph"><strong>Usage in Transaction:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val offer = UnshieldedOffer(<br>    inputs = listOf(<br>        UtxoSpend(intentHash = "0x123...", outputNo = 0, value = 150M, ...)<br>    ),<br>    outputs = listOf(<br>        UtxoOutput(value = 100M, owner = "recipient...", ...),  // Send<br>        UtxoOutput(value = 50M, owner = "sender...", ...)       // Change<br>    )<br>)<br><br>// Later in Phase 2D: Add signatures<br>val signed = offer.copy(signatures = listOf(...))</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1153541606%2FConstructors%2F714266561" anchor-label="UnshieldedOffer" id="-1153541606%2FConstructors%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unshielded-offer.html"><span>Unshielded</span><wbr><span><span>Offer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1153541606%2FConstructors%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-utxo-spend/index.html">UtxoSpend</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">outputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-utxo-output/index.html">UtxoOutput</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">signatures<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1837401587%2FProperties%2F714266561" anchor-label="inputs" id="1837401587%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inputs.html"><span><span>inputs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1837401587%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="inputs.html">inputs</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-utxo-spend/index.html">UtxoSpend</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of UTXOs being spent (at least one required)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1037326260%2FProperties%2F714266561" anchor-label="outputs" id="-1037326260%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="outputs.html"><span><span>outputs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1037326260%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="outputs.html">outputs</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-utxo-output/index.html">UtxoOutput</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of new UTXOs being created (at least one required)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-607632927%2FProperties%2F714266561" anchor-label="signatures" id="-607632927%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="signatures.html"><span><span>signatures</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-607632927%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="signatures.html">signatures</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of Schnorr signatures (one per input, added in Phase 2D)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-78984443%2FFunctions%2F714266561" anchor-label="equals" id="-78984443%2FFunctions%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="equals.html"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-78984443%2FFunctions%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1985541185%2FFunctions%2F714266561" anchor-label="hashCode" id="1985541185%2FFunctions%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1985541185%2FFunctions%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1611508694%2FFunctions%2F714266561" anchor-label="isBalanced" id="-1611508694%2FFunctions%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-balanced.html"><span>is</span><wbr><span><span>Balanced</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1611508694%2FFunctions%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-balanced.html"><span class="token function">isBalanced</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Validate transaction is balanced for all token types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="17541590%2FFunctions%2F714266561" anchor-label="isSigned" id="17541590%2FFunctions%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-signed.html"><span>is</span><wbr><span><span>Signed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="17541590%2FFunctions%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-signed.html"><span class="token function">isSigned</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Check if all inputs are signed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1275700398%2FFunctions%2F714266561" anchor-label="totalInput" id="1275700398%2FFunctions%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-input.html"><span>total</span><wbr><span><span>Input</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1275700398%2FFunctions%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="total-input.html"><span class="token function">totalInput</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tokenType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></div><div class="brief "><p class="paragraph">Calculate total input value for a specific token type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1029526453%2FFunctions%2F714266561" anchor-label="totalOutput" id="-1029526453%2FFunctions%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-output.html"><span>total</span><wbr><span><span>Output</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1029526453%2FFunctions%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="total-output.html"><span class="token function">totalOutput</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tokenType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></div><div class="brief "><p class="paragraph">Calculate total output value for a specific token type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

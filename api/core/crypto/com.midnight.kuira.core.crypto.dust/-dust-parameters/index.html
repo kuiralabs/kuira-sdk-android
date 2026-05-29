@@ -1,0 +1,270 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DustParameters</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:crypto:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:crypto:dokkaHtmlPartial/release" data-filter=":core:crypto:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="crypto::com.midnight.kuira.core.crypto.dust/DustParameters///PointingToDeclaration//-443179671">
+  <div class="breadcrumbs"><a href="../../index.html">crypto</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.crypto.dust</a><span class="delimiter">/</span><span class="current">DustParameters</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Dust</span><wbr><span><span>Parameters</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">DustParameters</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>nightDustRatio<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>generationDecayRate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Parameters for Dust generation and decay.</p><p class="paragraph"><strong>What are Dust Parameters?</strong> These control how Dust tokens generate and decay over time:</p><ul><li><p class="paragraph"><strong>Night Dust Ratio</strong>: Maximum dust a Night UTXO can generate (capacity)</p></li><li><p class="paragraph"><strong>Generation/Decay Rate</strong>: How fast dust accumulates and decays</p></li></ul><p class="paragraph"><strong>Dust Generation Formula:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">max_capacity = night_value × night_dust_ratio<br>generation_rate = night_value × generation_decay_rate<br>decay_rate = night_value × generation_decay_rate (same as generation)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><strong>Example:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">Night value: 100 NIGHT<br>night_dust_ratio: 1000<br>generation_decay_rate: 10<br><br>→ Max capacity: 100 × 1000 = 100,000 Specks<br>→ Generation rate: 100 × 10 = 1,000 Specks/second<br>→ Time to full: 100,000 / 1,000 = 100 seconds<br>→ Decay rate: 1,000 Specks/second (back to zero in 100 seconds)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><strong>Midnight SDK Mapping:</strong> This corresponds to <code class="lang-kotlin">DustParameters</code>:</p><div class="sample-container"><pre><code class="block lang-rust" theme="idea">pub struct DustParameters {<br>    pub night_dust_ratio: u64,           // 64-bit unsigned<br>    pub generation_decay_rate: u32,      // 32-bit unsigned ⚠️ IMPORTANT<br>    pub dust_grace_period: Duration,<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><strong>Type Mapping:</strong></p><ul><li><p class="paragraph">night_dust_ratio (u64) → Long (Kotlin signed 64-bit, range sufficient)</p></li><li><p class="paragraph">generation_decay_rate (u32) → Int (Kotlin signed 32-bit, range sufficient for positive values)</p></li></ul><p class="paragraph"><strong>Network Defaults:</strong></p><ul><li><p class="paragraph">Testnet: Uses INITIAL_DUST_PARAMETERS</p></li><li><p class="paragraph">Mainnet: TBD by governance</p></li></ul><p class="paragraph"><strong>Usage:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val params = DustParameters.TESTNET_DEFAULTS<br><br>// Calculate max capacity for a Night UTXO<br>val nightValue = BigInteger.valueOf(100_000_000) // 100 NIGHT<br>val maxDust = params.calculateMaxCapacity(nightValue)<br>println("Max dust: $maxDust Specks")<br><br>// Calculate generation rate<br>val rate = params.calculateGenerationRate(nightValue)<br>println("Generation: $rate Specks/second")</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-413961760%2FConstructors%2F-443179671" anchor-label="DustParameters" id="-413961760%2FConstructors%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dust-parameters.html"><span>Dust</span><wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-413961760%2FConstructors%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightDustRatio<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">generationDecayRate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-959455575%2FClasslikes%2F-443179671" anchor-label="Companion" id="-959455575%2FClasslikes%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-959455575%2FClasslikes%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="498514912%2FProperties%2F-443179671" anchor-label="generationDecayRate" id="498514912%2FProperties%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="generation-decay-rate.html"><span>generation</span><wbr><span>Decay</span><wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="498514912%2FProperties%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="generation-decay-rate.html">generationDecayRate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Rate of dust generation and decay per second (u32 → Int)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="441784599%2FProperties%2F-443179671" anchor-label="nightDustRatio" id="441784599%2FProperties%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="night-dust-ratio.html"><span>night</span><wbr><span>Dust</span><wbr><span><span>Ratio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="441784599%2FProperties%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="night-dust-ratio.html">nightDustRatio</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Ratio of Night value to maximum dust capacity (u64 → Long)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1929212332%2FFunctions%2F-443179671" anchor-label="calculateDecayRate" id="1929212332%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="calculate-decay-rate.html"><span>calculate</span><wbr><span>Decay</span><wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1929212332%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="calculate-decay-rate.html"><span class="token function">calculateDecayRate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightValue<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></div><div class="brief "><p class="paragraph">Calculates the decay rate for a given Night value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-898559572%2FFunctions%2F-443179671" anchor-label="calculateGenerationRate" id="-898559572%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="calculate-generation-rate.html"><span>calculate</span><wbr><span>Generation</span><wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-898559572%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="calculate-generation-rate.html"><span class="token function">calculateGenerationRate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightValue<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></div><div class="brief "><p class="paragraph">Calculates the generation rate for a given Night value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="168414568%2FFunctions%2F-443179671" anchor-label="calculateMaxCapacity" id="168414568%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="calculate-max-capacity.html"><span>calculate</span><wbr><span>Max</span><wbr><span><span>Capacity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="168414568%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="calculate-max-capacity.html"><span class="token function">calculateMaxCapacity</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightValue<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></div><div class="brief "><p class="paragraph">Calculates the maximum dust capacity for a given Night value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-805722874%2FFunctions%2F-443179671" anchor-label="calculateTimeToEmpty" id="-805722874%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="calculate-time-to-empty.html"><span>calculate</span><wbr><span>Time</span><wbr><span>To</span><wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-805722874%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="calculate-time-to-empty.html"><span class="token function">calculateTimeToEmpty</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightValue<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a><span class="token punctuation">, </span></span><span class="parameter ">currentDust<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a><span class="token operator"> = </span>calculateMaxCapacity(nightValue)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Calculates the time to decay to zero for a given Night value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1930442054%2FFunctions%2F-443179671" anchor-label="calculateTimeToFull" id="-1930442054%2FFunctions%2F-443179671" data-filterable-set=":core:crypto:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:crypto:dokkaHtmlPartial/release" data-filterable-set=":core:crypto:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="calculate-time-to-full.html"><span>calculate</span><wbr><span>Time</span><wbr><span>To</span><wbr><span><span>Full</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1930442054%2FFunctions%2F-443179671"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:crypto:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="calculate-time-to-full.html"><span class="token function">calculateTimeToFull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightValue<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a><span class="token punctuation">, </span></span><span class="parameter ">initialDust<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a><span class="token operator"> = </span>java.math.BigInteger.ZERO</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Calculates the time to reach full capacity for a given Night value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>BalanceProgress</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:compact-engine:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:compact-engine:dokkaHtmlPartial/release" data-filter=":core:compact-engine:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="compact-engine::com.midnight.kuira.core.compact/BalanceProgress///PointingToDeclaration//30582046">
+  <div class="breadcrumbs"><a href="../../index.html">compact-engine</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.compact</a><span class="delimiter">/</span><span class="current">BalanceProgress</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Balance</span><wbr><span><span>Progress</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="index.html">BalanceProgress</a></div><p class="paragraph">Granular progress updates during the balance+submit pipeline.</p><p class="paragraph">DApp developers receive these through <a href="../-transaction-balancer/balance-and-submit.html">TransactionBalancer.balanceAndSubmit</a>'s <code class="lang-kotlin">onProgress</code> callback, or through <a href="../-contract-call-stage/-balancing-detail/index.html">ContractCallStage.BalancingDetail</a> in <a href="../-midnight-contract/call.html">MidnightContract.call</a>'s progress callback.</p><h2 class="">Usage in a ViewModel:</h2><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">contract.call("post", message) { stage -&gt;<br>    when (stage) {<br>        is ContractCallStage.BalancingDetail -&gt; when (stage.progress) {<br>            is BalanceProgress.SyncingDust -&gt; showStatus("Syncing dust wallet...")<br>            is BalanceProgress.SyncingDustProgress -&gt; showProgress(<br>                stage.progress.eventsProcessed, stage.progress.totalEvents<br>            )<br>            is BalanceProgress.ProvingDust -&gt; showStatus("Proving dust payment...")<br>            is BalanceProgress.Submitting -&gt; showStatus("Submitting to blockchain...")<br>            is BalanceProgress.WaitingFinalization -&gt; showStatus("Waiting for finalization...")<br>            is BalanceProgress.RetryingDustSync -&gt; showStatus("Retrying dust sync...")<br>        }<br>        // ... handle other stages<br>    }<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-syncing-dust/index.html">SyncingDust</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-syncing-dust-progress/index.html">SyncingDustProgress</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-proving-dust/index.html">ProvingDust</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-submitting/index.html">Submitting</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-waiting-finalization/index.html">WaitingFinalization</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-retrying-dust-sync/index.html">RetryingDustSync</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="731202581%2FClasslikes%2F30582046" anchor-label="ProvingDust" id="731202581%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proving-dust/index.html"><span>Proving</span><wbr><span><span>Dust</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="731202581%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-proving-dust/index.html">ProvingDust</a> : <a href="index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Generating ZK proof for dust fee payment.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1676244741%2FClasslikes%2F30582046" anchor-label="RetryingDustSync" id="-1676244741%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-retrying-dust-sync/index.html"><span>Retrying</span><wbr><span>Dust</span><wbr><span><span>Sync</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1676244741%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-retrying-dust-sync/index.html">RetryingDustSync</a> : <a href="index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Error 170 recovery: re-syncing dust from genesis and retrying.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1447120476%2FClasslikes%2F30582046" anchor-label="Submitting" id="1447120476%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-submitting/index.html"><span><span>Submitting</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1447120476%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-submitting/index.html">Submitting</a> : <a href="index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Balanced transaction submitted to the blockchain node.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1004702905%2FClasslikes%2F30582046" anchor-label="SyncingDust" id="-1004702905%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-syncing-dust/index.html"><span>Syncing</span><wbr><span><span>Dust</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1004702905%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-syncing-dust/index.html">SyncingDust</a> : <a href="index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Initial dust wallet sync starting (first call per session is slow).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1426614374%2FClasslikes%2F30582046" anchor-label="SyncingDustProgress" id="-1426614374%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-syncing-dust-progress/index.html"><span>Syncing</span><wbr><span>Dust</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1426614374%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-syncing-dust-progress/index.html">SyncingDustProgress</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>eventsProcessed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>totalEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Dust sync streaming progress — use for progress bars.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1775416283%2FClasslikes%2F30582046" anchor-label="WaitingFinalization" id="-1775416283%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-waiting-finalization/index.html"><span>Waiting</span><wbr><span><span>Finalization</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1775416283%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">object </span><a href="-waiting-finalization/index.html">WaitingFinalization</a> : <a href="index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Transaction is in a block, waiting for finalization.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

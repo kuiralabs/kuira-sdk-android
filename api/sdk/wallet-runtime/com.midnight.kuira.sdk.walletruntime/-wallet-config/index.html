@@ -1,0 +1,187 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>WalletConfig</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:wallet-runtime:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filter=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="wallet-runtime::com.midnight.kuira.sdk.walletruntime/WalletConfig///PointingToDeclaration//761230159">
+  <div class="breadcrumbs"><a href="../../index.html">wallet-runtime</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.sdk.walletruntime</a><span class="delimiter">/</span><span class="current">WalletConfig</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Wallet</span><wbr><span><span>Config</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">WalletConfig</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>network<span class="token operator">: </span><a href="../../../../core/network/com.midnight.kuira.core.network/-midnight-network/index.html">MidnightNetwork</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>provingMode<span class="token operator">: </span><a href="../../../../core/compact-engine/com.midnight.kuira.core.compact.proving/-proving-mode/index.html">ProvingMode</a><span class="token operator"> = </span>ProvingMode.DEFAULT<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>proofServerUrl<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><p class="paragraph">Snapshot of every wallet-level toggle that affects SDK construction.</p><p class="paragraph">This is the <strong>canonical config</strong> for the embedded wallet. It lives in <code class="lang-kotlin">sdk:wallet-runtime</code> (next to <a href="../-midnight-sdk-provider/index.html">MidnightSdkProvider</a>, the thing that consumes it) rather than in any UI module — the SDK owner is the single source of truth for "which network / proving mode am I on", and UI is just one of several consumers (the wallet panel, BBoard, Kicks).</p><p class="paragraph">Passed to <a href="../-midnight-sdk-provider/ensure-sdk.html">MidnightSdkProvider.ensureSdk</a>. When any field differs from what the live SDK was built with, the provider tears down the current SDK (cancels its subscriptions, wipes seed material) and builds a fresh one. Equality is by-value so the rebuild check is a single <code class="lang-kotlin">!=</code>.</p><p class="paragraph"><strong>Why one struct instead of three parameters:</strong></p><ul><li><p class="paragraph">Network + proving mode + proof-server URL all affect SDK construction.     Bundling them avoids "added a new knob, missed updating two of three     call sites" bugs.</p></li><li><p class="paragraph">The Compose side can <code class="lang-kotlin">remember(network, provingMode, proofServerUrl) {     WalletConfig(...) }</code> to avoid object-identity thrash in <code class="lang-kotlin">LaunchedEffect</code>     keys.</p></li></ul></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1755521434%2FConstructors%2F761230159" anchor-label="WalletConfig" id="1755521434%2FConstructors%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wallet-config.html"><span>Wallet</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1755521434%2FConstructors%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">network<span class="token operator">: </span><a href="../../../../core/network/com.midnight.kuira.core.network/-midnight-network/index.html">MidnightNetwork</a><span class="token punctuation">, </span></span><span class="parameter ">provingMode<span class="token operator">: </span><a href="../../../../core/compact-engine/com.midnight.kuira.core.compact.proving/-proving-mode/index.html">ProvingMode</a><span class="token operator"> = </span>ProvingMode.DEFAULT<span class="token punctuation">, </span></span><span class="parameter ">proofServerUrl<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1491278926%2FProperties%2F761230159" anchor-label="network" id="1491278926%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="network.html"><span><span>network</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1491278926%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="network.html">network</a><span class="token operator">: </span><a href="../../../../core/network/com.midnight.kuira.core.network/-midnight-network/index.html">MidnightNetwork</a></div><div class="brief "><p class="paragraph">Which Midnight network the wallet talks to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1726423402%2FProperties%2F761230159" anchor-label="proofServerUrl" id="-1726423402%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="proof-server-url.html"><span>proof</span><wbr><span>Server</span><wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1726423402%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="proof-server-url.html">proofServerUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Override for <a href="../../../../core/compact-engine/com.midnight.kuira.core.compact.proving/-proving-mode/-r-e-m-o-t-e/index.html">ProvingMode.REMOTE</a> — null = use the network's default proof-server URL (<code class="lang-kotlin">NetworkConfig.forNetwork(...).proofServerUrl</code>). Ignored when <a href="proving-mode.html">provingMode</a> is <a href="../../../../core/compact-engine/com.midnight.kuira.core.compact.proving/-proving-mode/-l-o-c-a-l/index.html">ProvingMode.LOCAL</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1594293664%2FProperties%2F761230159" anchor-label="provingMode" id="1594293664%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="proving-mode.html"><span>proving</span><wbr><span><span>Mode</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1594293664%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="proving-mode.html">provingMode</a><span class="token operator">: </span><a href="../../../../core/compact-engine/com.midnight.kuira.core.compact.proving/-proving-mode/index.html">ProvingMode</a></div><div class="brief "><p class="paragraph">How transactions are proved (on-device vs hosted prover).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
