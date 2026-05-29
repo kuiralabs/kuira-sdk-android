@@ -1,0 +1,1486 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, contract runtime — one Gradle dependency.">
+      
+      
+      
+        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk/integration/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../recipes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Install + integrate - Kuira SDK</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kuira-sdk-integration-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kuira SDK" class="md-header__button md-logo" aria-label="Kuira SDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kuira SDK
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Install + integrate
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kuiralabs/kuira-sdk" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kuiralabs/kuira-sdk
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../recipes/" class="md-tabs__link">
+          
+  
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../security/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Security
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kuira SDK" class="md-nav__button md-logo" aria-label="Kuira SDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Kuira SDK
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kuiralabs/kuira-sdk" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kuiralabs/kuira-sdk
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install + integrate
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install + integrate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-sdk-gives-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the SDK gives you
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-add-the-dependency-one-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Add the dependency — one line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-declare-your-passkey-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Declare YOUR passkey domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-host-assetlinksjson-on-your-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Host assetlinks.json on YOUR domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-localnet-dev-only-allow-cleartext-to-10022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. (Localnet dev only) Allow cleartext to 10.0.2.2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-minimal-hello-world-deploy-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Minimal "Hello World" — deploy + call
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-going-headless-no-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Going headless (no panel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations (alpha)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known limitations (alpha)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proving-infrastructure-downloads-from-a-midnight-dev-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proving infrastructure downloads from a Midnight dev URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/add-kuira-to-an-android-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Kuira to an Android project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/set-up-sigil-identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set up Sigil identity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/deploy-and-call-a-compact-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy and call a Compact contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-sdk-gives-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the SDK gives you
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-add-the-dependency-one-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Add the dependency — one line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-declare-your-passkey-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Declare YOUR passkey domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-host-assetlinksjson-on-your-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Host assetlinks.json on YOUR domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-localnet-dev-only-allow-cleartext-to-10022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. (Localnet dev only) Allow cleartext to 10.0.2.2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-minimal-hello-world-deploy-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Minimal "Hello World" — deploy + call
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-going-headless-no-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Going headless (no panel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-limitations-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations (alpha)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known limitations (alpha)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proving-infrastructure-downloads-from-a-midnight-dev-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proving infrastructure downloads from a Midnight dev URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="kuira-sdk-integration-guide">Kuira SDK — Integration Guide<a class="headerlink" href="#kuira-sdk-integration-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Alpha — <code>0.1.0-alpha01</code></strong></p>
+<p>Build a Midnight zero-knowledge dApp on Android by adding <strong>one dependency</strong>, declaring your <strong>own passkey domain</strong>, and hosting <strong>one tiny JSON file</strong> on it. That's the whole on-ramp.</p>
+<p>This guide walks the recipe end-to-end. Two reference dApps — <strong>Midnight
+Kicks</strong> (a PvP penalty shoot-out demonstrating commit-reveal + ZK proving)
+and <strong>BBoard</strong> (a simpler community-board app) — consume the SDK exactly
+as described below. Their sources are currently in a private repository
+while the SDK is published here; the code patterns below are extracted
+from those apps, so prefer the description here as the canonical guide.</p>
+<hr />
+<h2 id="what-the-sdk-gives-you">What the SDK gives you<a class="headerlink" href="#what-the-sdk-gives-you" title="Permanent link">&para;</a></h2>
+<p>Adding the one line below brings:</p>
+<ul>
+<li><strong>Sigil identity</strong> — a passkey-derived DID (<code>did:key</code> + Ed25519). One biometric, no recovery phrase, no maintainer dependency. Backed up to Google Block Store, encrypted with a key you can't read.</li>
+<li><strong>Wallet</strong> — Midnight HD wallet (unshielded + shielded NIGHT, DUST gas), with live balance, send, receive, and a drop-in Compose <strong>wallet panel</strong> if you want it.</li>
+<li><strong>Contract surface</strong> — deploy / call / read state on any <code>.compact</code> contract; ZK proof generation runs on-device (no proof-server hop required).</li>
+<li><strong>Indexer + chain client</strong> — block / state / event subscription, backed by Midnight's official indexer.</li>
+<li><strong>App-state cloud backup</strong> — your dApp's per-user data rides the sigil's Block Store backup automatically. The backup blob is PRF-encrypted client-side before Google's Block Store touches it.</li>
+</ul>
+<p>You can use it headless or pull in the panel UI — see the dependency choice below.</p>
+<hr />
+<h2 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android Gradle Plugin</td>
+<td><strong>≥ 8.13</strong> (matches the SDK build)</td>
+</tr>
+<tr>
+<td>Kotlin</td>
+<td><strong>≥ 2.3</strong></td>
+</tr>
+<tr>
+<td><code>compileSdk</code></td>
+<td>35+</td>
+</tr>
+<tr>
+<td><code>minSdk</code></td>
+<td><strong>30</strong> — required (<code>core:auth</code> uses keystore APIs added in API 30: biometric ⊕ device-credential)</td>
+</tr>
+<tr>
+<td>Hilt + KSP</td>
+<td>Required — the SDK is Hilt-first; your app applies both</td>
+</tr>
+<tr>
+<td>A web domain you control</td>
+<td>Required for the passkey relying party (GitHub Pages is fine for dev)</td>
+</tr>
+<tr>
+<td>Your app's signing-cert SHA-256</td>
+<td>Needed for <code>assetlinks.json</code> (step 4)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-add-the-dependency-one-line">2. Add the dependency — <em>one line</em><a class="headerlink" href="#2-add-the-dependency-one-line" title="Permanent link">&para;</a></h2>
+<p>Maven Central is already in every Android project's defaults, so there's no repo
+config to add. In <code>app/build.gradle.kts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.android&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.plugin.compose&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// only if your own UI is Compose</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.devtools.ksp&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.dagger.hilt.android&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">android</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.mydapp&quot;</span>
+<span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span>
+<span class="w">    </span><span class="n">defaultConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">applicationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.mydapp&quot;</span>
+<span class="w">        </span><span class="n">minSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
+<span class="w">        </span><span class="n">targetSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ── Pick ONE Kuira entry ──</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">// With the wallet + sigil PANEL (Compose). Use this for Kicks / BBoard-style</span>
+<span class="w">    </span><span class="c1">// apps that want the wallet UI dropped in.</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha01&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">// OR — headless (no Compose pulled by the SDK). For dApps building their</span>
+<span class="w">    </span><span class="c1">// own UI top-to-bottom.</span>
+<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha01&quot;)</span>
+
+<span class="w">    </span><span class="c1">// Hilt processor — required, the SDK is Hilt-first</span>
+<span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-android-compiler:2.58&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// your own app code, your own Compose deps, etc.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>That single Kuira line brings the whole consumer surface — passkey, sigil,
+wallet, ZK proving, contract deploy/call, indexer, panel UI (if you picked
+<code>dapp-ui</code>) — onto your compile classpath transitively. No per-module
+redeclaration.</p>
+<hr />
+<h2 id="3-declare-your-passkey-domain">3. Declare YOUR passkey domain<a class="headerlink" href="#3-declare-your-passkey-domain" title="Permanent link">&para;</a></h2>
+<p>The SDK provides <strong>no default <code>PasskeyConfig</code></strong> — that's deliberate. A passkey
+is bound to a domain, and that domain must be <strong>yours</strong>. If the SDK baked in a
+default, every consumer would silently route through the maintainer's domain
+and PRF would only work after the maintainer added them to a maintainer-hosted
+<code>assetlinks.json</code> — i.e. the "open" SDK would actually be permissioned.</p>
+<p>Add a tiny Hilt module (anywhere in your <code>di/</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">com.example.mydapp.di</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.identity.passkey.PasskeyConfig</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dagger.Module</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dagger.Provides</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dagger.hilt.InstallIn</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dagger.hilt.components.SingletonComponent</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">javax.inject.Singleton</span>
+
+<span class="nd">@Module</span>
+<span class="nd">@InstallIn</span><span class="p">(</span><span class="n">SingletonComponent</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">object</span><span class="w"> </span><span class="nc">IdentityConfigModule</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Provides</span>
+<span class="w">    </span><span class="nd">@Singleton</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">providePasskeyConfig</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PasskeyConfig</span><span class="p">(</span>
+<span class="w">        </span><span class="n">rpId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mydapp.example.com&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// YOUR domain (matches assetlinks.json below)</span>
+<span class="w">        </span><span class="n">rpName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My dApp&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// shown in the biometric prompt</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>If you forget this, you'll get a clear Dagger missing-binding error at build
+time. That's intentional — it forces you to declare your domain before
+shipping.</p>
+</blockquote>
+<hr />
+<h2 id="4-host-assetlinksjson-on-your-domain">4. Host <code>assetlinks.json</code> on YOUR domain<a class="headerlink" href="#4-host-assetlinksjson-on-your-domain" title="Permanent link">&para;</a></h2>
+<p>Android's <code>CredentialManager</code> checks Digital Asset Links to verify <em>your</em> app
+may use passkeys for <em>your</em> domain. Place this file at:</p>
+<div class="highlight"><pre><span></span><code>https://&lt;your-domain&gt;/.well-known/assetlinks.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">[{</span>
+<span class="w">  </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;delegate_permission/common.get_login_creds&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;android_app&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example.mydapp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sha256_cert_fingerprints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AB:CD:EF:01:23:45:67:89:...&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}]</span>
+</code></pre></div>
+<p><strong>Get your cert SHA-256</strong>:
+<div class="highlight"><pre><span></span><code>keytool<span class="w"> </span>-list<span class="w"> </span>-v<span class="w"> </span>-keystore<span class="w"> </span>&lt;your-keystore&gt;<span class="w"> </span>-alias<span class="w"> </span>&lt;your-alias&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>SHA256
+</code></pre></div>
+For debug builds, the default keystore is <code>~/.android/debug.keystore</code> (alias
+<code>androiddebugkey</code>, password <code>android</code>).</p>
+<blockquote>
+<p>Without this file (or with a wrong package name / SHA-256), the biometric
+prompt fails and PRF can't derive your sigil. This is a one-time host;
+updates are needed only when you change signing certs.</p>
+</blockquote>
+<hr />
+<h2 id="5-localnet-dev-only-allow-cleartext-to-10022">5. <em>(Localnet dev only)</em> Allow cleartext to <code>10.0.2.2</code><a class="headerlink" href="#5-localnet-dev-only-allow-cleartext-to-10022" title="Permanent link">&para;</a></h2>
+<p>Production hits HTTPS. For local testing against a localnet node + indexer at
+<code>http://10.0.2.2:9944</code> / <code>:8088</code>, declare cleartext <strong>in a debug-only manifest</strong>
+so release builds stay HTTPS-clean:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- app/src/debug/AndroidManifest.xml --&gt;</span>
+<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;application</span><span class="w"> </span><span class="na">android:usesCleartextTraffic=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Why debug-only: previously this was inherited transitively from a <code>core:</code>
+module's debug AAR; once the SDK started publishing release variants for the
+alpha that allowance no longer reaches consumers. So each app declares its
+own — release stays cleartext-free.</p>
+</blockquote>
+<hr />
+<h2 id="6-minimal-hello-world-deploy-call">6. Minimal "Hello World" — deploy + call<a class="headerlink" href="#6-minimal-hello-world-deploy-call" title="Permanent link">&para;</a></h2>
+<p>Assuming you picked <code>dapp-ui</code> (panel) and your app's main activity is a
+Hilt'd <code>FragmentActivity</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@HiltAndroidApp</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">()</span>
+
+<span class="nd">@AndroidEntryPoint</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">FragmentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Inject</span><span class="w"> </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">sdkProvider</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightSdkProvider</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Drop-in wallet + sigil panel. Renders status, exposes Backup</span>
+<span class="w">            </span><span class="c1">// / Restore / Send / Receive without any further plumbing.</span>
+<span class="w">            </span><span class="n">WalletPanel</span><span class="p">(</span><span class="n">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="nd">@MainActivity</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Your dApp logic, e.g. deploy + call a contract:</span>
+<span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">deployAndCall</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdkProvider</span><span class="p">.</span><span class="na">ensureSdk</span><span class="p">(</span>
+<span class="w">            </span><span class="n">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">,</span>
+<span class="w">            </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WalletConfig</span><span class="p">(</span><span class="n">network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightNetwork</span><span class="p">.</span><span class="na">UNDEPLOYED</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// your compiled `.compact` JS + proving keys, dropped in assets/</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my-contract.js&quot;</span>
+<span class="w">            </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">wallet</span>
+<span class="w">            </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">…</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>For a real, multi-step contract (commit / reveal / ZK proofs / sudden
+death), the reference Midnight Kicks dApp implements a ~600-line
+state-machine that exercises every SDK surface — protocol orchestration,
+witness packing, indexer-state polling, transaction retry, force-resync,
+deadline computation. The patterns described throughout this guide come
+from that code path; once the reference repository opens to the public,
+this section will link directly to it.</p>
+<hr />
+<h2 id="7-going-headless-no-panel">7. Going headless (no panel)<a class="headerlink" href="#7-going-headless-no-panel" title="Permanent link">&para;</a></h2>
+<p>If you don't want the Compose wallet panel, swap the dep:</p>
+<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha01&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
+</code></pre></div>
+<p>You still own bootstrap + sigil forging — <code>MidnightSdkProvider.ensureSdk(...)</code>
+throws <code>SigilRequiredException</code> until a sigil exists. Forge it through
+<code>PasskeyManager</code> directly, or use the <code>SigilSession</code> helper.</p>
+<p><code>midnight-sdk</code> does not pull Compose — the headless entry stays small.</p>
+<hr />
+<h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dagger: <em>"PasskeyConfig cannot be provided without an @Provides-annotated method"</em></td>
+<td>Step 3 — declare your own <code>PasskeyConfig</code> module.</td>
+</tr>
+<tr>
+<td>Runtime: <em>"CLEARTEXT communication to 10.0.2.2 not permitted by network security policy"</em></td>
+<td>Step 5 — add the debug manifest.</td>
+</tr>
+<tr>
+<td>Biometric prompt fails / PRF returns null</td>
+<td>Step 4 — <code>assetlinks.json</code> missing, wrong <code>package_name</code>, or wrong cert SHA-256.</td>
+</tr>
+<tr>
+<td>App balance stays at 0 after an airdrop</td>
+<td>The wallet's background subscription is live; check <code>adb logcat</code> for indexer connectivity. On localnet, state is ephemeral — restarting the localnet wipes funds.</td>
+</tr>
+<tr>
+<td><code>IllegalArgumentException: Could not find io.github.kuiralabs:…</code></td>
+<td>Check the alpha version is current; the SDK is <code>0.1.0-alpha01</code> at the time of writing.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="known-limitations-alpha">Known limitations (alpha)<a class="headerlink" href="#known-limitations-alpha" title="Permanent link">&para;</a></h2>
+<p>The alpha ships with one known dependency you should be aware of. It isn't a
+blocker for building, but it shapes what "alpha" means in practice and will
+evolve as Midnight matures.</p>
+<h3 id="proving-infrastructure-downloads-from-a-midnight-dev-url">Proving infrastructure downloads from a Midnight <em>dev</em> URL<a class="headerlink" href="#proving-infrastructure-downloads-from-a-midnight-dev-url" title="Permanent link">&para;</a></h3>
+<p>On first launch the SDK fetches Midnight's <strong>protocol-level</strong> proving assets
+— the universal BLS parameters and the wallet's shielded-spend / dust circuit
+keys — from
+<code>https://midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com</code>.
+This is the same bucket Midnight's own tooling uses; it's <strong>Midnight's
+bucket, not the SDK maintainer's</strong>, and the URL is labeled <code>-dev-</code>. There is
+no production SLA on it.</p>
+<p><strong>What this means in practice:</strong></p>
+<ul>
+<li>If Midnight retires, renames, or restricts that bucket, every alpha dApp
+  briefly can't generate proofs until the SDK is updated.</li>
+<li>The right party to publish a production URL is Midnight (the asset owner),
+  not the SDK maintainer. So the alpha <em>documents</em> this dependency rather
+  than self-hosting.</li>
+</ul>
+<p><strong>Your own <code>.compact</code> contract's proving keys are NOT affected by this.</strong> Those
+download from a URL <strong>you</strong> supply when you call
+<code>ProvingKeyManager.downloadCircuitKeys(baseUrl = …, …)</code> — Kicks hosts Kicks's
+keys, BBoard hosts BBoard's. You always own your contract's keys. This
+limitation is only about the <em>protocol-wide</em> keys that every Midnight dApp
+shares.</p>
+<p><strong>How it will evolve.</strong> When Midnight publishes a production URL — or, if
+that's not in their immediate roadmap, when the SDK mirrors these files under
+a <code>kuira-labs</code>-controlled URL with a version pin (<code>ProvingKeyManager.CURRENT_VERSION</code>
+tracks the protocol version, currently 9) — the SDK swaps the constant and
+re-publishes. The expected migration cost for a consumer is a single SDK
+version bump; no app-side code change.</p>
+<hr />
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../">Home</a> — install instructions and the full module list.</li>
+<li><a href="../security/">Security</a> — threat model, vulnerability reporting, signature verification.</li>
+<li><a href="https://central.sonatype.com/namespace/io.github.kuiralabs">Maven Central — <code>io.github.kuiralabs</code></a> — every published artifact (binary AAR, sources jar, javadoc jar, POM, PGP signature).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/kuiralabs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://central.sonatype.com/namespace/io.github.kuiralabs" target="_blank" rel="noopener" title="Maven Central — io.github.kuiralabs" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3-2.5c19.8-11.4 44.2-11.4 64 0L464.2 99c19.8 11.4 32 32.6 32 55.4v203c0 22.9-12.2 44-32 55.4L288.3 514.5a64.16 64.16 0 0 1-64 0L48.5 413c-19.8-11.4-32-32.6-32-55.4v-203c0-22.9 12.2-44 32-55.4zm207.8 360V191.4l-143.8 83v166.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/javascripts/copy-prompt.js"></script>
+      
+    
+  </body>
+</html>
