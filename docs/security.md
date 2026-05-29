@@ -204,7 +204,7 @@ gpg --verify $ARTIFACT.asc $ARTIFACT
 ```
 
 A successful verification output ends with
-`Good signature from "Norman Lopez <…>"`. Any other outcome means the
+`Good signature from "nel349 <…>"`. Any other outcome means the
 artifact does **not** correspond to a release the maintainer published —
 do not use it.
 
