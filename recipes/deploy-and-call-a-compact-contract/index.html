@@ -1022,50 +1022,72 @@ equivalent) inside the <code>contract/</code> directory first.</p>
 <hr />
 <h2 id="step-1-sync-the-compiled-artifacts-into-your-apps-assets">Step 1 — Sync the compiled artifacts into your app's assets<a class="headerlink" href="#step-1-sync-the-compiled-artifacts-into-your-apps-assets" title="Permanent link">&para;</a></h2>
 <p>The SDK's compact engine loads contract code + circuit keys from
-your APK's assets. Hand-roll a Gradle Copy task that runs before
-<code>mergeAssets</code>:</p>
-<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">contractDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">&quot;contract&quot;</span><span class="p">)</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">contractManaged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractDir</span><span class="s">/src/managed/your-contract&quot;</span><span class="p">)</span>
-
-<span class="kd">val</span><span class="w"> </span><span class="nv">syncContractAssets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="o">&lt;</span><span class="n">Copy</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;syncContractAssets&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;index.js&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">rename</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;your-contract-contract.js&quot;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// (1)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;runtime&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;*.prover&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*.verifier&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/zkir&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;*.bzkir&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;src/main/assets&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="n">doFirst</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">contractManaged</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">GradleException</span><span class="p">(</span>
-<span class="w">                </span><span class="s">&quot;Contract not compiled at </span><span class="si">$</span><span class="n">contractManaged</span><span class="s"> — run `npm run compact` first.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
+your APK's assets. The <code>com.midnight.kuira.contract</code> Gradle plugin
+wires the canonical layout into <code>preBuild</code> for you:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle (Kotlin DSL)</label><label for="__tabbed_1_2">Gradle (Groovy)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">settings.gradle.kts</span><pre><span></span><code><span class="n">pluginManagement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">gradlePluginPortal</span><span class="p">()</span>
+<span class="w">        </span><span class="n">mavenCentral</span><span class="p">()</span><span class="w">                                                  </span><span class="c1">// (1)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-
-<span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dependsOn</span><span class="p">(</span><span class="n">syncContractAssets</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>Rename to a stable name so multiple contracts can live alongside
-   each other in <code>assets/runtime/</code> without clobbering each other.</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Coming in alpha02</p>
-<p>The hand-rolled Copy task is the workaround. A
-<code>com.midnight.kuira.contract</code> Gradle plugin (wishlist <code>#11</code>) is
-on the alpha02 roadmap; declared as
-<code>kuiraContract { source = "contract/src/managed/your-contract" }</code>,
-it replaces the Copy block above.</p>
+<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.midnight.kuira.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha02&quot;</span>
+<span class="p">}</span>
+
+<span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;contract/src/managed/your-contract&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// alias.set(&quot;your-contract&quot;)                                       // (2)</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">settings.gradle</span><pre><span></span><code><span class="n">pluginManagement</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="n">gradlePluginPortal</span><span class="o">()</span>
+<span class="w">        </span><span class="n">mavenCentral</span><span class="o">()</span><span class="w">                                                  </span><span class="c1">// (1)</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">app/build.gradle</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;com.android.application&#39;</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;com.midnight.kuira.contract&#39;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s1">&#39;0.1.0-alpha02&#39;</span>
+<span class="o">}</span>
+
+<span class="n">kuiraContract</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">source</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s1">&#39;contract/src/managed/your-contract&#39;</span><span class="o">)</span>
+<span class="w">    </span><span class="c1">// alias.set(&#39;your-contract&#39;)                                       // (2)</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<ol>
+<li>The plugin ships to Maven Central. Add <code>mavenCentral()</code> to
+   <code>pluginManagement.repositories</code> so <code>plugins { id(...) }</code> can
+   resolve it. (A Gradle Plugin Portal listing is planned for
+   <code>alpha03</code> so this extra repo entry will go away.)</li>
+<li><code>alias</code> is optional — defaults to the dirname of <code>source</code>. So
+   <code>contract/src/managed/penalty</code> resolves to alias <code>penalty</code>,
+   which lands the contract JS as
+   <code>assets/runtime/penalty-contract.js</code>.</li>
+</ol>
+<p>The plugin registers two tasks:</p>
+<ul>
+<li><strong><code>validateKuiraContractSource</code></strong> — verification task that always
+  runs and fails fast with a helpful message if the source directory
+  is missing (<code>"compile your contract first — npm run compact …"</code>).
+  Catches the "forgot to compile" mistake at build time, not at
+  runtime.</li>
+<li><strong><code>syncContractAssets</code></strong> — the actual copy: <code>contract/index.js</code>
+  → <code>assets/runtime/&lt;alias&gt;-contract.js</code>, <code>keys/*.{prover,verifier}</code>
+  and <code>zkir/*.bzkir</code> → <code>assets/keys/</code>. Wired into <code>preBuild</code> so it
+  runs automatically before any APK is assembled.</li>
+</ul>
 <p><strong>Verify:</strong> after <code>./gradlew :app:assembleDebug</code>, unzip the resulting
 APK and confirm <code>assets/runtime/your-contract-contract.js</code>,
 <code>assets/keys/*.prover</code>, <code>assets/keys/*.verifier</code>, <code>assets/keys/*.bzkir</code>
