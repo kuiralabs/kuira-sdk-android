@@ -1,0 +1,29 @@
+# Kuira SDK
+
+> The Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, and a Compact contract runtime — added to a consumer project as one Gradle dependency. Published to Maven Central as `io.github.kuiralabs:*`.
+
+Kuira's cookbook is designed for both human and agent consumption.
+Every recipe URL below is a raw markdown file that can be fetched
+directly by an LLM-driven assistant (Claude Code, Cursor, Codex, etc.)
+to obtain the SDK API surface, idiomatic patterns, common pitfalls,
+and version pin needed to execute the integration in a developer's
+own project.
+
+For browsable documentation: <https://kuiralabs.github.io/kuira-sdk/>.
+
+## Docs
+
+- [Home / Install](https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/index.md): SDK overview, install snippet, module list, alpha status, source-availability stance.
+- [Integration guide](https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/integration.md): End-to-end integration reference (prereqs, PasskeyConfig, assetlinks.json, debug-cleartext, deploy + call skeleton, troubleshooting, known limitations).
+- [Security](https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/security.md): Threat model — what Kuira protects against and what it explicitly does not. Vulnerability reporting + 90-day coordinated disclosure. GPG signature verification recipe.
+
+## Recipes
+
+- [Add Kuira to an Android project](https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/add-kuira-to-an-android-project.md): Install the SDK, register a passkey domain, host assetlinks.json, wire the Hilt module, enable debug cleartext for localnet.
+- [Set up Sigil identity](https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/set-up-sigil-identity.md): Bootstrap a passkey-derived sigil session (DID + wallet seed from one biometric), drop in the Compose panel, handle forge and restore flows.
+- [Deploy and call a Compact contract](https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/deploy-and-call-a-compact-contract.md): Sync compiled `.compact` artifacts into Android assets, build the contract handle with witnesses, deploy, and call a circuit.
+
+## Optional
+
+- [Maven Central — io.github.kuiralabs](https://central.sonatype.com/namespace/io.github.kuiralabs): Every published artifact (AAR + sources jar + javadoc jar + POM + PGP signature).
+- [GitHub repository](https://github.com/kuiralabs/kuira-sdk): The public docs repository. SDK source itself is currently private; will open in a future alpha.

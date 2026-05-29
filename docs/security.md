@@ -15,10 +15,10 @@ wrong venue for unpatched vulnerabilities.
 ### How to reach us
 
 - **GitHub Security Advisories** (preferred):
-  <https://github.com/nel349/kuira-android-wallet/security/advisories/new>
+  <https://github.com/kuiralabs/kuira-sdk/security/advisories/new>
   — Private channel that lets you and the maintainer collaborate on a fix
   before disclosure. Encrypted on GitHub's side.
-- **Email:** `norman.lopez.krypto@gmail.com`
+- **Email:** `kuiralabs@gmail.com`
   — For PGP-encrypted reports, the maintainer's signing key (used for
   Maven Central artifacts) doubles as the security contact key. Public key
   available on `keyserver.ubuntu.com` — see *Verifying releases* below for
@@ -154,7 +154,7 @@ We're explicit about this because hiding it isn't honest:
   circuits) from `midnight-s3-fileshare-dev-eu-west-1`, a Midnight-team
   S3 bucket labeled "dev." A compromise of that bucket would let an
   attacker substitute proving keys. Documented in
-  [`INTEGRATION.md`](INTEGRATION.md) § Known limitations.
+  [Integration guide](integration.md) § Known limitations.
   Per-contract proving keys are unaffected — each dApp hosts its own.
 - **Network-level interception:** The SDK uses HTTPS for indexer / node
   RPC. We do not currently implement certificate pinning. A
@@ -253,6 +253,6 @@ suggestions), open a regular GitHub issue or PR — we still want to know.
 
 ## See also
 
-- [`INTEGRATION.md`](INTEGRATION.md) — known operational limitations for
+- [Integration guide](integration.md) — known operational limitations for
   consumers (BLS-params dependency, debug-cleartext requirement, etc.).
-- [`README.md`](README.md) — install instructions and SDK overview.
+- [Home](index.md) — install instructions and SDK overview.

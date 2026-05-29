@@ -1,0 +1,100 @@
+site_name: Kuira SDK
+site_description: Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, contract runtime — one Gradle dependency.
+site_url: https://kuiralabs.github.io/kuira-sdk/
+repo_url: https://github.com/kuiralabs/kuira-sdk
+repo_name: kuiralabs/kuira-sdk
+edit_uri: edit/main/docs/
+
+# We deliberately do not ship a custom theme — Material's defaults are
+# good enough that the docs read as a real SDK site, and we avoid the
+# maintenance burden of bespoke CSS. Dark mode toggle is built in.
+theme:
+  name: material
+  palette:
+    # Auto-switch based on system preference.
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.tabs        # top-level tabs (Get started / Recipes / API / Security)
+    - navigation.sections    # group sub-pages under sections in the sidebar
+    - navigation.top         # back-to-top button
+    - navigation.tracking    # update URL hash as user scrolls
+    - search.suggest         # autocomplete in search box
+    - search.highlight       # highlight matches on the page
+    - content.code.copy      # copy-to-clipboard on code blocks
+    - content.code.annotate  # inline annotations on code lines
+    - content.tabs.link      # link tabbed content blocks across the page
+    - toc.follow             # sidebar TOC tracks scroll position
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - tags
+
+markdown_extensions:
+  # Admonitions — !!! note / warning / tip / etc. Used heavily in recipes.
+  - admonition
+  - pymdownx.details         # collapsible admonitions
+  - pymdownx.superfences     # nested code blocks inside lists / admonitions
+  # Code highlighting + per-line annotations. Conservative config —
+  # the fancier line_spans/anchor_linenums features tickle a
+  # pygments/Python-3.14 compat bug; can re-enable once that lands.
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  # Tabbed content — useful for "Gradle Kotlin DSL / Gradle Groovy" snippets.
+  - pymdownx.tabbed:
+      alternate_style: true
+  # Task lists, footnotes, emoji.
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - footnotes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # Anchor links on every heading.
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - Get started:
+    - Install + integrate: integration.md
+  - Recipes:
+    - recipes/index.md
+    - Add Kuira to an Android project: recipes/add-kuira-to-an-android-project.md
+    - Set up Sigil identity: recipes/set-up-sigil-identity.md
+    - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
+  - API reference: api/index.html
+  - Security: security.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kuiralabs
+    - icon: fontawesome/solid/cube
+      link: https://central.sonatype.com/namespace/io.github.kuiralabs
+      name: Maven Central — io.github.kuiralabs
+  # Maven coordinate for the install snippet — referenced in templates.
+  kuira_version: 0.1.0-alpha01
+
+extra_javascript:
+  - assets/javascripts/copy-prompt.js

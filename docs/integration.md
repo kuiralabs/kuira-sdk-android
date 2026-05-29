@@ -306,6 +306,6 @@ version bump; no app-side code change.
 
 ## See also
 
-- [`README.md`](README.md) — install instructions and the full module list.
-- [`SECURITY.md`](SECURITY.md) — threat model, vulnerability reporting, signature verification.
+- [Home](index.md) — install instructions and the full module list.
+- [Security](security.md) — threat model, vulnerability reporting, signature verification.
 - [Maven Central — `io.github.kuiralabs`](https://central.sonatype.com/namespace/io.github.kuiralabs) — every published artifact (binary AAR, sources jar, javadoc jar, POM, PGP signature).

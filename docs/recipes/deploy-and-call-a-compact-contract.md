@@ -1,0 +1,204 @@
+---
+title: Deploy and call a Compact contract
+tags:
+  - contracts
+  - compact
+  - circuits
+  - proving
+prerequisites:
+  - Kuira added (recipe 1)
+  - Sigil set up (recipe 2)
+  - A compiled .compact contract under contract/src/managed/<name>/
+agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/deploy-and-call-a-compact-contract.md
+---
+
+# Deploy and call a Compact contract
+
+**Outcome:** your app deploys a compiled Compact contract, gets the
+contract address, and calls one of its circuits with witnesses — going
+end-to-end from `.compact` source to an on-chain transaction.
+
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/deploy-and-call-a-compact-contract.md"
+     data-task="Wire a compiled Compact contract into this Kuira-using Android app — sync the compiled artifacts into assets, construct a MidnightContract with the right witnesses, deploy it via the SDK, and call one of its circuits."></div>
+
+---
+
+## Prerequisites
+
+- The previous two recipes completed (SDK added, sigil bootstrapped).
+- A `.compact` contract that has been **compiled with the matching
+  compactc version** — the runtime version pinned in your contract's
+  `package.json` (`@midnight-ntwrk/compact-runtime`) must match what
+  the SDK expects. If you mismatch, the runtime will throw a
+  bytecode-version error at load.
+- Compiled artifacts under `contract/src/managed/<contract-name>/`:
+  - `contract/index.js` — the contract runtime entry
+  - `keys/*.prover`, `keys/*.verifier` — per-circuit proving + verifying keys
+  - `zkir/*.bzkir` — the ZK intermediate representation
+
+If you don't have these yet, run `npm run compact` (or your project's
+equivalent) inside the `contract/` directory first.
+
+---
+
+## Step 1 — Sync the compiled artifacts into your app's assets
+
+The SDK's compact engine loads contract code + circuit keys from
+your APK's assets. Hand-roll a Gradle Copy task that runs before
+`mergeAssets`:
+
+```kotlin title="app/build.gradle.kts"
+val contractDir = rootProject.file("contract")
+val contractManaged = file("$contractDir/src/managed/your-contract")
+
+val syncContractAssets = tasks.register<Copy>("syncContractAssets") {
+    from("$contractManaged/contract") {
+        include("index.js")
+        rename { "your-contract-contract.js" }   // (1)
+        into("runtime")
+    }
+    from("$contractManaged/keys") {
+        include("*.prover", "*.verifier")
+        into("keys")
+    }
+    from("$contractManaged/zkir") {
+        include("*.bzkir")
+        into("keys")
+    }
+    into("src/main/assets")
+
+    doFirst {
+        if (!contractManaged.exists()) {
+            throw GradleException(
+                "Contract not compiled at $contractManaged — run `npm run compact` first.",
+            )
+        }
+    }
+}
+
+tasks.named("preBuild") { dependsOn(syncContractAssets) }
+```
+
+1. Rename to a stable name so multiple contracts can live alongside
+   each other in `assets/runtime/` without clobbering each other.
+
+!!! tip "Coming in alpha02"
+    The hand-rolled Copy task is the workaround. A
+    `com.midnight.kuira.contract` Gradle plugin (wishlist `#11`) is
+    on the alpha02 roadmap; declared as
+    `kuiraContract { source = "contract/src/managed/your-contract" }`,
+    it replaces the Copy block above.
+
+**Verify:** after `./gradlew :app:assembleDebug`, unzip the resulting
+APK and confirm `assets/runtime/your-contract-contract.js`,
+`assets/keys/*.prover`, `assets/keys/*.verifier`, `assets/keys/*.bzkir`
+are all present.
+
+---
+
+## Step 2 — Build the contract handle
+
+```kotlin
+import com.midnight.kuira.sdk.contract.MidnightContract
+import com.midnight.kuira.core.compact.WitnessResult
+
+suspend fun buildContract(
+    sdk: MidnightSdk,
+    wallet: MidnightWallet,
+    contractAddress: String? = null,    // (1)
+): MidnightContract = MidnightContract.create {
+    this.sdk = sdk
+    this.contractJs = "runtime/your-contract-contract.js"
+    this.address = contractAddress
+    this.coinPublicKey = wallet.coinPublicKey
+    this.witnesses = mapOf(
+        "localSecret" to { _: Map<String, Any?> ->
+            WitnessResult(null, ByteArray(32) { 0 })  // (2)
+        },
+    )
+}
+```
+
+1. `null` while you're still going to call `deploy()` — set this to the
+   returned address for every subsequent call.
+2. Stub witness — replace with your contract's actual witness layout.
+   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), see wishlist
+   `#12` (typed witness factories on the alpha02 roadmap); today you
+   pack bytes by hand.
+
+**Verify:** the function returns without throwing — meaning the
+QuickJS runtime found and loaded your contract JS, and witness
+descriptors typecheck against the bytecode.
+
+---
+
+## Step 3 — Deploy
+
+```kotlin
+val deployResult = contract.deploy()
+val address = deployResult.address
+Log.i("MyApp", "Deployed at $address")
+```
+
+`deploy()` performs the deploy transaction, waits for the indexer to
+confirm it, and returns the contract address. Re-use this address for
+every subsequent `MidnightContract.create { … address = address }` call.
+
+**Verify:** `address` should be a 64-character hex string. Querying
+`sdk.indexerClient.queryContractState(address)` should return a
+non-null state.
+
+---
+
+## Step 4 — Call a circuit
+
+```kotlin
+val result = contract.call(
+    circuit = "myCircuit",
+    args = mapOf(
+        "playerNum" to 1L,
+        "deadline" to (System.currentTimeMillis() / 1000 + 600),  // (1)
+    ),
+)
+```
+
+1. **Avoid wall-clock for chain deadlines.** Use the latest block
+   timestamp from the indexer — wall-clock drift between the dApp
+   and the chain can blow your deadline calculation. See the SDK's
+   `wallet.tip()` helper for the chain-time-anchored value.
+
+The call:
+
+1. Generates the ZK proof using the artifacts you synced in step 1.
+2. Submits the resulting transaction via the wallet.
+3. Waits for indexer confirmation.
+4. Returns the post-call ledger state.
+
+For long-running circuits (sub-second to a few seconds), wire up
+`TransactionBalancer` progress callbacks for UX feedback —
+wishlist `#1` covers the SDK-side primitive
+(`awaitIndexerSynced(blockHeight)`) that replaces today's fixed delays.
+
+**Verify:** the transaction confirms within ~10s on PREPROD. Query
+`contract.ledger()` and check the field your circuit mutates.
+
+---
+
+## Troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| `Contract not compiled at …` at Gradle time | Step 1 prereq not done. | Run `npm run compact` in `contract/`. |
+| `Unsupported bytecode version` at runtime | Your compactc emitted bytecode for a different runtime version than the SDK ships. | Pin compactc to match your contract's `@midnight-ntwrk/compact-runtime` version. |
+| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Today's workaround: 3–5s delay between deploy and first call. Wishlist `#1` (`awaitIndexerSynced`) lands in alpha02. |
+| `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout. Typed factories (wishlist `#12`) eliminate this whole class of bug in alpha02. |
+| `Deadline expired` even though you set it in the future | Using `System.currentTimeMillis()` instead of chain time. | Switch to chain-anchored time (last block's timestamp). |
+
+---
+
+## What's next
+
+- **Browse the [API reference](../api/)** for the full `MidnightContract`,
+  `MidnightWallet`, and circuit-execution surface.
+- **[Security § Verifying releases](../security.md#verifying-releases)**
+  — pin and verify the exact SDK artifact for your release builds.

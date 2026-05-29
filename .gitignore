@@ -1,0 +1,10 @@
+# mkdocs build output (deployed via gh-pages branch; never committed to main)
+/site/
+
+# Local Python venv for previewing the site
+/.venv/
+
+# Editor / OS noise
+.DS_Store
+.idea/
+*.swp

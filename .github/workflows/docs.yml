@@ -1,0 +1,38 @@
+# Builds the mkdocs-material site and deploys to the gh-pages branch.
+# GitHub Pages serves from gh-pages, so this is the only workflow needed
+# to keep the public docs site current.
+#
+# Also triggered by the monorepo's publish workflow on every tag (via
+# `repository_dispatch`) so the API reference HTML under /api/ can be
+# refreshed alongside a release.
+
+name: Build and deploy docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:           # manual trigger
+  repository_dispatch:         # triggered from monorepo on release
+    types: [docs-rebuild]
+
+permissions:
+  contents: write              # required to push to gh-pages
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0       # mkdocs git-revision-date plugins need full history
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install mkdocs-material
+        run: pip install -r requirements.txt
+
+      - name: Build and deploy
+        run: mkdocs gh-deploy --force --clean --verbose
