@@ -15,7 +15,7 @@ wrong venue for unpatched vulnerabilities.
 ### How to reach us
 
 - **GitHub Security Advisories** (preferred):
-  <https://github.com/kuiralabs/kuira-sdk/security/advisories/new>
+  <https://github.com/kuiralabs/kuira-sdk-android/security/advisories/new>
   — Private channel that lets you and the maintainer collaborate on a fix
   before disclosure. Encrypted on GitHub's side.
 - **Email:** `kuiralabs@gmail.com`

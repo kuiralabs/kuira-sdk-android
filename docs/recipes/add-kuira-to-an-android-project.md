@@ -9,7 +9,7 @@ prerequisites:
   - JDK 17
   - minSdk 30+
   - Hilt + KSP already wired in the project
-agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/add-kuira-to-an-android-project.md
+agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/add-kuira-to-an-android-project.md
 ---
 
 # Add Kuira to an Android project
@@ -18,7 +18,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/re
 recognises your passkey domain, and has the Hilt graph wired so any
 `@HiltViewModel` consuming SDK panels resolves cleanly.
 
-<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/add-kuira-to-an-android-project.md"
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/add-kuira-to-an-android-project.md"
      data-task="Integrate Kuira SDK into this Android project — install the dependency, provide a PasskeyConfig Hilt module for the project's own domain, and enable debug cleartext for localnet (assetlinks.json hosting is left to the developer)."></div>
 
 ---

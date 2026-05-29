@@ -1,8 +1,8 @@
-site_name: Kuira SDK
+site_name: Kuira Android SDK
 site_description: Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, contract runtime — one Gradle dependency.
-site_url: https://kuiralabs.github.io/kuira-sdk/
-repo_url: https://github.com/kuiralabs/kuira-sdk
-repo_name: kuiralabs/kuira-sdk
+site_url: https://kuiralabs.github.io/kuira-sdk-android/
+repo_url: https://github.com/kuiralabs/kuira-sdk-android
+repo_name: kuiralabs/kuira-sdk-android
 edit_uri: edit/main/docs/
 
 # We deliberately do not ship a custom theme — Material's defaults are

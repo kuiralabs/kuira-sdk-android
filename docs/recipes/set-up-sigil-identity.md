@@ -7,7 +7,7 @@ tags:
 prerequisites:
   - Kuira added to your project (see "Add Kuira to an Android project")
   - PasskeyConfig provided and assetlinks.json hosted
-agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/set-up-sigil-identity.md
+agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/set-up-sigil-identity.md
 ---
 
 # Set up Sigil identity
@@ -16,7 +16,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/re
 tied to a single passkey — and can later sign the user in with one
 biometric prompt that yields both identity and funding authority.
 
-<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/set-up-sigil-identity.md"
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/set-up-sigil-identity.md"
      data-task="Set up Kuira Sigil identity in this app — wire SigilPanelViewModel into a Compose screen for forge/sign-in, handle the forged → restore → ready state machine, and make sure single-biometric sign-in flows through SigilSession."></div>
 
 ---

@@ -9,7 +9,7 @@ prerequisites:
   - Kuira added (recipe 1)
   - Sigil set up (recipe 2)
   - A compiled .compact contract under contract/src/managed/<name>/
-agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/deploy-and-call-a-compact-contract.md
+agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/deploy-and-call-a-compact-contract.md
 ---
 
 # Deploy and call a Compact contract
@@ -18,7 +18,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/re
 contract address, and calls one of its circuits with witnesses — going
 end-to-end from `.compact` source to an on-chain transaction.
 
-<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk/main/docs/recipes/deploy-and-call-a-compact-contract.md"
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/deploy-and-call-a-compact-contract.md"
      data-task="Wire a compiled Compact contract into this Kuira-using Android app — sync the compiled artifacts into assets, construct a MidnightContract with the right witnesses, deploy it via the SDK, and call one of its circuits."></div>
 
 ---

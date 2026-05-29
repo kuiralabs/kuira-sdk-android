@@ -1,12 +1,12 @@
 ---
-title: Kuira SDK
+title: Kuira Android SDK
 hide:
   - navigation
 ---
 
-# Kuira SDK
+# Kuira Android SDK
 
-**The Android SDK for [Midnight](https://midnight.network) zero-knowledge dApps.**
+**Build [Midnight](https://midnight.network) zero-knowledge dApps on Android.**
 
 Build privacy-first Android apps on Midnight: passkey-derived identity,
 an embedded wallet, and a Compact contract runtime — added to your project
@@ -91,7 +91,7 @@ LLM-driven assistant — the agent fetches a stable raw-markdown context
 bundle directly from this site and has everything it needs to wire the
 integration in your project.
 
-An [`/llms.txt`](https://kuiralabs.github.io/kuira-sdk/llms.txt) at the
+An [`/llms.txt`](https://kuiralabs.github.io/kuira-sdk-android/llms.txt) at the
 site root lists every recipe and context bundle URL, following the
 emerging <https://llmstxt.org> convention. Agents that support it
 auto-discover the entire cookbook in one fetch.
@@ -113,4 +113,4 @@ the repository opens.
 
 ## License
 
-Apache License 2.0 — see [LICENSE](https://github.com/kuiralabs/kuira-sdk/blob/main/LICENSE).
+Apache License 2.0 — see [LICENSE](https://github.com/kuiralabs/kuira-sdk-android/blob/main/LICENSE).

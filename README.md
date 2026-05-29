@@ -1,6 +1,6 @@
-# Kuira SDK
+# Kuira Android SDK
 
-**The Android SDK for [Midnight](https://midnight.network) zero-knowledge dApps.**
+**Build [Midnight](https://midnight.network) zero-knowledge dApps on Android.**
 
 Build privacy-first Android apps on Midnight: passkey-derived identity, an
 embedded wallet, and a Compact contract runtime — added to your project as
@@ -9,7 +9,7 @@ a single Gradle dependency.
 > **Status:** Alpha (`0.1.0-alpha01`). The API may change between alpha
 > bumps. Production usage is not recommended; we're looking for early
 > integrators who can give feedback. See
-> [SECURITY.md](https://github.com/kuiralabs/kuira-sdk/blob/main/SECURITY.md)
+> [SECURITY.md](https://github.com/kuiralabs/kuira-sdk-android/blob/main/SECURITY.md)
 > for threat model and reporting.
 
 ---
