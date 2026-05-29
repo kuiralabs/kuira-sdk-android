@@ -1,0 +1,300 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SigilPanelViewModel</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:dapp-ui:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filter=":sdk:dapp-ui:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="dapp-ui::com.midnight.kuira.dapp.sigil/SigilPanelViewModel///PointingToDeclaration//-232773247">
+  <div class="breadcrumbs"><a href="../../index.html">dapp-ui</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.dapp.sigil</a><span class="delimiter">/</span><span class="current">SigilPanelViewModel</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Sigil</span><wbr><span>Panel</span><wbr><span>View</span><wbr><span><span>Model</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SigilPanelViewModel</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a><span class="token punctuation">, </span></span><span class="parameter ">sigilIdentityProvider<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-identity-provider/index.html">SigilIdentityProvider</a><span class="token punctuation">, </span></span><span class="parameter ">sigilSession<span class="token operator">: </span><a href="../../../../sdk/wallet-seed/com.midnight.kuira.sdk.walletseed/-sigil-session/index.html">SigilSession</a><span class="token punctuation">, </span></span><span class="parameter ">sigilStateStore<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-state-store/index.html">SigilStateStore</a><span class="token punctuation">, </span></span><span class="parameter ">appStateBackup<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-app-state-backup/index.html">AppStateBackup</a><span class="token punctuation">, </span></span><span class="parameter ">blockStoreStorage<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-block-store-backup-storage/index.html">BlockStoreBackupStorage</a><span class="token punctuation">, </span></span><span class="parameter ">appDataProvider<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Optional.html">Optional</a><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.dapp.backup/-app-data-backup-provider/index.html">AppDataBackupProvider</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a></div><p class="paragraph">Self-contained sigil-identity bookkeeper for <a href="../-sigil-status-panel.html">SigilStatusPanel</a>.</p><p class="paragraph">Owns three flows:</p><ul><li><p class="paragraph"><strong>Forge</strong> (<a href="forge-sigil.html">forgeSigil</a>): create a passkey via Credential Manager,     then derive the sigil DID via <a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-identity-provider/index.html">SigilIdentityProvider</a>     (<code class="lang-kotlin">PRF(passkey, SIGIL_SALT)</code> → Ed25519 → <code class="lang-kotlin">did:key:z6Mk…</code> in the     default impl). Two biometric prompts on first run.</p></li><li><p class="paragraph"><strong>Sign in</strong> (<a href="restore-seed.html">restoreSeed</a>): one biometric covers BOTH the     sigil DID derivation AND the wallet seed pre-warm via the     multi-salt PRF ceremony in <code class="lang-kotlin">SigilSession.signIn</code>. The wallet     panel's first refresh after sign-in hits SeedVault cache     instead of running its own PRF ceremony — no second prompt.     Falls back to two biometrics on authenticators that don't     support multi-salt PRF. Optionally restores host-app state     via <a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-app-state-backup/index.html">AppStateBackup</a> after the sigil is forged.</p></li><li><p class="paragraph"><strong>Backup</strong> (<a href="backup-seed.html">backupSeed</a>): write host-app state (not the seed)     to Block Store via <a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-app-state-backup/index.html">AppStateBackup</a>.</p></li></ul><p class="paragraph"><strong>Held in BBoard's VM</strong> (not migrated):</p><ul><li><p class="paragraph"><code class="lang-kotlin">authorizeAccessKey</code> — needs a <code class="lang-kotlin">MidnightSdk</code> instance to derive     the access key being authorized. The host bridges sigil + wallet     for that flow.</p></li></ul></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="9556539%2FConstructors%2F-232773247" anchor-label="SigilPanelViewModel" id="9556539%2FConstructors%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sigil-panel-view-model.html"><span>Sigil</span><wbr><span>Panel</span><wbr><span>View</span><wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="9556539%2FConstructors%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a><span class="token punctuation">, </span></span><span class="parameter ">sigilIdentityProvider<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-identity-provider/index.html">SigilIdentityProvider</a><span class="token punctuation">, </span></span><span class="parameter ">sigilSession<span class="token operator">: </span><a href="../../../../sdk/wallet-seed/com.midnight.kuira.sdk.walletseed/-sigil-session/index.html">SigilSession</a><span class="token punctuation">, </span></span><span class="parameter ">sigilStateStore<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-state-store/index.html">SigilStateStore</a><span class="token punctuation">, </span></span><span class="parameter ">appStateBackup<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-app-state-backup/index.html">AppStateBackup</a><span class="token punctuation">, </span></span><span class="parameter ">blockStoreStorage<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-block-store-backup-storage/index.html">BlockStoreBackupStorage</a><span class="token punctuation">, </span></span><span class="parameter ">appDataProvider<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Optional.html">Optional</a><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.dapp.backup/-app-data-backup-provider/index.html">AppDataBackupProvider</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1069890714%2FClasslikes%2F-232773247" anchor-label="Companion" id="1069890714%2FClasslikes%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1069890714%2FClasslikes%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1347524661%2FProperties%2F-232773247" anchor-label="status" id="1347524661%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="status.html"><span><span>status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1347524661%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-sigil-status/index.html">SigilStatus</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="978795377%2FFunctions%2F-232773247" anchor-label="addCloseable" id="978795377%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#383812252%2FFunctions%2F-232773247"><span>add</span><wbr><span><span>Closeable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="978795377%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#383812252%2FFunctions%2F-232773247"><span class="token function">addCloseable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">closeable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-auto-closeable/index.html">AutoCloseable</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#1722490497%2FFunctions%2F-232773247"><span class="token function">addCloseable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">closeable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-auto-closeable/index.html">AutoCloseable</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1032119377%2FFunctions%2F-232773247" anchor-label="backupSeed" id="-1032119377%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backup-seed.html"><span>backup</span><wbr><span><span>Seed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1032119377%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="backup-seed.html"><span class="token function">backupSeed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Back up the current sigil identity + the locally-stored seed to Google Block Store. Pipeline: load seed via seedVault (biometric) → derive a PRF-encrypted AES key from the passkey → sigilBackup.backup uploads the encrypted blob.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1576252185%2FFunctions%2F-232773247" anchor-label="dismissBackup" id="-1576252185%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dismiss-backup.html"><span>dismiss</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1576252185%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="dismiss-backup.html"><span class="token function">dismissBackup</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">User chose "Start fresh" from the <a href="../-sigil-status/-backup-available/index.html">SigilStatus.BackupAvailable</a> prompt: they acknowledge the cloud backup but want to proceed without restoring. Persist a flag so future launches don't keep nagging, and move to <a href="../-sigil-status/-none/index.html">SigilStatus.None</a> so the wallet panel unblocks and auto-bootstraps a fresh wallet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2118499637%2FFunctions%2F-232773247" anchor-label="forgeSigil" id="2118499637%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="forge-sigil.html"><span>forge</span><wbr><span><span>Sigil</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2118499637%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="forge-sigil.html"><span class="token function">forgeSigil</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create a passkey + derive its <code class="lang-kotlin">did:key</code>. Triggers the platform's Credential Manager UI on <a href="forge-sigil.html">activity</a>; the user picks an authenticator (device biometric / hardware key / etc.) and authorizes the create.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1102255800%2FFunctions%2F-232773247" anchor-label="getCloseable" id="1102255800%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#1102255800%2FFunctions%2F-232773247"><span>get</span><wbr><span><span>Closeable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1102255800%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#1102255800%2FFunctions%2F-232773247">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-auto-closeable/index.html">AutoCloseable</a><span class="token operator">&gt; </span><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#1102255800%2FFunctions%2F-232773247"><span class="token function">getCloseable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/index.html#1102255800%2FFunctions%2F-232773247">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1886479003%2FFunctions%2F-232773247" anchor-label="probePrfDeterminism" id="1886479003%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="probe-prf-determinism.html"><span>probe</span><wbr><span>Prf</span><wbr><span><span>Determinism</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886479003%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="probe-prf-determinism.html"><span class="token function">probePrfDeterminism</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Diagnostic — derive the SeedDeriver PRF output for the user's passkey and emit the 32-byte hex to logcat (tag <code class="lang-kotlin">PrfProbe</code>). Used to verify that PRF is deterministic across Kuira ecosystem apps that share an RP via <code class="lang-kotlin">assetlinks.json</code>, before relying on it as the wallet seed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1035544241%2FFunctions%2F-232773247" anchor-label="restoreSeed" id="-1035544241%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="restore-seed.html"><span>restore</span><wbr><span><span>Seed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1035544241%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="restore-seed.html"><span class="token function">restoreSeed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sign in with an existing passkey — the post-PRF replacement for the old "restore from cloud" flow.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1882769542%2FFunctions%2F-232773247" anchor-label="testPrf" id="1882769542%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="test-prf.html"><span>test</span><wbr><span><span>Prf</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1882769542%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="test-prf.html"><span class="token function">testPrf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Probe the passkey's PRF extension. Builds a deterministic salt from a versioned purpose string, runs an assertion twice with the same salt, and reports whether the outputs match — used during canary to confirm an authenticator supports CTAP2's hmac-secret extension before relying on it for backup.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

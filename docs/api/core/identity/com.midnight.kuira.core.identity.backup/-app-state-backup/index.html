@@ -1,0 +1,236 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AppStateBackup</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:identity:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:identity:dokkaHtmlPartial/release" data-filter=":core:identity:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="identity::com.midnight.kuira.core.identity.backup/AppStateBackup///PointingToDeclaration//-1754553396">
+  <div class="breadcrumbs"><a href="../../index.html">identity</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.identity.backup</a><span class="delimiter">/</span><span class="current">AppStateBackup</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>App</span><wbr><span>State</span><wbr><span><span>Backup</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">AppStateBackup</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a><span class="token punctuation">, </span></span><span class="parameter ">storage<span class="token operator">: </span><a href="../-backup-storage/index.html">BackupStorage</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Coordinates PRF-encrypted backup and restore of <strong>app-specific state</strong> (e.g. Kicks's MatchStore witnesses + commitments, BBoard drafts, future game/agent state).</p><p class="paragraph"><strong>Why "AppState" and not "Sigil":</strong> the wallet seed and the sigil DID both derive from the user's passkey via PRF (see <code class="lang-kotlin">WalletSeedSource</code> and <code class="lang-kotlin">SigilIdentityProvider</code>). Neither needs to travel through a Block Store blob to survive a new device — the passkey carries them. What <i>can't</i> be re-derived from the passkey is per-app state that's accumulated mid-session: witness keys paired to a deployed contract, draft data, in-flight game moves. That's what this class persists.</p><p class="paragraph"><strong>Flow:</strong></p><ol><li><p class="paragraph">Authenticate passkey with <code class="lang-kotlin">BACKUP_SALT</code> → 32-byte PRF output.</p></li><li><p class="paragraph">HKDF(PRF output) → AES-256-GCM key.</p></li><li><p class="paragraph">Encrypt <code class="lang-kotlin">appMetadata</code> → versioned blob.</p></li><li><p class="paragraph">Store blob in <a href="../-backup-storage/index.html">BackupStorage</a> (Block Store by default).</p></li></ol><p class="paragraph"><strong>Restore (new device or sign-in flow):</strong></p><ol><li><p class="paragraph">Passkey syncs via Google Password Manager.</p></li><li><p class="paragraph">Authenticate with the same salt → same PRF output → same AES key.</p></li><li><p class="paragraph">Decrypt blob → <a href="../-restored-app-state/app-metadata.html">RestoredAppState.appMetadata</a> handed to the host.</p></li></ol><p class="paragraph"><strong>Security:</strong> intermediate key material (PRF output, AES key, plaintext) is wiped in finally blocks immediately after use. Google sees only an opaque encrypted blob.</p><p class="paragraph"><strong>Versioning:</strong> the blob's leading byte is the schema version. v2 is the post-PRF format (this class); v1 blobs from before the AppStateBackup extraction are silently rejected as "no backup" — the seed and sigil fields they carried are redundant now, and the appMetadata they carried isn't decryptable under the v2 schema.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1910881332%2FConstructors%2F-1754553396" anchor-label="AppStateBackup" id="-1910881332%2FConstructors%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-app-state-backup.html"><span>App</span><wbr><span>State</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1910881332%2FConstructors%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a><span class="token punctuation">, </span></span><span class="parameter ">storage<span class="token operator">: </span><a href="../-backup-storage/index.html">BackupStorage</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="815310278%2FClasslikes%2F-1754553396" anchor-label="Companion" id="815310278%2FClasslikes%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="815310278%2FClasslikes%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1065740550%2FFunctions%2F-1754553396" anchor-label="backup" id="1065740550%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backup.html"><span><span>backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1065740550%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="backup.html"><span class="token function">backup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">appMetadata<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Encrypts <a href="backup.html">appMetadata</a> and writes the blob to storage.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1867925774%2FFunctions%2F-1754553396" anchor-label="deleteBackup" id="1867925774%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-backup.html"><span>delete</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1867925774%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="delete-backup.html"><span class="token function">deleteBackup</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Delete the backup.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1589407997%2FFunctions%2F-1754553396" anchor-label="hasBackup" id="-1589407997%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-backup.html"><span>has</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1589407997%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="has-backup.html"><span class="token function">hasBackup</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether a backup exists in storage.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1070887011%2FFunctions%2F-1754553396" anchor-label="isStorageAvailable" id="1070887011%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-storage-available.html"><span>is</span><wbr><span>Storage</span><wbr><span><span>Available</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1070887011%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="is-storage-available.html"><span class="token function">isStorageAvailable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the storage backend is available.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="403543638%2FFunctions%2F-1754553396" anchor-label="restore" id="403543638%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="restore.html"><span><span>restore</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="403543638%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="restore.html"><span class="token function">restore</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-restored-app-state/index.html">RestoredAppState</a></div><div class="brief "><p class="paragraph">Reads + decrypts the app-state blob from storage.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

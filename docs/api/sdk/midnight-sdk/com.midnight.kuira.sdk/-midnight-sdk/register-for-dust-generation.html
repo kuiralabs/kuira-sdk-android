@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>registerForDustGeneration</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:midnight-sdk:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filter=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="midnight-sdk::com.midnight.kuira.sdk/MidnightSdk/registerForDustGeneration/#/PointingToDeclaration//-1598735434">
+  <div class="breadcrumbs"><a href="../../index.html">midnight-sdk</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.sdk</a><span class="delimiter">/</span><a href="index.html">MidnightSdk</a><span class="delimiter">/</span><span class="current">registerForDustGeneration</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>register</span><wbr><span>For</span><wbr><span>Dust</span><wbr><span><span>Generation</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="register-for-dust-generation.html"><span class="token function">registerForDustGeneration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../../core/ledger/com.midnight.kuira.core.ledger.api/-transaction-submitter/-submission-result/index.html">TransactionSubmitter.SubmissionResult</a></div><p class="paragraph">Register this wallet's NIGHT key to generate dust against its public dust key.</p><p class="paragraph">Dust is the fee token Midnight generates from NIGHT holdings over time, but the generated dust is only <i>spendable</i> by a wallet that has registered its DUST public key against its NIGHT signing key on-chain. Newly-funded wallets must call this once before they can pay fees on any subsequent transaction — including contract calls.</p><p class="paragraph">Inputs are pulled from the SDK's already-derived state: NIGHT private key for the signature, dust seed for the dust pubkey, current NIGHT UTXOs for the <code class="lang-kotlin">guaranteed_unshielded_offer</code>. The unshielded-tx subscription started at SDK build time keeps <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-sdk/utxo-manager.html">utxoManager</a> populated, so this method picks up NIGHT UTXOs the moment a faucet/transfer credits the wallet.</p><p class="paragraph">Submission uses <a href="../../../../core/ledger/com.midnight.kuira.core.ledger.api/-transaction-submitter/submit-prebuilt-transaction.html">TransactionSubmitter.submitPrebuiltTransaction</a> with ProvingMode.LOCAL — same local-prove → seal → submit path that contract calls already use; no proof server required.</p><p class="paragraph"><strong>Precondition:</strong> the wallet address must hold at least one NIGHT UTXO. The chain rejects registration with no NIGHT to back the generation. Call <a href="../-midnight-wallet/wait-for-funding.html">MidnightWallet.waitForFunding</a> first if the wallet is fresh.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph"><a href="../../../../core/ledger/com.midnight.kuira.core.ledger.api/-transaction-submitter/-submission-result/-success/index.html">SubmissionResult.Success</a> when the registration tx is finalized on chain. <a href="../../../../core/ledger/com.midnight.kuira.core.ledger.api/-transaction-submitter/-submission-result/-pending/index.html">SubmissionResult.Pending</a> if the tx made it into a block but the wait for finalization timed out (it'll usually finalize shortly after). <a href="../../../../core/ledger/com.midnight.kuira.core.ledger.api/-transaction-submitter/-submission-result/-failed/index.html">SubmissionResult.Failed</a> if the chain rejected the tx, or no NIGHT UTXOs are available, or the FFI builder returned null.</p></span></div></div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MidnightSdkProvider</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:wallet-runtime:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filter=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="wallet-runtime::com.midnight.kuira.sdk.walletruntime/MidnightSdkProvider///PointingToDeclaration//761230159">
+  <div class="breadcrumbs"><a href="../../index.html">wallet-runtime</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.sdk.walletruntime</a><span class="delimiter">/</span><span class="current">MidnightSdkProvider</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Midnight</span><wbr><span>Sdk</span><wbr><span><span>Provider</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">class </span><a href="index.html">MidnightSdkProvider</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">walletSeedSource<span class="token operator">: </span><a href="../../../../sdk/wallet-seed/com.midnight.kuira.sdk.walletseed/-wallet-seed-source/index.html">WalletSeedSource</a><span class="token punctuation">, </span></span><span class="parameter ">sdkFactory<span class="token operator">: </span><a href="../-midnight-sdk-factory/index.html">MidnightSdkFactory</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Process-wide owner of the single live <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-sdk/index.html">MidnightSdk</a> instance.</p><p class="paragraph"><strong>Why this exists.</strong> Before this, every consumer that needed a wallet built its own SDK — the wallet panel and BBoard each constructed one, so the app opened two indexer WebSockets, replayed zswap from genesis twice, and ran two dust DBs. Two instances of the same wallet on the same seed and network was never intended; it was duplication, not redundancy. This provider holds exactly one SDK and hands it to all consumers.</p><p class="paragraph"><strong>Ownership model — one authority, many followers.</strong></p><ul><li><p class="paragraph">The <strong>config authority</strong> (the wallet panel — the only UI with the     network / proving-mode / proof-server toggles) calls <a href="ensure-sdk.html">ensureSdk</a> with a     full <a href="../-wallet-config/index.html">WalletConfig</a>. That is the sole place config changes enter the     system, which is what makes <a href="active-config.html">activeConfig</a> a single source of truth.</p></li><li><p class="paragraph"><strong>Followers</strong> (BBoard's contract ops, Kicks's match manager) don't own     config. They call <a href="await-sdk.html">awaitSdk</a> for the shared handle and read     <a href="active-config.html">activeConfig</a> for "which chain am I on". They never pass a competing     config, so the provider never thrashes between two configs.</p></li></ul><p class="paragraph"><strong>Lifecycle.</strong> The SDK is a process-singleton, not view-model-scoped. It survives activity recreation (rotation) — a net win, since rebuilding means a fresh biometric prompt + resync. Teardown is therefore explicit via <a href="close.html">close</a> (logout / wallet reset). No caller invokes <a href="close.html">close</a> today; it's the seam a future session-auto-lock (idle timeout) will use.</p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-midnight-sdk-factory/index.html"><span>Midnight</span><wbr><span>Sdk</span><wbr><span><span>Factory</span></span></a></div></span></div><div><div class="title"><p class="paragraph">for the construction seam this delegates to.</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1605725750%2FConstructors%2F761230159" anchor-label="MidnightSdkProvider" id="1605725750%2FConstructors%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-midnight-sdk-provider.html"><span>Midnight</span><wbr><span>Sdk</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1605725750%2FConstructors%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">walletSeedSource<span class="token operator">: </span><a href="../../../../sdk/wallet-seed/com.midnight.kuira.sdk.walletseed/-wallet-seed-source/index.html">WalletSeedSource</a><span class="token punctuation">, </span></span><span class="parameter ">sdkFactory<span class="token operator">: </span><a href="../-midnight-sdk-factory/index.html">MidnightSdkFactory</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1510366892%2FProperties%2F761230159" anchor-label="activeConfig" id="1510366892%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="active-config.html"><span>active</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1510366892%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="active-config.html">activeConfig</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-wallet-config/index.html">WalletConfig</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The config the live <a href="sdk.html">sdk</a> was built with — the canonical answer to "which network / proving mode is the wallet on". Null when no SDK exists.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1075157236%2FProperties%2F761230159" anchor-label="sdk" id="-1075157236%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sdk.html"><span><span>sdk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1075157236%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="sdk.html">sdk</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-sdk/index.html">MidnightSdk</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The live SDK, or null before the first build / after <a href="close.html">close</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-193795952%2FFunctions%2F761230159" anchor-label="awaitSdk" id="-193795952%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await-sdk.html"><span>await</span><wbr><span><span>Sdk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-193795952%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="await-sdk.html"><span class="token function">awaitSdk</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-sdk/index.html">MidnightSdk</a></div><div class="brief "><p class="paragraph">Suspend until an SDK exists, then return it. For followers that consume the shared SDK but don't drive config (BBoard contract ops). If the authority never builds (e.g. the panel is gated on an un-forged sigil), this waits — by design, since a follower has no wallet to act on until the authority bootstraps one.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="57125070%2FFunctions%2F761230159" anchor-label="close" id="57125070%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="close.html"><span><span>close</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="57125070%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Tear down the live SDK and clear state (logout / wallet reset).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1219083897%2FFunctions%2F761230159" anchor-label="ensureSdk" id="1219083897%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ensure-sdk.html"><span>ensure</span><wbr><span><span>Sdk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1219083897%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="ensure-sdk.html"><span class="token function">ensureSdk</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a><span class="token punctuation">, </span></span><span class="parameter ">config<span class="token operator">: </span><a href="../-wallet-config/index.html">WalletConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-sdk/index.html">MidnightSdk</a></div><div class="brief "><p class="paragraph">Build the SDK for <a href="ensure-sdk.html">config</a>, or reuse the live one if <a href="ensure-sdk.html">config</a> is unchanged. On a config change, the previous SDK is closed (its subscriptions cancelled) before the new one is built.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

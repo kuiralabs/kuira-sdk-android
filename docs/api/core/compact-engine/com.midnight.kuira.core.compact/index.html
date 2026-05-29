@@ -1,0 +1,617 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.midnight.kuira.core.compact</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:compact-engine:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:compact-engine:dokkaHtmlPartial/release" data-filter=":core:compact-engine:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="compact-engine::com.midnight.kuira.core.compact////PointingToDeclaration//30582046">
+  <div class="breadcrumbs"><a href="../index.html">compact-engine</a><span class="delimiter">/</span><span class="current">com.midnight.kuira.core.compact</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="2137606842%2FClasslikes%2F30582046" anchor-label="AlignedValue" id="2137606842%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-aligned-value/index.html"><span>Aligned</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2137606842%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-aligned-value/index.html">AlignedValue</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>alignmentJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a field-aligned byte array value from the Midnight runtime.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1231014930%2FClasslikes%2F30582046" anchor-label="BalanceProgress" id="1231014930%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-balance-progress/index.html"><span>Balance</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231014930%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-balance-progress/index.html">BalanceProgress</a></div><div class="brief "><p class="paragraph">Granular progress updates during the balance+submit pipeline.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-505773893%2FClasslikes%2F30582046" anchor-label="CircuitExecutionException" id="-505773893%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-circuit-execution-exception/index.html"><span>Circuit</span><wbr><span>Execution</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-505773893%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-circuit-execution-exception/index.html">CircuitExecutionException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when circuit execution or transaction assembly fails.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="697548991%2FClasslikes%2F30582046" anchor-label="CircuitExecutor" id="697548991%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-circuit-executor/index.html"><span>Circuit</span><wbr><span><span>Executor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="697548991%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-circuit-executor/index.html">CircuitExecutor</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Executes Compact smart contract circuits on Android via QuickJS + Rust FFI.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-184621835%2FClasslikes%2F30582046" anchor-label="CircuitResult" id="-184621835%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-circuit-result/index.html"><span>Circuit</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-184621835%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-circuit-result/index.html">CircuitResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>proofData<span class="token operator">: </span><a href="-proof-data/index.html">ProofData</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stateHandle<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>contractAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>entryPoint<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>zswapLocalStateJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>privateStateJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Full result from executing a contract circuit in QuickJS.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="253940444%2FClasslikes%2F30582046" anchor-label="ContractCallException" id="253940444%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-contract-call-exception/index.html"><span>Contract</span><wbr><span>Call</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="253940444%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-contract-call-exception/index.html">ContractCallException</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Typed errors from <a href="-midnight-contract/call.html">MidnightContract.call</a> — each stage has its own subclass.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1997074419%2FClasslikes%2F30582046" anchor-label="ContractCallStage" id="-1997074419%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-contract-call-stage/index.html"><span>Contract</span><wbr><span>Call</span><wbr><span><span>Stage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1997074419%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-contract-call-stage/index.html">ContractCallStage</a></div><div class="brief "><p class="paragraph">Progress stages emitted during <a href="-midnight-contract/call.html">MidnightContract.call</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="843568501%2FClasslikes%2F30582046" anchor-label="ContractRuntime" id="843568501%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-contract-runtime/index.html"><span>Contract</span><wbr><span><span>Runtime</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="843568501%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-contract-runtime/index.html">ContractRuntime</a></div><div class="brief "><p class="paragraph">Native bridge to the Rust contract runtime.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="227547872%2FClasslikes%2F30582046" anchor-label="DAppConnectorClient" id="227547872%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-d-app-connector-client/index.html"><span>DApp</span><wbr><span>Connector</span><wbr><span><span>Client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="227547872%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-d-app-connector-client/index.html">DAppConnectorClient</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">wsUrl<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-transaction-balancer/index.html">TransactionBalancer</a></div><div class="brief "><p class="paragraph">Connects to a DApp Connector wallet (e.g., <code class="lang-kotlin">mn serve</code>) via WebSocket JSON-RPC.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1939950573%2FClasslikes%2F30582046" anchor-label="DeployExecutionResult" id="1939950573%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-deploy-execution-result/index.html"><span>Deploy</span><wbr><span>Execution</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1939950573%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-deploy-execution-result/index.html">DeployExecutionResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unprovenTxHex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>contractAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of contract deployment assembly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1201103837%2FClasslikes%2F30582046" anchor-label="DeployResult" id="-1201103837%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-deploy-result/index.html"><span>Deploy</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1201103837%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-deploy-result/index.html">DeployResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>contractAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>timings<span class="token operator">: </span><a href="-deploy-timings/index.html">DeployTimings</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of deploying a contract to the blockchain.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1198375079%2FClasslikes%2F30582046" anchor-label="DeployTimings" id="-1198375079%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-deploy-timings/index.html"><span>Deploy</span><wbr><span><span>Timings</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1198375079%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-deploy-timings/index.html">DeployTimings</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>executeMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>proveMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>balanceMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="908362086%2FClasslikes%2F30582046" anchor-label="ExecutionResult" id="908362086%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-execution-result/index.html"><span>Execution</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="908362086%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-execution-result/index.html">ExecutionResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unprovenTxHex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>txParamsJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of circuit execution and transaction assembly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="467107046%2FClasslikes%2F30582046" anchor-label="KeyStorePrivateStateProvider" id="467107046%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-key-store-private-state-provider/index.html"><span>Key</span><wbr><span>Store</span><wbr><span>Private</span><wbr><span>State</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="467107046%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-key-store-private-state-provider/index.html">KeyStorePrivateStateProvider</a><span class="token operator"> = </span><a href="../com.midnight.kuira.core.compact.state/-key-store-private-state-provider/index.html">com.midnight.kuira.core.compact.state.KeyStorePrivateStateProvider</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-14263893%2FClasslikes%2F30582046" anchor-label="LedgerReadException" id="-14263893%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ledger-read-exception/index.html"><span>Ledger</span><wbr><span>Read</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-14263893%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-ledger-read-exception/index.html">LedgerReadException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown by <a href="../../../core/compact-engine/com.midnight.kuira.core.compact/-ledger-evaluator/read-all.html">LedgerEvaluator.readAll</a> when the JS read pipeline fails.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-523688803%2FClasslikes%2F30582046" anchor-label="LocalProofProvider" id="-523688803%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-local-proof-provider/index.html"><span>Local</span><wbr><span>Proof</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-523688803%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-local-proof-provider/index.html">LocalProofProvider</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">provingKeyManager<span class="token operator">: </span><a href="../com.midnight.kuira.core.compact.proving/-proving-key-manager/index.html">ProvingKeyManager</a></span></span><span class="token punctuation">)</span> : <a href="-proof-provider/index.html">ProofProvider</a></div><div class="brief "><p class="paragraph">Proves transactions locally on the phone using cached proving keys.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="857755669%2FClasslikes%2F30582046" anchor-label="MidnightConfig" id="857755669%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-midnight-config/index.html"><span>Midnight</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="857755669%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-midnight-config/index.html">MidnightConfig</a></div><div class="brief "><p class="paragraph">Configuration for Midnight contract operations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1766405435%2FClasslikes%2F30582046" anchor-label="MidnightContract" id="-1766405435%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-midnight-contract/index.html"><span>Midnight</span><wbr><span><span>Contract</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1766405435%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-midnight-contract/index.html">MidnightContract</a></div><div class="brief "><p class="paragraph">High-level interface for calling Midnight smart contract circuits from Android.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1800736718%2FClasslikes%2F30582046" anchor-label="MidnightLedger" id="1800736718%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-midnight-ledger/index.html"><span>Midnight</span><wbr><span><span>Ledger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1800736718%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-midnight-ledger/index.html">MidnightLedger</a></div><div class="brief "><p class="paragraph">A typed, eagerly-evaluated snapshot of a deployed contract's ledger.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="261836247%2FClasslikes%2F30582046" anchor-label="MissingLedgerFieldException" id="261836247%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-missing-ledger-field-exception/index.html"><span>Missing</span><wbr><span>Ledger</span><wbr><span>Field</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="261836247%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-missing-ledger-field-exception/index.html">MissingLedgerFieldException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fieldName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>knownFields<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when <a href="-midnight-ledger/index.html">MidnightLedger</a> is asked for a field that doesn't exist in the contract's schema. The exception lists <a href="-missing-ledger-field-exception/known-fields.html">knownFields</a> so a typo or version mismatch can be diagnosed immediately.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="117971604%2FClasslikes%2F30582046" anchor-label="PipelineTimings" id="117971604%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pipeline-timings/index.html"><span>Pipeline</span><wbr><span><span>Timings</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="117971604%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-pipeline-timings/index.html">PipelineTimings</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fetchStateMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>executeMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>proveMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>balanceMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>submitMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">0</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Timing breakdown for each pipeline stage (milliseconds).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="360726746%2FClasslikes%2F30582046" anchor-label="PreparedTransaction" id="360726746%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-prepared-transaction/index.html"><span>Prepared</span><wbr><span><span>Transaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="360726746%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-prepared-transaction/index.html">PreparedTransaction</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>provenTxHex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>contractAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>circuitName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>timings<span class="token operator">: </span><a href="-pipeline-timings/index.html">PipelineTimings</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of <a href="-midnight-contract/prepare.html">MidnightContract.prepare</a> — a proven transaction ready for later submission via <a href="-midnight-config/submit.html">MidnightConfig.submit</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1004576136%2FClasslikes%2F30582046" anchor-label="PrivateStateProvider" id="1004576136%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-private-state-provider/index.html"><span>Private</span><wbr><span>State</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1004576136%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-private-state-provider/index.html">PrivateStateProvider</a><span class="token operator"> = </span><a href="../com.midnight.kuira.core.compact.state/-private-state-provider/index.html">com.midnight.kuira.core.compact.state.PrivateStateProvider</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="583748941%2FClasslikes%2F30582046" anchor-label="ProofData" id="583748941%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-data/index.html"><span>Proof</span><wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="583748941%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-proof-data/index.html">ProofData</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>input<span class="token operator">: </span><a href="-aligned-value/index.html">AlignedValue</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>output<span class="token operator">: </span><a href="-aligned-value/index.html">AlignedValue</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>publicTranscriptJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>privateTranscriptOutputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-aligned-value/index.html">AlignedValue</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Proof data produced by a circuit execution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1461703142%2FClasslikes%2F30582046" anchor-label="ProofProvider" id="1461703142%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-provider/index.html"><span>Proof</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1461703142%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-proof-provider/index.html">ProofProvider</a></div><div class="brief "><p class="paragraph">Generates ZK proofs for unproven transactions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-223141679%2FClasslikes%2F30582046" anchor-label="ProvingException" id="-223141679%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proving-exception/index.html"><span>Proving</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-223141679%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proving-exception/index.html">ProvingException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when ZK proof generation fails.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1982146695%2FClasslikes%2F30582046" anchor-label="TransactionBalancer" id="1982146695%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-balancer/index.html"><span>Transaction</span><wbr><span><span>Balancer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1982146695%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-transaction-balancer/index.html">TransactionBalancer</a></div><div class="brief "><p class="paragraph">Abstracts the wallet operations needed to finalize a proven transaction: adding dust fee inputs (balancing) and submitting to the blockchain.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1449667891%2FClasslikes%2F30582046" anchor-label="TransactionReceipt" id="-1449667891%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-receipt/index.html"><span>Transaction</span><wbr><span><span>Receipt</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1449667891%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-transaction-receipt/index.html">TransactionReceipt</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>txHash<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>status<span class="token operator">: </span><a href="-transaction-status/index.html">TransactionStatus</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>timings<span class="token operator">: </span><a href="-pipeline-timings/index.html">PipelineTimings</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>provenTxHex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of a successful <a href="-midnight-contract/call.html">MidnightContract.call</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="111751211%2FClasslikes%2F30582046" anchor-label="TransactionStatus" id="111751211%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-status/index.html"><span>Transaction</span><wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="111751211%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-transaction-status/index.html">TransactionStatus</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-transaction-status/index.html">TransactionStatus</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1332985422%2FClasslikes%2F30582046" anchor-label="WitnessKind" id="1332985422%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-witness-kind/index.html"><span>Witness</span><wbr><span><span>Kind</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1332985422%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-witness-kind/index.html">WitnessKind</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-witness-kind/index.html">WitnessKind</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">How the witness's <a href="-witness-result/data.html">WitnessResult.data</a> bytes should be presented to the Compact runtime when the witness function is called from JS.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-247699951%2FClasslikes%2F30582046" anchor-label="WitnessProvider" id="-247699951%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-witness-provider/index.html"><span>Witness</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-247699951%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-witness-provider/index.html">WitnessProvider</a></div><div class="brief "><p class="paragraph">Provides witness data for circuit execution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1937941925%2FClasslikes%2F30582046" anchor-label="WitnessResult" id="1937941925%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-witness-result/index.html"><span>Witness</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1937941925%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-witness-result/index.html">WitnessResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>privateState<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>data<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>kind<span class="token operator">: </span><a href="-witness-kind/index.html">WitnessKind</a><span class="token operator"> = </span>WitnessKind.BYTES</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of a witness callback.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-234827446%2FClasslikes%2F30582046" anchor-label="WrongLedgerFieldTypeException" id="-234827446%2FClasslikes%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wrong-ledger-field-type-exception/index.html"><span>Wrong</span><wbr><span>Ledger</span><wbr><span>Field</span><wbr><span>Type</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-234827446%2FClasslikes%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-wrong-ledger-field-type-exception/index.html">WrongLedgerFieldTypeException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>fieldName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>expected<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>actualValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when a typed accessor's expectation doesn't match what the contract's getter returned. Indicates schema drift, version mismatch, or a wrong-type call on the caller's side.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

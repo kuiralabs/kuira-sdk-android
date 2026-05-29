@@ -1,0 +1,347 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.midnight.kuira.core.auth</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:auth:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:auth:dokkaHtmlPartial/release" data-filter=":core:auth:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="auth::com.midnight.kuira.core.auth////PointingToDeclaration//-569070686">
+  <div class="breadcrumbs"><a href="../index.html">auth</a><span class="delimiter">/</span><span class="current">com.midnight.kuira.core.auth</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="659348448%2FClasslikes%2F-569070686" anchor-label="AuthenticatedCipher" id="659348448%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-authenticated-cipher/index.html"><span>Authenticated</span><wbr><span><span>Cipher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659348448%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-authenticated-cipher/index.html">AuthenticatedCipher</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>cipher<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/javax/crypto/Cipher.html">Cipher</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of a successful biometric authentication with CryptoObject.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1712663694%2FClasslikes%2F-569070686" anchor-label="AuthenticationCancelledException" id="-1712663694%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-authentication-cancelled-exception/index.html"><span>Authentication</span><wbr><span>Cancelled</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1712663694%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-authentication-cancelled-exception/index.html">AuthenticationCancelledException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when the user explicitly cancels biometric authentication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1011785536%2FClasslikes%2F-569070686" anchor-label="AuthenticationFailedException" id="-1011785536%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-authentication-failed-exception/index.html"><span>Authentication</span><wbr><span>Failed</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1011785536%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-authentication-failed-exception/index.html">AuthenticationFailedException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when biometric authentication fails for any other reason (hardware error, no enrollment, etc.).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="733345093%2FClasslikes%2F-569070686" anchor-label="AuthenticationLockedOutException" id="733345093%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-authentication-locked-out-exception/index.html"><span>Authentication</span><wbr><span>Locked</span><wbr><span>Out</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="733345093%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-authentication-locked-out-exception/index.html">AuthenticationLockedOutException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when biometric authentication is temporarily locked out after too many failed attempts. Typically unlocks after ~30 seconds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1631921964%2FClasslikes%2F-569070686" anchor-label="AuthenticationPermanentlyLockedOutException" id="1631921964%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-authentication-permanently-locked-out-exception/index.html"><span>Authentication</span><wbr><span>Permanently</span><wbr><span>Locked</span><wbr><span>Out</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1631921964%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-authentication-permanently-locked-out-exception/index.html">AuthenticationPermanentlyLockedOutException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when biometric authentication is permanently locked out. User must authenticate with device credential (PIN/pattern/password) to reset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1264355534%2FClasslikes%2F-569070686" anchor-label="AuthPolicy" id="1264355534%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-auth-policy/index.html"><span>Auth</span><wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1264355534%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-auth-policy/index.html">AuthPolicy</a></div><div class="brief "><p class="paragraph">Centralized authentication policy for biometric-gated Keystore keys.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="531916855%2FClasslikes%2F-569070686" anchor-label="BiometricGate" id="531916855%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-biometric-gate/index.html"><span>Biometric</span><wbr><span><span>Gate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="531916855%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-biometric-gate/index.html">BiometricGate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">keyManager<span class="token operator">: </span><a href="-wallet-key-manager/index.html">WalletKeyManager</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Wraps <a href="https://developer.android.com/reference/kotlin/androidx/biometric/BiometricPrompt.html">BiometricPrompt</a> + <a href="https://developer.android.com/reference/kotlin/androidx/biometric/BiometricPrompt.CryptoObject.html">BiometricPrompt.CryptoObject</a> as a suspend function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1404795530%2FClasslikes%2F-569070686" anchor-label="CorruptedSeedException" id="-1404795530%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-corrupted-seed-exception/index.html"><span>Corrupted</span><wbr><span>Seed</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1404795530%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-corrupted-seed-exception/index.html">CorruptedSeedException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Thrown when the encrypted seed file on disk is corrupted or malformed (wrong size, invalid IV length, decryption fails). The caller should trigger a recovery flow from backup.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1388072675%2FClasslikes%2F-569070686" anchor-label="KeySecurityLevel" id="1388072675%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-key-security-level/index.html"><span>Key</span><wbr><span>Security</span><wbr><span><span>Level</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1388072675%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-key-security-level/index.html">KeySecurityLevel</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-key-security-level/index.html">KeySecurityLevel</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Security level of the Keystore key backing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1937265550%2FClasslikes%2F-569070686" anchor-label="PlaintextSeed" id="-1937265550%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-plaintext-seed/index.html"><span>Plaintext</span><wbr><span><span>Seed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1937265550%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-plaintext-seed/index.html">PlaintextSeed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>mnemonicEntropy<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bip39Seed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Wallet seed material decrypted into memory.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1426437490%2FClasslikes%2F-569070686" anchor-label="SecurityCapabilities" id="1426437490%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-security-capabilities/index.html"><span>Security</span><wbr><span><span>Capabilities</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1426437490%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-security-capabilities/index.html">SecurityCapabilities</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Detects device hardware security capabilities.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="237380057%2FClasslikes%2F-569070686" anchor-label="SeedVault" id="237380057%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-seed-vault/index.html"><span>Seed</span><wbr><span><span>Vault</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="237380057%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-seed-vault/index.html">SeedVault</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">biometricGate<span class="token operator">: </span><a href="-biometric-gate/index.html">BiometricGate</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Encrypted seed storage backed by Android Keystore + biometric authentication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-641448735%2FClasslikes%2F-569070686" anchor-label="WalletAddressCache" id="-641448735%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wallet-address-cache/index.html"><span>Wallet</span><wbr><span>Address</span><wbr><span><span>Cache</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-641448735%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-wallet-address-cache/index.html">WalletAddressCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Persistent, <strong>per-network</strong> store for the wallet's public addresses.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-726585679%2FClasslikes%2F-569070686" anchor-label="WalletAddresses" id="-726585679%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wallet-addresses/index.html"><span>Wallet</span><wbr><span><span>Addresses</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-726585679%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-wallet-addresses/index.html">WalletAddresses</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unshieldedAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>shieldedAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Cached wallet addresses for one Midnight network.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="547920897%2FClasslikes%2F-569070686" anchor-label="WalletKeyManager" id="547920897%2FClasslikes%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wallet-key-manager/index.html"><span>Wallet</span><wbr><span>Key</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="547920897%2FClasslikes%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-wallet-key-manager/index.html">WalletKeyManager</a></div><div class="brief "><p class="paragraph">Manages the AES-256 master key in Android Keystore.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

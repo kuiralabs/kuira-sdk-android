@@ -1,0 +1,303 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DuskTypography</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:designsystem:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:designsystem:dokkaHtmlPartial/release" data-filter=":core:designsystem:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="designsystem::com.midnight.kuira.core.designsystem.theme/DuskTypography///PointingToDeclaration//-442327363">
+  <div class="breadcrumbs"><a href="../../index.html">designsystem</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.designsystem.theme</a><span class="delimiter">/</span><span class="current">DuskTypography</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Dusk</span><wbr><span><span>Typography</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">DuskTypography</a></div><p class="paragraph">Dusk typography scale — maps the design spec tokens to <a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a> values.</p><p class="paragraph">Font: system sans. No serif. Never bold (W700+). Hierarchy is size + opacity, not weight.</p><p class="paragraph">Usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">Text(<br>    text = "BALANCE",<br>    style = DuskTypography.labelTiny,<br>    color = MidnightColors.LightMuted,<br>)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Color is NOT baked into the styles — callers set it via <code class="lang-kotlin">color</code> param or <code class="lang-kotlin">.copy(color = ...)</code>. This keeps styles reusable across contexts where the same type scale applies with different colors.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1542678291%2FProperties%2F-442327363" anchor-label="body" id="-1542678291%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="body.html"><span><span>body</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1542678291%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="body.html">body</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Primary content text, row labels. 14sp W300.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="501509883%2FProperties%2F-442327363" anchor-label="buttonPrimary" id="501509883%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button-primary.html"><span>button</span><wbr><span><span>Primary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="501509883%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="button-primary.html">buttonPrimary</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Primary button label. 14sp W500, 0.5sp tracking.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="848867273%2FProperties%2F-442327363" anchor-label="buttonSecondary" id="848867273%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="button-secondary.html"><span>button</span><wbr><span><span>Secondary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="848867273%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="button-secondary.html">buttonSecondary</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Secondary button label. 14sp W400, 0.5sp tracking.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-86359355%2FProperties%2F-442327363" anchor-label="caption" id="-86359355%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="caption.html"><span><span>caption</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-86359355%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="caption.html">caption</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Small annotations, token denominations. 12sp W400.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1493921950%2FProperties%2F-442327363" anchor-label="detail" id="1493921950%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="detail.html"><span><span>detail</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1493921950%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="detail.html">detail</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Supporting text, timestamps, secondary info. 13sp W400.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1587555676%2FProperties%2F-442327363" anchor-label="headlineMd" id="-1587555676%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="headline-md.html"><span>headline</span><wbr><span><span>Md</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1587555676%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="headline-md.html">headlineMd</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Larger headlines. 22sp W300.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="166339393%2FProperties%2F-442327363" anchor-label="headlineSm" id="166339393%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="headline-sm.html"><span>headline</span><wbr><span><span>Sm</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="166339393%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="headline-sm.html">headlineSm</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Primary headlines. 18sp W300.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2091639009%2FProperties%2F-442327363" anchor-label="input" id="2091639009%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="input.html"><span><span>input</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2091639009%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="input.html">input</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Text input fields. 14sp W300.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1646718502%2FProperties%2F-442327363" anchor-label="inputPlaceholder" id="1646718502%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="input-placeholder.html"><span>input</span><wbr><span><span>Placeholder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1646718502%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="input-placeholder.html">inputPlaceholder</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Input placeholder text. 14sp W300.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1315533609%2FProperties%2F-442327363" anchor-label="labelTiny" id="-1315533609%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="label-tiny.html"><span>label</span><wbr><span><span>Tiny</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1315533609%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="label-tiny.html">labelTiny</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Section headers, badges, small labels. 11sp W400, 3sp tracking.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1792486708%2FProperties%2F-442327363" anchor-label="mono" id="-1792486708%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mono.html"><span><span>mono</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1792486708%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="mono.html">mono</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Monospace for addresses and hashes. 12sp W400 mono.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1801621468%2FProperties%2F-442327363" anchor-label="numericHero" id="-1801621468%2FProperties%2F-442327363" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:designsystem:dokkaHtmlPartial/release" data-filterable-set=":core:designsystem:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="numeric-hero.html"><span>numeric</span><wbr><span><span>Hero</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1801621468%2FProperties%2F-442327363"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:designsystem:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="numeric-hero.html">numericHero</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/TextStyle.html">TextStyle</a></div><div class="brief "><p class="paragraph">Balance hero — large numeric display. 44sp W200, tight tracking.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

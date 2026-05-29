@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>startSubscription</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:indexer:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:indexer:dokkaHtmlPartial/release" data-filter=":core:indexer:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="indexer::com.midnight.kuira.core.indexer.sync/SubscriptionManager/startSubscription/#kotlin.String#kotlin.Boolean/PointingToDeclaration//1897323951">
+  <div class="breadcrumbs"><a href="../../index.html">indexer</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.indexer.sync</a><span class="delimiter">/</span><a href="index.html">SubscriptionManager</a><span class="delimiter">/</span><span class="current">startSubscription</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>start</span><wbr><span><span>Subscription</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-subscription.html"><span class="token function">startSubscription</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">forceFullResync<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../-sync-state/index.html">SyncState</a><span class="token operator">&gt;</span></div><p class="paragraph">Start subscription for an address with automatic reconnection.</p><p class="paragraph"><strong>Incremental by default (Phase 8B.3 T1-21).</strong> Previous behavior wiped the local UTXO cache and sync state on every subscription start, causing a visible zero-balance flicker at every app launch. Now the default path resumes from the last saved <code class="lang-kotlin">transactionId</code> — full resync only happens when <a href="start-subscription.html">forceFullResync</a> is true (Developer options) or a later round detects a reorg / unknown-txId signal from the indexer.</p><p class="paragraph"><strong>Flow:</strong></p><ol><li><p class="paragraph">Read saved <code class="lang-kotlin">lastProcessedTransactionId</code> from SyncStateManager.</p></li><li><p class="paragraph">Subscribe from that ID (null = new address, replay from genesis).</p></li><li><p class="paragraph">Process each update via UtxoManager.</p></li><li><p class="paragraph">Save progress after each Progress update (throttled).</p></li><li><p class="paragraph">On error: retry with exponential backoff.</p></li></ol><p class="paragraph"><strong>Resumption:</strong></p><ul><li><p class="paragraph">First sync for an address: saved ID is null → replay all history.</p></li><li><p class="paragraph">Warm launch: saved ID present → resume from it, no wipe, no flicker.</p></li></ul><p class="paragraph"><strong>Reconnection:</strong></p><ul><li><p class="paragraph">Network errors: retry with exponential backoff (1s, 2s, 4s, 8s, 16s, 32s max).</p></li><li><p class="paragraph">After max retries: emit error state and stop (caller must restart subscription).</p></li><li><p class="paragraph">Retryable errors: IOException, connection failures, WebSocket errors.</p></li><li><p class="paragraph">Non-retryable errors: CancellationException (user cancelled).</p></li></ul><p class="paragraph"><strong>Force re-sync entry point (T1-17 Developer Options).</strong> A UI-level "Force re-sync" button should cancel the currently-collecting Flow first, then re-call <code class="lang-kotlin">startSubscription(address, forceFullResync = true)</code>. That wipes local state once (not on every retry) and re-subscribes from genesis. No separate public <code class="lang-kotlin">forceFullResync(address)</code> method — the flag on this function is the single authoritative entry point.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">Flow of sync states (Syncing, Synced, Error).</p></span><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>address</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Unshielded address to sync.</p></div></div></div></div><div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>force</span><wbr><span>Full</span><wbr><span><span>Resync</span></span></u></div></span></div><div><div class="title"><p class="paragraph">When true, clear sync state + UTXOs for <a href="start-subscription.html">address</a>     before subscribing, forcing a replay from genesis. Default false     (incremental). Intended for explicit recovery paths (Developer     Options button, user-initiated "reset wallet cache" action) —     NOT for normal launches. Reorg / indexer-wipe detection is     automatic and doesn't need this flag.</p></div></div></div></div></div></div></div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SeedDeriver</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:identity:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:identity:dokkaHtmlPartial/release" data-filter=":core:identity:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="identity::com.midnight.kuira.core.identity.backup/SeedDeriver///PointingToDeclaration//-1754553396">
+  <div class="breadcrumbs"><a href="../../index.html">identity</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.identity.backup</a><span class="delimiter">/</span><span class="current">SeedDeriver</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Seed</span><wbr><span><span>Deriver</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">SeedDeriver</a></div><p class="paragraph">Derives wallet seed material from the user's passkey via the WebAuthn PRF extension.</p><p class="paragraph">Two outputs sit at different levels of the chain:</p><ul><li><p class="paragraph"><a href="derive-prf-entropy.html">derivePrfEntropy</a> — raw 32-byte PRF output. Suitable as     BIP-39 entropy, an HKDF source, a symmetric key, etc.</p></li><li><p class="paragraph"><a href="derive-bip39-seed.html">deriveBip39Seed</a> — full chain: PRF → 32-byte entropy →     24-word mnemonic → 64-byte BIP-39 PBKDF2 seed. This is what     <code class="lang-kotlin">MidnightSdk.Builder.seed(...)</code> consumes.</p></li></ul><p class="paragraph">The PRF output is identical on every device + every Kuira ecosystem app that shares the RP via <code class="lang-kotlin">assetlinks.json</code>, so the derived seed is identical too — no shared backup blob needed.</p><p class="paragraph">SEED_SALT is domain-separated from AppStateBackup.BACKUP_SALT; PRF with two different salts produces two independent secrets from the same passkey credential.</p><p class="paragraph"><strong>Known limitation:</strong> the entropy → seed chain temporarily materializes the 24-word mnemonic as a <code class="lang-kotlin">String</code>. JVM strings are immutable and may be copied/interned by the allocator before GC can reclaim them — same trap as the existing <code class="lang-kotlin">WalletPanelViewModel.ensureSeedReady</code> random-seed path. A direct <code class="lang-kotlin">entropyToSeed</code> path would close this gap; deferred until both consumers can migrate in one pass.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1778022839%2FProperties%2F-1754553396" anchor-label="SEED_SALT" id="-1778022839%2FProperties%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-e-e-d_-s-a-l-t.html"><span>SEED_</span><wbr><span>SALT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1778022839%2FProperties%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-s-e-e-d_-s-a-l-t.html">SEED_SALT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Purpose-bound salt: SHA-256("kuira:seed:v1"). Deterministic, public.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="650152268%2FProperties%2F-1754553396" anchor-label="SIGIL_SALT" id="650152268%2FProperties%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-i-g-i-l_-s-a-l-t.html"><span>SIGIL_</span><wbr><span>SALT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="650152268%2FProperties%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-s-i-g-i-l_-s-a-l-t.html">SIGIL_SALT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Purpose-bound salt: SHA-256("kuira:sigil:v1"). Deterministic, public. PRF output under this salt seeds the user's sigil identity Ed25519 keypair (see <code class="lang-kotlin">Ed25519PrfSigilProvider</code>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-436886965%2FFunctions%2F-1754553396" anchor-label="deriveBip39Seed" id="-436886965%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="derive-bip39-seed.html"><span>derive</span><wbr><span><span>Bip39Seed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-436886965%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="derive-bip39-seed.html"><span class="token function">deriveBip39Seed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">One-shot: passkey PRF → BIP-39 entropy → mnemonic → BIP-39 seed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-606260368%2FFunctions%2F-1754553396" anchor-label="derivePrfEntropy" id="-606260368%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="derive-prf-entropy.html"><span>derive</span><wbr><span>Prf</span><wbr><span><span>Entropy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-606260368%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="derive-prf-entropy.html"><span class="token function">derivePrfEntropy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Authenticate the user's passkey with the seed-derivation salt and return the raw 32-byte PRF output. The output is BIP-39 entropy size — callers can pass it directly to <code class="lang-kotlin">BIP39.entropyToMnemonic</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2098030656%2FFunctions%2F-1754553396" anchor-label="derivePrfMaterial" id="-2098030656%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="derive-prf-material.html"><span>derive</span><wbr><span>Prf</span><wbr><span><span>Material</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2098030656%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="derive-prf-material.html"><span class="token function">derivePrfMaterial</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a><span class="token punctuation">, </span></span><span class="parameter ">passkeyManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.identity.passkey/-passkey-manager/index.html">PasskeyManager</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-prf-seed-material/index.html">PrfSeedMaterial</a></div><div class="brief "><p class="paragraph">One-shot derive that returns BOTH the 32-byte BIP-39 entropy and the 64-byte BIP-39 seed from a single PRF authentication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-11833323%2FFunctions%2F-1754553396" anchor-label="entropyToBip39Seed" id="-11833323%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entropy-to-bip39-seed.html"><span>entropy</span><wbr><span>To</span><wbr><span><span>Bip39Seed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-11833323%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="entropy-to-bip39-seed.html"><span class="token function">entropyToBip39Seed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entropy<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></div><div class="brief "><p class="paragraph">Deterministic chain from BIP-39 entropy to BIP-39 seed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

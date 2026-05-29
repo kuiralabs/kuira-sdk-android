@@ -1,0 +1,315 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SigilStateStore</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:identity:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:identity:dokkaHtmlPartial/release" data-filter=":core:identity:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="identity::com.midnight.kuira.core.identity.sigil/SigilStateStore///PointingToDeclaration//-1754553396">
+  <div class="breadcrumbs"><a href="../../index.html">identity</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.identity.sigil</a><span class="delimiter">/</span><span class="current">SigilStateStore</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Sigil</span><wbr><span>State</span><wbr><span><span>Store</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">class </span><a href="index.html">SigilStateStore</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Single source of truth for sigil identity persistence.</p><p class="paragraph">Owns the <code class="lang-kotlin">sigil_identity</code> SharedPreferences file that previously lived inside <code class="lang-kotlin">SigilPanelViewModel</code>. Pulled into <code class="lang-kotlin">core:identity</code> so non-UI consumers — <code class="lang-kotlin">WalletSeedSource</code> (sdk:wallet-seed), future agent runtimes — can query "is a sigil forged?" without taking a dependency on <code class="lang-kotlin">:sdk:dapp-ui</code>.</p><p class="paragraph"><strong>Schema:</strong></p><ul><li><p class="paragraph"><code class="lang-kotlin">did</code> — <code class="lang-kotlin">did:key</code> derived from the passkey's compressed P-256 pubkey</p></li><li><p class="paragraph"><code class="lang-kotlin">credentialId</code> — Credential Manager's opaque credential identifier</p></li><li><p class="paragraph"><code class="lang-kotlin">publicKeyHex</code> — compressed P-256 pubkey, hex</p></li><li><p class="paragraph"><code class="lang-kotlin">backupDismissed</code> — user chose "start fresh" over restoring a cloud     backup; suppress the prompt on subsequent launches</p></li></ul><p class="paragraph"><strong>Durability contract:</strong> writes use <code class="lang-kotlin">.commit()</code> rather than <code class="lang-kotlin">.apply()</code>. The restore flow SIGKILLs the process within a few ms of writing the sigil triple (see <code class="lang-kotlin">docs/security/SECURITY_NOTES.md</code> 2026-05-18 entry). <code class="lang-kotlin">.apply()</code>'s async write doesn't fsync before the kill, so the next launch reads an empty file and the sigil pill shows "no sigil" despite a successful restore. <code class="lang-kotlin">.commit()</code> blocks until durable — cost is negligible since this runs once per forge / restore, not on a hot path.</p><p class="paragraph"><strong>Visibility:</strong> all DID + credentialId + pubkey are PUBLIC material. The passkey's private half never leaves the device's authenticator store. SharedPreferences <code class="lang-kotlin">MODE_PRIVATE</code> is sufficient.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1119004470%2FConstructors%2F-1754553396" anchor-label="SigilStateStore" id="1119004470%2FConstructors%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sigil-state-store.html"><span>Sigil</span><wbr><span>State</span><wbr><span><span>Store</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1119004470%2FConstructors%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-247119556%2FClasslikes%2F-1754553396" anchor-label="Companion" id="-247119556%2FClasslikes%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-247119556%2FClasslikes%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1681193907%2FProperties%2F-1754553396" anchor-label="snapshotFlow" id="1681193907%2FProperties%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="snapshot-flow.html"><span>snapshot</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1681193907%2FProperties%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="snapshot-flow.html">snapshotFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-sigil-snapshot/index.html">SigilSnapshot</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Observable view of the persisted sigil triple — emits the current value on subscribe + a new value after every <a href="persist-sigil.html">persistSigil</a> or <a href="clear.html">clear</a> call.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-214411704%2FFunctions%2F-1754553396" anchor-label="clear" id="-214411704%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear.html"><span><span>clear</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-214411704%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear.html"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Drop the sigil triple. The cloud backup (Block Store) is NOT affected — only this local pointer to "we have a sigil." Use during wallet reset / restore-from-fresh flows.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1965736787%2FFunctions%2F-1754553396" anchor-label="getCredentialId" id="-1965736787%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-credential-id.html"><span>get</span><wbr><span>Credential</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1965736787%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-credential-id.html"><span class="token function">getCredentialId</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Credential Manager identifier, or null when no sigil.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="612573532%2FFunctions%2F-1754553396" anchor-label="getDid" id="612573532%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-did.html"><span>get</span><wbr><span><span>Did</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="612573532%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-did.html"><span class="token function">getDid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><code class="lang-kotlin">did:key</code> for the forged sigil, or null when no sigil.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-925979686%2FFunctions%2F-1754553396" anchor-label="getPublicKeyHex" id="-925979686%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-public-key-hex.html"><span>get</span><wbr><span>Public</span><wbr><span>Key</span><wbr><span><span>Hex</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925979686%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-public-key-hex.html"><span class="token function">getPublicKeyHex</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Compressed P-256 pubkey hex, or null when no sigil.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1773650293%2FFunctions%2F-1754553396" anchor-label="hasSigil" id="-1773650293%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-sigil.html"><span>has</span><wbr><span><span>Sigil</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1773650293%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="has-sigil.html"><span class="token function">hasSigil</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when a sigil has been forged (or restored). Cheapest gate — checks the credential id field which is set last in the persistence atomic, so its presence implies a complete triple.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2050763752%2FFunctions%2F-1754553396" anchor-label="isBackupDismissed" id="-2050763752%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-backup-dismissed.html"><span>is</span><wbr><span>Backup</span><wbr><span><span>Dismissed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2050763752%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-backup-dismissed.html"><span class="token function">isBackupDismissed</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when the user chose "start fresh" from the backup prompt.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="483459259%2FFunctions%2F-1754553396" anchor-label="markBackupDismissed" id="483459259%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mark-backup-dismissed.html"><span>mark</span><wbr><span>Backup</span><wbr><span><span>Dismissed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="483459259%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mark-backup-dismissed.html"><span class="token function">markBackupDismissed</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Mark the cloud-backup prompt dismissed so future launches don't keep re-asking. Cloud blob itself stays — the user can still restore later from the SigilStatus.None sheet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-266182295%2FFunctions%2F-1754553396" anchor-label="persistSigil" id="-266182295%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="persist-sigil.html"><span>persist</span><wbr><span><span>Sigil</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-266182295%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="persist-sigil.html"><span class="token function">persistSigil</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">did<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">credentialId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">publicKeyHex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Persist the sigil triple atomically — see the class-level "durability contract" KDoc for the <code class="lang-kotlin">.commit()</code> rationale.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2027085633%2FFunctions%2F-1754553396" anchor-label="snapshot" id="2027085633%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="snapshot.html"><span><span>snapshot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2027085633%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="snapshot.html"><span class="token function">snapshot</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-sigil-snapshot/index.html">SigilSnapshot</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Snapshot of the persisted sigil triple, or null when no sigil is forged. Convenience for consumers that want to load all three fields atomically (the restore flow's hydration step).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AuthPolicy</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:auth:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:auth:dokkaHtmlPartial/release" data-filter=":core:auth:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="auth::com.midnight.kuira.core.auth/AuthPolicy///PointingToDeclaration//-569070686">
+  <div class="breadcrumbs"><a href="../../index.html">auth</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.auth</a><span class="delimiter">/</span><span class="current">AuthPolicy</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Auth</span><wbr><span><span>Policy</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">AuthPolicy</a></div><p class="paragraph">Centralized authentication policy for biometric-gated Keystore keys.</p><p class="paragraph">Single source of truth for the auth-validity window and accepted authenticators applied to every user-auth-required Keystore key generated through this codebase. Changing the duration or authenticator set here affects all consumers (today: <a href="../-wallet-key-manager/index.html">WalletKeyManager</a>; future biometric-gated keys should import these constants too).</p><p class="paragraph"><strong>History:</strong> Until 2026-05-18 the wallet master key used <code class="lang-kotlin">duration=0</code> (per-use), which forced a fresh biometric on every Keystore decrypt. After a cloud restore that worked out to 3 prompts in a row (restore-itself + post-relaunch SeedVault load + first wallet op). Moving to a 30s validity window collapses the post-relaunch prompts into the restore one without weakening the model meaningfully — a snatched-unlocked-phone attacker still needs to act inside that 30s window with the device unlocked.</p><h2 class="">Threat model for this knob</h2><p class="paragraph"><strong>The window mitigates:</strong> post-restore prompt fatigue; per-action UX friction during the natural "I just authenticated to use the wallet" intent window. No security guarantee was traded away on this axis — the window is <i>additive convenience over a successful auth</i>.</p><p class="paragraph"><strong>The window does NOT mitigate:</strong></p><ul><li><p class="paragraph"><strong>Snatched unlocked device during the window</strong> — attacker with     physical control of the unlocked phone within 30s of a real user     auth can trigger Keystore decrypts without re-prompting. Mitigate     downstream with app-level "fresh auth for high-value ops"     (independent <code class="lang-kotlin">BiometricPrompt</code> regardless of this window).</p></li><li><p class="paragraph"><strong>Compromised OS (rooted, EMM-tampered)</strong> — Keystore software-bound     keys are extractable on a sufficiently compromised device. StrongBox     raises the bar; out of scope for this constant.</p></li><li><p class="paragraph"><strong>Malware running as our process</strong> — already has memory access to     anything we decrypt. Defense lives in supply-chain controls + memory     hygiene (see <code class="lang-kotlin">SeedVault.loadSeed</code> wipe discipline).</p></li><li><p class="paragraph"><strong>Biometric spoofing / shoulder-surfed PIN entry</strong> — orthogonal.     Same threat model with or without the window; the window only     amplifies what the attacker can do <i>after</i> successful auth.</p></li></ul><p class="paragraph"><strong>Defense layers preserved alongside this change:</strong></p><ul><li><p class="paragraph"><code class="lang-kotlin">setUnlockedDeviceRequired(true)</code> — key unusable when the device     is locked, regardless of remaining window.</p></li><li><p class="paragraph">Per-app Keystore isolation.</p></li><li><p class="paragraph">GCM-256 authenticated encryption of the seed file.</p></li><li><p class="paragraph"><code class="lang-kotlin">setInvalidatedByBiometricEnrollment(false)</code> (unchanged trade-off:     adding a fingerprint does not destroy existing wallets).</p></li><li><p class="paragraph">StrongBox where the device supports it.</p></li></ul><p class="paragraph">See <code class="lang-kotlin">docs/security/SECURITY_NOTES.md</code> (2026-05-18 entry) for the full audit + follow-up items.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="933642074%2FProperties%2F-569070686" anchor-label="ALLOWED_AUTHENTICATORS" id="933642074%2FProperties%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-a-l-l-o-w-e-d_-a-u-t-h-e-n-t-i-c-a-t-o-r-s.html"><span>ALLOWED_</span><wbr><span><span>AUTHENTICATORS</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="933642074%2FProperties%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-a-l-l-o-w-e-d_-a-u-t-h-e-n-t-i-c-a-t-o-r-s.html">ALLOWED_AUTHENTICATORS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Authenticators that satisfy the auth-validity window. Class 3 biometrics (StrongBiometric) gate the key the same way the device's own credential (PIN / pattern / password) does — we accept both so PIN works as a fallback when biometric isn't available (e.g. after too many failed fingerprint attempts).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2112021112%2FProperties%2F-569070686" anchor-label="VALIDITY_DURATION_SECONDS" id="-2112021112%2FProperties%2F-569070686" data-filterable-set=":core:auth:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:auth:dokkaHtmlPartial/release" data-filterable-set=":core:auth:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-v-a-l-i-d-i-t-y_-d-u-r-a-t-i-o-n_-s-e-c-o-n-d-s.html"><span>VALIDITY_</span><wbr><span>DURATION_</span><wbr><span>SECONDS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2112021112%2FProperties%2F-569070686"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:auth:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-v-a-l-i-d-i-t-y_-d-u-r-a-t-i-o-n_-s-e-c-o-n-d-s.html">VALIDITY_DURATION_SECONDS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">30</span></div><div class="brief "><p class="paragraph">Auth-validity window in seconds. After any successful BiometricPrompt or device-credential auth, biometric-gated Keystore keys are usable for this many seconds without re-prompting.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

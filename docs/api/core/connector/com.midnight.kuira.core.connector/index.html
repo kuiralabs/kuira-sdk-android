@@ -1,0 +1,272 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.midnight.kuira.core.connector</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:connector:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:connector:dokkaHtmlPartial/release" data-filter=":core:connector:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="connector::com.midnight.kuira.core.connector////PointingToDeclaration//-1654361823">
+  <div class="breadcrumbs"><a href="../index.html">connector</a><span class="delimiter">/</span><span class="current">com.midnight.kuira.core.connector</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1453273968%2FClasslikes%2F-1654361823" anchor-label="ApprovalCategory" id="1453273968%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-approval-category/index.html"><span>Approval</span><wbr><span><span>Category</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1453273968%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-approval-category/index.html">ApprovalCategory</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-approval-category/index.html">ApprovalCategory</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Categorizes the risk/impact of a dApp operation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="321728263%2FClasslikes%2F-1654361823" anchor-label="ApprovalManager" id="321728263%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-approval-manager/index.html"><span>Approval</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="321728263%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-approval-manager/index.html">ApprovalManager</a></div><div class="brief "><p class="paragraph">Gate for write operations that require user consent before execution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1870336411%2FClasslikes%2F-1654361823" anchor-label="ApprovalRequest" id="-1870336411%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-approval-request/index.html"><span>Approval</span><wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1870336411%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-approval-request/index.html">ApprovalRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>method<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>category<span class="token operator">: </span><a href="-approval-category/index.html">ApprovalCategory</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>params<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonObject///PointingToDeclaration/">JsonObject</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Data describing a write operation awaiting user approval.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="998493028%2FClasslikes%2F-1654361823" anchor-label="BalanceProvider" id="998493028%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-balance-provider/index.html"><span>Balance</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="998493028%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-balance-provider/index.html">BalanceProvider</a></div><div class="brief "><p class="paragraph">Balance provider interface — decouples handler from specific repository implementations. Allows the SDK to work with different data sources (real repos, mocks, etc.)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1174349336%2FClasslikes%2F-1654361823" anchor-label="ConnectedAPIHandler" id="1174349336%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-connected-a-p-i-handler/index.html"><span>Connected</span><wbr><span><span>APIHandler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1174349336%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-connected-a-p-i-handler/index.html">ConnectedAPIHandler</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">networkConfig<span class="token operator">: </span><a href="../../../core/network/com.midnight.kuira.core.network/-network-config/index.html">NetworkConfig</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>walletAddresses<span class="token operator">: </span><a href="-wallet-addresses/index.html">WalletAddresses</a><span class="token punctuation">, </span></span><span class="parameter ">balanceProvider<span class="token operator">: </span><a href="-balance-provider/index.html">BalanceProvider</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">signDataFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="../com.midnight.kuira.core.connector.model/-sign-data-options/index.html">SignDataOptions</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../com.midnight.kuira.core.connector.model/-signature-result/index.html">SignatureResult</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">submitTransactionFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">makeTransferFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../com.midnight.kuira.core.connector.model/-desired-output/index.html">DesiredOutput</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">balanceUnsealedFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">balanceSealedFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">makeIntentFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../com.midnight.kuira.core.connector.model/-desired-input/index.html">DesiredInput</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../com.midnight.kuira.core.connector.model/-desired-output/index.html">DesiredOutput</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../com.midnight.kuira.core.connector.model/-intent-options/index.html">IntentOptions</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">getTxHistoryFn<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../com.midnight.kuira.core.connector.model/-history-entry/index.html">HistoryEntry</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Implements all 16 ConnectedAPI methods (15 WalletConnectedAPI + hintUsage).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1893091857%2FClasslikes%2F-1654361823" anchor-label="ConnectorManager" id="1893091857%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-connector-manager/index.html"><span>Connector</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1893091857%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-connector-manager/index.html">ConnectorManager</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">networkConfig<span class="token operator">: </span><a href="../../../core/network/com.midnight.kuira.core.network/-network-config/index.html">NetworkConfig</a><span class="token punctuation">, </span></span><span class="parameter ">approvalManager<span class="token operator">: </span><a href="-approval-manager/index.html">ApprovalManager</a><span class="token operator"> = </span>ApprovalManager { true }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Orchestrates the connector lifecycle and all transport layers.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1424176468%2FClasslikes%2F-1654361823" anchor-label="ConnectorWebSocketServer" id="1424176468%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-connector-web-socket-server/index.html"><span>Connector</span><wbr><span>Web</span><wbr><span>Socket</span><wbr><span><span>Server</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1424176468%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-connector-web-socket-server/index.html">ConnectorWebSocketServer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">router<span class="token operator">: </span><a href="-json-rpc-router/index.html">JsonRpcRouter</a><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token punctuation">, </span></span><span class="parameter ">port<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>DEFAULT_PORT</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="org.java_websocket.server/WebSocketServer///PointingToDeclaration/">WebSocketServer</span></div><div class="brief "><p class="paragraph">WebSocket server for the DApp Connector.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1974992581%2FClasslikes%2F-1654361823" anchor-label="InitialAPI" id="-1974992581%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-initial-a-p-i/index.html"><span>Initial</span><wbr><span><span>API</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1974992581%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-initial-a-p-i/index.html">InitialAPI</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">networkConfig<span class="token operator">: </span><a href="../../../core/network/com.midnight.kuira.core.network/-network-config/index.html">NetworkConfig</a><span class="token punctuation">, </span></span><span class="parameter ">handlerFactory<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="-connected-a-p-i-handler/index.html">ConnectedAPIHandler</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>icon<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">""</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Initial API — the connection entry point for dApps.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1160224533%2FClasslikes%2F-1654361823" anchor-label="JsonRpcRouter" id="-1160224533%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-json-rpc-router/index.html"><span>Json</span><wbr><span>Rpc</span><wbr><span><span>Router</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1160224533%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-json-rpc-router/index.html">JsonRpcRouter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">handler<span class="token operator">: </span><a href="-connected-a-p-i-handler/index.html">ConnectedAPIHandler</a><span class="token punctuation">, </span></span><span class="parameter ">approvalManager<span class="token operator">: </span><a href="-approval-manager/index.html">ApprovalManager</a><span class="token operator"> = </span>ApprovalManager { true }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">JSON-RPC 2.0 message router for the ConnectedAPI.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1349213144%2FClasslikes%2F-1654361823" anchor-label="WalletAddresses" id="-1349213144%2FClasslikes%2F-1654361823" data-filterable-set=":core:connector:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:connector:dokkaHtmlPartial/release" data-filterable-set=":core:connector:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wallet-addresses/index.html"><span>Wallet</span><wbr><span><span>Addresses</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1349213144%2FClasslikes%2F-1654361823"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:connector:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-wallet-addresses/index.html">WalletAddresses</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unshieldedAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>shieldedAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>shieldedCoinPublicKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>shieldedEncryptionPublicKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dustAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Wallet addresses — derived once at wallet setup, passed to the handler.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

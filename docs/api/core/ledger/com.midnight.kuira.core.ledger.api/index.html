@@ -1,0 +1,467 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.midnight.kuira.core.ledger.api</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:ledger:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:ledger:dokkaHtmlPartial/release" data-filter=":core:ledger:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ledger::com.midnight.kuira.core.ledger.api////PointingToDeclaration//714266561">
+  <div class="breadcrumbs"><a href="../index.html">ledger</a><span class="delimiter">/</span><span class="current">com.midnight.kuira.core.ledger.api</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="318647790%2FClasslikes%2F714266561" anchor-label="FfiTransactionSerializer" id="318647790%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ffi-transaction-serializer/index.html"><span>Ffi</span><wbr><span>Transaction</span><wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="318647790%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-ffi-transaction-serializer/index.html">FfiTransactionSerializer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">networkId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-transaction-serializer/index.html">TransactionSerializer</a></div><div class="brief "><p class="paragraph">FFI-based serializer using Rust midnight-ledger (Phase 2E).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1634834376%2FClasslikes%2F714266561" anchor-label="NodeHttpException" id="1634834376%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-http-exception/index.html"><span>Node</span><wbr><span>Http</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1634834376%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-node-http-exception/index.html">NodeHttpException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>statusCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-node-rpc-exception/index.html">NodeRpcException</a></div><div class="brief "><p class="paragraph">HTTP error from node RPC (4xx or 5xx status).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1661667100%2FClasslikes%2F714266561" anchor-label="NodeInvalidResponseException" id="1661667100%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-invalid-response-exception/index.html"><span>Node</span><wbr><span>Invalid</span><wbr><span>Response</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1661667100%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-node-invalid-response-exception/index.html">NodeInvalidResponseException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-node-rpc-exception/index.html">NodeRpcException</a></div><div class="brief "><p class="paragraph">Invalid or malformed response from node RPC.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-5789070%2FClasslikes%2F714266561" anchor-label="NodeNetworkException" id="-5789070%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-network-exception/index.html"><span>Node</span><wbr><span>Network</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-5789070%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-node-network-exception/index.html">NodeNetworkException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-node-rpc-exception/index.html">NodeRpcException</a></div><div class="brief "><p class="paragraph">Network connectivity error (no internet, DNS failure, connection refused).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1967773055%2FClasslikes%2F714266561" anchor-label="NodeRpcClient" id="1967773055%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-rpc-client/index.html"><span>Node</span><wbr><span>Rpc</span><wbr><span><span>Client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1967773055%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-node-rpc-client/index.html">NodeRpcClient</a></div><div class="brief "><p class="paragraph">Client for Midnight node JSON-RPC API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-609472449%2FClasslikes%2F714266561" anchor-label="NodeRpcClientImpl" id="-609472449%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-rpc-client-impl/index.html"><span>Node</span><wbr><span>Rpc</span><wbr><span>Client</span><wbr><span><span>Impl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-609472449%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-node-rpc-client-impl/index.html">NodeRpcClientImpl</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">httpClient<span class="token operator">: </span><span data-unresolved-link="io.ktor.client/HttpClient///PointingToDeclaration/">HttpClient</span><span class="token punctuation">, </span></span><span class="parameter ">nodeUrl<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"http://localhost:9944"</span><span class="token punctuation">, </span></span><span class="parameter ">developmentMode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span> : <a href="-node-rpc-client/index.html">NodeRpcClient</a></div><div class="brief "><p class="paragraph">Ktor-based implementation of NodeRpcClient for Midnight node JSON-RPC API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="55949648%2FClasslikes%2F714266561" anchor-label="NodeRpcError" id="55949648%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-rpc-error/index.html"><span>Node</span><wbr><span>Rpc</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="55949648%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-node-rpc-error/index.html">NodeRpcError</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>data<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-node-rpc-exception/index.html">NodeRpcException</a></div><div class="brief "><p class="paragraph">JSON-RPC error from node (negative error code in response).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="333585769%2FClasslikes%2F714266561" anchor-label="NodeRpcException" id="333585769%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-rpc-exception/index.html"><span>Node</span><wbr><span>Rpc</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="333585769%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-node-rpc-exception/index.html">NodeRpcException</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Base exception for all node RPC errors.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1265045733%2FClasslikes%2F714266561" anchor-label="NodeTimeoutException" id="1265045733%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-node-timeout-exception/index.html"><span>Node</span><wbr><span>Timeout</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1265045733%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-node-timeout-exception/index.html">NodeTimeoutException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-node-rpc-exception/index.html">NodeRpcException</a></div><div class="brief "><p class="paragraph">Request timeout error.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="564079041%2FClasslikes%2F714266561" anchor-label="ProofComputationException" id="564079041%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-computation-exception/index.html"><span>Proof</span><wbr><span>Computation</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="564079041%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-computation-exception/index.html">ProofComputationException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-proof-server-exception/index.html">ProofServerException</a></div><div class="brief "><p class="paragraph">Proof computation failed (proof server could not generate valid proof).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1624559067%2FClasslikes%2F714266561" anchor-label="ProofServerClient" id="1624559067%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-client/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span><span>Client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1624559067%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-proof-server-client/index.html">ProofServerClient</a></div><div class="brief "><p class="paragraph">Client for Midnight Proof Server API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1643406693%2FClasslikes%2F714266561" anchor-label="ProofServerClientImpl" id="-1643406693%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-client-impl/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span>Client</span><wbr><span><span>Impl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1643406693%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-server-client-impl/index.html">ProofServerClientImpl</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">httpClient<span class="token operator">: </span><span data-unresolved-link="io.ktor.client/HttpClient///PointingToDeclaration/">HttpClient</span><span class="token punctuation">, </span></span><span class="parameter ">proofServerUrl<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"http://localhost:6300"</span><span class="token punctuation">, </span></span><span class="parameter ">developmentMode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span> : <a href="-proof-server-client/index.html">ProofServerClient</a></div><div class="brief "><p class="paragraph">Ktor-based implementation of ProofServerClient for Midnight proof server.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1063500428%2FClasslikes%2F714266561" anchor-label="ProofServerError" id="-1063500428%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-error/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1063500428%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-server-error/index.html">ProofServerError</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>statusCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>responseBody<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-proof-server-exception/index.html">ProofServerException</a></div><div class="brief "><p class="paragraph">Proof server returned an error response.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1962801037%2FClasslikes%2F714266561" anchor-label="ProofServerException" id="1962801037%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-exception/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1962801037%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-proof-server-exception/index.html">ProofServerException</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/Exception.html">Exception</a></div><div class="brief "><p class="paragraph">Base exception for all proof server errors.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1674706101%2FClasslikes%2F714266561" anchor-label="ProofServerHttpException" id="1674706101%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-http-exception/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span>Http</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1674706101%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-server-http-exception/index.html">ProofServerHttpException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>statusCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-proof-server-exception/index.html">ProofServerException</a></div><div class="brief "><p class="paragraph">HTTP error (non-2xx status code).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1464189937%2FClasslikes%2F714266561" anchor-label="ProofServerInvalidResponseException" id="-1464189937%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-invalid-response-exception/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span>Invalid</span><wbr><span>Response</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1464189937%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-server-invalid-response-exception/index.html">ProofServerInvalidResponseException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-proof-server-exception/index.html">ProofServerException</a></div><div class="brief "><p class="paragraph">Invalid or malformed response from proof server.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1893170587%2FClasslikes%2F714266561" anchor-label="ProofServerNetworkException" id="-1893170587%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-network-exception/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span>Network</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1893170587%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-server-network-exception/index.html">ProofServerNetworkException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-proof-server-exception/index.html">ProofServerException</a></div><div class="brief "><p class="paragraph">Network connectivity error (connection refused, DNS failure, etc.).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-622335784%2FClasslikes%2F714266561" anchor-label="ProofServerTimeoutException" id="-622335784%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-proof-server-timeout-exception/index.html"><span>Proof</span><wbr><span>Server</span><wbr><span>Timeout</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-622335784%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-proof-server-timeout-exception/index.html">ProofServerTimeoutException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-proof-server-exception/index.html">ProofServerException</a></div><div class="brief "><p class="paragraph">Timeout error (proof generation took too long).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1307174613%2FClasslikes%2F714266561" anchor-label="StubTransactionSerializer" id="-1307174613%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-stub-transaction-serializer/index.html"><span>Stub</span><wbr><span>Transaction</span><wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1307174613%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-stub-transaction-serializer/index.html">StubTransactionSerializer</a> : <a href="-transaction-serializer/index.html">TransactionSerializer</a></div><div class="brief "><p class="paragraph">Pure Kotlin stub serializer (for testing without FFI).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1965501276%2FClasslikes%2F714266561" anchor-label="TransactionFinalizationResult" id="-1965501276%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-finalization-result/index.html"><span>Transaction</span><wbr><span>Finalization</span><wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1965501276%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-transaction-finalization-result/index.html">TransactionFinalizationResult</a></div><div class="brief "><p class="paragraph">Result of transaction finalization.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1437979407%2FClasslikes%2F714266561" anchor-label="TransactionRejected" id="-1437979407%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-rejected/index.html"><span>Transaction</span><wbr><span><span>Rejected</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1437979407%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-transaction-rejected/index.html">TransactionRejected</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>reason<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>txHash<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customErrorCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-node-rpc-exception/index.html">NodeRpcException</a></div><div class="brief "><p class="paragraph">Transaction rejected by node (validation failed).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="533267165%2FClasslikes%2F714266561" anchor-label="TransactionSerializer" id="533267165%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-serializer/index.html"><span>Transaction</span><wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="533267165%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-transaction-serializer/index.html">TransactionSerializer</a></div><div class="brief "><p class="paragraph">Serializes signed transactions to SCALE codec for node submission.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1917364106%2FClasslikes%2F714266561" anchor-label="TransactionSubmitter" id="1917364106%2FClasslikes%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transaction-submitter/index.html"><span>Transaction</span><wbr><span><span>Submitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1917364106%2FClasslikes%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-transaction-submitter/index.html">TransactionSubmitter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nodeRpcClient<span class="token operator">: </span><a href="-node-rpc-client/index.html">NodeRpcClient</a><span class="token punctuation">, </span></span><span class="parameter ">proofServerClient<span class="token operator">: </span><a href="-proof-server-client/index.html">ProofServerClient</a><span class="token punctuation">, </span></span><span class="parameter ">indexerClient<span class="token operator">: </span><a href="../../../core/indexer/com.midnight.kuira.core.indexer.api/-indexer-client/index.html">IndexerClient</a><span class="token punctuation">, </span></span><span class="parameter ">serializer<span class="token operator">: </span><a href="-transaction-serializer/index.html">TransactionSerializer</a><span class="token punctuation">, </span></span><span class="parameter ">utxoManager<span class="token operator">: </span><a href="../../../core/indexer/com.midnight.kuira.core.indexer.utxo/-utxo-manager/index.html">UtxoManager</a><span class="token punctuation">, </span></span><span class="parameter ">dustActionsBuilder<span class="token operator">: </span><a href="../com.midnight.kuira.core.ledger.fee/-dust-actions-builder/index.html">DustActionsBuilder</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">dustRepository<span class="token operator">: </span><a href="../../../core/indexer/com.midnight.kuira.core.indexer.repository/-dust-repository/index.html">DustRepository</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">provingKeyManager<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>provingMode<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator"> = </span>ProvingMode.DEFAULT<span class="token punctuation">, </span></span><span class="parameter ">networkClientProvider<span class="token operator">: </span><a href="-transaction-submitter/-network-client-provider/index.html">TransactionSubmitter.NetworkClientProvider</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Orchestrates transaction submission and confirmation for Midnight blockchain.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
