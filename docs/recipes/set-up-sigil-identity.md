@@ -136,23 +136,35 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.midnight.kuira.dapp.sigil.SigilStatusPanel
 
 @Composable
 fun MainScreen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("My Midnight dApp")
-        // `viewModel` is the only required argument; pass an
-        // `onStatusChange` callback if you want to react to the
-        // sigil's state transitions (None → Creating → Forged, etc.).
-        SigilStatusPanel(
-            viewModel = hiltViewModel(),
-            onStatusChange = { /* status -> ... */ },
-        )
+        // Zero-arg call is the canonical drop-in: the SDK defaults
+        // `viewModel = hiltViewModel()`, `colors = SigilPanelColors.Default`,
+        // `modifier = Modifier`, and `onStatusChange = { }`.
+        SigilStatusPanel()
     }
 }
 ```
+
+If you want to react to sigil state transitions, pass an
+`onStatusChange` callback:
+
+```kotlin
+SigilStatusPanel(
+    onStatusChange = { status ->
+        // status is com.midnight.kuira.dapp.sigil.SigilStatus,
+        // one of None / BackupAvailable / Creating / Forged / Error.
+    },
+)
+```
+
+If you want to restyle the panel, pass a custom `SigilPanelColors`
+or a non-default `Modifier`. Both have sensible defaults; override
+only when you need to.
 
 Behaviourally, the panel renders one of four states:
 
