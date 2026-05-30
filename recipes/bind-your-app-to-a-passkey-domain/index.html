@@ -1528,9 +1528,63 @@ ship under the same listing. Store backups in two places.</p>
 <span class="w">  </span>-keyalg<span class="w"> </span>RSA<span class="w"> </span>-keysize<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-validity<span class="w"> </span><span class="m">10000</span>
 </code></pre></div>
-<p>Answer the prompts (name, org, locality, two letters for country). You
-end up with <code>release.keystore</code> in the current directory — move it
-somewhere outside your repo.</p>
+<p><code>keytool</code> walks you through six X.500 Distinguished-Name prompts. They
+populate the cert's subject metadata.</p>
+<div class="admonition info">
+<p class="admonition-title">What to type at each prompt</p>
+<p><strong>Android signing never surfaces any of these fields anywhere</strong> —
+the Play Store, OS verifier, and <code>assetlinks.json</code> all match on the
+SHA-256 fingerprint, not the DN. Pick values you'll be happy to
+read later in <code>keytool -list -v</code> output; functionally, any value
+works (including pressing Enter to leave <code>[Unknown]</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>Field</th>
+<th>Suggested value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First and last name</td>
+<td><code>CN</code> (Common Name)</td>
+<td>Your name or company name</td>
+</tr>
+<tr>
+<td>Organizational unit</td>
+<td><code>OU</code></td>
+<td>A team or department (e.g. <code>Engineering</code>, <code>Mobile</code>). Blank is fine.</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td><code>O</code></td>
+<td>The legal/parent entity (your LLC, company name, or just your name for a solo project).</td>
+</tr>
+<tr>
+<td>City or locality</td>
+<td><code>L</code></td>
+<td>Your city. Blank is fine.</td>
+</tr>
+<tr>
+<td>State or province</td>
+<td><code>ST</code></td>
+<td>Your state. Blank is fine.</td>
+</tr>
+<tr>
+<td>Two-letter country code</td>
+<td><code>C</code></td>
+<td>ISO 3166-1 alpha-2 (<code>US</code>, <code>MX</code>, <code>GB</code>, …). <code>keytool</code> validates this is exactly two letters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>OU vs O.</strong> "Organization" is the umbrella entity; "organizational
+unit" is a sub-group inside it. For a one-person or single-team
+project both fields commonly end up the same — that's fine.</p>
+</div>
+<p>You end up with <code>release.keystore</code> in the current directory — move it
+somewhere outside your repo (<code>~/keystores/</code> is a common spot) before
+the next step.</p>
 <h3 id="wire-it-into-gradle-without-committing-secrets">Wire it into Gradle without committing secrets<a class="headerlink" href="#wire-it-into-gradle-without-committing-secrets" title="Permanent link">&para;</a></h3>
 <p>Create <code>keystore.properties</code> at the project root — <strong>not committed</strong>,
 add to <code>.gitignore</code>:</p>
