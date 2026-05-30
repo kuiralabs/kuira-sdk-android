@@ -1265,10 +1265,10 @@ this is in place — symptoms include <code>RP_ID_MISMATCH</code>, <code>PRF
 authentication failed</code>, and silent biometric-prompt dismissal.</p>
 <p>This is its own walkthrough — picking the right repo to host the file
 in is the part most people get stuck on, and it's not obvious from
-the GitHub Pages URL alone.</p>
-<p><strong>Full recipe:</strong> <a href="../bind-your-app-to-a-passkey-domain/">Bind your app to a passkey domain →</a>.
-Covers fingerprint extraction, which GitHub repo backs which <code>rpId</code>,
-hosting + verification.</p>
+the GitHub Pages URL alone. The dedicated recipe covers fingerprint
+extraction, which GitHub repo backs which <code>rpId</code>, hosting, and
+verification.</p>
+<p><a class="md-button md-button--primary" href="../bind-your-app-to-a-passkey-domain/">Open the full recipe <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></span></a></p>
 <p>You can skip this step temporarily — your app will compile and the
 SDK won't crash, but <strong>Forge will fail</strong> until <code>assetlinks.json</code> is
 hosted and the rpId matches.</p>
