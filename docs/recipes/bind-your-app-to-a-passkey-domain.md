@@ -82,15 +82,51 @@ Path: `https://<rpId>/.well-known/assetlinks.json`. Must be served over
 HTTPS, with `Content-Type: application/json`, with no redirect and no
 auth wall.
 
-**Simplest hosting — GitHub Pages.** Put `assetlinks.json` at
-`<your-pages-repo>/.well-known/assetlinks.json` on the served branch
-(`main` or `gh-pages`). GitHub Pages serves `.json` as
-`application/json` by default — no extra config. If you use a custom
-domain, that custom domain is your `rpId`.
+### Which repo backs your rpId?
 
-Other hosts work too — Vercel, Cloudflare Pages, your own nginx — as
-long as you can serve `assetlinks.json` at the right path with the right
-content type and no redirects.
+GitHub Pages's first surprise: the `https://<name>.github.io/` URL is
+served from a **specially-named repo** — literally `<name>/<name>.github.io`.
+That's the only repo whose `.well-known/assetlinks.json` will be reachable
+at the URL the passkey API needs.
+
+| Your rpId | Repo to put `.well-known/assetlinks.json` into |
+|---|---|
+| `nel349.github.io` | `nel349/nel349.github.io` |
+| `kuiralabs.github.io` | `kuiralabs/kuiralabs.github.io` |
+| `your-custom-domain.com` | any repo with a `CNAME` file pointing to that domain |
+
+Project repos like `kuiralabs/kuira-sdk-android` serve under a subpath
+(`https://kuiralabs.github.io/kuira-sdk-android/…`) — those subpaths
+**can't** be your `rpId`, because `rpId` is hostname-only. So you can't
+just drop `assetlinks.json` into your SDK or starter repo and call it
+done; it has to live in the user/org-site repo (or a custom-domain repo).
+
+### Don't have the user/org-site repo yet? Create it
+
+For a fresh `<name>/<name>.github.io`:
+
+```bash
+gh repo create <name>/<name>.github.io --public --add-readme
+gh repo clone <name>/<name>.github.io && cd <name>.github.io
+mkdir -p .well-known
+# write .well-known/assetlinks.json — paste the JSON from Step 2
+git add . && git commit -m "host assetlinks.json"
+git push
+```
+
+Enable Pages via the repo's **Settings → Pages → Source: `main`**.
+GitHub Pages serves `.json` as `application/json` by default — no extra
+config. The file is live at
+`https://<name>.github.io/.well-known/assetlinks.json` within ~30
+seconds.
+
+### Already host elsewhere?
+
+If you have a Vercel project, Cloudflare Pages site, or your own nginx
+serving your `rpId`'s root, drop the file at `/.well-known/assetlinks.json`
+of that hostname's web root. The constraints (HTTPS, `Content-Type:
+application/json`, no redirects, no auth) are the same regardless of
+host.
 
 ---
 
