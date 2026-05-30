@@ -203,58 +203,24 @@ you'll see a "missing binding for `PasskeyConfig`" error.
 
 ---
 
-## Step 3 — Host `assetlinks.json` on your domain
+## Step 3 — Host `assetlinks.json` on your `rpId` domain
 
-Digital Asset Links bind your Android app's package name + signing
-cert to your passkey domain. Without this, the passkey API refuses
-to honour your `PasskeyConfig.rpId`.
+Digital Asset Links bind your app's package name + signing fingerprint
+to your passkey domain. The passkey API refuses any ceremony until
+this is in place — symptoms include `RP_ID_MISMATCH`, `PRF
+authentication failed`, and silent biometric-prompt dismissal.
 
-!!! tip "This is the abbreviated path"
-    Use this if you're exploring with a debug build on a domain
-    you already control. For release-signing config, CI signing
-    with GitHub Actions secrets, multi-fingerprint setup (debug +
-    release in one file), or hosting on Vercel / Cloudflare /
-    custom nginx, see the full recipe:
-    [Bind your app to a passkey domain →](bind-your-app-to-a-passkey-domain.md).
+This is its own walkthrough — picking the right repo to host the file
+in is the part most people get stuck on, and it's not obvious from
+the GitHub Pages URL alone.
 
-Find your app's SHA-256 cert fingerprint:
+**Full recipe:** [Bind your app to a passkey domain →](bind-your-app-to-a-passkey-domain.md).
+Covers fingerprint extraction, which GitHub repo backs which `rpId`,
+hosting + verification.
 
-```bash
-keytool -list -v \
-  -keystore ~/.android/debug.keystore \
-  -alias androiddebugkey \
-  -storepass android \
-  -keypass android \
-  | grep "SHA256:"
-```
-
-Host this JSON at `https://yourapp.example.com/.well-known/assetlinks.json`:
-
-```json title="assetlinks.json"
-[
-  {
-    "relation": [
-      "delegate_permission/common.handle_all_urls",
-      "delegate_permission/common.get_login_creds"
-    ],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.example.myapp",
-      "sha256_cert_fingerprints": [
-        "AB:CD:EF:…:01:23:45"
-      ]
-    }
-  }
-]
-```
-
-For GitHub Pages: put it at `<your-repo>/.well-known/assetlinks.json`
-on the branch GitHub Pages serves from.
-
-**Verify:** `curl -I https://yourapp.example.com/.well-known/assetlinks.json`
-should return `HTTP/2 200` with `Content-Type: application/json`. The
-file must be reachable over HTTPS and not behind any auth — the
-passkey API fetches it anonymously at registration time.
+You can skip this step temporarily — your app will compile and the
+SDK won't crash, but **Forge will fail** until `assetlinks.json` is
+hosted and the rpId matches.
 
 ---
 
