@@ -1,0 +1,18 @@
+<!-- Kuira brand mark — geometric K monogram.
+     Path geometry preserved verbatim from the Android app's launcher
+     foreground (app/src/main/res/drawable/ic_launcher_foreground.xml).
+     viewBox is cropped tight to the K's natural bounds (x: 38..73,
+     y: 28..80) with 4-unit padding so the letter fills the rendered
+     image instead of floating in launcher-icon whitespace.
+     Filled #fff for the dark scheme; the light scheme inverts via
+     CSS filter so the K reads solid black on white. -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="34 24 43 60"
+     preserveAspectRatio="xMidYMid meet">
+  <!-- Vertical stem -->
+  <path fill="#ffffff" d="M38 28 L43 28 L43 80 L38 80 Z"/>
+  <!-- Upper diagonal (top-right arm) -->
+  <path fill="#ffffff" d="M43 52 L68 28 L73 28 L73 33 L47 56 Z"/>
+  <!-- Lower diagonal (bottom-right leg) -->
+  <path fill="#ffffff" d="M43 56 L47 52 L73 75 L73 80 L68 80 Z"/>
+</svg>

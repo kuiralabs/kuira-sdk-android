@@ -20,7 +20,7 @@
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="assets/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -51,6 +51,8 @@
       
     
     
+      <link rel="stylesheet" href="assets/stylesheets/kuira.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kuira-android-sdk" class="md-skip">
+        <a href="#the-first-android-sdk-built-for-ai-paired-development" class="md-skip">
           Skip to content
         </a>
       
@@ -92,8 +94,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Kuira Android SDK" class="md-header__button md-logo" aria-label="Kuira Android SDK" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -294,7 +295,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="api/" class="md-tabs__link">
+      <a href="api-reference/" class="md-tabs__link">
         
   
   
@@ -352,8 +353,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Kuira Android SDK" class="md-nav__button md-logo" aria-label="Kuira Android SDK" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="assets/logo.svg" alt="logo">
 
     </a>
     Kuira Android SDK
@@ -440,6 +440,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#try-the-agent-mode-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try the agent-mode workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Try the agent-mode workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passkey-derived-sigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passkey-derived sigil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedded-no-custodian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedded, no custodian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compact-runtime-zk-proving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compact runtime + ZK proving
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -451,32 +501,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-in-the-box" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's in the box
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#built-for-ai-assisted-development" class="md-nav__link">
     <span class="md-ellipsis">
       
         Built for AI-assisted development
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Source code
       
     </span>
   </a>
@@ -767,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/" class="md-nav__link">
+      <a href="api-reference/" class="md-nav__link">
         
   
   
@@ -824,7 +852,7 @@
               
                 
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -843,6 +871,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#try-the-agent-mode-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try the agent-mode workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Try the agent-mode workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passkey-derived-sigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passkey-derived sigil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedded-no-custodian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedded, no custodian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compact-runtime-zk-proving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compact runtime + ZK proving
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -854,32 +932,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-in-the-box" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's in the box
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#built-for-ai-assisted-development" class="md-nav__link">
     <span class="md-ellipsis">
       
         Built for AI-assisted development
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Source code
       
     </span>
   </a>
@@ -919,19 +975,97 @@
   
 
 
-<h1 id="kuira-android-sdk">Kuira Android SDK<a class="headerlink" href="#kuira-android-sdk" title="Permanent link">&para;</a></h1>
-<p><strong>Build <a href="https://midnight.network">Midnight</a> zero-knowledge dApps on Android.</strong></p>
-<p>Build privacy-first Android apps on Midnight: passkey-derived identity,
-an embedded wallet, and a Compact contract runtime — added to your project
-as a single Gradle dependency.</p>
-<div class="admonition warning">
-<p class="admonition-title">Alpha — <code>0.1.0-alpha01</code></p>
-<p>The API may change between alpha bumps. Production usage is not
-recommended; we're looking for early integrators who can give
-feedback. See <a href="security/">Security</a> for the threat model and
-vulnerability reporting.</p>
+<section class="kuira-hero">
+<canvas aria-hidden="true" class="kuira-hero__canvas" data-component="starfield"></canvas>
+<div class="kuira-hero__inner">
+<div class="kuira-hero__eyebrow"><span>Kuira · v0.1.0-alpha01</span><span>Maven Central</span></div>
+<h1 class="kuira-hero__headline" id="the-first-android-sdk-built-for-ai-paired-development">The first Android SDK <em>built for AI-paired development.</em><a class="headerlink" href="#the-first-android-sdk-built-for-ai-paired-development" title="Permanent link">&para;</a></h1>
+<p class="kuira-hero__lede">
+Midnight zero-knowledge dApps on Android — passkey identity, embedded wallet, Compact contract runtime. Every recipe ships with a one-tap prompt for your coding agent.
+</p>
+<div class="kuira-hero__cta">
+<a href="recipes/" class="md-button md-button--primary">Browse the cookbook</a>
+<a href="integration/" class="md-button">Read the integration guide</a>
 </div>
-<hr />
+</div>
+</section>
+<section class="kuira-picker" id="kuira-picker">
+<div class="kuira-picker__header">
+<h2 class="kuira-picker__title" id="try-the-agent-mode-workflow">Try the agent-mode workflow<a class="headerlink" href="#try-the-agent-mode-workflow" title="Permanent link">&para;</a></h2>
+<p class="kuira-picker__subtitle">
+Pick a task and an agent. We generate the prompt; you paste it into your tool. Same prompt structure every recipe ships with.
+</p>
+</div>
+<div class="kuira-picker__row">
+<p><span class="kuira-picker__label">What do you want to build?</span></p>
+<div aria-label="Recipe" class="kuira-picker__options" role="radiogroup">
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="true" data-task-key="add-kuira-to-an-android-project" data-task-title="Add the Kuira SDK">Add Kuira to a project</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="set-up-sigil-identity" data-task-title="Set up Sigil identity">Set up Sigil identity</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="deploy-and-call-a-compact-contract" data-task-title="Deploy a Compact contract and call a circuit">Deploy a Compact contract</button>
+</div>
+</div>
+<div class="kuira-picker__row">
+<p><span class="kuira-picker__label">For your agent</span></p>
+<div aria-label="Agent" class="kuira-picker__options" role="radiogroup">
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="true" data-agent-key="claude" data-agent-name="Claude Code">Claude Code</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-agent-key="cursor" data-agent-name="Cursor">Cursor</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-agent-key="codex" data-agent-name="Codex">Codex</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-agent-key="generic" data-agent-name="any LLM">Generic LLM</button>
+</div>
+</div>
+<div class="kuira-picker__output">
+<p><span class="kuira-picker__label">Your prompt</span></p>
+<pre aria-live="polite" class="kuira-picker__prompt" id="kuira-picker-output">Building prompt…</pre>
+<div class="kuira-picker__actions">
+<button class="kuira-picker__action kuira-picker__action--primary" type="button" id="kuira-picker-copy"><span aria-hidden="true">📋</span> Copy prompt</button>
+<a class="kuira-picker__action" id="kuira-picker-raw" href="#" target="_blank" rel="noopener"><span aria-hidden="true">📄</span> View raw context bundle</a>
+</div>
+</div>
+</section>
+<section class="kuira-features">
+<article class="kuira-feature">
+<p><span class="kuira-feature__eyebrow">Identity</span></p>
+<h3 class="kuira-feature__title" id="passkey-derived-sigil">Passkey-derived sigil<a class="headerlink" href="#passkey-derived-sigil" title="Permanent link">&para;</a></h3>
+<p class="kuira-feature__body">
+One biometric mints a DID + wallet seed. PRF on the passkey assertion — no seed phrases at onboarding, recoverable on any device that shares the Google account.
+</p>
+</article>
+<article class="kuira-feature">
+<p><span class="kuira-feature__eyebrow">Wallet</span></p>
+<h3 class="kuira-feature__title" id="embedded-no-custodian">Embedded, no custodian<a class="headerlink" href="#embedded-no-custodian" title="Permanent link">&para;</a></h3>
+<p class="kuira-feature__body">
+Shielded + unshielded balance, transaction balancing, indexer sync, Dust regeneration. The wallet lives in your app's process; you never call out to a separate wallet.
+</p>
+</article>
+<article class="kuira-feature">
+<p><span class="kuira-feature__eyebrow">Contracts</span></p>
+<h3 class="kuira-feature__title" id="compact-runtime-zk-proving">Compact runtime + ZK proving<a class="headerlink" href="#compact-runtime-zk-proving" title="Permanent link">&para;</a></h3>
+<p class="kuira-feature__body">
+Deploy and call Compact circuits on-device. QuickJS contract runtime, witness packing, per-circuit proving keys, transaction submission — wired by a Gradle plugin.
+</p>
+</article>
+</section>
+<section class="kuira-modules">
+<div class="kuira-modules__title">16 modules · pull <code>dapp-ui</code>, get the graph</div>
+<div class="kuira-modules__list">
+<span class="kuira-modules__pill">dapp-ui</span>
+<span class="kuira-modules__pill">midnight-sdk</span>
+<span class="kuira-modules__pill">wallet-runtime</span>
+<span class="kuira-modules__pill">wallet-seed</span>
+<span class="kuira-modules__pill">identity</span>
+<span class="kuira-modules__pill">auth</span>
+<span class="kuira-modules__pill">crypto</span>
+<span class="kuira-modules__pill">compact-engine</span>
+<span class="kuira-modules__pill">indexer</span>
+<span class="kuira-modules__pill">connector</span>
+<span class="kuira-modules__pill">ledger</span>
+<span class="kuira-modules__pill">network</span>
+<span class="kuira-modules__pill">wallet</span>
+<span class="kuira-modules__pill">designsystem</span>
+<span class="kuira-modules__pill">testing</span>
+<span class="kuira-modules__pill">contract-plugin</span>
+</div>
+</section>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle (Kotlin DSL)</label><label for="__tabbed_1_2">Gradle (Groovy)</label></div>
 <div class="tabbed-content">
@@ -965,85 +1099,20 @@ vulnerability reporting.</p>
 </div>
 </div>
 </div>
-<p><code>dapp-ui</code> <code>api</code>-exposes the consumer surface (<code>midnight-sdk</code>,
-<code>wallet-runtime</code>, <code>identity</code>, <code>compact-engine</code>, …) so a single line gives
-you the complete SDK graph.</p>
+<p><code>dapp-ui</code> <code>api</code>-exposes the consumer surface, so a single line gives
+you the complete SDK graph. Need just the headless wallet? Use
+<code>midnight-sdk</code> instead.</p>
 <p><a class="md-button md-button--primary" href="integration/">Full integration guide →</a>
-<a class="md-button" href="recipes/">Browse the cookbook →</a></p>
-<hr />
-<h2 id="whats-in-the-box">What's in the box<a class="headerlink" href="#whats-in-the-box" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Module</th>
-<th>Coordinate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Umbrella dApp UI (sigil + wallet panels)</td>
-<td><code>io.github.kuiralabs:dapp-ui</code></td>
-</tr>
-<tr>
-<td>Headless SDK (wallet + contract calls)</td>
-<td><code>io.github.kuiralabs:midnight-sdk</code></td>
-</tr>
-<tr>
-<td>Wallet runtime &amp; seed bootstrapping</td>
-<td><code>io.github.kuiralabs:wallet-runtime</code>, <code>:wallet-seed</code></td>
-</tr>
-<tr>
-<td>Passkey + sigil identity</td>
-<td><code>io.github.kuiralabs:identity</code>, <code>:auth</code></td>
-</tr>
-<tr>
-<td>Crypto primitives (BIP-39, BIP-32, Schnorr, Bech32m)</td>
-<td><code>io.github.kuiralabs:crypto</code></td>
-</tr>
-<tr>
-<td>Compact contract engine</td>
-<td><code>io.github.kuiralabs:compact-engine</code></td>
-</tr>
-<tr>
-<td>Indexer client + connector</td>
-<td><code>io.github.kuiralabs:indexer</code>, <code>:connector</code></td>
-</tr>
-<tr>
-<td>Ledger / network</td>
-<td><code>io.github.kuiralabs:ledger</code>, <code>:network</code></td>
-</tr>
-<tr>
-<td>Design system</td>
-<td><code>io.github.kuiralabs:designsystem</code></td>
-</tr>
-<tr>
-<td>Test fixtures</td>
-<td><code>io.github.kuiralabs:testing</code></td>
-</tr>
-</tbody>
-</table>
-<p>All artifacts share the same version. Pulling <code>dapp-ui</code> brings the
-needed subset transitively.</p>
+<a class="md-button" href="security/">Security &amp; verification</a></p>
 <hr />
 <h2 id="built-for-ai-assisted-development">Built for AI-assisted development<a class="headerlink" href="#built-for-ai-assisted-development" title="Permanent link">&para;</a></h2>
-<p>Every cookbook recipe carries a <strong><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12z"/></svg></span> Copy prompt
-for your agent</strong> button. Paste into Claude Code, Cursor, Codex, or any
-LLM-driven assistant — the agent fetches a stable raw-markdown context
-bundle directly from this site and has everything it needs to wire the
-integration in your project.</p>
-<p>An <a href="https://kuiralabs.github.io/kuira-sdk-android/llms.txt"><code>/llms.txt</code></a> at the
-site root lists every recipe and context bundle URL, following the
-emerging <a href="https://llmstxt.org">https://llmstxt.org</a> convention. Agents that support it
-auto-discover the entire cookbook in one fetch.</p>
-<hr />
-<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The SDK source currently lives in a private repository. We're shipping
-the published artifacts (binaries <strong>and</strong> Kotlin sources, via the
-<code>-sources.jar</code> next to each AAR on Maven Central) so anyone can read,
-audit, or debug into the code. Source-availability is part of the
-trust contract — see <a href="security/#verifying-releases">Security § Verifying releases</a>.</p>
-<p>A staged public-source path is on the roadmap. We'll announce here when
-the repository opens.</p>
+<p>The cookbook is the source of truth for both humans and agents. Every
+recipe is a raw markdown file at a stable URL — agents fetch it
+directly. A site-root <a href="llms.txt"><code>/llms.txt</code></a> lists every recipe, per
+the emerging <a href="https://llmstxt.org">llms.txt</a> convention.</p>
+<p>For maintainers: the SDK source lives in a private repository. Source
+jars ship next to every AAR on Maven Central, so you can read, audit,
+or step into the implementation through any IDE.</p>
 <hr />
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>Apache License 2.0 — see <a href="https://github.com/kuiralabs/kuira-sdk-android/blob/main/LICENSE">LICENSE</a>.</p>
@@ -1139,6 +1208,10 @@ the repository opens.</p>
       <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="assets/javascripts/copy-prompt.js"></script>
+      
+        <script src="assets/javascripts/starfield.js"></script>
+      
+        <script src="assets/javascripts/prompt-picker.js"></script>
       
     
   </body>
