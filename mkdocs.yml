@@ -15,6 +15,11 @@ edit_uri: edit/main/docs/
 # direct ports of those tokens.
 theme:
   name: material
+  # overrides/ holds minimal template tweaks layered on top of the
+  # mkdocs-material base. Currently: overrides/main.html suppresses
+  # the "{title} - {site_name}" pattern when title equals site_name
+  # (cleans up the home page browser tab).
+  custom_dir: overrides
   palette:
     # Auto-switch based on system preference.
     - media: "(prefers-color-scheme)"
