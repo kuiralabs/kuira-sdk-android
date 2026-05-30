@@ -698,6 +698,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 3 — Host it on your rpId domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-repo-backs-your-rpid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which repo backs your rpId?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-have-the-userorg-site-repo-yet-create-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Don't have the user/org-site repo yet? Create it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#already-host-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Already host elsewhere?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -927,6 +966,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 3 — Host it on your rpId domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-repo-backs-your-rpid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which repo backs your rpId?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-have-the-userorg-site-repo-yet-create-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Don't have the user/org-site repo yet? Create it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#already-host-elsewhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Already host elsewhere?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1078,14 +1156,58 @@ if you add deep links later.</p>
 <p>Path: <code>https://&lt;rpId&gt;/.well-known/assetlinks.json</code>. Must be served over
 HTTPS, with <code>Content-Type: application/json</code>, with no redirect and no
 auth wall.</p>
-<p><strong>Simplest hosting — GitHub Pages.</strong> Put <code>assetlinks.json</code> at
-<code>&lt;your-pages-repo&gt;/.well-known/assetlinks.json</code> on the served branch
-(<code>main</code> or <code>gh-pages</code>). GitHub Pages serves <code>.json</code> as
-<code>application/json</code> by default — no extra config. If you use a custom
-domain, that custom domain is your <code>rpId</code>.</p>
-<p>Other hosts work too — Vercel, Cloudflare Pages, your own nginx — as
-long as you can serve <code>assetlinks.json</code> at the right path with the right
-content type and no redirects.</p>
+<h3 id="which-repo-backs-your-rpid">Which repo backs your rpId?<a class="headerlink" href="#which-repo-backs-your-rpid" title="Permanent link">&para;</a></h3>
+<p>GitHub Pages's first surprise: the <code>https://&lt;name&gt;.github.io/</code> URL is
+served from a <strong>specially-named repo</strong> — literally <code>&lt;name&gt;/&lt;name&gt;.github.io</code>.
+That's the only repo whose <code>.well-known/assetlinks.json</code> will be reachable
+at the URL the passkey API needs.</p>
+<table>
+<thead>
+<tr>
+<th>Your rpId</th>
+<th>Repo to put <code>.well-known/assetlinks.json</code> into</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nel349.github.io</code></td>
+<td><code>nel349/nel349.github.io</code></td>
+</tr>
+<tr>
+<td><code>kuiralabs.github.io</code></td>
+<td><code>kuiralabs/kuiralabs.github.io</code></td>
+</tr>
+<tr>
+<td><code>your-custom-domain.com</code></td>
+<td>any repo with a <code>CNAME</code> file pointing to that domain</td>
+</tr>
+</tbody>
+</table>
+<p>Project repos like <code>kuiralabs/kuira-sdk-android</code> serve under a subpath
+(<code>https://kuiralabs.github.io/kuira-sdk-android/…</code>) — those subpaths
+<strong>can't</strong> be your <code>rpId</code>, because <code>rpId</code> is hostname-only. So you can't
+just drop <code>assetlinks.json</code> into your SDK or starter repo and call it
+done; it has to live in the user/org-site repo (or a custom-domain repo).</p>
+<h3 id="dont-have-the-userorg-site-repo-yet-create-it">Don't have the user/org-site repo yet? Create it<a class="headerlink" href="#dont-have-the-userorg-site-repo-yet-create-it" title="Permanent link">&para;</a></h3>
+<p>For a fresh <code>&lt;name&gt;/&lt;name&gt;.github.io</code>:</p>
+<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>create<span class="w"> </span>&lt;name&gt;/&lt;name&gt;.github.io<span class="w"> </span>--public<span class="w"> </span>--add-readme
+gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;name&gt;/&lt;name&gt;.github.io<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;name&gt;.github.io
+mkdir<span class="w"> </span>-p<span class="w"> </span>.well-known
+<span class="c1"># write .well-known/assetlinks.json — paste the JSON from Step 2</span>
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;host assetlinks.json&quot;</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<p>Enable Pages via the repo's <strong>Settings → Pages → Source: <code>main</code></strong>.
+GitHub Pages serves <code>.json</code> as <code>application/json</code> by default — no extra
+config. The file is live at
+<code>https://&lt;name&gt;.github.io/.well-known/assetlinks.json</code> within ~30
+seconds.</p>
+<h3 id="already-host-elsewhere">Already host elsewhere?<a class="headerlink" href="#already-host-elsewhere" title="Permanent link">&para;</a></h3>
+<p>If you have a Vercel project, Cloudflare Pages site, or your own nginx
+serving your <code>rpId</code>'s root, drop the file at <code>/.well-known/assetlinks.json</code>
+of that hostname's web root. The constraints (HTTPS, <code>Content-Type:
+application/json</code>, no redirects, no auth) are the same regardless of
+host.</p>
 <hr />
 <h2 id="step-4-verify">Step 4 — Verify<a class="headerlink" href="#step-4-verify" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-I<span class="w"> </span>https://&lt;your-rpId&gt;/.well-known/assetlinks.json
