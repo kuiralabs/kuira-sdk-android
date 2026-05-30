@@ -668,6 +668,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#choose-your-rpid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your rpId
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-1-get-the-debug-fingerprint" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -702,10 +713,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#which-repo-backs-your-rpid" class="md-nav__link">
+  <a href="#case-a-the-backing-repo-already-exists" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Which repo backs your rpId?
+        Case A — the backing repo already exists
       
     </span>
   </a>
@@ -713,10 +724,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dont-have-the-userorg-site-repo-yet-create-it" class="md-nav__link">
+  <a href="#case-b-the-backing-repo-doesnt-exist-yet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Don't have the user/org-site repo yet? Create it
+        Case B — the backing repo doesn't exist yet
       
     </span>
   </a>
@@ -724,10 +735,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#already-host-elsewhere" class="md-nav__link">
+  <a href="#hosting-elsewhere-vercel-cloudflare-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Already host elsewhere?
+        Hosting elsewhere (Vercel / Cloudflare / nginx)
       
     </span>
   </a>
@@ -740,10 +751,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-verify" class="md-nav__link">
+  <a href="#step-4-point-your-app-at-the-rpid-then-verify" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Verify
+        Step 4 — Point your app at the rpId, then verify
       
     </span>
   </a>
@@ -936,6 +947,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#choose-your-rpid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your rpId
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-1-get-the-debug-fingerprint" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -970,10 +992,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#which-repo-backs-your-rpid" class="md-nav__link">
+  <a href="#case-a-the-backing-repo-already-exists" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Which repo backs your rpId?
+        Case A — the backing repo already exists
       
     </span>
   </a>
@@ -981,10 +1003,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dont-have-the-userorg-site-repo-yet-create-it" class="md-nav__link">
+  <a href="#case-b-the-backing-repo-doesnt-exist-yet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Don't have the user/org-site repo yet? Create it
+        Case B — the backing repo doesn't exist yet
       
     </span>
   </a>
@@ -992,10 +1014,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#already-host-elsewhere" class="md-nav__link">
+  <a href="#hosting-elsewhere-vercel-cloudflare-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Already host elsewhere?
+        Hosting elsewhere (Vercel / Cloudflare / nginx)
       
     </span>
   </a>
@@ -1008,10 +1030,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-verify" class="md-nav__link">
+  <a href="#step-4-point-your-app-at-the-rpid-then-verify" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Verify
+        Step 4 — Point your app at the rpId, then verify
       
     </span>
   </a>
@@ -1109,16 +1131,62 @@
 device — no <code>RP_ID_MISMATCH</code>, no <code>PRF authentication failed</code>, no
 silent prompt dismissal.</p>
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/bind-your-app-to-a-passkey-domain.md"
-     data-task="Bind an Android app's debug build to a passkey rpId — get the debug SHA-256 from signingReport, write a single-fingerprint assetlinks.json, host at /.well-known/assetlinks.json, verify with curl + Forge on device. Production release-keystore setup is out of scope."></div>
+     data-task="Bind an Android app's debug build to a passkey rpId.
+
+Discover context first: run `git remote -v` in the project. Take the GitHub user-or-org slug from the origin URL. The natural rpId is `<that-slug>.github.io`, hosted in the special-name repo `<that-slug>/<that-slug>.github.io`. Check whether that backing repo exists on GitHub; if it does not, walk the consumer through creating it. If the consumer prefers a different domain, confirm before proceeding.
+
+Then execute the four-step recipe:
+1. `./gradlew :app:signingReport` to capture the debug-variant SHA-256 (add `--no-configuration-cache` if the project sets `org.gradle.configuration-cache=true`).
+2. Compose a single-fingerprint assetlinks.json with the project's applicationId and that SHA-256.
+3. Commit it to `<that-slug>/<that-slug>.github.io` at `.well-known/assetlinks.json`; if that repo also already hosts assetlinks for other apps, append a new target rather than overwriting.
+4. Set PASSKEY_RP_ID in the project's PasskeyConfig module to the chosen domain. Verify with `curl -I` against the live URL; then have the consumer reinstall the debug APK and tap Forge.
+
+After EACH step, output a one-sentence summary of what just happened so the human can follow without reading every tool result. Pause for explicit approval before any git push to a repo other than the project itself, and before any adb install / uninstall.
+
+Production release-keystore setup is out of scope."></div>
 
 <p>This is the <strong>development-only</strong> path. You'll be running debug builds
 on your emulator or device — Android Studio's auto-generated debug
 keystore signs them for you. No keystore generation, no
 <code>keystore.properties</code>, no CI signing setup. ~5 minutes end to end.</p>
 <hr />
+<h2 id="choose-your-rpid">Choose your rpId<a class="headerlink" href="#choose-your-rpid" title="Permanent link">&para;</a></h2>
+<p>Your <code>rpId</code> should be the GitHub Pages host of the user or organization
+that owns your project. Derive it from the project's git remote:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>-v
+<span class="c1"># origin  https://github.com/&lt;user-or-org&gt;/&lt;repo&gt;.git</span>
+</code></pre></div>
+<p>From that:</p>
+<ul>
+<li><strong>Your <code>rpId</code></strong> is <code>&lt;user-or-org&gt;.github.io</code> (hostname only, no
+  scheme, no path).</li>
+<li><strong>The repo that backs that rpId</strong> is <code>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io</code>
+  — that exact, specially-named repo is the only one whose
+  <code>.well-known/assetlinks.json</code> is reachable at the URL the passkey
+  API needs (<code>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json</code>).</li>
+</ul>
+<p>For example, this project's origin is
+<code>github.com/kuiralabs/kuira-starter-android</code>, so its natural rpId is
+<code>kuiralabs.github.io</code> and assetlinks goes in <code>kuiralabs/kuiralabs.github.io</code>.</p>
+<p>Check whether that repo already exists:</p>
+<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
+</code></pre></div>
+<p>If it doesn't, you'll create it in Step 3. If you want to use a
+different domain (a custom domain you own, or a personal site you
+already host other apps on), use that instead — same constraints apply.</p>
+<hr />
 <h2 id="step-1-get-the-debug-fingerprint">Step 1 — Get the debug fingerprint<a class="headerlink" href="#step-1-get-the-debug-fingerprint" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Configuration-cache gotcha</p>
+<p>If your project sets <code>org.gradle.configuration-cache=true</code> in
+<code>gradle.properties</code>, <code>signingReport</code> fails with a class-loader
+error (<code>Class 'com.android.build.gradle.internal.dsl.SigningConfig$AgpDecorated' not found</code>).
+Run it with <code>--no-configuration-cache</code>:</p>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport<span class="w"> </span>--no-configuration-cache
+</code></pre></div>
+</div>
 <p>Find the <code>Variant: debug</code> block. Copy its <code>SHA-256:</code> line (keep the
 colons):</p>
 <div class="highlight"><pre><span></span><code>Variant: debug
@@ -1156,70 +1224,68 @@ if you add deep links later.</p>
 <p>Path: <code>https://&lt;rpId&gt;/.well-known/assetlinks.json</code>. Must be served over
 HTTPS, with <code>Content-Type: application/json</code>, with no redirect and no
 auth wall.</p>
-<h3 id="which-repo-backs-your-rpid">Which repo backs your rpId?<a class="headerlink" href="#which-repo-backs-your-rpid" title="Permanent link">&para;</a></h3>
-<p>GitHub Pages's first surprise: the <code>https://&lt;name&gt;.github.io/</code> URL is
-served from a <strong>specially-named repo</strong> — literally <code>&lt;name&gt;/&lt;name&gt;.github.io</code>.
-That's the only repo whose <code>.well-known/assetlinks.json</code> will be reachable
-at the URL the passkey API needs.</p>
-<table>
-<thead>
-<tr>
-<th>Your rpId</th>
-<th>Repo to put <code>.well-known/assetlinks.json</code> into</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>nel349.github.io</code></td>
-<td><code>nel349/nel349.github.io</code></td>
-</tr>
-<tr>
-<td><code>kuiralabs.github.io</code></td>
-<td><code>kuiralabs/kuiralabs.github.io</code></td>
-</tr>
-<tr>
-<td><code>your-custom-domain.com</code></td>
-<td>any repo with a <code>CNAME</code> file pointing to that domain</td>
-</tr>
-</tbody>
-</table>
-<p>Project repos like <code>kuiralabs/kuira-sdk-android</code> serve under a subpath
-(<code>https://kuiralabs.github.io/kuira-sdk-android/…</code>) — those subpaths
-<strong>can't</strong> be your <code>rpId</code>, because <code>rpId</code> is hostname-only. So you can't
-just drop <code>assetlinks.json</code> into your SDK or starter repo and call it
-done; it has to live in the user/org-site repo (or a custom-domain repo).</p>
-<h3 id="dont-have-the-userorg-site-repo-yet-create-it">Don't have the user/org-site repo yet? Create it<a class="headerlink" href="#dont-have-the-userorg-site-repo-yet-create-it" title="Permanent link">&para;</a></h3>
-<p>For a fresh <code>&lt;name&gt;/&lt;name&gt;.github.io</code>:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>create<span class="w"> </span>&lt;name&gt;/&lt;name&gt;.github.io<span class="w"> </span>--public<span class="w"> </span>--add-readme
-gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;name&gt;/&lt;name&gt;.github.io<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;name&gt;.github.io
+<p>You chose the rpId + backing repo in the <strong>Choose your rpId</strong> section
+above. Two cases:</p>
+<h3 id="case-a-the-backing-repo-already-exists">Case A — the backing repo already exists<a class="headerlink" href="#case-a-the-backing-repo-already-exists" title="Permanent link">&para;</a></h3>
+<p>Clone it, append your new target to any existing <code>assetlinks.json</code>
+array (don't overwrite — other apps may already be bound to the same
+host), commit, push:</p>
+<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
+<span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
+<span class="c1"># Edit .well-known/assetlinks.json: append your target object to the</span>
+<span class="c1"># top-level JSON array. If the file doesn&#39;t exist yet, create it with</span>
+<span class="c1"># just your target inside an array.</span>
+git<span class="w"> </span>add<span class="w"> </span>.well-known/assetlinks.json
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;passkey: bind &lt;your-package-name&gt;&quot;</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<h3 id="case-b-the-backing-repo-doesnt-exist-yet">Case B — the backing repo doesn't exist yet<a class="headerlink" href="#case-b-the-backing-repo-doesnt-exist-yet" title="Permanent link">&para;</a></h3>
+<p>Create it, drop the JSON in, push, enable Pages:</p>
+<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>create<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io<span class="w"> </span>--public<span class="w"> </span>--add-readme
+gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
+<span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
 mkdir<span class="w"> </span>-p<span class="w"> </span>.well-known
-<span class="c1"># write .well-known/assetlinks.json — paste the JSON from Step 2</span>
+<span class="c1"># Write .well-known/assetlinks.json with the JSON from Step 2.</span>
 git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;host assetlinks.json&quot;</span>
 git<span class="w"> </span>push
 </code></pre></div>
-<p>Enable Pages via the repo's <strong>Settings → Pages → Source: <code>main</code></strong>.
-GitHub Pages serves <code>.json</code> as <code>application/json</code> by default — no extra
-config. The file is live at
-<code>https://&lt;name&gt;.github.io/.well-known/assetlinks.json</code> within ~30
-seconds.</p>
-<h3 id="already-host-elsewhere">Already host elsewhere?<a class="headerlink" href="#already-host-elsewhere" title="Permanent link">&para;</a></h3>
-<p>If you have a Vercel project, Cloudflare Pages site, or your own nginx
-serving your <code>rpId</code>'s root, drop the file at <code>/.well-known/assetlinks.json</code>
-of that hostname's web root. The constraints (HTTPS, <code>Content-Type:
-application/json</code>, no redirects, no auth) are the same regardless of
-host.</p>
+<p>Then enable Pages via the repo's <strong>Settings → Pages → Source: <code>main</code></strong>
+(or via <code>gh api -X POST /repos/&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io/pages -f source[branch]=main</code>).</p>
+<p>Either way: GitHub Pages serves <code>.json</code> as <code>application/json</code> by
+default — no extra config. The file is live at
+<code>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json</code> within
+~30 seconds.</p>
+<h3 id="hosting-elsewhere-vercel-cloudflare-nginx">Hosting elsewhere (Vercel / Cloudflare / nginx)<a class="headerlink" href="#hosting-elsewhere-vercel-cloudflare-nginx" title="Permanent link">&para;</a></h3>
+<p>Same constraints — HTTPS, <code>Content-Type: application/json</code>, no
+redirects, no auth — drop <code>assetlinks.json</code> at <code>/.well-known/assetlinks.json</code>
+of your hostname's web root. Platform-specific notes are out of scope
+here; the rest of the recipe is unchanged.</p>
 <hr />
-<h2 id="step-4-verify">Step 4 — Verify<a class="headerlink" href="#step-4-verify" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-I<span class="w"> </span>https://&lt;your-rpId&gt;/.well-known/assetlinks.json
+<h2 id="step-4-point-your-app-at-the-rpid-then-verify">Step 4 — Point your app at the rpId, then verify<a class="headerlink" href="#step-4-point-your-app-at-the-rpid-then-verify" title="Permanent link">&para;</a></h2>
+<p>First, update your app's <code>PasskeyConfig</code> so the in-binary rpId matches
+the domain that now serves your <code>assetlinks.json</code>. In a starter built
+from <code>kuiralabs/kuira-starter-android</code>, that's the <code>PASSKEY_RP_ID</code>
+constant in <code>app/src/main/java/.../di/PasskeyConfigModule.kt</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PASSKEY_RP_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;user-or-org&gt;.github.io&quot;</span>
+</code></pre></div>
+<p>Then verify the hosting:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-I<span class="w"> </span>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json
 <span class="c1"># Expected:</span>
 <span class="c1"># HTTP/2 200</span>
 <span class="c1"># content-type: application/json</span>
 </code></pre></div>
 <p>Then on device:</p>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:installDebug
+<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>uninstall<span class="w"> </span>&lt;your-package-name&gt;<span class="w">          </span><span class="c1"># if a previous build is installed</span>
+./gradlew<span class="w"> </span>:app:installDebug
 </code></pre></div>
 <p>Launch the app and tap <strong>Forge</strong>. You should get a biometric prompt →
 success → Sigil panel transitions to <code>Forged</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Uninstall before re-installing</p>
+<p><code>adb install -r</code> does NOT refresh credential-manager state on some
+devices. After hosting changes or rpId changes, always
+<code>adb uninstall &lt;pkg&gt;</code> first.</p>
+</div>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p>If Forge fails, almost every symptom maps to the same root cause:</p>
