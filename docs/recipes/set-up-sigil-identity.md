@@ -88,6 +88,45 @@ once Hilt is on.
 
 ## Step 2 — Drop the `SigilStatusPanel` Composable into your UI
 
+The panel composable takes a Hilt-provided `SigilPanelViewModel`
+(obtained via `hiltViewModel()` from `androidx.hilt.navigation.compose`)
+plus optional `Modifier`, `SigilPanelColors`, and an `onStatusChange`
+callback. The hosting Activity must subclass `FragmentActivity` so the
+panel's internal biometric prompts can run — `AppCompatActivity`
+satisfies this; `ComponentActivity` alone does not.
+
+```kotlin title="app/src/main/.../MainActivity.kt"
+package com.example.myapp
+
+import android.os.Bundle
+import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
+import com.example.myapp.ui.MainScreen
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {                       // (1)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MaterialTheme {                                      // (2)
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    MainScreen()
+                }
+            }
+        }
+    }
+}
+```
+
+1. `@AndroidEntryPoint` is required for `hiltViewModel()` to resolve.
+2. The panel uses Material 3 primitives, so a `MaterialTheme` ancestor
+   must be present.
+
 ```kotlin title="app/src/main/.../ui/MainScreen.kt"
 package com.example.myapp.ui
 
@@ -97,21 +136,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.FragmentActivity
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.midnight.kuira.dapp.sigil.SigilStatusPanel
 
 @Composable
-fun MainScreen(activity: FragmentActivity) {
+fun MainScreen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("My Midnight dApp")
-        SigilStatusPanel(activity = activity)   // (1)
+        // `viewModel` is the only required argument; pass an
+        // `onStatusChange` callback if you want to react to the
+        // sigil's state transitions (None → Creating → Forged, etc.).
+        SigilStatusPanel(
+            viewModel = hiltViewModel(),
+            onStatusChange = { /* status -> ... */ },
+        )
     }
 }
 ```
-
-1. The panel needs a `FragmentActivity` — biometric prompts require
-   it, so your host Activity must subclass `FragmentActivity` (or
-   `ComponentActivity` doesn't suffice for biometrics).
 
 Behaviourally, the panel renders one of four states:
 

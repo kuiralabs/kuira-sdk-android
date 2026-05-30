@@ -39,6 +39,17 @@ end-to-end from `.compact` source to an on-chain transaction.
 If you don't have these yet, run `npm run compact` (or your project's
 equivalent) inside the `contract/` directory first.
 
+!!! warning "Compact authoring is currently a 'you provide' prereq"
+    This recipe wires a **pre-compiled** Compact contract into your
+    Android app. **It does not teach Compact authoring** — writing a
+    `.compact` source file, installing `compactc`, or setting up the
+    JS toolchain. Until the upcoming **Hello Compact** recipe lands,
+    the cleanest path is to clone the [Midnight Network sample
+    contracts](https://github.com/midnightntwrk) or use an existing
+    contract from a Midnight Build Club fellowship project. Recipe 3
+    assumes the `contract/src/managed/<name>/` directory already
+    exists; getting to that point is on you.
+
 ---
 
 ## Step 1 — Sync the compiled artifacts into your app's assets
@@ -61,7 +72,7 @@ wires the canonical layout into `preBuild` for you:
     ```kotlin title="app/build.gradle.kts"
     plugins {
         id("com.android.application")
-        id("com.midnight.kuira.contract") version "0.1.0-alpha02"
+        id("com.midnight.kuira.contract") version "0.1.0-alpha01"
     }
 
     kuiraContract {
@@ -84,7 +95,7 @@ wires the canonical layout into `preBuild` for you:
     ```groovy title="app/build.gradle"
     plugins {
         id 'com.android.application'
-        id 'com.midnight.kuira.contract' version '0.1.0-alpha02'
+        id 'com.midnight.kuira.contract' version '0.1.0-alpha01'
     }
 
     kuiraContract {

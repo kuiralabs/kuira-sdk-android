@@ -25,24 +25,86 @@ recognises your passkey domain, and has the Hilt graph wired so any
 
 ## Prerequisites
 
-- An Android project on **AGP 8.13.x or newer** with `minSdk ≥ 30`.
-- **Hilt + KSP** already configured (`com.google.dagger.hilt.android` plugin
-  applied + KSP for the Hilt compiler). If Hilt isn't set up, do that first.
+- An Android project with `minSdk ≥ 30`.
 - **A domain you control** that will serve as your passkey relying-party
   identifier (e.g. `yourapp.example.com`). You need write access to host
   `.well-known/assetlinks.json` on it.
-- **JDK 17** as your project's `sourceCompatibility` /
-  `targetCompatibility` / `jvmTarget`.
+
+### Version pin matrix
+
+The SDK is built against the toolchain below; using a newer Kotlin without
+a matching KSP version is the #1 cause of a build error. Pin to these
+exact versions until `alpha02` is published, then bump together.
+
+| Tool | Version | Notes |
+|---|---|---|
+| **AGP** | `8.13.2` | `8.13.x` minimum |
+| **Kotlin** | `2.3.20` | Matched KSP below |
+| **KSP** | `2.3.6` | Plugin id `com.google.devtools.ksp` |
+| **Hilt** | `2.58` | Both `hilt-android` and `hilt-compiler` |
+| **Compose BOM** | `2026.03.01` | If you use Compose (Recipe 2 does) |
+| **JDK** | `17` | `sourceCompatibility` / `targetCompatibility` / `jvmTarget` |
+| **`compileSdk`** | `36` | `35` works; the SDK was built against 36 |
+| **`minSdk`** | `30` | Mandatory — biometric Keystore APIs |
 
 ---
 
 ## Step 1 — Add the dependency
 
+First make sure your root `settings.gradle.kts` declares `mavenCentral()`
+in both `pluginManagement` (so the Contract plugin from Recipe 3 can
+resolve) and `dependencyResolutionManagement` (so the runtime
+artifacts resolve):
+
+```kotlin title="settings.gradle.kts"
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "your-app"
+include(":app")
+```
+
+Then add the SDK to your app module's dependencies:
+
 === "Gradle (Kotlin DSL)"
 
     ```kotlin title="app/build.gradle.kts"
     dependencies {
+        // One line; pulls in midnight-sdk, wallet-runtime, identity,
+        // compact-engine, designsystem, … as transitive api dependencies.
         implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha01")
+
+        // Hilt — required (the SDK is Hilt-first).
+        implementation("com.google.dagger:hilt-android:2.58")
+        ksp("com.google.dagger:hilt-compiler:2.58")
+        // hilt-navigation-compose for `hiltViewModel()` — needed by
+        // Recipe 2 to obtain the SigilStatusPanel's ViewModel.
+        implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+        // Compose — required if you'll render the SDK's panels.
+        implementation(platform("androidx.compose:compose-bom:2026.03.01"))
+        implementation("androidx.compose.ui:ui")
+        implementation("androidx.compose.material3:material3")
+        implementation("androidx.activity:activity-compose:1.12.2")
+
+        // FragmentActivity — the SDK's biometric prompts need an
+        // Activity that subclasses FragmentActivity (AppCompatActivity
+        // qualifies; ComponentActivity does not).
+        implementation("androidx.fragment:fragment-ktx:1.8.4")
+        implementation("androidx.appcompat:appcompat:1.6.1")
     }
     ```
 
@@ -51,12 +113,49 @@ recognises your passkey domain, and has the Hilt graph wired so any
     ```groovy title="app/build.gradle"
     dependencies {
         implementation 'io.github.kuiralabs:dapp-ui:0.1.0-alpha01'
+
+        implementation 'com.google.dagger:hilt-android:2.58'
+        ksp 'com.google.dagger:hilt-compiler:2.58'
+        implementation 'androidx.hilt:hilt-navigation-compose:1.1.0'
+
+        implementation platform('androidx.compose:compose-bom:2026.03.01')
+        implementation 'androidx.compose.ui:ui'
+        implementation 'androidx.compose.material3:material3'
+        implementation 'androidx.activity:activity-compose:1.12.2'
+
+        implementation 'androidx.fragment:fragment-ktx:1.8.4'
+        implementation 'androidx.appcompat:appcompat:1.6.1'
     }
     ```
 
-The `dapp-ui` module `api`-exposes the rest of the consumer surface
+And declare the plugins at the root `build.gradle.kts`:
+
+```kotlin title="build.gradle.kts (root)"
+plugins {
+    id("com.android.application") version "8.13.2" apply false
+    id("org.jetbrains.kotlin.android") version "2.3.20" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.3.20" apply false
+    id("com.google.devtools.ksp") version "2.3.6" apply false
+    id("com.google.dagger.hilt.android") version "2.58" apply false
+}
+```
+
+Apply them in the app module:
+
+```kotlin title="app/build.gradle.kts"
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+}
+```
+
+`dapp-ui` `api`-exposes the rest of the consumer SDK surface
 (`midnight-sdk`, `wallet-runtime`, `identity`, `compact-engine`, …),
-so you only need this one line.
+so you only need that one Kuira line. Hilt, Compose, and
+hilt-navigation-compose are platform deps your app would need anyway.
 
 **Verify:** run `./gradlew :app:dependencies | grep kuiralabs` — you
 should see roughly a dozen `io.github.kuiralabs:*` entries pulled in
@@ -72,7 +171,7 @@ relying-party identifier (RP ID). Create a Hilt module:
 ```kotlin title="app/src/main/.../di/IdentityConfigModule.kt"
 package com.example.myapp.di
 
-import com.midnight.kuira.core.identity.PasskeyConfig
+import com.midnight.kuira.core.identity.passkey.PasskeyConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
