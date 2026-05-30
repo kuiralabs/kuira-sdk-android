@@ -19,7 +19,19 @@ device — no `RP_ID_MISMATCH`, no `PRF authentication failed`, no
 silent prompt dismissal.
 
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/bind-your-app-to-a-passkey-domain.md"
-     data-task="Bind an Android app's debug build to a passkey rpId — get the debug SHA-256 from signingReport, write a single-fingerprint assetlinks.json, host at /.well-known/assetlinks.json, verify with curl + Forge on device. Production release-keystore setup is out of scope."></div>
+     data-task="Bind an Android app's debug build to a passkey rpId.
+
+Discover context first: run `git remote -v` in the project. Take the GitHub user-or-org slug from the origin URL. The natural rpId is `<that-slug>.github.io`, hosted in the special-name repo `<that-slug>/<that-slug>.github.io`. Check whether that backing repo exists on GitHub; if it does not, walk the consumer through creating it. If the consumer prefers a different domain, confirm before proceeding.
+
+Then execute the four-step recipe:
+1. `./gradlew :app:signingReport` to capture the debug-variant SHA-256 (add `--no-configuration-cache` if the project sets `org.gradle.configuration-cache=true`).
+2. Compose a single-fingerprint assetlinks.json with the project's applicationId and that SHA-256.
+3. Commit it to `<that-slug>/<that-slug>.github.io` at `.well-known/assetlinks.json`; if that repo also already hosts assetlinks for other apps, append a new target rather than overwriting.
+4. Set PASSKEY_RP_ID in the project's PasskeyConfig module to the chosen domain. Verify with `curl -I` against the live URL; then have the consumer reinstall the debug APK and tap Forge.
+
+After EACH step, output a one-sentence summary of what just happened so the human can follow without reading every tool result. Pause for explicit approval before any git push to a repo other than the project itself, and before any adb install / uninstall.
+
+Production release-keystore setup is out of scope."></div>
 
 This is the **development-only** path. You'll be running debug builds
 on your emulator or device — Android Studio's auto-generated debug
@@ -28,11 +40,56 @@ keystore signs them for you. No keystore generation, no
 
 ---
 
+## Choose your rpId
+
+Your `rpId` should be the GitHub Pages host of the user or organization
+that owns your project. Derive it from the project's git remote:
+
+```bash
+git remote -v
+# origin  https://github.com/<user-or-org>/<repo>.git
+```
+
+From that:
+
+- **Your `rpId`** is `<user-or-org>.github.io` (hostname only, no
+  scheme, no path).
+- **The repo that backs that rpId** is `<user-or-org>/<user-or-org>.github.io`
+  — that exact, specially-named repo is the only one whose
+  `.well-known/assetlinks.json` is reachable at the URL the passkey
+  API needs (`https://<user-or-org>.github.io/.well-known/assetlinks.json`).
+
+For example, this project's origin is
+`github.com/kuiralabs/kuira-starter-android`, so its natural rpId is
+`kuiralabs.github.io` and assetlinks goes in `kuiralabs/kuiralabs.github.io`.
+
+Check whether that repo already exists:
+
+```bash
+gh repo view <user-or-org>/<user-or-org>.github.io
+```
+
+If it doesn't, you'll create it in Step 3. If you want to use a
+different domain (a custom domain you own, or a personal site you
+already host other apps on), use that instead — same constraints apply.
+
+---
+
 ## Step 1 — Get the debug fingerprint
 
 ```bash
 ./gradlew :app:signingReport
 ```
+
+!!! note "Configuration-cache gotcha"
+    If your project sets `org.gradle.configuration-cache=true` in
+    `gradle.properties`, `signingReport` fails with a class-loader
+    error (`Class 'com.android.build.gradle.internal.dsl.SigningConfig$AgpDecorated' not found`).
+    Run it with `--no-configuration-cache`:
+
+    ```bash
+    ./gradlew :app:signingReport --no-configuration-cache
+    ```
 
 Find the `Variant: debug` block. Copy its `SHA-256:` line (keep the
 colons):
@@ -82,58 +139,72 @@ Path: `https://<rpId>/.well-known/assetlinks.json`. Must be served over
 HTTPS, with `Content-Type: application/json`, with no redirect and no
 auth wall.
 
-### Which repo backs your rpId?
+You chose the rpId + backing repo in the **Choose your rpId** section
+above. Two cases:
 
-GitHub Pages's first surprise: the `https://<name>.github.io/` URL is
-served from a **specially-named repo** — literally `<name>/<name>.github.io`.
-That's the only repo whose `.well-known/assetlinks.json` will be reachable
-at the URL the passkey API needs.
+### Case A — the backing repo already exists
 
-| Your rpId | Repo to put `.well-known/assetlinks.json` into |
-|---|---|
-| `nel349.github.io` | `nel349/nel349.github.io` |
-| `kuiralabs.github.io` | `kuiralabs/kuiralabs.github.io` |
-| `your-custom-domain.com` | any repo with a `CNAME` file pointing to that domain |
-
-Project repos like `kuiralabs/kuira-sdk-android` serve under a subpath
-(`https://kuiralabs.github.io/kuira-sdk-android/…`) — those subpaths
-**can't** be your `rpId`, because `rpId` is hostname-only. So you can't
-just drop `assetlinks.json` into your SDK or starter repo and call it
-done; it has to live in the user/org-site repo (or a custom-domain repo).
-
-### Don't have the user/org-site repo yet? Create it
-
-For a fresh `<name>/<name>.github.io`:
+Clone it, append your new target to any existing `assetlinks.json`
+array (don't overwrite — other apps may already be bound to the same
+host), commit, push:
 
 ```bash
-gh repo create <name>/<name>.github.io --public --add-readme
-gh repo clone <name>/<name>.github.io && cd <name>.github.io
+gh repo clone <user-or-org>/<user-or-org>.github.io
+cd <user-or-org>.github.io
+# Edit .well-known/assetlinks.json: append your target object to the
+# top-level JSON array. If the file doesn't exist yet, create it with
+# just your target inside an array.
+git add .well-known/assetlinks.json
+git commit -m "passkey: bind <your-package-name>"
+git push
+```
+
+### Case B — the backing repo doesn't exist yet
+
+Create it, drop the JSON in, push, enable Pages:
+
+```bash
+gh repo create <user-or-org>/<user-or-org>.github.io --public --add-readme
+gh repo clone <user-or-org>/<user-or-org>.github.io
+cd <user-or-org>.github.io
 mkdir -p .well-known
-# write .well-known/assetlinks.json — paste the JSON from Step 2
+# Write .well-known/assetlinks.json with the JSON from Step 2.
 git add . && git commit -m "host assetlinks.json"
 git push
 ```
 
-Enable Pages via the repo's **Settings → Pages → Source: `main`**.
-GitHub Pages serves `.json` as `application/json` by default — no extra
-config. The file is live at
-`https://<name>.github.io/.well-known/assetlinks.json` within ~30
-seconds.
+Then enable Pages via the repo's **Settings → Pages → Source: `main`**
+(or via `gh api -X POST /repos/<user-or-org>/<user-or-org>.github.io/pages -f source[branch]=main`).
 
-### Already host elsewhere?
+Either way: GitHub Pages serves `.json` as `application/json` by
+default — no extra config. The file is live at
+`https://<user-or-org>.github.io/.well-known/assetlinks.json` within
+~30 seconds.
 
-If you have a Vercel project, Cloudflare Pages site, or your own nginx
-serving your `rpId`'s root, drop the file at `/.well-known/assetlinks.json`
-of that hostname's web root. The constraints (HTTPS, `Content-Type:
-application/json`, no redirects, no auth) are the same regardless of
-host.
+### Hosting elsewhere (Vercel / Cloudflare / nginx)
+
+Same constraints — HTTPS, `Content-Type: application/json`, no
+redirects, no auth — drop `assetlinks.json` at `/.well-known/assetlinks.json`
+of your hostname's web root. Platform-specific notes are out of scope
+here; the rest of the recipe is unchanged.
 
 ---
 
-## Step 4 — Verify
+## Step 4 — Point your app at the rpId, then verify
+
+First, update your app's `PasskeyConfig` so the in-binary rpId matches
+the domain that now serves your `assetlinks.json`. In a starter built
+from `kuiralabs/kuira-starter-android`, that's the `PASSKEY_RP_ID`
+constant in `app/src/main/java/.../di/PasskeyConfigModule.kt`:
+
+```kotlin
+private const val PASSKEY_RP_ID = "<user-or-org>.github.io"
+```
+
+Then verify the hosting:
 
 ```bash
-curl -I https://<your-rpId>/.well-known/assetlinks.json
+curl -I https://<user-or-org>.github.io/.well-known/assetlinks.json
 # Expected:
 # HTTP/2 200
 # content-type: application/json
@@ -142,11 +213,17 @@ curl -I https://<your-rpId>/.well-known/assetlinks.json
 Then on device:
 
 ```bash
+adb uninstall <your-package-name>          # if a previous build is installed
 ./gradlew :app:installDebug
 ```
 
 Launch the app and tap **Forge**. You should get a biometric prompt →
 success → Sigil panel transitions to `Forged`.
+
+!!! warning "Uninstall before re-installing"
+    `adb install -r` does NOT refresh credential-manager state on some
+    devices. After hosting changes or rpId changes, always
+    `adb uninstall <pkg>` first.
 
 ---
 
