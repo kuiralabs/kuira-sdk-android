@@ -102,6 +102,7 @@ nav:
   - Recipes:
     - recipes/index.md
     - Add Kuira to an Android project: recipes/add-kuira-to-an-android-project.md
+    - Bind your app to a passkey domain: recipes/bind-your-app-to-a-passkey-domain.md
     - Set up Sigil identity: recipes/set-up-sigil-identity.md
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
   - API reference: api-reference.md

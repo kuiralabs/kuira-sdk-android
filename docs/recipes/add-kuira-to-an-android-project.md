@@ -209,6 +209,14 @@ Digital Asset Links bind your Android app's package name + signing
 cert to your passkey domain. Without this, the passkey API refuses
 to honour your `PasskeyConfig.rpId`.
 
+!!! tip "This is the abbreviated path"
+    Use this if you're exploring with a debug build on a domain
+    you already control. For release-signing config, CI signing
+    with GitHub Actions secrets, multi-fingerprint setup (debug +
+    release in one file), or hosting on Vercel / Cloudflare /
+    custom nginx, see the full recipe:
+    [Bind your app to a passkey domain →](bind-your-app-to-a-passkey-domain.md).
+
 Find your app's SHA-256 cert fingerprint:
 
 ```bash

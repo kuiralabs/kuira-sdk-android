@@ -36,8 +36,16 @@ agent and let it execute the recipe in your project.
 
     ---
 
-    Install the SDK, register your passkey domain, host
-    `assetlinks.json`, configure the Hilt module. ~10 minutes.
+    Install the SDK, set your passkey rpId, configure the Hilt module.
+    ~10 minutes.
+
+-   :material-key-chain: **[Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md)**
+
+    ---
+
+    Generate keystores (debug + release), compose `assetlinks.json` with
+    multi-fingerprint support, host it on GitHub Pages / Vercel /
+    Cloudflare, verify the binding.
 
 -   :material-fingerprint: **[Set up Sigil identity](set-up-sigil-identity.md)**
 
