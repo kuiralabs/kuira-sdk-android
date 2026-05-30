@@ -647,6 +647,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-pin-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version pin matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -876,6 +893,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-pin-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version pin matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -999,36 +1033,163 @@ recognises your passkey domain, and has the Hilt graph wired so any
 <hr />
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>An Android project on <strong>AGP 8.13.x or newer</strong> with <code>minSdk ≥ 30</code>.</li>
-<li><strong>Hilt + KSP</strong> already configured (<code>com.google.dagger.hilt.android</code> plugin
-  applied + KSP for the Hilt compiler). If Hilt isn't set up, do that first.</li>
+<li>An Android project with <code>minSdk ≥ 30</code>.</li>
 <li><strong>A domain you control</strong> that will serve as your passkey relying-party
   identifier (e.g. <code>yourapp.example.com</code>). You need write access to host
   <code>.well-known/assetlinks.json</code> on it.</li>
-<li><strong>JDK 17</strong> as your project's <code>sourceCompatibility</code> /
-  <code>targetCompatibility</code> / <code>jvmTarget</code>.</li>
 </ul>
+<h3 id="version-pin-matrix">Version pin matrix<a class="headerlink" href="#version-pin-matrix" title="Permanent link">&para;</a></h3>
+<p>The SDK is built against the toolchain below; using a newer Kotlin without
+a matching KSP version is the #1 cause of a build error. Pin to these
+exact versions until <code>alpha02</code> is published, then bump together.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AGP</strong></td>
+<td><code>8.13.2</code></td>
+<td><code>8.13.x</code> minimum</td>
+</tr>
+<tr>
+<td><strong>Kotlin</strong></td>
+<td><code>2.3.20</code></td>
+<td>Matched KSP below</td>
+</tr>
+<tr>
+<td><strong>KSP</strong></td>
+<td><code>2.3.6</code></td>
+<td>Plugin id <code>com.google.devtools.ksp</code></td>
+</tr>
+<tr>
+<td><strong>Hilt</strong></td>
+<td><code>2.58</code></td>
+<td>Both <code>hilt-android</code> and <code>hilt-compiler</code></td>
+</tr>
+<tr>
+<td><strong>Compose BOM</strong></td>
+<td><code>2026.03.01</code></td>
+<td>If you use Compose (Recipe 2 does)</td>
+</tr>
+<tr>
+<td><strong>JDK</strong></td>
+<td><code>17</code></td>
+<td><code>sourceCompatibility</code> / <code>targetCompatibility</code> / <code>jvmTarget</code></td>
+</tr>
+<tr>
+<td><strong><code>compileSdk</code></strong></td>
+<td><code>36</code></td>
+<td><code>35</code> works; the SDK was built against 36</td>
+</tr>
+<tr>
+<td><strong><code>minSdk</code></strong></td>
+<td><code>30</code></td>
+<td>Mandatory — biometric Keystore APIs</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="step-1-add-the-dependency">Step 1 — Add the dependency<a class="headerlink" href="#step-1-add-the-dependency" title="Permanent link">&para;</a></h2>
+<p>First make sure your root <code>settings.gradle.kts</code> declares <code>mavenCentral()</code>
+in both <code>pluginManagement</code> (so the Contract plugin from Recipe 3 can
+resolve) and <code>dependencyResolutionManagement</code> (so the runtime
+artifacts resolve):</p>
+<div class="highlight"><span class="filename">settings.gradle.kts</span><pre><span></span><code><span class="n">pluginManagement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">google</span><span class="p">()</span>
+<span class="w">        </span><span class="n">mavenCentral</span><span class="p">()</span>
+<span class="w">        </span><span class="n">gradlePluginPortal</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">dependencyResolutionManagement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">repositoriesMode</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">RepositoriesMode</span><span class="p">.</span><span class="na">FAIL_ON_PROJECT_REPOS</span><span class="p">)</span>
+<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">google</span><span class="p">()</span>
+<span class="w">        </span><span class="n">mavenCentral</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">rootProject</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;your-app&quot;</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;:app&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Then add the SDK to your app module's dependencies:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle (Kotlin DSL)</label><label for="__tabbed_1_2">Gradle (Groovy)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// One line; pulls in midnight-sdk, wallet-runtime, identity,</span>
+<span class="w">    </span><span class="c1">// compact-engine, designsystem, … as transitive api dependencies.</span>
 <span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha01&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Hilt — required (the SDK is Hilt-first).</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-android:2.58&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-compiler:2.58&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// hilt-navigation-compose for `hiltViewModel()` — needed by</span>
+<span class="w">    </span><span class="c1">// Recipe 2 to obtain the SigilStatusPanel&#39;s ViewModel.</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.hilt:hilt-navigation-compose:1.1.0&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Compose — required if you&#39;ll render the SDK&#39;s panels.</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">platform</span><span class="p">(</span><span class="s">&quot;androidx.compose:compose-bom:2026.03.01&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.compose.ui:ui&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.compose.material3:material3&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.activity:activity-compose:1.12.2&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// FragmentActivity — the SDK&#39;s biometric prompts need an</span>
+<span class="w">    </span><span class="c1">// Activity that subclasses FragmentActivity (AppCompatActivity</span>
+<span class="w">    </span><span class="c1">// qualifies; ComponentActivity does not).</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.fragment:fragment-ktx:1.8.4&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;androidx.appcompat:appcompat:1.6.1&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">app/build.gradle</span><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.kuiralabs:dapp-ui:0.1.0-alpha01&#39;</span>
+
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;com.google.dagger:hilt-android:2.58&#39;</span>
+<span class="w">    </span><span class="n">ksp</span><span class="w"> </span><span class="s1">&#39;com.google.dagger:hilt-compiler:2.58&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;androidx.hilt:hilt-navigation-compose:1.1.0&#39;</span>
+
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">platform</span><span class="o">(</span><span class="s1">&#39;androidx.compose:compose-bom:2026.03.01&#39;</span><span class="o">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;androidx.compose.ui:ui&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;androidx.compose.material3:material3&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;androidx.activity:activity-compose:1.12.2&#39;</span>
+
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;androidx.fragment:fragment-ktx:1.8.4&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;androidx.appcompat:appcompat:1.6.1&#39;</span>
 <span class="o">}</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>The <code>dapp-ui</code> module <code>api</code>-exposes the rest of the consumer surface
+<p>And declare the plugins at the root <code>build.gradle.kts</code>:</p>
+<div class="highlight"><span class="filename">build.gradle.kts (root)</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;8.13.2&quot;</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.android&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;2.3.20&quot;</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.plugin.compose&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;2.3.20&quot;</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.devtools.ksp&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;2.3.6&quot;</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.dagger.hilt.android&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;2.58&quot;</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Apply them in the app module:</p>
+<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.android&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.plugin.compose&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.devtools.ksp&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.dagger.hilt.android&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>dapp-ui</code> <code>api</code>-exposes the rest of the consumer SDK surface
 (<code>midnight-sdk</code>, <code>wallet-runtime</code>, <code>identity</code>, <code>compact-engine</code>, …),
-so you only need this one line.</p>
+so you only need that one Kuira line. Hilt, Compose, and
+hilt-navigation-compose are platform deps your app would need anyway.</p>
 <p><strong>Verify:</strong> run <code>./gradlew :app:dependencies | grep kuiralabs</code> — you
 should see roughly a dozen <code>io.github.kuiralabs:*</code> entries pulled in
 transitively, all at the same version.</p>
@@ -1038,7 +1199,7 @@ transitively, all at the same version.</p>
 relying-party identifier (RP ID). Create a Hilt module:</p>
 <div class="highlight"><span class="filename">app/src/main/.../di/IdentityConfigModule.kt</span><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">com.example.myapp.di</span>
 
-<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.identity.PasskeyConfig</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.identity.passkey.PasskeyConfig</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">dagger.Module</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">dagger.Provides</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">dagger.hilt.InstallIn</span>

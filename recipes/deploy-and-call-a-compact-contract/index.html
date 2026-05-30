@@ -1019,6 +1019,18 @@ end-to-end from <code>.compact</code> source to an on-chain transaction.</p>
 </ul>
 <p>If you don't have these yet, run <code>npm run compact</code> (or your project's
 equivalent) inside the <code>contract/</code> directory first.</p>
+<div class="admonition warning">
+<p class="admonition-title">Compact authoring is currently a 'you provide' prereq</p>
+<p>This recipe wires a <strong>pre-compiled</strong> Compact contract into your
+Android app. <strong>It does not teach Compact authoring</strong> — writing a
+<code>.compact</code> source file, installing <code>compactc</code>, or setting up the
+JS toolchain. Until the upcoming <strong>Hello Compact</strong> recipe lands,
+the cleanest path is to clone the <a href="https://github.com/midnightntwrk">Midnight Network sample
+contracts</a> or use an existing
+contract from a Midnight Build Club fellowship project. Recipe 3
+assumes the <code>contract/src/managed/&lt;name&gt;/</code> directory already
+exists; getting to that point is on you.</p>
+</div>
 <hr />
 <h2 id="step-1-sync-the-compiled-artifacts-into-your-apps-assets">Step 1 — Sync the compiled artifacts into your app's assets<a class="headerlink" href="#step-1-sync-the-compiled-artifacts-into-your-apps-assets" title="Permanent link">&para;</a></h2>
 <p>The SDK's compact engine loads contract code + circuit keys from
@@ -1036,7 +1048,7 @@ wires the canonical layout into <code>preBuild</code> for you:</p>
 </code></pre></div>
 <div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.midnight.kuira.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha02&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.midnight.kuira.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha01&quot;</span>
 <span class="p">}</span>
 
 <span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
@@ -1055,7 +1067,7 @@ wires the canonical layout into <code>preBuild</code> for you:</p>
 </code></pre></div>
 <div class="highlight"><span class="filename">app/build.gradle</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;com.android.application&#39;</span>
-<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;com.midnight.kuira.contract&#39;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s1">&#39;0.1.0-alpha02&#39;</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;com.midnight.kuira.contract&#39;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s1">&#39;0.1.0-alpha01&#39;</span>
 <span class="o">}</span>
 
 <span class="n">kuiraContract</span><span class="w"> </span><span class="o">{</span>

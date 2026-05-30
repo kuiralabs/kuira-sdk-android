@@ -1071,6 +1071,43 @@ once Hilt is on.</p>
 <code>app/build/generated/hilt/</code>.</p>
 <hr />
 <h2 id="step-2-drop-the-sigilstatuspanel-composable-into-your-ui">Step 2 — Drop the <code>SigilStatusPanel</code> Composable into your UI<a class="headerlink" href="#step-2-drop-the-sigilstatuspanel-composable-into-your-ui" title="Permanent link">&para;</a></h2>
+<p>The panel composable takes a Hilt-provided <code>SigilPanelViewModel</code>
+(obtained via <code>hiltViewModel()</code> from <code>androidx.hilt.navigation.compose</code>)
+plus optional <code>Modifier</code>, <code>SigilPanelColors</code>, and an <code>onStatusChange</code>
+callback. The hosting Activity must subclass <code>FragmentActivity</code> so the
+panel's internal biometric prompts can run — <code>AppCompatActivity</code>
+satisfies this; <code>ComponentActivity</code> alone does not.</p>
+<div class="highlight"><span class="filename">app/src/main/.../MainActivity.kt</span><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">com.example.myapp</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">android.os.Bundle</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.activity.compose.setContent</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.appcompat.app.AppCompatActivity</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.MaterialTheme</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Surface</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxSize</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.example.myapp.ui.MainScreen</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dagger.hilt.android.AndroidEntryPoint</span>
+
+<span class="nd">@AndroidEntryPoint</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                       </span><span class="c1">// (1)</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">MaterialTheme</span><span class="w"> </span><span class="p">{</span><span class="w">                                      </span><span class="c1">// (2)</span>
+<span class="w">                </span><span class="n">Surface</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">MainScreen</span><span class="p">()</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><code>@AndroidEntryPoint</code> is required for <code>hiltViewModel()</code> to resolve.</li>
+<li>The panel uses Material 3 primitives, so a <code>MaterialTheme</code> ancestor
+   must be present.</li>
+</ol>
 <div class="highlight"><span class="filename">app/src/main/.../ui/MainScreen.kt</span><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">com.example.myapp.ui</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Column</span>
@@ -1079,22 +1116,23 @@ once Hilt is on.</p>
 <span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.dp</span>
-<span class="k">import</span><span class="w"> </span><span class="nn">androidx.fragment.app.FragmentActivity</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.hilt.navigation.compose.hiltViewModel</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.dapp.sigil.SigilStatusPanel</span>
 
 <span class="nd">@Composable</span>
-<span class="kd">fun</span><span class="w"> </span><span class="nf">MainScreen</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">FragmentActivity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">MainScreen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;My Midnight dApp&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">SigilStatusPanel</span><span class="p">(</span><span class="n">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">)</span><span class="w">   </span><span class="c1">// (1)</span>
+<span class="w">        </span><span class="c1">// `viewModel` is the only required argument; pass an</span>
+<span class="w">        </span><span class="c1">// `onStatusChange` callback if you want to react to the</span>
+<span class="w">        </span><span class="c1">// sigil&#39;s state transitions (None → Creating → Forged, etc.).</span>
+<span class="w">        </span><span class="n">SigilStatusPanel</span><span class="p">(</span>
+<span class="w">            </span><span class="n">viewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hiltViewModel</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">onStatusChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* status -&gt; ... */</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>The panel needs a <code>FragmentActivity</code> — biometric prompts require
-   it, so your host Activity must subclass <code>FragmentActivity</code> (or
-   <code>ComponentActivity</code> doesn't suffice for biometrics).</li>
-</ol>
 <p>Behaviourally, the panel renders one of four states:</p>
 <ul>
 <li><strong><code>None</code></strong> — no sigil on this device; surfaces a <strong>Forge</strong> button.</li>
