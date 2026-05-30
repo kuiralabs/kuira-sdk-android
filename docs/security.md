@@ -27,7 +27,7 @@ wrong venue for unpatched vulnerabilities.
 ### What to include
 
 - Affected version(s) — at minimum, the Maven coordinate
-  (e.g. `io.github.kuiralabs:midnight-sdk:0.1.0-alpha01`).
+  (e.g. `io.github.kuiralabs:midnight-sdk:{{ kuira_version }}`).
 - Steps to reproduce, or a proof-of-concept.
 - Your assessment of impact and exploitability.
 - Whether you want public credit, and how you'd like to be named.
@@ -141,7 +141,7 @@ We're explicit about this because hiding it isn't honest:
   are unrecoverable — sigil-derived wallets currently have no sovereign
   exit path. Recovery-phrase export (BIP-39 mnemonic display) is being
   built (`docs/projects/midnightWallet.md` references the wishlist item)
-  but **not yet shipped in `0.1.0-alpha01`**. Until then, the recovery
+  but **not yet shipped in `{{ kuira_version }}`**. Until then, the recovery
   path rides Google's availability.
 - **Session-cache theft after unlock:** Once a sigil session is unlocked,
   the decrypted seed lives in `MidnightSdkProvider`'s cached SDK instance.
@@ -197,9 +197,9 @@ verify a downloaded artifact:
 gpg --keyserver keyserver.ubuntu.com --recv-keys 189C70EE67261AF5866CF1D052D6F3437CF490FA
 
 # Download the artifact and its signature
-ARTIFACT=midnight-sdk-0.1.0-alpha01.aar
-curl -O https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-alpha01/$ARTIFACT
-curl -O https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-alpha01/$ARTIFACT.asc
+ARTIFACT=midnight-sdk-{{ kuira_version }}.aar
+curl -O https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/{{ kuira_version }}/$ARTIFACT
+curl -O https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/{{ kuira_version }}/$ARTIFACT.asc
 
 # Verify
 gpg --verify $ARTIFACT.asc $ARTIFACT

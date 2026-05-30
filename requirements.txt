@@ -1,3 +1,6 @@
 mkdocs-material>=9.5.43
 pymdown-extensions>=10.14
 pygments>=2.19.0
+# Variable substitution in markdown ({{ kuira_version }} etc.) — lets a
+# single edit to mkdocs.yml's extra: block ripple through every page.
+mkdocs-macros-plugin>=1.0.5

@@ -9,7 +9,7 @@ hide:
 <canvas class="kuira-hero__canvas" data-component="starfield" aria-hidden="true"></canvas>
 
 <div class="kuira-hero__inner" markdown>
-<div class="kuira-hero__eyebrow"><span>Kuira · v0.1.0-alpha01</span><span>Maven Central</span></div>
+<div class="kuira-hero__eyebrow"><span>Kuira · v{{ kuira_version }}</span><span>Maven Central</span></div>
 
 <h1 class="kuira-hero__headline">The first Android SDK <em>built for AI-paired development.</em></h1>
 
@@ -121,7 +121,7 @@ Deploy and call Compact circuits on-device. QuickJS contract runtime, witness pa
 
     // app/build.gradle.kts
     dependencies {
-        implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha01")
+        implementation("io.github.kuiralabs:dapp-ui:{{ kuira_version }}")
     }
     ```
 
@@ -137,7 +137,7 @@ Deploy and call Compact circuits on-device. QuickJS contract runtime, witness pa
 
     // app/build.gradle
     dependencies {
-        implementation 'io.github.kuiralabs:dapp-ui:0.1.0-alpha01'
+        implementation 'io.github.kuiralabs:dapp-ui:{{ kuira_version }}'
     }
     ```
 

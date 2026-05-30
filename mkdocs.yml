@@ -56,6 +56,13 @@ theme:
 plugins:
   - search
   - tags
+  # Jinja2 substitution — {{ kuira_version }}, {{ kuira_contract_plugin_version }}
+  # get expanded from the extra: block below. Single point of edit when
+  # bumping a release; ripples through every recipe and integration
+  # snippet automatically. on_error_fail surfaces typos as build errors
+  # rather than silent leakage.
+  - macros:
+      on_error_fail: true
 
 markdown_extensions:
   # Admonitions — !!! note / warning / tip / etc. Used heavily in recipes.
@@ -102,8 +109,18 @@ extra:
     - icon: fontawesome/solid/cube
       link: https://central.sonatype.com/namespace/io.github.kuiralabs
       name: Maven Central — io.github.kuiralabs
-  # Maven coordinate for the install snippet — referenced in templates.
-  kuira_version: 0.1.0-alpha01
+  # ─── Version pins (single source of truth) ────────────────────────
+  # Bump these here when shipping a new alpha; macros plugin substitutes
+  # them everywhere the markdown uses {{ kuira_version }} etc.
+  #
+  # - `kuira_version` — the SDK artifacts on Maven Central
+  #   (io.github.kuiralabs:dapp-ui, midnight-sdk, identity, …).
+  # - `kuira_contract_plugin_version` — the com.midnight.kuira.contract
+  #   Gradle plugin. Will track `kuira_version` from alpha02 onward,
+  #   but is a separate pin today because the plugin was authored
+  #   during alpha02 dev and was never published as alpha01.
+  kuira_version: "0.1.0-alpha01"
+  kuira_contract_plugin_version: "0.1.0-alpha02"
 
 extra_css:
   - assets/stylesheets/kuira.css

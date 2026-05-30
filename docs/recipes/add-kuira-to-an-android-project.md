@@ -85,7 +85,7 @@ Then add the SDK to your app module's dependencies:
     dependencies {
         // One line; pulls in midnight-sdk, wallet-runtime, identity,
         // compact-engine, designsystem, … as transitive api dependencies.
-        implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha01")
+        implementation("io.github.kuiralabs:dapp-ui:{{ kuira_version }}")
 
         // Hilt — required (the SDK is Hilt-first).
         implementation("com.google.dagger:hilt-android:2.58")
@@ -112,7 +112,7 @@ Then add the SDK to your app module's dependencies:
 
     ```groovy title="app/build.gradle"
     dependencies {
-        implementation 'io.github.kuiralabs:dapp-ui:0.1.0-alpha01'
+        implementation 'io.github.kuiralabs:dapp-ui:{{ kuira_version }}'
 
         implementation 'com.google.dagger:hilt-android:2.58'
         ksp 'com.google.dagger:hilt-compiler:2.58'

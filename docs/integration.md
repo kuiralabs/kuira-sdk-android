@@ -1,6 +1,6 @@
 # Kuira SDK — Integration Guide
 
-**Alpha — `0.1.0-alpha01`**
+**Alpha — `{{ kuira_version }}`**
 
 Build a Midnight zero-knowledge dApp on Android by adding **one dependency**, declaring your **own passkey domain**, and hosting **one tiny JSON file** on it. That's the whole on-ramp.
 
@@ -70,11 +70,11 @@ dependencies {
     //
     // With the wallet + sigil PANEL (Compose). Use this for Kicks / BBoard-style
     // apps that want the wallet UI dropped in.
-    implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha01")
+    implementation("io.github.kuiralabs:dapp-ui:{{ kuira_version }}")
     //
     // OR — headless (no Compose pulled by the SDK). For dApps building their
     // own UI top-to-bottom.
-    // implementation("io.github.kuiralabs:midnight-sdk:0.1.0-alpha01")
+    // implementation("io.github.kuiralabs:midnight-sdk:{{ kuira_version }}")
 
     // Hilt processor — required, the SDK is Hilt-first
     ksp("com.google.dagger:hilt-android-compiler:2.58")
@@ -241,7 +241,7 @@ this section will link directly to it.
 If you don't want the Compose wallet panel, swap the dep:
 
 ```kotlin
-implementation("io.github.kuiralabs:midnight-sdk:0.1.0-alpha01")  // no dapp-ui
+implementation("io.github.kuiralabs:midnight-sdk:{{ kuira_version }}")  // no dapp-ui
 ```
 
 You still own bootstrap + sigil forging — `MidnightSdkProvider.ensureSdk(...)`
@@ -260,7 +260,7 @@ throws `SigilRequiredException` until a sigil exists. Forge it through
 | Runtime: *"CLEARTEXT communication to 10.0.2.2 not permitted by network security policy"* | Step 5 — add the debug manifest. |
 | Biometric prompt fails / PRF returns null | Step 4 — `assetlinks.json` missing, wrong `package_name`, or wrong cert SHA-256. |
 | App balance stays at 0 after an airdrop | The wallet's background subscription is live; check `adb logcat` for indexer connectivity. On localnet, state is ephemeral — restarting the localnet wipes funds. |
-| `IllegalArgumentException: Could not find io.github.kuiralabs:…` | Check the alpha version is current; the SDK is `0.1.0-alpha01` at the time of writing. |
+| `IllegalArgumentException: Could not find io.github.kuiralabs:…` | Check the alpha version is current; the SDK is `{{ kuira_version }}` at the time of writing. |
 
 ---
 

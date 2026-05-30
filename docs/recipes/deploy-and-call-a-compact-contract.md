@@ -61,7 +61,7 @@ your APK's assets. The canonical layout is:
 - `assets/keys/*.prover`, `*.verifier`, `*.bzkir`
 
 There are two ways to wire it. The Gradle plugin is the recommended
-path; it ships with `0.1.0-alpha02`. Until that version is published
+path; it ships with `{{ kuira_contract_plugin_version }}`. Until that version is published
 to Maven Central, use the hand-rolled `Copy` task instead — it
 produces the same asset layout the plugin would.
 
@@ -79,7 +79,7 @@ produces the same asset layout the plugin would.
     ```kotlin title="app/build.gradle.kts"
     plugins {
         id("com.android.application")
-        id("com.midnight.kuira.contract") version "0.1.0-alpha02"
+        id("com.midnight.kuira.contract") version "{{ kuira_contract_plugin_version }}"
     }
 
     kuiraContract {
