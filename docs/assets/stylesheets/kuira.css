@@ -1,0 +1,910 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Kuira Android SDK — site skin
+ *
+ * Source of truth for tokens (do not edit values without checking):
+ *   • Palette: core:designsystem/theme/MidnightColors.kt
+ *   • Typography: core:designsystem/theme/DuskTypography.kt
+ *   • Glass panel: core:designsystem/component/GlassPanel.kt
+ *
+ * Design principles applied here:
+ *   1. Luminosity only — no chromatic color anywhere.
+ *   2. Hierarchy from size + weight + opacity. Never bold.
+ *   3. Stars against void: faint luminosity on dark surfaces.
+ *   4. Glass-panel containers: low-alpha fill + 1px hairline border.
+ *   5. Reduced motion respected for every animated surface.
+ *
+ * The landing page leads with the SDK's actual differentiator: the
+ * agent-mode developer experience (interactive prompt picker), not a
+ * generic brand-hero treatment.
+ * ───────────────────────────────────────────────────────────────────── */
+
+
+/* ── DARK SCHEME (canonical: Midnight) ─────────────────────────────── */
+
+[data-md-color-scheme="slate"] {
+    /* Palette — ported verbatim from MidnightColors.kt */
+    --kuira-void:           #000000;
+    --kuira-void-soft:      #0a0a0a;
+    --kuira-void-elevated:  #111111;
+
+    --kuira-light:          #ffffff;
+    --kuira-light-soft:     rgba(255, 255, 255, 0.85);
+    --kuira-light-muted:    rgba(255, 255, 255, 0.55);
+    --kuira-light-faint:    rgba(255, 255, 255, 0.22);
+    --kuira-light-barely:   rgba(255, 255, 255, 0.10);
+    --kuira-light-trace:    rgba(255, 255, 255, 0.04);
+
+    --kuira-star-bright:    rgba(255, 255, 255, 0.80);
+    --kuira-star-dim:       rgba(255, 255, 255, 0.22);
+
+    /* Body weights bumped relative to design system (W300 → W400 base)
+     * because the design system targets ~13-14px sizes; web body type
+     * runs 16-18px where W300 is fine. Keep at W300 for body. */
+    --kuira-body-weight:    300;
+
+    /* Map onto Material's CSS variables */
+    --md-default-bg-color:           var(--kuira-void);
+    --md-default-bg-color--light:    var(--kuira-void-soft);
+    --md-default-bg-color--lighter:  var(--kuira-void-elevated);
+    --md-default-fg-color:           var(--kuira-light-soft);
+    --md-default-fg-color--light:    var(--kuira-light-muted);
+    --md-default-fg-color--lighter:  var(--kuira-light-faint);
+    --md-default-fg-color--lightest: var(--kuira-light-barely);
+
+    --md-primary-fg-color:           var(--kuira-light);
+    --md-primary-bg-color:           var(--kuira-void);
+    --md-accent-fg-color:            var(--kuira-light);
+
+    --md-typeset-color:              var(--kuira-light-soft);
+    --md-typeset-a-color:            var(--kuira-light);
+
+    --md-code-bg-color:              var(--kuira-light-trace);
+    --md-code-fg-color:              var(--kuira-light-soft);
+    --md-code-hl-color:              var(--kuira-light-barely);
+
+    --md-footer-bg-color:            var(--kuira-void);
+    --md-footer-bg-color--dark:      var(--kuira-void);
+
+    --kuira-hairline:                var(--kuira-light-faint);
+    --kuira-glass-tint:              var(--kuira-light-trace);
+    --kuira-glass-tint-strong:       rgba(255, 255, 255, 0.06);
+}
+
+
+/* ── LIGHT SCHEME (off-brand fallback, properly readable) ──────────── */
+
+[data-md-color-scheme="default"] {
+    /* Inverted: white background, dusk-tier dark text. Opacities are
+     * deeper than the dark scheme's tier — W300 on white at 0.85 alpha
+     * looks anemic; bumped to 0.92 for body and reinforced with W400. */
+    --kuira-void:           #ffffff;
+    --kuira-void-soft:      #f4f4f4;
+    --kuira-void-elevated:  #ebebeb;
+
+    --kuira-light:          #000000;
+    --kuira-light-soft:     rgba(0, 0, 0, 0.92);
+    --kuira-light-muted:    rgba(0, 0, 0, 0.62);
+    --kuira-light-faint:    rgba(0, 0, 0, 0.18);
+    --kuira-light-barely:   rgba(0, 0, 0, 0.08);
+    --kuira-light-trace:    rgba(0, 0, 0, 0.04);
+
+    --kuira-star-bright:    rgba(0, 0, 0, 0.45);
+    --kuira-star-dim:       rgba(0, 0, 0, 0.18);
+
+    /* Light text on white at small sizes needs more weight. */
+    --kuira-body-weight:    400;
+
+    --md-default-bg-color:           var(--kuira-void);
+    --md-default-bg-color--light:    var(--kuira-void-soft);
+    --md-default-bg-color--lighter:  var(--kuira-void-elevated);
+    --md-default-fg-color:           var(--kuira-light-soft);
+    --md-default-fg-color--light:    var(--kuira-light-muted);
+    --md-default-fg-color--lighter:  var(--kuira-light-faint);
+    --md-default-fg-color--lightest: var(--kuira-light-barely);
+
+    --md-primary-fg-color:           var(--kuira-light);
+    --md-primary-bg-color:           var(--kuira-void);
+    --md-accent-fg-color:            var(--kuira-light);
+
+    --md-typeset-color:              var(--kuira-light-soft);
+    --md-typeset-a-color:            var(--kuira-light);
+
+    --md-code-bg-color:              var(--kuira-light-trace);
+    --md-code-fg-color:              var(--kuira-light-soft);
+    --md-code-hl-color:              var(--kuira-light-barely);
+
+    --md-footer-bg-color:            var(--kuira-void);
+    --md-footer-bg-color--dark:      var(--kuira-void-soft);
+
+    --kuira-hairline:                var(--kuira-light-faint);
+    --kuira-glass-tint:              var(--kuira-light-trace);
+    --kuira-glass-tint-strong:       rgba(0, 0, 0, 0.06);
+}
+
+
+/* ── Typography — port of DuskTypography.kt ───────────────────────── */
+
+:root {
+    --kuira-font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                       "Inter", "Helvetica Neue", Arial, sans-serif;
+    --kuira-font-mono: ui-monospace, "SF Mono", "JetBrains Mono",
+                       Menlo, Consolas, monospace;
+}
+
+.md-typeset {
+    font-family: var(--kuira-font-sans);
+    font-feature-settings: "ss01", "cv11";
+    font-weight: var(--kuira-body-weight);
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+    font-family: var(--kuira-font-sans);
+    color: var(--kuira-light);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+}
+
+.md-typeset h1 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+    margin-block: 0.4em 0.6em;
+}
+
+.md-typeset h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin-block: 2.5em 0.4em;
+    padding-top: 1.2em;
+    border-top: 1px solid var(--kuira-hairline);
+}
+
+.md-typeset h3 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-block: 1.8em 0.4em;
+}
+
+/* Eyebrow label — DuskTypography.labelTiny. */
+.md-typeset .kuira-eyebrow,
+.kuira-eyebrow {
+    font-family: var(--kuira-font-sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kuira-light-muted);
+    display: inline-block;
+}
+
+.md-typeset p,
+.md-typeset li {
+    font-weight: var(--kuira-body-weight);
+    line-height: 1.65;
+    color: var(--kuira-light-soft);
+}
+
+/* CRITICAL: kill Material's chromatic link color. The brand is
+ * luminosity-only. Link tone differs from body by weight + underline. */
+.md-typeset a,
+.md-typeset a:hover {
+    color: var(--kuira-light);
+    text-decoration-color: var(--kuira-light-faint);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 160ms ease;
+}
+
+.md-typeset a:hover {
+    text-decoration-color: var(--kuira-light);
+}
+
+.md-typeset code,
+.md-typeset pre {
+    font-family: var(--kuira-font-mono);
+    font-weight: 400;
+    font-size: 0.85em;
+}
+
+
+/* ── Suppress auto page-title where the page has its own hero/shell ── */
+
+/* mkdocs-material auto-renders the nav label as an H1 at the top of
+ * the page. On the home page (which has the hero) and the API page
+ * (which has the iframe shell) the auto title is redundant. :has() is
+ * widely supported (Chromium 105+, Firefox 121+, Safari 15.4+). */
+.md-content__inner:has(.kuira-hero) > h1:first-of-type,
+.md-content__inner:has(.kuira-api-shell) > h1:first-of-type {
+    display: none;
+}
+
+
+/* ── API reference iframe shell ───────────────────────────────────── */
+
+/* The API page hosts the aggregated Dokka HTML inside an iframe so the
+ * site's header + tabs + search remain visible while the user navigates
+ * the API tree. The shell adds an eyebrow with a "open standalone" link
+ * for cases where the iframe constraints matter (deep-linking, mobile
+ * vertical space). */
+.kuira-api-shell {
+    margin: 0 -1rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 140px);
+    min-height: 540px;
+}
+
+.kuira-api-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0.4rem 1rem;
+    border-bottom: 1px solid var(--kuira-hairline);
+    margin-bottom: 0.8rem;
+}
+
+.kuira-api-popout {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--kuira-light-muted) !important;
+    text-decoration: none !important;
+    transition: color 160ms ease;
+}
+
+.kuira-api-popout:hover {
+    color: var(--kuira-light) !important;
+}
+
+.kuira-api-frame {
+    flex: 1 1 auto;
+    width: 100%;
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 12px;
+    background: var(--kuira-glass-tint);
+    /* The Dokka site ships its own dark/light scheme; we let it own its
+     * interior styling rather than fighting it through ::part or
+     * cross-origin CSS injection. */
+}
+
+
+/* ── Surfaces — GlassPanel pattern ────────────────────────────────── */
+
+.md-typeset pre,
+.md-typeset .highlight {
+    background: var(--kuira-glass-tint);
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.md-typeset pre > code,
+.md-typeset .highlight pre {
+    background: transparent;
+    color: var(--kuira-light-soft);
+}
+
+.md-typeset :not(pre) > code {
+    background: var(--kuira-light-trace);
+    border: 1px solid var(--kuira-light-barely);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    color: var(--kuira-light);
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+    /* Suppress Material's per-type chromatic accents (tip teal, warn
+     * amber, note blue, …) — luminosity only across all types. */
+    --md-admonition-fg-color: var(--kuira-light);
+    --md-admonition-bg-color: transparent;
+    background: var(--kuira-glass-tint);
+    border: 1px solid var(--kuira-hairline) !important;
+    border-left: 1px solid var(--kuira-hairline) !important;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+    background: transparent !important;
+    color: var(--kuira-light);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    border-bottom: 1px solid var(--kuira-hairline);
+}
+
+/* Icon mask — the colored emoji-style glyph next to the title. */
+.md-typeset .admonition-title::before,
+.md-typeset summary::before {
+    background-color: var(--kuira-light-muted) !important;
+}
+
+.md-typeset table:not([class]) {
+    background: transparent;
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+    background: var(--kuira-light-trace);
+    color: var(--kuira-light);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    border-bottom: 1px solid var(--kuira-hairline);
+}
+
+.md-typeset table:not([class]) td {
+    border-top: 1px solid var(--kuira-light-barely);
+    color: var(--kuira-light-soft);
+    font-weight: var(--kuira-body-weight);
+}
+
+.md-typeset hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--kuira-hairline) 20%,
+        var(--kuira-hairline) 80%,
+        transparent
+    );
+    margin-block: 3em;
+}
+
+
+/* ── Header + nav — restrained, restyled ──────────────────────────── */
+
+/* Material defaults map header elements onto --md-primary-bg-color (the
+ * "text on the colored primary block" color). Since our header is
+ * transparent rather than a colored bar, we override every header text
+ * and icon explicitly to the luminosity-tier --kuira-light token — dark
+ * in light mode, white in dark mode. */
+.md-header,
+.md-tabs {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 1px solid var(--kuira-light-barely);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--kuira-light);
+}
+
+.md-header__title,
+.md-header__topic,
+.md-header__ellipsis,
+.md-header__button {
+    color: var(--kuira-light);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+/* Repository link (kuiralabs/kuira-sdk-android + star/fork counts). */
+.md-header__source,
+.md-source,
+.md-source:hover,
+.md-source__repository,
+.md-source__facts,
+.md-source__fact {
+    color: var(--kuira-light);
+    fill: var(--kuira-light);
+}
+
+.md-source__icon svg,
+.md-header__button svg {
+    fill: var(--kuira-light);
+}
+
+/* Theme toggle, drawer-open, search icons — every header glyph. */
+.md-header [class*="md-icon"],
+.md-header svg {
+    fill: var(--kuira-light);
+    color: var(--kuira-light);
+}
+
+/* Brand K logo — the SVG ships with hardcoded white fill so it reads
+ * on the dark scheme. Invert under the light scheme so the K renders
+ * as solid black against white. Sized to fill most of the header bar
+ * (header is ~48px tall; the K is naturally taller than wide so we
+ * let width auto-scale to preserve its proportions). */
+.md-header__button.md-logo {
+    padding: 4px 8px;
+    height: auto;
+}
+
+.md-header__button.md-logo img {
+    width: auto;
+    height: 40px;
+    display: block;
+}
+
+[data-md-color-scheme="default"] .md-header__button.md-logo img {
+    filter: invert(1);
+}
+
+/* Tabs row — under the header. */
+.md-tabs__link {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    opacity: 0.65;
+    color: var(--kuira-light);
+}
+
+.md-tabs__link:hover,
+.md-tabs__link--active {
+    opacity: 1;
+    color: var(--kuira-light);
+}
+
+/* Side nav (left rail). */
+.md-nav__title {
+    color: var(--kuira-light);
+    background: transparent;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
+
+.md-nav__link {
+    font-weight: var(--kuira-body-weight);
+    color: var(--kuira-light-soft);
+}
+
+.md-nav__link:hover {
+    color: var(--kuira-light);
+}
+
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
+    color: var(--kuira-light);
+    font-weight: 500;
+}
+
+/* Search box — proper contrast for input, icon, and placeholder. */
+.md-search__form {
+    background: var(--kuira-glass-tint-strong);
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 8px;
+    transition: border-color 160ms ease;
+}
+
+.md-search__form:hover,
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+    background: var(--kuira-glass-tint-strong);
+    border-color: var(--kuira-light-muted);
+}
+
+.md-search__input {
+    color: var(--kuira-light);
+    font-weight: var(--kuira-body-weight);
+}
+
+.md-search__input::placeholder,
+.md-search__input::-webkit-input-placeholder {
+    color: var(--kuira-light-muted);
+    opacity: 1;
+}
+
+.md-search__icon,
+.md-search__icon svg {
+    fill: var(--kuira-light-muted);
+    color: var(--kuira-light-muted);
+}
+
+.md-search__icon:hover svg {
+    fill: var(--kuira-light);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+ *                            HERO v2
+ *
+ * The landing page leads with the SDK's actual differentiator: the
+ * agent-mode developer experience. No giant logomark. A positioning
+ * statement + an interactive demo of the agent prompt picker.
+ * ─────────────────────────────────────────────────────────────────── */
+
+.kuira-hero {
+    position: relative;
+    margin: 0 -1.5rem 4rem;
+    padding: 5rem 2rem 3rem;
+    overflow: hidden;
+    isolation: isolate;
+    border-bottom: 1px solid var(--kuira-light-barely);
+}
+
+.kuira-hero__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.85;
+}
+
+.kuira-hero__inner {
+    max-width: 64rem;
+    margin: 0 auto;
+}
+
+.kuira-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    color: var(--kuira-light-muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 2.2em;
+}
+
+.kuira-hero__eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--kuira-light);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+    animation: kuira-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes kuira-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kuira-hero__eyebrow::before { animation: none; }
+}
+
+.kuira-hero__eyebrow > span + span {
+    border-left: 1px solid var(--kuira-light-faint);
+    padding-left: 0.8em;
+}
+
+.kuira-hero__headline {
+    font-family: var(--kuira-font-sans);
+    font-weight: 200;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--kuira-light);
+    margin: 0 0 0.4em;
+}
+
+.kuira-hero__headline em {
+    font-style: normal;
+    color: var(--kuira-light);
+    background: linear-gradient(
+        90deg,
+        var(--kuira-light) 0%,
+        var(--kuira-light-muted) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.kuira-hero__lede {
+    font-size: 1.15rem;
+    font-weight: var(--kuira-body-weight);
+    line-height: 1.55;
+    color: var(--kuira-light-soft);
+    max-width: 40rem;
+    margin: 0 0 2.4em;
+}
+
+.kuira-hero__cta {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+
+/* ── Prompt picker — interactive widget ────────────────────────────── */
+
+.kuira-picker {
+    margin: 0 0 4rem;
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 16px;
+    background: var(--kuira-glass-tint-strong);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.kuira-picker__header {
+    padding: 1.5rem 2rem 1.2rem;
+    border-bottom: 1px solid var(--kuira-hairline);
+}
+
+.kuira-picker__title {
+    margin: 0 0 0.3em;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--kuira-light);
+    /* Suppress the global H2 hairline + padding — picker has its own
+     * frame; the global divider would double-up inside the panel.
+     * Also suppress the ¶ permalink anchor inside its child .headerlink. */
+    padding-top: 0;
+    border-top: none;
+    letter-spacing: -0.01em;
+}
+
+.kuira-picker__title .headerlink,
+.kuira-feature__title .headerlink,
+.kuira-hero__headline .headerlink {
+    display: none;
+}
+
+.kuira-picker__subtitle {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--kuira-light-muted);
+    font-weight: var(--kuira-body-weight);
+}
+
+.kuira-picker__row {
+    padding: 1.4rem 2rem;
+    border-bottom: 1px solid var(--kuira-hairline);
+}
+
+.kuira-picker__row:last-child {
+    border-bottom: none;
+}
+
+.kuira-picker__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kuira-light-muted);
+    margin-bottom: 0.9em;
+    display: block;
+}
+
+.kuira-picker__options {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.kuira-picker__chip {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--kuira-hairline);
+    color: var(--kuira-light-soft);
+    border-radius: 999px;
+    padding: 0.5em 1.1em;
+    font-size: 0.88rem;
+    font-weight: var(--kuira-body-weight);
+    font-family: var(--kuira-font-sans);
+    cursor: pointer;
+    transition: all 160ms ease;
+    letter-spacing: 0.01em;
+}
+
+.kuira-picker__chip:hover {
+    border-color: var(--kuira-light-muted);
+    color: var(--kuira-light);
+}
+
+.kuira-picker__chip[aria-pressed="true"] {
+    background: var(--kuira-light);
+    color: var(--kuira-void);
+    border-color: var(--kuira-light);
+}
+
+.kuira-picker__output {
+    padding: 1.4rem 2rem 1.8rem;
+    background: var(--kuira-glass-tint);
+}
+
+.kuira-picker__prompt {
+    font-family: var(--kuira-font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--kuira-light-soft);
+    background: var(--kuira-void);
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0 0 1rem;
+    min-height: 7rem;
+}
+
+[data-md-color-scheme="default"] .kuira-picker__prompt {
+    background: var(--kuira-void-soft);
+}
+
+.kuira-picker__actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.kuira-picker__action {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--kuira-hairline);
+    color: var(--kuira-light);
+    border-radius: 999px;
+    padding: 0.55em 1.2em;
+    font-size: 0.86rem;
+    font-weight: 400;
+    font-family: var(--kuira-font-sans);
+    cursor: pointer;
+    transition: all 160ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: none;
+}
+
+.kuira-picker__action:hover {
+    border-color: var(--kuira-light);
+    background: var(--kuira-glass-tint-strong);
+}
+
+.kuira-picker__action--primary {
+    background: var(--kuira-light);
+    color: var(--kuira-void);
+    border-color: var(--kuira-light);
+}
+
+.kuira-picker__action--primary:hover {
+    background: var(--kuira-light);
+    color: var(--kuira-void);
+    opacity: 0.85;
+}
+
+
+/* ── Feature triptych — three columns below the picker ─────────────── */
+
+.kuira-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 0 0 4rem;
+}
+
+@media (max-width: 760px) {
+    .kuira-features { grid-template-columns: 1fr; }
+}
+
+.kuira-feature {
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem 1.6rem;
+    background: var(--kuira-glass-tint);
+}
+
+.kuira-feature__eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kuira-light-muted);
+    margin-bottom: 1em;
+    display: block;
+}
+
+.kuira-feature__title {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--kuira-light);
+    margin: 0 0 0.6em;
+    letter-spacing: -0.01em;
+}
+
+.kuira-feature__body {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--kuira-light-soft);
+    margin: 0;
+    font-weight: var(--kuira-body-weight);
+}
+
+
+/* ── Module catalog — pill stack ──────────────────────────────────── */
+
+.kuira-modules {
+    margin: 0 0 4rem;
+}
+
+.kuira-modules__title {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kuira-light-muted);
+    margin-bottom: 1.2em;
+}
+
+.kuira-modules__list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.kuira-modules__pill {
+    font-family: var(--kuira-font-mono);
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--kuira-light-soft);
+    background: var(--kuira-glass-tint);
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 999px;
+    padding: 0.35em 0.9em;
+}
+
+
+/* ── Buttons (md-button) ──────────────────────────────────────────── */
+
+.md-typeset .md-button {
+    background: var(--kuira-light);
+    color: var(--kuira-void) !important;
+    border: 1px solid var(--kuira-light);
+    border-radius: 999px;
+    padding: 0.6em 1.4em;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    transition: opacity 180ms ease;
+    text-decoration: none;
+}
+
+.md-typeset .md-button:hover {
+    background: var(--kuira-light);
+    color: var(--kuira-void) !important;
+    border-color: var(--kuira-light);
+    opacity: 0.82;
+    text-decoration: none;
+}
+
+.md-typeset .md-button:not(.md-button--primary) {
+    background: transparent;
+    color: var(--kuira-light) !important;
+    border: 1px solid var(--kuira-hairline);
+}
+
+.md-typeset .md-button:not(.md-button--primary):hover {
+    background: var(--kuira-glass-tint);
+    color: var(--kuira-light) !important;
+    border-color: var(--kuira-light-muted);
+}
+
+
+/* ── Misc polish ──────────────────────────────────────────────────── */
+
+.md-footer { background: var(--kuira-void); border-top: 1px solid var(--kuira-light-barely); }
+.md-footer-meta { background: var(--kuira-void); }
+.md-search__output { background: var(--kuira-void-soft); border: 1px solid var(--kuira-hairline); }
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--kuira-light-faint) transparent;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--kuira-light-faint); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--kuira-light-muted); }
+
+::selection { background: var(--kuira-light); color: var(--kuira-void); }

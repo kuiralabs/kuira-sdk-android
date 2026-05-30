@@ -5,9 +5,14 @@ repo_url: https://github.com/kuiralabs/kuira-sdk-android
 repo_name: kuiralabs/kuira-sdk-android
 edit_uri: edit/main/docs/
 
-# We deliberately do not ship a custom theme — Material's defaults are
-# good enough that the docs read as a real SDK site, and we avoid the
-# maintenance burden of bespoke CSS. Dark mode toggle is built in.
+# Custom theme overrides live in `assets/stylesheets/kuira.css` —
+# strict Midnight palette (Void + Light, no color), Dusk typography
+# (W200-W500, never bold), GlassPanel-style code blocks, animated
+# starfield + DustVortex effects on the landing page.
+# Source of truth for the palette + type scale is the Kuira design
+# system (core:designsystem/theme/MidnightColors.kt +
+# core:designsystem/theme/DuskTypography.kt); CSS variables here are
+# direct ports of those tokens.
 theme:
   name: material
   palette:
@@ -16,17 +21,19 @@ theme:
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
+    # Light scheme — off-brand fallback for accessibility. Inverts the
+    # Void/Light tokens (white background, void-tier text opacities) so
+    # the same rhythm of luminosity holds in either mode.
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    # Dark scheme — the canonical Midnight palette. "Light in darkness,
+    # stars against void." All the effects assume this scheme; in light
+    # mode the canvases auto-adapt to a softer dust-on-white treatment.
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
@@ -41,6 +48,8 @@ theme:
     - content.code.annotate  # inline annotations on code lines
     - content.tabs.link      # link tabbed content blocks across the page
     - toc.follow             # sidebar TOC tracks scroll position
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   icon:
     repo: fontawesome/brands/github
 
@@ -83,7 +92,7 @@ nav:
     - Add Kuira to an Android project: recipes/add-kuira-to-an-android-project.md
     - Set up Sigil identity: recipes/set-up-sigil-identity.md
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
-  - API reference: api/index.html
+  - API reference: api-reference.md
   - Security: security.md
 
 extra:
@@ -96,5 +105,14 @@ extra:
   # Maven coordinate for the install snippet — referenced in templates.
   kuira_version: 0.1.0-alpha01
 
+extra_css:
+  - assets/stylesheets/kuira.css
+
 extra_javascript:
   - assets/javascripts/copy-prompt.js
+  # Hero starfield — reduced-motion-aware, bails if the canvas isn't on
+  # the page. Landing page only.
+  - assets/javascripts/starfield.js
+  # Interactive agent-prompt picker — the SDK's headline differentiator.
+  # Landing page only; bails cleanly elsewhere.
+  - assets/javascripts/prompt-picker.js
