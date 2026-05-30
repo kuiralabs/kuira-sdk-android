@@ -26,7 +26,7 @@ Discover context first: run `git remote -v` in the project. Take the GitHub user
 Then execute the four-step recipe:
 1. `./gradlew :app:signingReport` to capture the debug-variant SHA-256 (add `--no-configuration-cache` if the project sets `org.gradle.configuration-cache=true`).
 2. Compose a single-fingerprint assetlinks.json with the project's applicationId and that SHA-256.
-3. Commit it to `<that-slug>/<that-slug>.github.io` at `.well-known/assetlinks.json`; if that repo also already hosts assetlinks for other apps, append a new target rather than overwriting.
+3. Commit it to `<that-slug>/<that-slug>.github.io` at `.well-known/assetlinks.json`; if that repo also already hosts assetlinks for other apps, append a new target rather than overwriting. **If you're creating that repo fresh, also commit an empty `.nojekyll` file at the repo root — without it, Jekyll silently strips the `.well-known/` path from the Pages build and the URL returns 404 even though the file is in the repo.**
 4. Set PASSKEY_RP_ID in the project's PasskeyConfig module to the chosen domain. Verify with `curl -I` against the live URL; then have the consumer reinstall the debug APK and tap Forge.
 
 After EACH step, output a one-sentence summary of what just happened so the human can follow without reading every tool result. Pause for explicit approval before any git push to a repo other than the project itself, and before any adb install / uninstall.
@@ -161,7 +161,8 @@ git push
 
 ### Case B — the backing repo doesn't exist yet
 
-Create it, drop the JSON in, push, enable Pages:
+Create it, drop the JSON in **plus a `.nojekyll` marker**, push, enable
+Pages:
 
 ```bash
 gh repo create <user-or-org>/<user-or-org>.github.io --public --add-readme
@@ -169,12 +170,38 @@ gh repo clone <user-or-org>/<user-or-org>.github.io
 cd <user-or-org>.github.io
 mkdir -p .well-known
 # Write .well-known/assetlinks.json with the JSON from Step 2.
+touch .nojekyll
 git add . && git commit -m "host assetlinks.json"
 git push
 ```
 
-Then enable Pages via the repo's **Settings → Pages → Source: `main`**
-(or via `gh api -X POST /repos/<user-or-org>/<user-or-org>.github.io/pages -f source[branch]=main`).
+!!! danger "Why `.nojekyll` matters"
+    GitHub Pages's default static-site processor is Jekyll, which
+    **silently excludes every dot-prefixed path** from the build
+    output. Without `.nojekyll`, `.well-known/assetlinks.json` is in
+    your repo and visible in the GitHub web UI, but the deployed Pages
+    site returns `HTTP 404` for it.
+
+    Adding an empty `.nojekyll` file at the repo root tells Pages to
+    skip Jekyll entirely and serve the repo's files verbatim. This is
+    the universal fix for any Pages site that hosts a `.well-known/*`
+    path — App Links, passkey assetlinks, ACME challenge files,
+    `security.txt`, etc.
+
+    Symptom if you forget: the apex `https://<name>.github.io/`
+    returns 200 (Pages is live), the file is present in the repo,
+    but `curl -I https://<name>.github.io/.well-known/assetlinks.json`
+    returns 404. Add `.nojekyll` and re-push to fix; the deploy
+    re-runs in ~30 seconds.
+
+For `<user-or-org>/<user-or-org>.github.io` repos, GitHub Pages
+auto-enables on the default branch. If for some reason it didn't:
+**Settings → Pages → Source: `main`** in the repo UI, or via API:
+
+```bash
+gh api -X POST '/repos/<user-or-org>/<user-or-org>.github.io/pages' \
+  -f 'source[branch]=main' -f 'source[path]=/'
+```
 
 Either way: GitHub Pages serves `.json` as `application/json` by
 default — no extra config. The file is live at
@@ -243,7 +270,13 @@ Common `curl -I` red flags:
 - `301` / `302` — passkey API doesn't follow redirects; fix the redirect
 - `403` / `401` — allow `/.well-known/*` through your auth
 - `content-type: text/html` — force `application/json` via your hosting config
-- `404` — file not deployed, or your `rpId` doesn't match the hostname you `curl`ed
+- `404` on GitHub Pages, file IS in the repo — Jekyll silently stripped
+  the `.well-known/` dotfile path. Add an empty `.nojekyll` at repo
+  root, push, wait ~30s for redeploy (see Step 3 Case B for the full
+  explanation)
+- `404`, file is NOT in the repo / wrong hostname — re-check your push
+  landed on the served branch, and that the `rpId` matches the
+  hostname you `curl`ed
 
 If the `curl` looks clean and Forge still fails, paste your hosting URL
 + package name + fingerprint into Google's
