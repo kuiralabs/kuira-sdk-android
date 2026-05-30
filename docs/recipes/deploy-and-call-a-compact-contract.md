@@ -55,10 +55,17 @@ equivalent) inside the `contract/` directory first.
 ## Step 1 — Sync the compiled artifacts into your app's assets
 
 The SDK's compact engine loads contract code + circuit keys from
-your APK's assets. The `com.midnight.kuira.contract` Gradle plugin
-wires the canonical layout into `preBuild` for you:
+your APK's assets. The canonical layout is:
 
-=== "Gradle (Kotlin DSL)"
+- `assets/runtime/<contract-alias>-contract.js`
+- `assets/keys/*.prover`, `*.verifier`, `*.bzkir`
+
+There are two ways to wire it. The Gradle plugin is the recommended
+path; it ships with `0.1.0-alpha02`. Until that version is published
+to Maven Central, use the hand-rolled `Copy` task instead — it
+produces the same asset layout the plugin would.
+
+=== "Gradle plugin (alpha02+)"
 
     ```kotlin title="settings.gradle.kts"
     pluginManagement {
@@ -72,7 +79,7 @@ wires the canonical layout into `preBuild` for you:
     ```kotlin title="app/build.gradle.kts"
     plugins {
         id("com.android.application")
-        id("com.midnight.kuira.contract") version "0.1.0-alpha01"
+        id("com.midnight.kuira.contract") version "0.1.0-alpha02"
     }
 
     kuiraContract {
@@ -81,49 +88,71 @@ wires the canonical layout into `preBuild` for you:
     }
     ```
 
-=== "Gradle (Groovy)"
+    1. The plugin ships to Maven Central. Add `mavenCentral()` to
+       `pluginManagement.repositories` so `plugins { id(...) }` can
+       resolve it. (A Gradle Plugin Portal listing is planned for
+       `alpha03` so this extra repo entry will go away.)
+    2. `alias` is optional — defaults to the dirname of `source`. So
+       `contract/src/managed/penalty` resolves to alias `penalty`,
+       which lands the contract JS as
+       `assets/runtime/penalty-contract.js`.
 
-    ```groovy title="settings.gradle"
-    pluginManagement {
-        repositories {
-            gradlePluginPortal()
-            mavenCentral()                                                  // (1)
+    The plugin registers two tasks:
+
+    - **`validateKuiraContractSource`** — verification task that
+      always runs and fails fast with a helpful message if the source
+      directory is missing (`"compile your contract first — npm run
+      compact …"`). Catches the "forgot to compile" mistake at build
+      time, not at runtime.
+    - **`syncContractAssets`** — the actual copy: `contract/index.js`
+      → `assets/runtime/<alias>-contract.js`, `keys/*.{prover,verifier}`
+      and `zkir/*.bzkir` → `assets/keys/`. Wired into `preBuild` so
+      it runs automatically before any APK is assembled.
+
+=== "Hand-rolled Copy task (alpha01 today)"
+
+    Until the plugin lands on Central, hand-roll the same task. This
+    is what the plugin replaces — same output, more lines.
+
+    ```kotlin title="app/build.gradle.kts"
+    val contractDir = rootProject.file("contract")
+    val contractManaged = file("$contractDir/src/managed/your-contract")
+
+    val syncContractAssets = tasks.register<Copy>("syncContractAssets") {
+        description = "Sync compiled Compact contract artifacts into app assets."
+        group = "build"
+
+        from("$contractManaged/contract") {
+            include("index.js")
+            rename { "your-contract-contract.js" }
+            into("runtime")
+        }
+        from("$contractManaged/keys") {
+            include("*.prover", "*.verifier")
+            into("keys")
+        }
+        from("$contractManaged/zkir") {
+            include("*.bzkir")
+            into("keys")
+        }
+        into("src/main/assets")
+
+        doFirst {
+            if (!contractManaged.exists()) {
+                throw GradleException(
+                    "Contract not compiled at $contractManaged — run " +
+                    "`npm run compact` in your contract directory first.",
+                )
+            }
         }
     }
+
+    tasks.named("preBuild") { dependsOn(syncContractAssets) }
     ```
 
-    ```groovy title="app/build.gradle"
-    plugins {
-        id 'com.android.application'
-        id 'com.midnight.kuira.contract' version '0.1.0-alpha01'
-    }
-
-    kuiraContract {
-        source.set('contract/src/managed/your-contract')
-        // alias.set('your-contract')                                       // (2)
-    }
-    ```
-
-1. The plugin ships to Maven Central. Add `mavenCentral()` to
-   `pluginManagement.repositories` so `plugins { id(...) }` can
-   resolve it. (A Gradle Plugin Portal listing is planned for
-   `alpha03` so this extra repo entry will go away.)
-2. `alias` is optional — defaults to the dirname of `source`. So
-   `contract/src/managed/penalty` resolves to alias `penalty`,
-   which lands the contract JS as
-   `assets/runtime/penalty-contract.js`.
-
-The plugin registers two tasks:
-
-- **`validateKuiraContractSource`** — verification task that always
-  runs and fails fast with a helpful message if the source directory
-  is missing (`"compile your contract first — npm run compact …"`).
-  Catches the "forgot to compile" mistake at build time, not at
-  runtime.
-- **`syncContractAssets`** — the actual copy: `contract/index.js`
-  → `assets/runtime/<alias>-contract.js`, `keys/*.{prover,verifier}`
-  and `zkir/*.bzkir` → `assets/keys/`. Wired into `preBuild` so it
-  runs automatically before any APK is assembled.
+    When you migrate to alpha02, replace the entire block above with
+    the four-line `kuiraContract { source.set("…") }` plugin pattern
+    in the other tab.
 
 **Verify:** after `./gradlew :app:assembleDebug`, unzip the resulting
 APK and confirm `assets/runtime/your-contract-contract.js`,
