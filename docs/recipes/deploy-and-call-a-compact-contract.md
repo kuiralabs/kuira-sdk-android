@@ -90,8 +90,8 @@ produces the same asset layout the plugin would.
 
     1. The plugin ships to Maven Central. Add `mavenCentral()` to
        `pluginManagement.repositories` so `plugins { id(...) }` can
-       resolve it. (A Gradle Plugin Portal listing is planned for
-       `alpha03` so this extra repo entry will go away.)
+       resolve it. (A Gradle Plugin Portal listing is on the roadmap;
+       once published there, this extra repo entry goes away.)
     2. `alias` is optional — defaults to the dirname of `source`. So
        `contract/src/managed/penalty` resolves to alias `penalty`,
        which lands the contract JS as
@@ -150,9 +150,9 @@ produces the same asset layout the plugin would.
     tasks.named("preBuild") { dependsOn(syncContractAssets) }
     ```
 
-    When you migrate to alpha02, replace the entire block above with
-    the four-line `kuiraContract { source.set("…") }` plugin pattern
-    in the other tab.
+    Once the `com.midnight.kuira.contract` plugin is published to
+    Maven Central, replace this entire block with the four-line
+    `kuiraContract { source.set("…") }` plugin pattern in the other tab.
 
 **Verify:** after `./gradlew :app:assembleDebug`, unzip the resulting
 APK and confirm `assets/runtime/your-contract-contract.js`,
@@ -187,9 +187,9 @@ suspend fun buildContract(
 1. `null` while you're still going to call `deploy()` — set this to the
    returned address for every subsequent call.
 2. Stub witness — replace with your contract's actual witness layout.
-   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), see wishlist
-   `#12` (typed witness factories on the alpha02 roadmap); today you
-   pack bytes by hand.
+   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), typed witness
+   factories are on the roadmap to eliminate the manual byte-packing;
+   today you pack bytes by hand.
 
 **Verify:** the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
@@ -240,9 +240,9 @@ The call:
 4. Returns the post-call ledger state.
 
 For long-running circuits (sub-second to a few seconds), wire up
-`TransactionBalancer` progress callbacks for UX feedback —
-wishlist `#1` covers the SDK-side primitive
-(`awaitIndexerSynced(blockHeight)`) that replaces today's fixed delays.
+`TransactionBalancer` progress callbacks for UX feedback. An SDK-side
+`awaitIndexerSynced(blockHeight)` primitive is on the roadmap; it
+will replace today's fixed delays once it lands.
 
 **Verify:** the transaction confirms within ~10s on PREPROD. Query
 `contract.ledger()` and check the field your circuit mutates.
@@ -255,8 +255,8 @@ wishlist `#1` covers the SDK-side primitive
 |---|---|---|
 | `Contract not compiled at …` at Gradle time | Step 1 prereq not done. | Run `npm run compact` in `contract/`. |
 | `Unsupported bytecode version` at runtime | Your compactc emitted bytecode for a different runtime version than the SDK ships. | Pin compactc to match your contract's `@midnight-ntwrk/compact-runtime` version. |
-| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Today's workaround: 3–5s delay between deploy and first call. Wishlist `#1` (`awaitIndexerSynced`) lands in alpha02. |
-| `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout. Typed factories (wishlist `#12`) eliminate this whole class of bug in alpha02. |
+| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Today's workaround: 3–5s delay between deploy and first call. An SDK-side `awaitIndexerSynced` primitive is on the roadmap. |
+| `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout. Typed witness factories on the roadmap eliminate this whole class of bug. |
 | `Deadline expired` even though you set it in the future | Using `System.currentTimeMillis()` instead of chain time. | Switch to chain-anchored time (last block's timestamp). |
 
 ---

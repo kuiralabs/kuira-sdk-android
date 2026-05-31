@@ -139,16 +139,18 @@ We're explicit about this because hiding it isn't honest:
 - **User-side passkey loss:** If a user loses their Google Password
   Manager account *and* their Block Store backup is unrecoverable, funds
   are unrecoverable — sigil-derived wallets currently have no sovereign
-  exit path. Recovery-phrase export (BIP-39 mnemonic display) is being
-  built (`docs/projects/midnightWallet.md` references the wishlist item)
-  but **not yet shipped in `{{ kuira_version }}`**. Until then, the recovery
-  path rides Google's availability.
+  exit path. Recovery-phrase export (BIP-39 mnemonic display) is on the
+  roadmap but **not yet shipped in `{{ kuira_version }}`**. Until then,
+  the recovery path rides Google's availability. (The next-generation
+  Sigil V2 architecture, announced on the [home page](index.md#whats-coming-next-sigil-v2),
+  ships PIN-based recovery via an opaque cloud bucket as a separate
+  track.)
 - **Session-cache theft after unlock:** Once a sigil session is unlocked,
   the decrypted seed lives in `MidnightSdkProvider`'s cached SDK instance.
   Subsequent value-bearing calls do not re-prompt for biometric.
   Auto-lock (idle timeout, background timeout, screen-lock observer) is
-  on the roadmap (`docs/projects/midnightWallet.md` wishlist #14) but
-  **not yet shipped**. A borrowed-while-unlocked device is a real risk.
+  on the roadmap but **not yet shipped**. A borrowed-while-unlocked
+  device is a real risk.
 - **BLS proving parameters supply chain:** The SDK fetches Midnight's
   protocol-level proving keys (BLS params + wallet / zswap / dust
   circuits) from `midnight-s3-fileshare-dev-eu-west-1`, a Midnight-team

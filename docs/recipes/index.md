@@ -88,7 +88,7 @@ both for humans and agents:
 | **Troubleshooting** | Common failures + their fixes. |
 | **Agent prompt** | The :material-content-copy: button at the top of every recipe. |
 
-When the cookbook framework expands in `alpha03+` to include session
-state, live-step gates, and CLI-based verifiers, the existing recipes
+If the cookbook framework grows to include session state, live-step
+gates, or CLI-based verifiers in a future release, the existing recipes
 keep working — the new machinery layers on top without rewriting the
 content.

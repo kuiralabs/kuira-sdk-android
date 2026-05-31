@@ -5,7 +5,7 @@ tags:
   - contracts
   - hello-world
 prerequisites:
-  - compactc installed (the Kuira-pinned version is 0.31.0; see Toolchain below)
+  - compactc installed (the Kuira-pinned version is {{ compactc_version }}; see Toolchain below)
   - npm + a basic understanding of Compact's pragma + import directives
 agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/hello-compact.md
 ---
@@ -20,7 +20,7 @@ which `compactc` + language + runtime versions go together, and you
 have a clear next stop for everything beyond "make the counter go up."
 
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/hello-compact.md"
-     data-task="Write a minimal counter Compact contract for a Midnight dApp — single Counter ledger field, single zero-argument increment circuit. Pin compactc 0.31.0, pragma language_version 0.23.0, @midnight-ntwrk/compact-runtime 0.16.0. Compile via compactc, verify via mn contract inspect. Direct deeper learning to the official Midnight contract examples at midnightntwrk/midnight-docs."></div>
+     data-task="Write a minimal counter Compact contract for a Midnight dApp — single Counter ledger field, single zero-argument increment circuit. Pin compactc {{ compactc_version }}, pragma language_version {{ compact_language_version }}, @midnight-ntwrk/compact-runtime {{ compact_runtime_version }}. Compile via compactc, verify via mn contract inspect. Direct deeper learning to the official Midnight contract examples at midnightntwrk/midnight-docs."></div>
 
 !!! tip "What this recipe is, and what it isn't"
     This is the **SDK's minimum-viable Compact intro** — enough to read
@@ -44,7 +44,7 @@ have a clear next stop for everything beyond "make the counter go up."
 ## The counter contract
 
 ```compact title="contract/src/counter.compact"
-pragma language_version 0.23.0;
+pragma language_version {{ compact_language_version }};
 
 import CompactStandardLibrary;
 
@@ -57,7 +57,7 @@ export circuit increment(): [] {
 
 Six lines. What each one does:
 
-- `pragma language_version 0.23.0;` — pins the Compact language
+- `pragma language_version {{ compact_language_version }};` — pins the Compact language
   grammar version. The Compact language is versioned independently
   from `compactc` (the compiler) and from `@midnight-ntwrk/compact-runtime`
   (the JS runtime that compiled contracts call into). Mismatched
@@ -90,16 +90,16 @@ you typed:
 
 | Layer | Pinned value | Where it lives |
 |---|---|---|
-| `compactc` binary | **0.31.0** | `~/.compact/versions/0.31.0/aarch64-darwin/compactc` |
-| Compact language pragma | **0.23.0** | `pragma language_version <v>;` in your `.compact` source |
-| `@midnight-ntwrk/compact-runtime` | **0.16.0** | `contract/package.json` deps |
+| `compactc` binary | **{{ compactc_version }}** | `~/.compact/versions/{{ compactc_version }}/aarch64-darwin/compactc` |
+| Compact language pragma | **{{ compact_language_version }}** | `pragma language_version <v>;` in your `.compact` source |
+| `@midnight-ntwrk/compact-runtime` | **{{ compact_runtime_version }}** | `contract/package.json` deps |
 
 Each `compactc` binary self-introspects:
 
 ```bash
-compactc --version            # → 0.31.0
-compactc --language-version   # → 0.23.0
-compactc --runtime-version    # → 0.16.0
+compactc --version            # → {{ compactc_version }}
+compactc --language-version   # → {{ compact_language_version }}
+compactc --runtime-version    # → {{ compact_runtime_version }}
 ```
 
 When upgrading, run the three flags on the new binary first to
@@ -115,7 +115,7 @@ From your project root:
 
 ```bash
 mkdir -p contract/src/managed
-~/.compact/versions/0.31.0/aarch64-darwin/compactc \
+~/.compact/versions/{{ compactc_version }}/aarch64-darwin/compactc \
     contract/src/counter.compact \
     contract/src/managed/counter
 ```
@@ -135,9 +135,9 @@ mn contract inspect --managed contract/src/managed/counter
 Output should show:
 
 ```
-Compiler:       0.31.0
-Language:       0.23.0
-Runtime:        0.16.0
+Compiler:       {{ compactc_version }}
+Language:       {{ compact_language_version }}
+Runtime:        {{ compact_runtime_version }}
 
 Circuits
   increment()  — impure, proof

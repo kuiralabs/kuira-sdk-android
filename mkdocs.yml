@@ -128,6 +128,15 @@ extra:
   #   during alpha02 dev and was never published as alpha01.
   kuira_version: "0.1.0-alpha01"
   kuira_contract_plugin_version: "0.1.0-alpha02"
+  # Compact toolchain triple — versioned independently from the Kuira
+  # SDK alphas. compactc / language pragma / runtime npm package each
+  # move on their own cadence; mismatched values surface as
+  # `language version X.Y.Z mismatch` at compile time. Run
+  # `compactc --version`, `--language-version`, `--runtime-version`
+  # on a new binary to discover the matching triple before bumping.
+  compactc_version: "0.31.0"
+  compact_language_version: "0.23.0"
+  compact_runtime_version: "0.16.0"
 
 extra_css:
   - assets/stylesheets/kuira.css

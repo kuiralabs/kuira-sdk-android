@@ -32,9 +32,11 @@ recognises your passkey domain, and has the Hilt graph wired so any
 
 ### Version pin matrix
 
-The SDK is built against the toolchain below; using a newer Kotlin without
-a matching KSP version is the #1 cause of a build error. Pin to these
-exact versions until `alpha02` is published, then bump together.
+The SDK is built against the toolchain below; using a newer Kotlin
+without a matching KSP version is the #1 cause of a build error. Pin
+to these exact versions for the current SDK release; when the next
+alpha bumps a toolchain version, this table updates and the SDK pin
+matrix bumps with it.
 
 | Tool | Version | Notes |
 |---|---|---|
