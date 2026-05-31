@@ -524,6 +524,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#whats-coming-next-sigil-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's coming next — Sigil V2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -994,6 +1005,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#whats-coming-next-sigil-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's coming next — Sigil V2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1225,6 +1247,44 @@ tracked future cycle.</p>
 cover (compromised devices, malicious co-process dApps, session-cache
 theft) — see <a href="security/">Security</a> § <em>What Kuira does NOT protect
 against</em>.</p>
+<hr />
+<h2 id="whats-coming-next-sigil-v2">What's coming next — Sigil V2<a class="headerlink" href="#whats-coming-next-sigil-v2" title="Permanent link">&para;</a></h2>
+<p>The currently-shipped sigil architecture (<strong>Sigil V1</strong>) derives the
+wallet seed deterministically from a passkey PRF assertion. That gives
+a one-tap onboarding story but binds the sigil to a single WebAuthn
+<code>rpId</code> — so a user's funds cannot be shared across multiple Kuira
+apps that ship under different domains, and recovery is gated on the
+same Google account holding the synced passkey.</p>
+<p><strong>Sigil V2</strong> keeps the one-tap-onboarding promise but treats the
+master seed as portable data: PRF becomes an <em>unlock key</em> for a
+persisted seed envelope rather than the seed itself. Three properties
+follow:</p>
+<ul>
+<li><strong>Cross-app sigil portability via explicit enrollment.</strong> A user
+  installs a second Kuira app, taps "Use my Kuira sigil from
+  [Wallet]," and the existing app hands the seed over a secure
+  biometric-gated AIDL channel. Both apps now share the same wallet,
+  same DID, same on-chain history.</li>
+<li><strong>Cross-device, cross-Google-account recovery.</strong> PIN-based
+  recovery via an opaque cloud bucket (Signal SVR2 pattern, no
+  enclave needed); the seed survives device loss and account
+  changes.</li>
+<li><strong>Midnight Passport plug-in path.</strong> Versioned envelope codec +
+  storage-tier interface + frozen HKDF signer namespace reserve a
+  clean integration surface for Midnight's protocol-native account
+  abstraction, universal DID, and verifiable-credential layers when
+  Passport's spec is public.</li>
+</ul>
+<p>The same primitive is already shipped in production by Dashlane,
+Bitwarden, 1Password, Signal SVR2, and WhatsApp E2EE backups — five
+independent systems that converged on the same shape for the same
+reason.</p>
+<p>Sigil V2 is the <strong>next architecture</strong> for Kuira, not the next alpha.
+Track A (master seed lifecycle, tiered storage, cross-app enrollment)
+ships after <code>alpha02</code>; Track B (cloud-bucket PIN recovery) follows.
+Detailed design lives in the (private) monorepo at
+<code>docs/research/SIGIL_V2_DESIGN.md</code>, with the Track A plan and viability
+analysis alongside.</p>
 <hr />
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>Apache License 2.0 — see <a href="https://github.com/kuiralabs/kuira-sdk-android/blob/main/LICENSE">LICENSE</a>.</p>
