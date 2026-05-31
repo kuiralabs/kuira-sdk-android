@@ -11,13 +11,13 @@
       
       
       
-        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/deploy-and-call-a-compact-contract/">
+        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/run-kuira-doctor/">
       
       
-        <link rel="prev" href="../hello-compact/">
+        <link rel="prev" href="../deploy-and-call-a-compact-contract/">
       
       
-        <link rel="next" href="../run-kuira-doctor/">
+        <link rel="next" href="../../api-reference/">
       
       
         
@@ -28,7 +28,7 @@
     
     
   
-    <title>Deploy and call a Compact contract - Kuira Android SDK</title>
+    <title>Run kuiraDoctor before each release - Kuira Android SDK</title>
   
 
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploy-and-call-a-compact-contract" class="md-skip">
+        <a href="#run-kuiradoctor-before-each-release" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deploy and call a Compact contract
+              Run kuiraDoctor before each release
             
           </span>
         </div>
@@ -689,6 +689,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy-and-call-a-compact-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy and call a Compact contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -708,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    Deploy and call a Compact contract
+    Run kuiraDoctor before each release
   
 
     
@@ -726,7 +754,7 @@
   <span class="md-ellipsis">
     
   
-    Deploy and call a Compact contract
+    Run kuiraDoctor before each release
   
 
     
@@ -752,10 +780,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#what-it-catches" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        What it catches
       
     </span>
   </a>
@@ -763,10 +791,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-sync-the-compiled-artifacts-into-your-apps-assets" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Sync the compiled artifacts into your app's assets
+        Quick start
       
     </span>
   </a>
@@ -774,10 +802,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-build-the-contract-handle" class="md-nav__link">
+  <a href="#severities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Build the contract handle
+        Severities
       
     </span>
   </a>
@@ -785,21 +813,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-deploy" class="md-nav__link">
+  <a href="#wiring-details" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Deploy
+        Wiring details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-discovery
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-call-a-circuit" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#gating-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Call a circuit
+        Gating CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-kuiradoctor-doesnt-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When kuiraDoctor doesn't run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does NOT check
       
     </span>
   </a>
@@ -832,34 +899,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../run-kuira-doctor/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Run kuiraDoctor before each release
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -953,10 +992,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#what-it-catches" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        What it catches
       
     </span>
   </a>
@@ -964,10 +1003,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-sync-the-compiled-artifacts-into-your-apps-assets" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Sync the compiled artifacts into your app's assets
+        Quick start
       
     </span>
   </a>
@@ -975,10 +1014,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-build-the-contract-handle" class="md-nav__link">
+  <a href="#severities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Build the contract handle
+        Severities
       
     </span>
   </a>
@@ -986,21 +1025,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-deploy" class="md-nav__link">
+  <a href="#wiring-details" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Deploy
+        Wiring details
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-discovery
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-call-a-circuit" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#gating-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Call a circuit
+        Gating CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-kuiradoctor-doesnt-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When kuiraDoctor doesn't run
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does-not-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does NOT check
       
     </span>
   </a>
@@ -1050,28 +1128,28 @@
       
       
       
-        <span class="md-tag">circuits</span>
+        <span class="md-tag">doctor</span>
       
     
       
       
       
       
-        <span class="md-tag">compact</span>
+        <span class="md-tag">preflight</span>
       
     
       
       
       
       
-        <span class="md-tag">contracts</span>
+        <span class="md-tag">release</span>
       
     
       
       
       
       
-        <span class="md-tag">proving</span>
+        <span class="md-tag">troubleshooting</span>
       
     
   </nav>
@@ -1081,261 +1159,224 @@
   
 
 
-<h1 id="deploy-and-call-a-compact-contract">Deploy and call a Compact contract<a class="headerlink" href="#deploy-and-call-a-compact-contract" title="Permanent link">&para;</a></h1>
-<p><strong>Outcome:</strong> your app deploys a compiled Compact contract, gets the
-contract address, and calls one of its circuits with witnesses — going
-end-to-end from <code>.compact</code> source to an on-chain transaction.</p>
-<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/deploy-and-call-a-compact-contract.md"
-     data-task="Wire a compiled Compact contract into this Kuira-using Android app — sync the compiled artifacts into assets, construct a MidnightContract with the right witnesses, deploy it via the SDK, and call one of its circuits."></div>
+<h1 id="run-kuiradoctor-before-each-release">Run <code>kuiraDoctor</code> before each release<a class="headerlink" href="#run-kuiradoctor-before-each-release" title="Permanent link">&para;</a></h1>
+<p><strong>Outcome:</strong> the <code>kuiraDoctor</code> Gradle task runs four preflight checks
+against your app's configuration and surfaces every misconfiguration
+that the SDK would otherwise convert into a runtime crash on a user's
+device. Run it before each release; wire it into CI to gate builds.</p>
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/run-kuira-doctor.md"
+     data-task="Wire kuiraDoctor into this Kuira-using Android project so it runs before each release build. Set kuiraContract.rpId to the project's passkey hostname so the assetlinks reachability check is active. Set kuiraContract.requireDoctorPass to true on CI / release-build configurations so FAIL severities gate the APK."></div>
 
 <hr />
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li>The previous two recipes completed (SDK added, sigil bootstrapped).</li>
-<li>A <code>.compact</code> contract that has been <strong>compiled with the matching
-  compactc version</strong> — the runtime version pinned in your contract's
-  <code>package.json</code> (<code>@midnight-ntwrk/compact-runtime</code>) must match what
-  the SDK expects. If you mismatch, the runtime will throw a
-  bytecode-version error at load.</li>
-<li>Compiled artifacts under <code>contract/src/managed/&lt;contract-name&gt;/</code>:</li>
-<li><code>contract/index.js</code> — the contract runtime entry</li>
-<li><code>keys/*.prover</code>, <code>keys/*.verifier</code> — per-circuit proving + verifying keys</li>
-<li><code>zkir/*.bzkir</code> — the ZK intermediate representation</li>
-</ul>
-<p>If you don't have these yet, run <code>npm run compact</code> (or your project's
-equivalent) inside the <code>contract/</code> directory first.</p>
-<div class="admonition warning">
-<p class="admonition-title">Compact authoring is currently a 'you provide' prereq</p>
-<p>This recipe wires a <strong>pre-compiled</strong> Compact contract into your
-Android app. <strong>It does not teach Compact authoring</strong> — writing a
-<code>.compact</code> source file, installing <code>compactc</code>, or setting up the
-JS toolchain. Until the upcoming <strong>Hello Compact</strong> recipe lands,
-the cleanest path is to clone the <a href="https://github.com/midnightntwrk">Midnight Network sample
-contracts</a> or use an existing
-contract from a Midnight Build Club fellowship project. Recipe 3
-assumes the <code>contract/src/managed/&lt;name&gt;/</code> directory already
-exists; getting to that point is on you.</p>
-</div>
+<h2 id="what-it-catches">What it catches<a class="headerlink" href="#what-it-catches" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What goes wrong without it (on a user's device)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>minSdk floor</strong></td>
+<td>Manifest merger surfaces <code>minSdkVersion N cannot be smaller than version 30</code> mid-build — but in the wrong place, deep in the AGP error stack.</td>
+</tr>
+<tr>
+<td><strong>Debug-cleartext manifest</strong></td>
+<td>Localnet indexer connection fails with a generic <code>IOException</code>; user sees an unrecoverable "Loading…" state with no diagnostic.</td>
+</tr>
+<tr>
+<td><strong><code>assetlinks.json</code> reachability + applicationId match</strong></td>
+<td>Forge fails with <code>RP_ID_MISMATCH</code> / <code>PRF authentication failed</code> / silent biometric dismissal. Causes include: file not hosted, wrong hostname, Jekyll-stripped the <code>.well-known</code> path on GitHub Pages, applicationId not in the targets array.</td>
+</tr>
+<tr>
+<td><strong>Compact runtime pin</strong></td>
+<td>QuickJS contract runtime crashes with <code>Unsupported bytecode version</code> the first time the user calls a circuit.</td>
+</tr>
+</tbody>
+</table>
+<p>The runtime-pin check is also enforced by <code>validateKuiraContractSource</code>
+at build time independently; <code>kuiraDoctor</code> rolls it into a unified
+report so the consumer sees one pass/fail surface, not two.</p>
 <hr />
-<h2 id="step-1-sync-the-compiled-artifacts-into-your-apps-assets">Step 1 — Sync the compiled artifacts into your app's assets<a class="headerlink" href="#step-1-sync-the-compiled-artifacts-into-your-apps-assets" title="Permanent link">&para;</a></h2>
-<p>The SDK's compact engine loads contract code + circuit keys from
-your APK's assets. The canonical layout is:</p>
-<ul>
-<li><code>assets/runtime/&lt;contract-alias&gt;-contract.js</code></li>
-<li><code>assets/keys/*.prover</code>, <code>*.verifier</code>, <code>*.bzkir</code></li>
-</ul>
-<p>There are two ways to wire it. The Gradle plugin is the recommended
-path; it ships with <code>0.1.0-alpha02</code>. Until that version is published
-to Maven Central, use the hand-rolled <code>Copy</code> task instead — it
-produces the same asset layout the plugin would.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle plugin (alpha02+)</label><label for="__tabbed_1_2">Hand-rolled Copy task (alpha01 today)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><span class="filename">settings.gradle.kts</span><pre><span></span><code><span class="n">pluginManagement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">gradlePluginPortal</span><span class="p">()</span>
-<span class="w">        </span><span class="n">mavenCentral</span><span class="p">()</span><span class="w">                                                  </span><span class="c1">// (1)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>Add to your <code>app/build.gradle.kts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.midnight.kuira.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha02&quot;</span>
 <span class="p">}</span>
 
 <span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;contract/src/managed/your-contract&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// alias.set(&quot;your-contract&quot;)                                       // (2)</span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;contract/src/managed/&lt;your-contract&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// For the assetlinks-reachability check:</span>
+<span class="w">    </span><span class="n">rpId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;kuiralabs.github.io&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// YOUR passkey hostname</span>
+
+<span class="w">    </span><span class="c1">// Optional: convert FAIL severities into build failures.</span>
+<span class="w">    </span><span class="c1">// Default false (warn-only). Set true on CI / release builds.</span>
+<span class="w">    </span><span class="c1">// requireDoctorPass.set(true)</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>The plugin ships to Maven Central. Add <code>mavenCentral()</code> to
-   <code>pluginManagement.repositories</code> so <code>plugins { id(...) }</code> can
-   resolve it. (A Gradle Plugin Portal listing is on the roadmap;
-   once published there, this extra repo entry goes away.)</li>
-<li><code>alias</code> is optional — defaults to the dirname of <code>source</code>. So
-   <code>contract/src/managed/penalty</code> resolves to alias <code>penalty</code>,
-   which lands the contract JS as
-   <code>assets/runtime/penalty-contract.js</code>.</li>
-</ol>
-<p>The plugin registers two tasks:</p>
-<ul>
-<li><strong><code>validateKuiraContractSource</code></strong> — verification task that
-  always runs and fails fast with a helpful message if the source
-  directory is missing (<code>"compile your contract first — npm run
-  compact …"</code>). Catches the "forgot to compile" mistake at build
-  time, not at runtime.</li>
-<li><strong><code>syncContractAssets</code></strong> — the actual copy: <code>contract/index.js</code>
-  → <code>assets/runtime/&lt;alias&gt;-contract.js</code>, <code>keys/*.{prover,verifier}</code>
-  and <code>zkir/*.bzkir</code> → <code>assets/keys/</code>. Wired into <code>preBuild</code> so
-  it runs automatically before any APK is assembled.</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<p>Until the plugin lands on Central, hand-roll the same task. This
-is what the plugin replaces — same output, more lines.</p>
-<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">contractDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">&quot;contract&quot;</span><span class="p">)</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">contractManaged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractDir</span><span class="s">/src/managed/your-contract&quot;</span><span class="p">)</span>
-
-<span class="kd">val</span><span class="w"> </span><span class="nv">syncContractAssets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="o">&lt;</span><span class="n">Copy</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;syncContractAssets&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sync compiled Compact contract artifacts into app assets.&quot;</span>
-<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;build&quot;</span>
-
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;index.js&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">rename</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;your-contract-contract.js&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;runtime&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;*.prover&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*.verifier&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/zkir&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;*.bzkir&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;src/main/assets&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="n">doFirst</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">contractManaged</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">GradleException</span><span class="p">(</span>
-<span class="w">                </span><span class="s">&quot;Contract not compiled at </span><span class="si">$</span><span class="n">contractManaged</span><span class="s"> — run &quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                </span><span class="s">&quot;`npm run compact` in your contract directory first.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dependsOn</span><span class="p">(</span><span class="n">syncContractAssets</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<p>Then run:</p>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:kuiraDoctor
 </code></pre></div>
-<p>Once the <code>com.midnight.kuira.contract</code> plugin is published to
-Maven Central, replace this entire block with the four-line
-<code>kuiraContract { source.set("…") }</code> plugin pattern in the other tab.</p>
-</div>
-</div>
-</div>
-<p><strong>Verify:</strong> after <code>./gradlew :app:assembleDebug</code>, unzip the resulting
-APK and confirm <code>assets/runtime/your-contract-contract.js</code>,
-<code>assets/keys/*.prover</code>, <code>assets/keys/*.verifier</code>, <code>assets/keys/*.bzkir</code>
-are all present.</p>
+<p>You'll see a unified report:</p>
+<div class="highlight"><pre><span></span><code>─── kuiraDoctor ─────────────────────────────────────────
+✓ PASS  minSdk
+       minSdk = 30 (Kuira SDK requires ≥ 30)
+✓ PASS  debug-cleartext
+       Debug manifest permits cleartext (localnet builds work).
+✗ FAIL  assetlinks-reachability
+       https://kuiralabs.github.io/.well-known/assetlinks.json returned HTTP 404.
+       Common causes:
+         1. The file is not yet hosted at this path — see the
+            &#39;Bind your app to a passkey domain&#39; recipe.
+         2. The file IS in the repo but GitHub Pages stripped it via Jekyll:
+            commit an empty .nojekyll at the repo root + redeploy.
+         3. The hostname in kuiraContract.rpId is wrong — verify
+            https://kuiralabs.github.io/ loads at all.
+✓ PASS  compact-runtime-pin
+       Contract emits + consumer pins @midnight-ntwrk/compact-runtime 0.16.0.
+─────────────────────────────────────────────────────────
+3 passed, 0 warning, 1 error, 0 skipped
+</code></pre></div>
+<p>The task does <strong>not</strong> fail by default — it logs the report and
+returns success. Wire <code>requireDoctorPass</code> to <code>true</code> to gate builds
+on the report (see "Gating CI" below).</p>
 <hr />
-<h2 id="step-2-build-the-contract-handle">Step 2 — Build the contract handle<a class="headerlink" href="#step-2-build-the-contract-handle" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.sdk.contract.MidnightContract</span>
-<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.compact.WitnessResult</span>
-
-<span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">buildContract</span><span class="p">(</span>
-<span class="w">    </span><span class="n">sdk</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightSdk</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wallet</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightWallet</span><span class="p">,</span>
-<span class="w">    </span><span class="n">contractAddress</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">    </span><span class="c1">// (1)</span>
-<span class="p">):</span><span class="w"> </span><span class="n">MidnightContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;runtime/your-contract-contract.js&quot;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contractAddress</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wallet</span><span class="p">.</span><span class="na">coinPublicKey</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">witnesses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;localSecret&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Any?</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">            </span><span class="n">WitnessResult</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="c1">// (2)</span>
-<span class="w">        </span><span class="p">},</span>
+<h2 id="severities">Severities<a class="headerlink" href="#severities" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Severity</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✓</td>
+<td><strong>PASS</strong></td>
+<td>Check ran and passed.</td>
+</tr>
+<tr>
+<td>⚠</td>
+<td><strong>WARN</strong></td>
+<td>Check ran but couldn't be fully verified (network unreachable, ambiguous config). Doesn't fail the build regardless of <code>requireDoctorPass</code>.</td>
+</tr>
+<tr>
+<td>✗</td>
+<td><strong>FAIL</strong></td>
+<td>Check ran and found a real misconfiguration. Fails the build when <code>requireDoctorPass = true</code>.</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>SKIP</strong></td>
+<td>Check couldn't run (missing prerequisite, e.g. <code>rpId</code> not set). Doesn't fail the build.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="wiring-details">Wiring details<a class="headerlink" href="#wiring-details" title="Permanent link">&para;</a></h2>
+<h3 id="auto-discovery">Auto-discovery<a class="headerlink" href="#auto-discovery" title="Permanent link">&para;</a></h3>
+<p><code>kuiraDoctor</code> reads two values from your <code>app/build.gradle.kts</code> via
+simple regex:</p>
+<ul>
+<li><code>applicationId</code> from <code>applicationId = "com.example.app"</code></li>
+<li><code>minSdk</code> from <code>minSdk = 30</code></li>
+</ul>
+<p>If your build script uses computed values or property delegates that
+the regex doesn't match, the corresponding checks downgrade to SKIP
+with a log line. Override explicitly via task properties if needed:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="o">&lt;</span><span class="n">com</span><span class="p">.</span><span class="na">midnight</span><span class="p">.</span><span class="na">kuira</span><span class="p">.</span><span class="na">contract</span><span class="p">.</span><span class="na">KuiraDoctorTask</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;kuiraDoctor&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">applicationId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;com.example.app&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">minSdk</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="gating-ci">Gating CI<a class="headerlink" href="#gating-ci" title="Permanent link">&para;</a></h3>
+<p>For a CI workflow that blocks merges on <code>kuiraDoctor</code> issues:</p>
+<div class="highlight"><span class="filename">.github/workflows/release.yml</span><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run preflight checks</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./gradlew :app:kuiraDoctor -PkuiraDoctorRequirePass=true</span>
+</code></pre></div>
+<p>And in <code>app/build.gradle.kts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// …</span>
+<span class="w">    </span><span class="n">requireDoctorPass</span><span class="p">.</span><span class="na">set</span><span class="p">(</span>
+<span class="w">        </span><span class="n">providers</span><span class="p">.</span><span class="na">gradleProperty</span><span class="p">(</span><span class="s">&quot;kuiraDoctorRequirePass&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toBoolean</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElse</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li><code>null</code> while you're still going to call <code>deploy()</code> — set this to the
-   returned address for every subsequent call.</li>
-<li>Stub witness — replace with your contract's actual witness layout.
-   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), typed witness
-   factories are on the roadmap to eliminate the manual byte-packing;
-   today you pack bytes by hand.</li>
-</ol>
-<p><strong>Verify:</strong> the function returns without throwing — meaning the
-QuickJS runtime found and loaded your contract JS, and witness
-descriptors typecheck against the bytecode.</p>
-<hr />
-<h2 id="step-3-deploy">Step 3 — Deploy<a class="headerlink" href="#step-3-deploy" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">deployResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deployResult</span><span class="p">.</span><span class="na">address</span>
-<span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="s">&quot;MyApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Deployed at </span><span class="si">$</span><span class="n">address</span><span class="s">&quot;</span><span class="p">)</span>
+<p>This keeps <code>requireDoctorPass = false</code> (warn-only) for local dev
+builds and flips it to <code>true</code> only when the CI job explicitly sets
+the property — devs are never blocked, the release lane is.</p>
+<h3 id="when-kuiradoctor-doesnt-run">When <code>kuiraDoctor</code> doesn't run<a class="headerlink" href="#when-kuiradoctor-doesnt-run" title="Permanent link">&para;</a></h3>
+<p>The task is <strong>not wired into <code>preBuild</code></strong>. Reasoning:</p>
+<ul>
+<li>The assetlinks check needs network I/O. Adding a network call to
+  every local build is hostile.</li>
+<li>Most developers run <code>assembleDebug</code> many times per day. Re-running
+  preflight every time is wasteful.</li>
+</ul>
+<p>If you want to opt into <code>preBuild</code>-coupling (sacrificing the above
+for tighter local feedback), add to your <code>app/build.gradle.kts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">dependsOn</span><span class="p">(</span><span class="s">&quot;kuiraDoctor&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
-<p><code>deploy()</code> performs the deploy transaction, waits for the indexer to
-confirm it, and returns the contract address. Re-use this address for
-every subsequent <code>MidnightContract.create { … address = address }</code> call.</p>
-<p><strong>Verify:</strong> <code>address</code> should be a 64-character hex string. Querying
-<code>sdk.indexerClient.queryContractState(address)</code> should return a
-non-null state.</p>
 <hr />
-<h2 id="step-4-call-a-circuit">Step 4 — Call a circuit<a class="headerlink" href="#step-4-call-a-circuit" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span>
-<span class="w">    </span><span class="n">circuit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;myCircuit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;playerNum&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;deadline&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">600</span><span class="p">),</span><span class="w">  </span><span class="c1">// (1)</span>
-<span class="w">    </span><span class="p">),</span>
-<span class="p">)</span>
-</code></pre></div>
-<ol>
-<li><strong>Avoid wall-clock for chain deadlines.</strong> Use the latest block
-   timestamp from the indexer — wall-clock drift between the dApp
-   and the chain can blow your deadline calculation. See the SDK's
-   <code>wallet.tip()</code> helper for the chain-time-anchored value.</li>
-</ol>
-<p>The call:</p>
-<ol>
-<li>Generates the ZK proof using the artifacts you synced in step 1.</li>
-<li>Submits the resulting transaction via the wallet.</li>
-<li>Waits for indexer confirmation.</li>
-<li>Returns the post-call ledger state.</li>
-</ol>
-<p>For long-running circuits (sub-second to a few seconds), wire up
-<code>TransactionBalancer</code> progress callbacks for UX feedback. An SDK-side
-<code>awaitIndexerSynced(blockHeight)</code> primitive is on the roadmap; it
-will replace today's fixed delays once it lands.</p>
-<p><strong>Verify:</strong> the transaction confirms within ~10s on PREPROD. Query
-<code>contract.ledger()</code> and check the field your circuit mutates.</p>
+<h2 id="what-it-does-not-check">What it does NOT check<a class="headerlink" href="#what-it-does-not-check" title="Permanent link">&para;</a></h2>
+<p>These are out of scope for v1 but on the roadmap:</p>
+<ul>
+<li><strong><code>&lt;queries&gt;</code> declarations</strong> for cross-app sigil enrollment (Sigil V2
+  Track A).</li>
+<li><strong>Hilt wiring</strong> of <code>PasskeyConfig</code> (Dagger already catches this at
+  build time, just with a verbose error).</li>
+<li><strong>Signing-cert fingerprint comparison</strong> against the hosted
+  <code>assetlinks.json</code> (today it checks the file is reachable + lists
+  your <code>applicationId</code>; doesn't verify the listed SHA-256 matches
+  <code>./gradlew signingReport</code>).</li>
+</ul>
+<p>For these classes today, see the
+<a href="../bind-your-app-to-a-passkey-domain/">Bind your app to a passkey domain</a>
+recipe's troubleshooting table.</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Symptom</th>
-<th>Likely cause</th>
-<th>Fix</th>
+<th>What it means</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Contract not compiled at …</code> at Gradle time</td>
-<td>Step 1 prereq not done.</td>
-<td>Run <code>npm run compact</code> in <code>contract/</code>.</td>
+<td>Task succeeds but report shows ✗ FAIL rows</td>
+<td><code>requireDoctorPass</code> is <code>false</code> (the default). Set it to <code>true</code> to convert FAIL into a build failure.</td>
 </tr>
 <tr>
-<td><code>Unsupported bytecode version</code> at runtime</td>
-<td>Your compactc emitted bytecode for a different runtime version than the SDK ships.</td>
-<td>Pin compactc to match your contract's <code>@midnight-ntwrk/compact-runtime</code> version.</td>
+<td>All checks report — SKIP</td>
+<td>Plugin extension is unset / not configured. Set <code>source.set(...)</code> and <code>rpId.set(...)</code> to give checks something to verify.</td>
 </tr>
 <tr>
-<td><code>Indexer says contract not found</code> after deploy</td>
-<td>Indexer hasn't caught up yet.</td>
-<td>Today's workaround: 3–5s delay between deploy and first call. An SDK-side <code>awaitIndexerSynced</code> primitive is on the roadmap.</td>
+<td><code>assetlinks-reachability</code> always WARNs with "Could not reach"</td>
+<td>Network unreachable or <code>https://&lt;rpId&gt;/</code> doesn't resolve. The check uses 5-second timeouts and treats network errors as WARN, not FAIL, so a CI environment without internet still ships.</td>
 </tr>
 <tr>
-<td><code>Invalid witness</code> at call time</td>
-<td>Witness <code>ByteArray</code> length doesn't match the circuit's declared shape.</td>
-<td>Cross-check the witness layout. Typed witness factories on the roadmap eliminate this whole class of bug.</td>
-</tr>
-<tr>
-<td><code>Deadline expired</code> even though you set it in the future</td>
-<td>Using <code>System.currentTimeMillis()</code> instead of chain time.</td>
-<td>Switch to chain-anchored time (last block's timestamp).</td>
+<td><code>minSdk</code> reports SKIP</td>
+<td>Auto-discovery didn't find <code>minSdk = N</code> in your <code>app/build.gradle.kts</code>. Set <code>tasks.named&lt;KuiraDoctorTask&gt;("kuiraDoctor") { minSdk.set(...) }</code> explicitly.</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="whats-next">What's next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Browse the <a href="../api/">API reference</a></strong> for the full <code>MidnightContract</code>,
-  <code>MidnightWallet</code>, and circuit-execution surface.</li>
-<li><strong><a href="../../security/#verifying-releases">Security § Verifying releases</a></strong>
-  — pin and verify the exact SDK artifact for your release builds.</li>
+<li><strong><a href="../bind-your-app-to-a-passkey-domain/">Bind your app to a passkey domain</a></strong>
+  — the recipe <code>kuiraDoctor</code>'s assetlinks check verifies you've
+  followed.</li>
+<li><strong><a href="../hello-compact/">Hello Compact</a></strong> — the compact-runtime-pin
+  check kicks in once you have a compiled contract under
+  <code>contract/src/managed/</code>.</li>
 </ul>
 
 
