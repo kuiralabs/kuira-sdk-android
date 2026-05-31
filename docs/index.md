@@ -38,6 +38,7 @@ Pick a task and an agent. We generate the prompt; you paste it into your tool. S
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="true" data-task-key="add-kuira-to-an-android-project" data-task-title="Add the Kuira SDK">Add Kuira to a project</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="bind-your-app-to-a-passkey-domain" data-task-title="Bind your app to a passkey domain">Bind to a passkey domain</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="set-up-sigil-identity" data-task-title="Set up Sigil identity">Set up Sigil identity</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="hello-compact" data-task-title="Write a minimal Compact contract">Hello Compact</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="deploy-and-call-a-compact-contract" data-task-title="Deploy a Compact contract and call a circuit">Deploy a Compact contract</button>
 </div>
 </div>
@@ -172,7 +173,7 @@ tracked future cycle.
 
 | Gap | Workaround today | Closes in |
 |---|---|---|
-| **No Compact authoring tooling** — recipes assume you already have a compiled `.compact` contract under `contract/src/managed/<name>/`; the SDK does not teach how to write `.compact`, install `compactc`, or pin `@midnight-ntwrk/compact-runtime`. | Clone an example contract from [midnightntwrk](https://github.com/midnightntwrk) or a Midnight fellowship project. | `alpha02` — **Hello Compact** recipe in flight |
+| **No Compact authoring deep-dive on the Kuira side** — the SDK consumes compiled `.compact` artifacts but does not teach the full Compact language. Witnesses, ZK patterns, selective-disclosure idioms, multi-party state — all live in the Midnight project's documentation, not Kuira's. | Start with the [Hello Compact](recipes/hello-compact.md) recipe for the minimum-viable counter and the toolchain pin matrix, then follow it to the [official Midnight contract examples](https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts) for everything beyond. | Closed by intent — the Kuira SDK is the runtime; Midnight owns the language. |
 | **Contract Gradle plugin not on Maven Central yet** — `com.midnight.kuira.contract` was authored during the alpha02 cycle and has never been published. | Recipe 3 ships a hand-rolled `syncContractAssets` `Copy` task in tab 2; identical asset output, 30 more lines. | `alpha02` |
 | **No recovery-phrase export (BIP-39 mnemonic)** — sigil-derived wallets currently have no sovereign exit; recovery rides Google account availability. | Don't lose your Google account. PRF derivation is deterministic if you can replay the passkey. | `alpha03` (wishlist `#24`) |
 | **No session auto-lock** — once a sigil session is unlocked, value-bearing calls don't re-prompt biometric until the process is killed. | Treat unlocked sessions as funds-on-screen. Use sign-out from the Sigil panel to terminate manually. | `alpha03` (wishlist `#14`) |

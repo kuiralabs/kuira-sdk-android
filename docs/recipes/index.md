@@ -54,6 +54,15 @@ agent and let it execute the recipe in your project.
     Bootstrap a passkey-derived sigil session: DID + wallet seed from
     a single biometric. ~15 minutes.
 
+-   :material-language-typescript: **[Hello Compact — write your first contract](hello-compact.md)**
+
+    ---
+
+    The 6-line counter that ships with the kuira-starter-android
+    template, walked through line by line. Toolchain pinning, compile,
+    `mn contract inspect` verification. For deeper Compact learning,
+    points at the official Midnight examples.
+
 -   :material-file-document-multiple: **[Deploy and call a Compact contract](deploy-and-call-a-compact-contract.md)**
 
     ---
