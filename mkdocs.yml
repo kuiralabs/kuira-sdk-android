@@ -108,6 +108,7 @@ nav:
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
     - Run kuiraDoctor before each release: recipes/run-kuira-doctor.md
   - API reference: api-reference.md
+  - Roadmap: roadmap.md
   - Security: security.md
 
 extra:
