@@ -1,0 +1,1207 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, contract runtime — one Gradle dependency.">
+      
+      
+      
+        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/roadmap/">
+      
+      
+        <link rel="prev" href="../api-reference/">
+      
+      
+        <link rel="next" href="../security/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+  
+    <title>Roadmap - Kuira Android SDK</title>
+  
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/kuira.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#roadmap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kuira Android SDK" class="md-header__button md-logo" aria-label="Kuira Android SDK" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kuira Android SDK
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Roadmap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kuiralabs/kuira-sdk-android" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kuiralabs/kuira-sdk-android
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../integration/" class="md-tabs__link">
+          
+  
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../recipes/" class="md-tabs__link">
+          
+  
+  
+  Recipes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../security/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Security
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kuira Android SDK" class="md-nav__button md-logo" aria-label="Kuira Android SDK" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    Kuira Android SDK
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kuiralabs/kuira-sdk-android" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kuiralabs/kuira-sdk-android
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install + integrate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recipes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/add-kuira-to-an-android-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Kuira to an Android project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/bind-your-app-to-a-passkey-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bind your app to a passkey domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/set-up-sigil-identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set up Sigil identity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/hello-compact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hello Compact — write your first contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/deploy-and-call-a-compact-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy and call a Compact contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/run-kuira-doctor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run kuiraDoctor before each release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h1>
+<p>This is the public wishlist for the Kuira Android SDK — patterns the
+SDK should bake in so the next dApp doesn't reinvent them.</p>
+<p>Items are added as real dApps (BBoard, Midnight Kicks, the Kuira
+Starter, CipherDefense) bump into the same friction. The list is
+deliberately bigger than the next release — most items wait until a
+second consumer hits the same gap. Each row records the workaround the
+example apps use today so a consumer hitting the same shape knows how
+to bridge it locally.</p>
+<p>Items are promoted out of this list when they ship.</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Wish</th>
+<th>Why it'd help</th>
+<th>Today's workaround</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>awaitIndexerSynced(blockHeight)</code> primitive</td>
+<td>Replace fixed <code>delay(5000)</code> waits between deploy → first call and between sequential tx. Reduces total match time and makes flow deterministic.</td>
+<td>Hard-coded 3–8s sleeps in MatchManager (INDEXER_SETTLE_MS, POST_JOIN_SETTLE_MS).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>MidnightContract.stateFlow(): Flow&lt;ContractState&gt;</code></td>
+<td>StatePoller becomes a one-liner. Lets UI react to opponent actions without polling boilerplate.</td>
+<td>Caller writes a polling loop against the indexer GraphQL.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Retry policy on <code>contract.call(...)</code></td>
+<td>"Indexer says contract not found, wait + retry" is a near-universal pattern after deploy. Bake retry-with-backoff into the call surface.</td>
+<td>MatchManager.aiJoin loops 10× by hand, matching on <code>"not found"</code> substring.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>✅ <strong>DONE — Serializable state snapshot for BlockStore backup</strong></td>
+<td>Realized: <code>MatchStore.snapshotBytes()</code> / <code>restoreFromBytes()</code> round-trip the active-match set (address + role + secret key + nonces + picks) as a versioned blob, and <code>MatchStoreBackupProvider</code> (bound as the SDK's <code>AppDataBackupProvider</code>) packs it into <code>SigilBackup.appMetadata</code> so it rides into Block Store next to the seed. Reinstall → sigil restore repopulates unfinished matches. Completed games are pruned on <code>Resolved</code> (<code>store.delete</code>), so the blob stays lean. The long-term archive tier (history / stats / completed games beyond Block Store's size budget) is <strong>#30</strong>.</td>
+<td>(was: manual serialization in the app layer)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>First-class <code>Player</code> / <code>Identity</code> abstraction</td>
+<td>The two-player witness pattern (P1 secret key, P2 secret key, swap on each call) is a recurring shape. A <code>Player</code> with <code>secretKey</code> + <code>coinPublicKey</code> + witness-registration helper would shrink each call site.</td>
+<td>MatchManager passes raw <code>ByteArray</code> secrets through every helper.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Auto force-resync of dust around contract calls</td>
+<td>Every tx after a deploy or another tx needs <code>wallet.forceResyncDust()</code> to see the new UTXO state. Should happen inside <code>contract.call</code> when needed.</td>
+<td>Manual <code>forceResyncDust()</code> between every tx in MatchManager.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Deadline / timeout helper</td>
+<td><code>BigInteger.valueOf(System.currentTimeMillis() / 1000 + N)</code> for unix-second deadlines is everywhere a circuit takes a deadline.</td>
+<td>Computed by hand in MatchManager.aiJoin.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>"Test-mode seed" path</td>
+<td>The shared test seed (<code>TEST_SEED</code> in KicksActivity) for fast iteration on faucet networks should be a single SDK opt-in, not a literal in every example app.</td>
+<td>Hex literal in KicksActivity.</td>
+</tr>
+<tr>
+<td>9a</td>
+<td>✅ <strong>DONE — Lossless ledger reads via SDK (<code>MidnightContract.ledger()</code>)</strong></td>
+<td>Promoted from wishlist to friction log + landed in 2026-05-20. The cell-hex parsing path turned out to be fundamentally lossy: <code>MidnightConfig.queryState</code> exposes a flattened JSON cell tree where <code>Vector&lt;N, Uint&lt;8&gt;&gt;</code> cells with zero elements lose positional info (each Uint&lt;8&gt;=0 serializes to a zero-length byte array, so the cell hex is a concatenation of only the non-zero elements). No dApp can recover the original arrays from this view. <strong>Fix:</strong> the SDK now offers <code>MidnightContract.ledger()</code> which spins up QuickJs, invokes the contract's own generated <code>ledger(state)</code> function, and marshals the typed return values back to Kotlin via <a href="https://github.com/nel349/kuira-android-wallet/blob/main/core/compact-engine/src/main/kotlin/com/midnight/kuira/core/compact/MidnightLedger.kt"><code>MidnightLedger</code></a> — the same lossless path the contract uses internally. Each typed accessor (<code>getUint8</code>, <code>getUint64</code>, <code>getBoolean</code>, <code>getBytes</code>, <code>getVectorUint8</code>, + <code>OrNull</code> variants) carries range/shape validation; missing fields throw <code>MissingLedgerFieldException</code> with the known-fields list, type mismatches throw <code>WrongLedgerFieldTypeException</code> — loud failures beat the silent-zeros the cell-hex parser produced. Kicks's <code>ContractStateSnapshot</code> and BBoard's <code>BBoardRepository</code> migrate to <code>contract.ledger()</code> and drop their bespoke parsers.</td>
+<td>Lossy cell-hex parsing in each dApp (<code>ContractStateSnapshot.kt</code>, <code>BBoardRepository.kt</code>), which silently misdecoded any <code>Vector&lt;N, Uint&lt;8&gt;&gt;</code> containing zero elements.</td>
+</tr>
+<tr>
+<td>9b</td>
+<td>Typed <code>Ledger&lt;T&gt;</code> codegen from <code>.compact</code></td>
+<td>With #9a in place, the runtime decoding is lossless and shared. The remaining ergonomic gap is compile-time type safety: today consumers write <code>ledger.getUint8("p1Score")</code> instead of <code>ledger.p1Score</code>. A Gradle plugin (<code>com.midnight.kuira.contract</code>) that reads the compiled JS's <code>ledger()</code> descriptor and emits a typed Kotlin data class per contract (<code>PenaltyLedger(val p1Shoots: IntArray, val p1Score: Int, ...)</code>) would close it. Lower urgency now that the correctness problem is solved — defer until a second consumer (e.g. CipherDefense) needs it.</td>
+<td>String-keyed accessors with runtime field-name validation. Works correctly, just less ergonomic than a generated data class.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Public block subscription</td>
+<td><code>MidnightSdk.indexerClient</code> is <code>private</code>, so app code can't reach <code>subscribeToBlocks()</code> for push-based contract-state watching. Expose either the indexer or a thin <code>MidnightContract.stateFlow()</code> over it.</td>
+<td><code>StatePoller</code> falls back to 3s polling.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Kuira Gradle plugin for contract artifact sync</td>
+<td>Copying compiled <code>.compact</code> outputs into Android assets (<code>penalty-contract.js</code> + <code>keys/*.{prover,verifier,bzkir}</code>) is the same shape across every Kuira dApp, but each one hand-rolls a Gradle Copy task with hardcoded contract names and paths. A <code>com.midnight.kuira.contract</code> plugin should let dApps declare <code>kuiraContract { source = "contract/src/managed/penalty" }</code> (or auto-discover from a sibling module) and get sync-before-<code>mergeAssets</code> for free.</td>
+<td><code>app/build.gradle.kts</code> registers a hand-rolled <code>syncContractAssets</code> Copy task with the contract path and circuit-key globs baked in.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Typed witness factories for non-scalar types</td>
+<td><code>WitnessResult(null, ByteArray)</code> works for <code>Bytes&lt;32&gt;</code> / <code>Uint&lt;8&gt;</code>, but for <code>Vector&lt;N, T&gt;</code> and other compound types the developer has to know the runtime's serialization (concatenated element bytes) and assemble it by hand. SDK should expose factory helpers like <code>vectorWitness(length=5) { intArrayOf(L, C, R, L, R) }</code> and <code>boolWitness { true }</code> that produce the right <code>ByteArray</code> for the underlying compact-runtime descriptor.</td>
+<td>MatchManager packs Vector witnesses by hand: <code>byteArrayOf(*shoots.map(Int::toByte).toByteArray())</code>.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Compactc version pinning</td>
+<td>Compactc's <code>--runtime-version</code> must match the project's <code>@midnight-ntwrk/compact-runtime</code> npm version, but there's no in-repo way to declare which compactc version to use — developers find out via a runtime error after <code>npm run compact</code> writes incompatible bytecode. Either a <code>.compact-version</code> file in <code>contract/</code> honored by the <code>compact</code> wrapper, or auto-pinning where <code>compact compile</code> reads package.json's pinned runtime version and switches itself.</td>
+<td>Kicks V3 requires compactc 0.30.0 (runtime 0.15.0); 0.31.0 is the user default and emits incompatible 0.16.0 bytecode. Workaround: invoke <code>~/.compact/versions/0.30.0/aarch64-darwin/compactc</code> directly or run <code>compact update 0.30.0</code>.</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>🔴 CRITICAL — Session auto-lock for the wallet SDK</strong></td>
+<td>The decrypted seed lives in the one <code>MidnightSdk</code> instance now owned process-wide by <code>MidnightSdkProvider</code> (<code>sdk:wallet-runtime</code>, landed 2026-05-24). After one biometric on first SDK build, every subsequent value-bearing call (register, send, deploy, Kicks join/commit/reveal, payout claim) runs with <strong>zero re-authentication</strong>. The Keystore's 30s validity window is bypassed by SDK caching — we never re-call <code>loadSeed</code>, so Keystore is never re-consulted. A borrowed-while-foregrounded device drains funds in one tap. SDK needs three independent re-lock triggers: idle timeout (default 5–15 min), background timeout (re-lock on resume after N seconds backgrounded), and screen-lock observer (re-lock when device locks). Plus a manual "Lock now" affordance in the wallet panel. <strong>Now unblocked (2026-05-24):</strong> the provider owns the single cached SDK and exposes <code>close()</code>, so all three triggers + manual lock collapse to "call <code>close()</code>, force re-bootstrap (biometric) on the next call" in one place instead of per-consumer.</td>
+<td>The teardown seam now exists (<code>MidnightSdkProvider.close()</code>); no caller invokes it yet — no idle eviction, no foreground re-arm, no manual lock.</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>🔴 CRITICAL — Sigil UX safety (no destructive-button-on-Error trap, no missing sign-out)</strong></td>
+<td>The <code>SigilStatusPanel</code> has two compounding UX gaps that together make a sigil look deleted with one wrong tap. (a) When <code>restoreSeed</code> fails (e.g. user taps Restore on a Forged sigil but there's no cloud backup, or PRF fails, or any other <code>BackupException</code>), the catch block sets status to <code>Error</code> and <code>ErrorBody</code> renders a <strong>forge sigil</strong> button. <code>forgeSigil</code> → <code>persistSigil</code> unconditionally overwrites the existing prefs. One tap from "I just wanted to try restore" to "the sigil I had is gone." (b) There is no in-app <strong>sign out</strong> affordance from <code>Forged</code> state — the only way to leave a sigil is force-uninstall the app, so users in distress end up tapping any visible action including the forge-in-Error path. Required fixes: (1) <code>signOut()</code> on <code>SigilPanelViewModel</code> that wipes <code>sigil_identity</code> prefs + optionally deletes Block Store blob, status → <code>None</code>, biometric-gated; (2) sign-out button in <code>ForgedBody</code> under a "danger zone" divider with a confirmation modal; (3) <code>restoreSeed</code>'s catch must distinguish "restore failed from None" (Error with forge button is fine — nothing to lose) from "restore failed from Forged" (return to <code>Forged</code> with a transient banner, never show forge); (4) <code>ErrorBody</code>'s forge button only renders when previous state was <code>None</code> / <code>BackupAvailable</code>. <strong>Update (2026-05-24) — generalised + multi-wallet decision.</strong> The trap fires for <em>any</em> error while Forged, not just restore; the proximate harm is <code>persistSigil</code> overwriting the local sigil pointer (DID/cred/pubkey) with no guard. So beneath the UI fixes above, add a <strong>data-layer guard</strong>: <code>persistSigil</code> refuses to overwrite an existing sigil unless an explicit <code>replace = true</code> is passed — set only by the deliberate sign-out → forge path. Defense-in-depth, so a missed UI path can't silently destroy a sigil. <strong>Recoverability nuance:</strong> forging mints a <em>new</em> passkey and leaves the old one in GPM, but the panel offers no <strong>sign in with existing passkey</strong> (<code>SigilSession.signIn</code> exists but is unwired) — only forge (new) and restore-from-cloud. So an accidental forge <strong>orphans</strong> the old wallet unless a Block Store backup exists. Wire sign-in-with-existing-passkey as a recovery path. <strong>Multi-wallet (multi-sigil) considered + deferred (2026-05-24):</strong> the DID is PRF-derived 1:1 from a passkey, so "multi-sigil" = track + switch among multiple passkeys — the <code>MidnightSdkProvider</code> rebuilds the wallet per active sigil, plus per-sigil Block Store backup and a switcher UI. A v1.1+ product decision that departs from the one-sigil-one-identity vision; this item's lifecycle work (no silent overwrite + explicit sign-out/replace) is its prerequisite either way.</td>
+<td>Force-quit + restart the app to reload prefs (if they exist), or accept the visual deletion. No in-app safety.</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>Resume-aware multi-step protocol orchestrator</strong></td>
+<td><code>MatchManager</code> is ~600 lines of state-machine + transitions + resume logic that's ~90% generic. Three bugs landed on 2026-05-20 — <code>joinAsP2</code> precondition fail when state was already <code>Deployed</code>, <code>awaitOpponentJoin</code> precondition fail when state was already <code>Joined</code>, <code>MatchReady.CONTINUE</code> launching Unity's choice picker on a session where picks were already on chain — all reduce to "code path assumes I'm at step 1 but state is at step N." The fix in each case was the same shape: walk the steps and skip whichever ones are already reflected on chain. <code>resumePlayAsP1</code> / <code>resumePlayAsP2</code> are hand-rolled versions of this per role. SDK should provide a <code>Protocol&lt;S&gt;</code> DSL where each step declares (a) precondition on a typed <a href="https://github.com/nel349/kuira-android-wallet/blob/main/core/compact-engine/src/main/kotlin/com/midnight/kuira/core/compact/MidnightLedger.kt"><code>MidnightLedger</code></a>, (b) the action, (c) an "already done on ledger?" predicate. <code>protocol.runFrom(contract.ledger())</code> would auto-skip steps the chain already shows landed and resume from the right point. Folds in #1 (settle waits become declarative timeouts on each step) and #6 (force-resync becomes a between-step concern).</td>
+<td>Per-dApp orchestrator + per-dApp <code>resumePlayAsP*</code> helpers + per-dApp precondition catches. Three live bugs in this session, all the same shape.</td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong><code>MidnightContract.callIdempotent(circuit, args, isDoneOnLedger)</code></strong></td>
+<td>Closely related to #16, but applicable outside a full multi-step protocol. Every action we wrote on 2026-05-20 had to add a catch-block for "the contract already reflects this transition" — <code>joinAsP2</code> matches on the <code>"WAITING phase"</code> substring; <code>awaitOpponentJoin</code> had to learn to no-op when state was past <code>Deployed</code>. Each dApp re-invents the same <code>try { call } catch { if (chain says it's done) ok }</code> pattern, and missing it means a wasted tx + a <code>Failed</code> state on resume. SDK could ship <code>contract.callIdempotent(circuit, args, isDoneOnLedger = { ledger -&gt; ledger.getUint8("phase") &gt; PHASE_WAITING })</code>. The SDK reads the ledger first; if the predicate is true, returns synthetically without a chain call. Eliminates the per-dApp catch pattern that's now appeared in three places.</td>
+<td>Hand-rolled catch + substring-match pattern in <code>joinAsP2</code>, <code>awaitOpponentJoin</code>'s new idempotent shortcut, and (implicitly) <code>submitP1Picks</code>/<code>submitP2Picks</code> whenever resume drives those.</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong><code>WitnessStore</code> — encrypted, multi-slot witness persistence</strong></td>
+<td><code>MatchStore</code> is ~250 lines per dApp: <code>EncryptedSharedPreferences</code> setup, role-aware rehydration through <code>rehydrateLocalIdentity</code>, content-equality boilerplate on <code>ByteArray</code> fields (the same trap <code>ContractStateSnapshot</code> had — see #9a), Block Store cloud backup wiring through <code>MatchStoreBackupProvider</code>. The whole rehydrate-witnesses-after-process-death pattern is generic but every dApp implements it. Without this layer the resume orchestrator (#16) can't actually work — it needs the witnesses to drive the remaining steps. SDK should ship a <code>WitnessStore(scope: String)</code> keyed by <code>(contractAddress, slotName)</code>, with PRF-encrypted persistence + Block Store backup baked in. dApp code becomes <code>store.save(address, "p1Regulation", witnessBundle)</code> / <code>store.load(address, "p1Regulation")</code>. Composes with #16: each <code>Step</code> declares the witness slot it owns; resume auto-rehydrates before walking.</td>
+<td>Per-dApp <code>MatchStore</code> + <code>MatchStoreBackupProvider</code> + manual <code>rehydrateLocalIdentity</code> for each role + content-equality boilerplate per witness type.</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong><code>MidnightContract.readOnly(...)</code> factory</strong></td>
+<td>We made <code>coinPublicKey: ByteArray?</code> nullable on 2026-05-20 to support polling contracts that don't have a wallet attached. But the read-only pattern still requires cargo: skip witness registration, omit cpk, remember not to call <code>.call()</code> until runtime. A future dApp author won't know that's a valid shape from reading the builder. A dedicated <code>MidnightContract.readOnly(config) { contractJs = …; address = … }</code> factory that returns a typed <code>MidnightContractReadOnly</code> interface with <code>ledger()</code> + <code>stateFlow()</code> but NO <code>call</code>/<code>prepare</code>/<code>deploy</code> would make the misuse compile-time impossible instead of surfacing as <code>IllegalStateException</code> at the first write call.</td>
+<td>Today's pattern: <code>MidnightContract.create { ... }</code> with implicit cpk-null sentinel + <code>requireWriteCapable()</code> runtime check inside every write method.</td>
+</tr>
+<tr>
+<td>20</td>
+<td><strong><code>MidnightContract.observeLedger(): Flow&lt;MidnightLedger&gt;</code></strong></td>
+<td>Sibling of #10 — the SDK already has the infrastructure (private indexer subscription), what's missing is the dApp-facing shape. Today every dApp's <code>StatePoller</code> is a 3-second polling loop calling <code>contract.ledger()</code> + <code>distinctUntilChanged</code>. A push-based <code>Flow&lt;MidnightLedger&gt;</code> backed by <code>subscribeToBlocks</code> would (a) drop the per-dApp poller class entirely, (b) cut detection latency from ~3s to ≤ one block (~6s on PREPROD but ≤ 1 block deterministically), and (c) compose with #16: the protocol orchestrator subscribes to the flow and reacts to phase changes instead of awaiting fixed predicates with hand-tuned timeouts.</td>
+<td><code>StatePoller</code> 3s loop in Kicks; once #10 lands without the typed-Flow shape, every dApp will still write that loop.</td>
+</tr>
+<tr>
+<td>21</td>
+<td><strong><code>compact-engine-testing</code> artifact — <code>FakeMidnightContract</code> for state-machine unit tests</strong></td>
+<td>While writing the 2026-05-20 precondition tests for <code>resumePlayAsP1</code>/<code>resumePlayAsP2</code>, the third bespoke test seam landed in <code>TestableMatchManager</code>: <code>executeDeploy</code>, <code>executeJoinMatch</code>, now <code>readResumeSnapshot</code>. Pattern is now obvious — every dApp will write the same test scaffolding. A published <code>compact-engine-testing</code> artifact shipping <code>FakeMidnightContract</code> (canned <code>MidnightLedger</code> snapshots, deferred-await knobs for "opponent commits now", invocation counters per circuit) would let dApp authors unit-test their state machines without spinning up QuickJs or the real chain. Folds into #16's <code>Protocol</code> DSL once it exists: the fake feeds canned ledger snapshots, the protocol walks the steps, the test asserts which steps fired.</td>
+<td>Three hand-rolled <code>internal open suspend fun</code> seams in <code>MatchManager</code>, plus the <code>TestableMatchManager</code> subclass per-dApp.</td>
+</tr>
+<tr>
+<td>22</td>
+<td><strong>🔴 CRITICAL — Open-SDK permissionless integration (drop default <code>PasskeyConfig</code>)</strong></td>
+<td><code>core:identity:IdentityModule.providePasskeyConfig()</code> hardcodes <code>rpId = "nel349.github.io"</code> + <code>rpName = "Kuira"</code> as the default Hilt binding. Any third-party dApp that consumes the SDK and forgets to override that provider silently lands on the maintainer's domain — and PRF then doesn't work for them unless the maintainer adds their package + cert SHA-256 to the maintainer-hosted <code>assetlinks.json</code>. That coupling means the SDK is effectively permissioned: every new dApp requires a PR to the maintainer's <code>nel349.github.io</code> repo. The post-PRF architecture is supposed to be permissionless (any dApp picks its own domain → hosts its own <code>assetlinks.json</code> → uses <code>:sdk:wallet-seed</code> and gets its own sigil-derived wallet with zero maintainer touch), but the default provider undermines that by giving wrong-but-working semantics to a misconfigured host. Required: (1) remove <code>providePasskeyConfig</code> from <code>IdentityModule</code> — host-provided with no fallback, so Hilt fails fast with a clear missing-binding error instead of silently routing through someone else's domain; (2) each of our example apps (BBoard, Kicks) ships its own ~5-line <code>*IdentityModule</code> providing its own <code>PasskeyConfig</code> (also gives per-app <code>rpName</code> branding in the passkey prompt — "Midnight Kicks" vs "Kuira"); (3) <code>INTEGRATION.md</code> at the SDK root showing third-parties the 4-step recipe (domain → assetlinks → Hilt module → maven deps). Cost: ~5 files (1 main repo, 1 per example, 1 doc). Removes the last "Kuira owns the authority" coupling and makes the SDK genuinely open.</td>
+<td>Default <code>PasskeyConfig</code> lives in <code>IdentityModule</code> pointing at <code>nel349.github.io</code>; new third-party dApp authors don't know they have to override it; if they don't, PRF fails until the maintainer manually adds them to a maintainer-hosted assetlinks.json.</td>
+</tr>
+<tr>
+<td>23</td>
+<td><strong>🔴 VITAL UX — Single-biometric sigil forge (PRF-on-create extension)</strong></td>
+<td><strong>Status (2026-05-24):</strong> the <em>sign-in</em> path is already single-biometric — <code>SigilSession</code> runs one multi-salt PRF assertion (<code>eval.first</code>=SIGIL_SALT + <code>eval.second</code>=SEED_SALT) covering both DID derivation and wallet seed. This item is now scoped to the <em>forge/create</em> path only. After the Path A2 sigil refactor, the first-run forge flow shows <strong>two consecutive biometric prompts</strong>: one for <code>createPasskey</code> (which registers the credential and returns its P-256 pubkey for <code>KeyAuthorization</code>), then a second for <code>sigilIdentityProvider.deriveSigilDid</code> (which does <code>authenticateWithPrf(SIGIL_SALT)</code> to derive the Ed25519 identity keypair). That's a regression from the pre-A2 single-prompt forge, and "tap fingerprint, wait, tap fingerprint again" is exactly the friction that drops first-run conversion. <strong>The fix is WebAuthn's PRF extension on <code>create</code>:</strong> the spec allows <code>prf.eval.first = SIGIL_SALT</code> to be passed into a registration ceremony, and supporting authenticators return the PRF output in the same response that delivers the pubkey + credentialId. One biometric, both outputs, identical security. Implementation surface: (1) extend <code>PasskeyManager.createPasskey</code> to accept <code>prfSalt: ByteArray? = null</code> and parse the PRF output out of the registration response's <code>clientExtensionResults.prf.results.first</code> field; add it as a nullable <code>prfOutput</code> on <code>PasskeyRegistrationResult</code>; (2) <code>SigilPanelViewModel.forgeSigil</code> passes <code>SIGIL_SALT</code> into the create call, then uses <code>result.prfOutput?.let { Ed25519PrfSigilProvider.ed25519DidFromSeed(it) }</code> to derive the DID directly when available — only falls back to the existing two-prompt path when <code>prfOutput == null</code> (older authenticators that don't support PRF-on-create); (3) update the existing <code>Ed25519PrfSigilProvider.ed25519DidFromSeed</code> test plus add an end-to-end test that pins the "create returns PRF → no second prompt" path. Coverage note: Google Password Manager added PRF-on-create support in Chrome 132 / GMS Core ~24.x (2024); hardware authenticators (YubiKey 5C NFC etc.) have it; the fallback handles the rest. Cost: ~3 files, mostly mechanical JSON parsing for the assertion-extension field.</td>
+<td>Two biometric prompts on first forge — the user has to authenticate twice in immediate succession with no semantic distinction between the two prompts. Subsequent sign-ins are unaffected (already one prompt).</td>
+</tr>
+<tr>
+<td>24</td>
+<td><strong>🔴 CRITICAL — Sovereign recovery-phrase export (reveal the PRF-derived BIP-39 mnemonic)</strong></td>
+<td>Today a Sigil-onboarded wallet's only recovery path is re-deriving the seed from the passkey, which rides on Google/Apple account sync. If that account is lost, locked, or unavailable in-jurisdiction (Google services blocked), the user has <strong>no way out — the funds are gone</strong>; "self-custody" is really platform-custody of the recovery path. The architecture can already close this: the PRF output is valid 32-byte BIP-39 entropy, and <code>SeedDeriver</code> already transiently materializes it as a 24-word mnemonic (its own "known limitation" comment) via <code>BIP39.entropyToMnemonic</code>. Promote that incidental transient into an intentional, biometric-gated <code>revealRecoveryPhrase(activity)</code> SDK primitive that returns a wipeable holder and zeroes entropy/seed in <code>finally</code>, then wire the existing <code>RecoveryPhraseWireframe</code> into production Settings nav. Result: the user can write down 24 words and import them into any BIP-39 wallet — a sovereign exit independent of Google/Apple. This is the load-bearing piece for the self-custody / web2.5 / international story; without it the promise is false for anyone who loses platform access. Must read the <em>live</em> funding seed (PRF-derived for Sigil wallets, random for create-onboarded ones) so the exported words match the seed actually holding funds, and must be <code>FLAG_SECURE</code> + no-default-clipboard + never-logged.</td>
+<td>Half-built round trip: import-from-phrase works (onboarding restore validates + derives via <code>BIP39.mnemonicToSeed</code>), but export does not — <code>RecoveryPhraseWireframe</code> lives in the dev portal only and Settings' "View recovery phrase" is a no-op. No production way to see the words the Sigil derives.</td>
+</tr>
+<tr>
+<td>27</td>
+<td><strong>🟡 Delegated access keys — scoped, time-bounded authorization for non-sibling keys</strong></td>
+<td>The <code>KeyAuthorization</code> payload (Magic + rootPubkey + accessPubkey + scope + timestamp + expiry, ECDSA-signed by the passkey) was originally shipped as a BBoard demonstrator. We removed the demonstrator in the post-A2 cleanup because under PRF-derived sigil + wallet, <strong>both keys are siblings of the same passkey</strong> — they share a common root via PRF salt domain separation, so a separate authorize attestation is redundant for the <em>local</em> wallet use case. <strong>The type stays in <code>core:identity</code></strong> (<code>KeyAuthorization.kt</code>, <code>AuthorizationStore.kt</code>, <code>AuthorizationRecord.kt</code>, plus <code>IdentityModule</code>'s Hilt provider for the store), waiting for the real consumer it was designed for: signing an attestation that authorizes a SEPARATE, non-sibling key to act on the sigil's behalf. Use cases: (a) a remote agent / browser session signing transactions on the user's behalf for 24 hours with <code>AuthorizationScope.SEND_ONLY</code>; (b) a third-party dApp the user wants to grant transient permissions to without sharing the passkey; (c) a future multi-sig where one device's sigil authorizes another device's access key. None of those exist yet, so no UI consumer exists; the next iteration's design work is (1) UX for "review and approve this delegation request" coming from an external scope, (2) revocation mechanism (write a new authorization with expiry in the past, or maintain a revocation list), (3) on-chain or off-chain verification — verifiers need to know <code>which Ed25519 sigil DID signed this P-256 authorization</code>, which is awkward because the DID encodes Ed25519 but the signature is over P-256. Solution direction: sign authorizations with the Ed25519 sigil key (derivable from PRF on demand) rather than the passkey P-256 — self-contained verification from the DID alone.</td>
+<td>The demonstrator was the only consumer; removing it stranded the type. No active flow uses authorization today. Future delegated-key consumers will need to start from scratch UI-wise, but the cryptographic primitives + persistence are ready.</td>
+</tr>
+<tr>
+<td>28</td>
+<td><strong>🟡 Choose which identity/account backs a sigil at forge time</strong></td>
+<td>The sigil is PRF-derived from a Google Password Manager passkey, and WebAuthn deliberately hides the account from the relying-party app — it can't choose, or even see, which account answers. GPM serves its one configured account. So a user with multiple Google accounts signed into a device has <strong>no way, inside our app, to bind a sigil to a chosen account</strong>: two devices (or two users) whose GPM points at the same account collide to the <em>same</em> sigil. This bit hard during PvP testing — two emulators resolved to one wallet, with no in-app lever to separate them. Two directions, both worth having: <strong>(i) a debug-only per-device identity seam</strong> so two installs (even on the same account) get distinct sigils for local/PvP testing without Google-account juggling; <strong>(ii) product-level identity selection</strong> — since the platform won't expose account choice, the app must own picking among multiple identities (this is the multi-sigil direction, extends #15). The constraint to record: you cannot solve this with an in-app "pick this Google account" button over the passkey API — that choice lives in Google Password Manager / the system sheet, outside the app.</td>
+<td>Switch Google Password Manager's account in Android Settings before forging (system-level, no guarantee of an in-sheet account picker), or use entirely separate Google accounts per device. No in-app choice.</td>
+</tr>
+<tr>
+<td>29</td>
+<td><strong>🟡 Rematch re-pairing — share / reuse / link the new contract</strong></td>
+<td>REMATCH currently auto-deploys a fresh contract (P1) or routes to the join screen (P2), but there's <strong>no friendly bridge between the two</strong>: P1 has a new address and no smooth way to push it to the same opponent, and P2 lands on a blank join screen with no idea of the new address. The only link between players is the contract, and a resolved one is single-use, so "play the same opponent again" falls back to re-doing QR/deep-link matchmaking by hand. Three directions worth weighing as game logic, not just UX: <strong>(i) reusable/extensible contract</strong> — make <code>penalty.compact</code> replayable (a <code>resetMatch</code> circuit that re-opens commit phase for the same two registered players, or an N-matches-per-contract series with a running aggregate score), so REMATCH is a single circuit call with zero re-pairing; <strong>(ii) linked contracts</strong> — the new contract references the previous (<code>prevMatch</code> address) so each side can fetch the opponent's identity/stake from the old one and auto-join without re-sharing; <strong>(iii) a lightweight re-pair channel</strong> — P1's REMATCH deploys + the new address rides back to P2 over the existing relay / a deep-link the app surfaces as a one-tap "your opponent wants a rematch — join?" prompt. (i) is the cleanest game-feel but needs contract work + a stake-handling rethink (who funds the rematch pot); (ii)/(iii) keep the one-match-one-contract model but add a pairing hop.</td>
+<td>REMATCH → P1 re-runs CREATE (manual QR/link share), P2 → blank Join screen (manual address entry). No auto-pairing, no contract reuse, no link to the prior match.</td>
+</tr>
+<tr>
+<td>30</td>
+<td><strong>🟡 Two-tier persistence — Block Store for active recovery, Drive <code>appDataFolder</code> for the long-term archive</strong></td>
+<td>Block Store is a small, transparent device-transfer vault (a few KB) — right for the <em>critical</em> recovery set (seed + <strong>active</strong>-match witnesses, already shipped via #4), wrong for archival data. As concurrent matches grow, the seed + per-match witnesses (each ~32B key + 32B×N nonces + picks) share that tiny budget; and completed-game history / stats / saved replays can't live there at all. Two complementary directions: <strong>(a) Tier-2 archive on Google Drive <code>appDataFolder</code></strong> — a hidden, per-account, quota-bounded (effectively unlimited for metadata) folder for completed-match history, head-to-head stats, and replay payloads; sigil-derived-key encrypted before upload (same "we encrypt, cloud is just transport" stance as the Block Store blob), fetched lazily for a "match history" screen. <strong>(b) Shrink Tier-1 to near-zero</strong> by <em>deriving</em> each match's witnesses (secret key + commit nonces) deterministically from the sigil seed + contract address (+ round) over an HD path, instead of backing the random bytes up — then Block Store only needs the <strong>list of active contract addresses</strong> (tiny), or nothing if the indexer can enumerate "contracts where my key participates" (a participant-indexed query the indexer doesn't expose yet — the real <strong>discovery</strong> gap for "fetch my active matches after restore" without a local list). (a) is the user-facing "history that survives a device hop"; (b) is the scalability fix so Tier-1 never outgrows Block Store. Completed-game archive explicitly deferred for now.</td>
+<td>Active matches round-trip through Block Store (#4); no archive tier (completed games are deleted on resolve), and Tier-1 stores full random witnesses per match rather than deriving them, so it scales only to a handful of concurrent matches before bumping the Block Store ceiling.</td>
+</tr>
+<tr>
+<td>31</td>
+<td><strong>🟡 Silent app-state backup + lifecycle auto-trigger — make active-match cloud recovery set-and-forget</strong></td>
+<td>Today the cloud backup (the only thing that makes a match survive uninstall) is <strong>manual</strong>: the sigil panel's Backup button → <code>AppStateBackup.backup(activity)</code> → <code>authenticateWithPrf(BACKUP_SALT)</code>, i.e. a <strong>biometric prompt</strong> every time. So you can't auto-back-up when the app backgrounds/dies (no prompt possible there), and a match created-then-uninstalled before a manual Backup is lost. <strong>Key realization:</strong> post-PRF the backup blob carries <strong>only app metadata</strong> (match state) — the seed/sigil are PRF-reconstructed on any device, not in the blob. So we're stashing <em>game state</em>, not funds, and the per-backup biometric is overkill. <strong>SDK change:</strong> offer a no-prompt app-state backup that derives the <code>appMetadata</code> AES key from the <strong>already-cached session</strong> (unlocked seed) instead of a fresh PRF assertion — runs only while the session is unlocked (interacts with #14's auto-lock; back up <em>before</em> locking) and must run <strong>in the live process</strong> (a deferred WorkManager job is a fresh process with no cached key). <strong>App side (~20 lines):</strong> on <code>ProcessLifecycleOwner</code> <code>ON_STOP</code>, if the active-match snapshot <strong>diffs</strong> from the last backup (hash compare), fire the silent backup; best-effort — if the process is reaped mid-upload the diff still reads "changed" so the next background retries, and the local <code>EncryptedSharedPreferences</code> store always covers same-device resume. Note: <code>ON_STOP</code> is the reliable hook — <code>onDestroy</code>/process-kill give no guaranteed callback for a network upload.</td>
+<td>Cloud backup is a manual sigil-panel tap (biometric-gated); no automatic capture on leave, so a match made-then-uninstalled before a manual Backup never reaches Block Store.</td>
+</tr>
+<tr>
+<td>32</td>
+<td><strong>🟡 Upstream the <code>DustLocalState</code> Merkle-root accessors to <code>midnightntwrk/midnight-ledger</code></strong></td>
+<td><code>kuira-crypto-ffi</code> calls <code>state.commitment_root()</code> and <code>state.generation_root()</code> in 18 places across <code>balance_ffi.rs</code> and <code>dust_ffi.rs</code> (not just diagnostics — <code>balance_ffi.rs</code> uses them in the live balance path). Those accessors are a 10-line fork-only addition in <code>ledger/src/dust.rs</code> on <code>nel349/midnight-ledger</code>, missing from <code>midnightntwrk/midnight-ledger</code>. <strong>Cost of the fork:</strong> every hermetic build (CI, third-party) has to either depend on the fork directly or pin the upstream-team's repo plus a patch. We're nesting <code>nel349/midnight-ledger</code> as a submodule inside <code>kuira-crypto-ffi</code> to make builds reproducible — a sustainable workaround but it commits us to maintaining a fork of a foreign team's repo. <strong>Permanent fix:</strong> open a PR to <code>midnightntwrk/midnight-ledger</code> exposing <code>commitment_root</code> + <code>generation_root</code> as <code>pub fn</code> on <code>DustLocalState</code> (both already wrap their underlying <code>MerkleTree::root</code> calls cleanly — they're idiomatic accessor additions, not behavioral changes). Once merged, drop the submodule, switch the 8 <code>Cargo.toml</code> path deps to git-deps pinned to the upstream rev that includes the merge. Bonus: reduces the build graph's surface area for any future external Kuira contributor — they pull from one canonical Midnight repo, not a maintainer fork.</td>
+<td>Submodule <code>nel349/midnight-ledger</code> inside <code>kuira-crypto-ffi</code>; 8 path-deps in <code>Cargo.toml</code> resolve to the nested submodule; the diff lives on the fork's <code>main</code> indefinitely.</td>
+</tr>
+<tr>
+<td>33</td>
+<td><strong>Contract proving-key DX — <code>ensureBlsParams(k)</code>, <code>installCircuitKeysFromAssets</code>, <code>ensureContractKeys</code></strong></td>
+<td>Every Compact dApp that ships proving keys in APK assets hits the same three gaps. (a) The wallet bundle only ships <code>bls_midnight_2p13/14/15</code>, so small contracts that need a smaller param set (counter needed <code>2p5</code>, only 6.5KB) fail with <code>BLS params file not found</code> on cold install — no public way to fetch arbitrary BLS sizes despite <code>S3_BASE_URL</code> already being a constant in <code>ProvingKeyManager</code>. (b) The asset → cacheDir → <code>installCircuitKeysForProving</code> staging is ~30 lines of boilerplate every dApp re-implements (open three asset streams, stage to <code>cacheDir</code>, hand to the installer). (c) There's no single "make sure everything proves on the first call" entry point that composes (a) + (b) the way <code>ensureWalletKeysAvailable</code> already composes the wallet path. Three additions to <code>ProvingKeyManager</code>: <strong>(1) <code>ensureBlsParams(k: Int)</code></strong> downloads <code>bls_midnight_2p{k}</code> from <code>S3_BASE_URL</code> on demand; <strong>(2) <code>installCircuitKeysFromAssets(context, contractName, circuitNames)</code></strong> does the cacheDir staging in-SDK so dApps drop their copy block; <strong>(3) <code>ensureContractKeys(...)</code></strong> composes the two with <code>ensureWalletKeysAvailable</code>, mirroring the existing wallet shape. Surfaced during the 2026-05-30 starter test-of-fire: increment failed with <code>BLS params file not found: bls_midnight_2p5</code> until the starter manually bundled 2p5 in assets and wrote the staging logic. Folds in the BBoard/Kicks dev-only pattern: both currently rely on <code>adb push /data/local/tmp/bboard_keys/*</code> for their proving keys, which is impossible for any non-dev install — once #33 lands they can both move to APK assets without rewriting the prover path.</td>
+<td>Starter ships <code>bls_midnight_2p5</code> in <code>app/src/main/assets/managed/counter/bls/</code> and <code>CounterContract.installProvingKeys</code> writes ~30 lines of cacheDir staging by hand. BBoard + Kicks still require <code>adb push /data/local/tmp/bboard_keys/*</code> before each first-call, which isn't a production pattern.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Promote items off this list when they ship. Items currently surface
+inside the example apps as workarounds documented in each row's
+rightmost column — that's where to read for the "do today" recipe.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/kuiralabs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://central.sonatype.com/namespace/io.github.kuiralabs" target="_blank" rel="noopener" title="Maven Central — io.github.kuiralabs" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3-2.5c19.8-11.4 44.2-11.4 64 0L464.2 99c19.8 11.4 32 32.6 32 55.4v203c0 22.9-12.2 44-32 55.4L288.3 514.5a64.16 64.16 0 0 1-64 0L48.5 413c-19.8-11.4-32-32.6-32-55.4v-203c0-22.9 12.2-44 32-55.4zm207.8 360V191.4l-143.8 83v166.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/javascripts/copy-prompt.js"></script>
+      
+        <script src="../assets/javascripts/starfield.js"></script>
+      
+        <script src="../assets/javascripts/prompt-picker.js"></script>
+      
+    
+  </body>
+</html>
