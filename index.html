@@ -811,6 +811,34 @@
   
   
     <li class="md-nav__item">
+      <a href="recipes/hello-compact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hello Compact — write your first contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="recipes/deploy-and-call-a-compact-contract/" class="md-nav__link">
         
   
@@ -1075,6 +1103,7 @@ Pick a task and an agent. We generate the prompt; you paste it into your tool. S
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="true" data-task-key="add-kuira-to-an-android-project" data-task-title="Add the Kuira SDK">Add Kuira to a project</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="bind-your-app-to-a-passkey-domain" data-task-title="Bind your app to a passkey domain">Bind to a passkey domain</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="set-up-sigil-identity" data-task-title="Set up Sigil identity">Set up Sigil identity</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="hello-compact" data-task-title="Write a minimal Compact contract">Hello Compact</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="deploy-and-call-a-compact-contract" data-task-title="Deploy a Compact contract and call a circuit">Deploy a Compact contract</button>
 </div>
 </div>
@@ -1202,9 +1231,9 @@ tracked future cycle.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong>No Compact authoring tooling</strong> — recipes assume you already have a compiled <code>.compact</code> contract under <code>contract/src/managed/&lt;name&gt;/</code>; the SDK does not teach how to write <code>.compact</code>, install <code>compactc</code>, or pin <code>@midnight-ntwrk/compact-runtime</code>.</td>
-<td>Clone an example contract from <a href="https://github.com/midnightntwrk">midnightntwrk</a> or a Midnight fellowship project.</td>
-<td><code>alpha02</code> — <strong>Hello Compact</strong> recipe in flight</td>
+<td><strong>No Compact authoring deep-dive on the Kuira side</strong> — the SDK consumes compiled <code>.compact</code> artifacts but does not teach the full Compact language. Witnesses, ZK patterns, selective-disclosure idioms, multi-party state — all live in the Midnight project's documentation, not Kuira's.</td>
+<td>Start with the <a href="recipes/hello-compact/">Hello Compact</a> recipe for the minimum-viable counter and the toolchain pin matrix, then follow it to the <a href="https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts">official Midnight contract examples</a> for everything beyond.</td>
+<td>Closed by intent — the Kuira SDK is the runtime; Midnight owns the language.</td>
 </tr>
 <tr>
 <td><strong>Contract Gradle plugin not on Maven Central yet</strong> — <code>com.midnight.kuira.contract</code> was authored during the alpha02 cycle and has never been published.</td>

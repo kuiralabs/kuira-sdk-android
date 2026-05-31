@@ -11,13 +11,13 @@
       
       
       
-        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/bind-your-app-to-a-passkey-domain/">
+        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/hello-compact/">
       
       
-        <link rel="prev" href="../add-kuira-to-an-android-project/">
+        <link rel="prev" href="../set-up-sigil-identity/">
       
       
-        <link rel="next" href="../set-up-sigil-identity/">
+        <link rel="next" href="../deploy-and-call-a-compact-contract/">
       
       
         
@@ -28,7 +28,7 @@
     
     
   
-    <title>Bind your app to a passkey domain - Kuira Android SDK</title>
+    <title>Hello Compact — write your first contract - Kuira Android SDK</title>
   
 
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bind-your-app-to-a-passkey-domain" class="md-skip">
+        <a href="#hello-compact-write-your-first-contract" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bind your app to a passkey domain
+              Hello Compact — write your first contract
             
           </span>
         </div>
@@ -605,37 +605,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bind your app to a passkey domain
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../bind-your-app-to-a-passkey-domain/" class="md-nav__link">
         
   
   
@@ -651,153 +624,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#choose-your-rpid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Choose your rpId
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-get-the-debug-fingerprint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Get the debug fingerprint
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-write-assetlinksjson" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Write assetlinks.json
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-host-it-on-your-rpid-domain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Host it on your rpId domain
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Host it on your rpId domain">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#case-a-the-backing-repo-already-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case A — the backing repo already exists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case-b-the-backing-repo-doesnt-exist-yet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case B — the backing repo doesn't exist yet
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hosting-elsewhere-vercel-cloudflare-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hosting elsewhere (Vercel / Cloudflare / nginx)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-point-your-app-at-the-rpid-then-verify" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Point your app at the rpId, then verify
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-you-ship" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When you ship
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's next
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -835,10 +661,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../hello-compact/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hello Compact — write your first contract
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -854,6 +707,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-counter-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The counter contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toolchain-pinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toolchain pinning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile + verify
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wire-it-into-an-android-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wire it into an Android app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-go-from-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to go from here
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -975,10 +903,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choose-your-rpid" class="md-nav__link">
+  <a href="#the-counter-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choose your rpId
+        The counter contract
       
     </span>
   </a>
@@ -986,10 +914,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-get-the-debug-fingerprint" class="md-nav__link">
+  <a href="#toolchain-pinning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Get the debug fingerprint
+        Toolchain pinning
       
     </span>
   </a>
@@ -997,10 +925,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-write-assetlinksjson" class="md-nav__link">
+  <a href="#compile-verify" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Write assetlinks.json
+        Compile + verify
       
     </span>
   </a>
@@ -1008,60 +936,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-host-it-on-your-rpid-domain" class="md-nav__link">
+  <a href="#wire-it-into-an-android-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Host it on your rpId domain
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Host it on your rpId domain">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#case-a-the-backing-repo-already-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case A — the backing repo already exists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case-b-the-backing-repo-doesnt-exist-yet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case B — the backing repo doesn't exist yet
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hosting-elsewhere-vercel-cloudflare-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hosting elsewhere (Vercel / Cloudflare / nginx)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-point-your-app-at-the-rpid-then-verify" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Point your app at the rpId, then verify
+        Wire it into an Android app
       
     </span>
   </a>
@@ -1069,32 +947,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#where-to-go-from-here" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-you-ship" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When you ship
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's next
+        Where to go from here
       
     </span>
   </a>
@@ -1122,28 +978,21 @@
       
       
       
-        <span class="md-tag">assetlinks</span>
+        <span class="md-tag">compact</span>
       
     
       
       
       
       
-        <span class="md-tag">identity</span>
+        <span class="md-tag">contracts</span>
       
     
       
       
       
       
-        <span class="md-tag">passkey</span>
-      
-    
-      
-      
-      
-      
-        <span class="md-tag">signing</span>
+        <span class="md-tag">hello-world</span>
       
     
   </nav>
@@ -1153,254 +1002,193 @@
   
 
 
-<h1 id="bind-your-app-to-a-passkey-domain">Bind your app to a passkey domain<a class="headerlink" href="#bind-your-app-to-a-passkey-domain" title="Permanent link">&para;</a></h1>
-<p><strong>Outcome:</strong> your debug build's signing fingerprint is listed in an
-<code>assetlinks.json</code> served at your <code>rpId</code>, and <strong>Forge</strong> succeeds on
-device — no <code>RP_ID_MISMATCH</code>, no <code>PRF authentication failed</code>, no
-silent prompt dismissal.</p>
-<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/bind-your-app-to-a-passkey-domain.md"
-     data-task="Bind an Android app's debug build to a passkey rpId.
+<h1 id="hello-compact-write-your-first-contract">Hello Compact — write your first contract<a class="headerlink" href="#hello-compact-write-your-first-contract" title="Permanent link">&para;</a></h1>
+<p><strong>Outcome:</strong> you have a 6-line Compact contract that compiles, deploys
+on a Midnight localnet, and exposes a single circuit that bumps a
+shared counter by one — the universal "Hello World" of smart contracts.
+You can read every line of the source and the compile output, you know
+which <code>compactc</code> + language + runtime versions go together, and you
+have a clear next stop for everything beyond "make the counter go up."</p>
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/hello-compact.md"
+     data-task="Write a minimal counter Compact contract for a Midnight dApp — single Counter ledger field, single zero-argument increment circuit. Pin compactc 0.31.0, pragma language_version 0.23.0, @midnight-ntwrk/compact-runtime 0.16.0. Compile via compactc, verify via mn contract inspect. Direct deeper learning to the official Midnight contract examples at midnightntwrk/midnight-docs."></div>
 
-Discover context first: run `git remote -v` in the project. Take the GitHub user-or-org slug from the origin URL. The natural rpId is `<that-slug>.github.io`, hosted in the special-name repo `<that-slug>/<that-slug>.github.io`. Check whether that backing repo exists on GitHub; if it does not, walk the consumer through creating it. If the consumer prefers a different domain, confirm before proceeding.
-
-Then execute the four-step recipe:
-1. `./gradlew :app:signingReport` to capture the debug-variant SHA-256 (add `--no-configuration-cache` if the project sets `org.gradle.configuration-cache=true`).
-2. Compose a single-fingerprint assetlinks.json with the project's applicationId and that SHA-256.
-3. Commit it to `<that-slug>/<that-slug>.github.io` at `.well-known/assetlinks.json`; if that repo also already hosts assetlinks for other apps, append a new target rather than overwriting. **If you're creating that repo fresh, also commit an empty `.nojekyll` file at the repo root — without it, Jekyll silently strips the `.well-known/` path from the Pages build and the URL returns 404 even though the file is in the repo.**
-4. Set PASSKEY_RP_ID in the project's PasskeyConfig module to the chosen domain. Verify with `curl -I` against the live URL; then have the consumer reinstall the debug APK and tap Forge.
-
-After EACH step, output a one-sentence summary of what just happened so the human can follow without reading every tool result. Pause for explicit approval before any git push to a repo other than the project itself, and before any adb install / uninstall.
-
-Production release-keystore setup is out of scope."></div>
-
-<p>This is the <strong>development-only</strong> path. You'll be running debug builds
-on your emulator or device — Android Studio's auto-generated debug
-keystore signs them for you. No keystore generation, no
-<code>keystore.properties</code>, no CI signing setup. ~5 minutes end to end.</p>
+<div class="admonition tip">
+<p class="admonition-title">What this recipe is, and what it isn't</p>
+<p>This is the <strong>SDK's minimum-viable Compact intro</strong> — enough to read
+the counter contract that ships with <a href="https://github.com/kuiralabs/kuira-starter-android"><code>kuira-starter-android</code></a>,
+understand the toolchain pinning that makes it work, and compile +
+deploy it.</p>
+<p>For deeper Compact learning — witnesses, ZK proof construction,
+ledger types beyond <code>Counter</code>, multi-party patterns, on-chain
+verification of off-chain compute — go to the <strong><a href="https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts">official Midnight
+contract examples</a></strong>.
+Calculator, election, battleship-simple, private-guest-list,
+private-reserve-auction, token-transfers. Each is a focused tutorial
+on one Compact pattern.</p>
+<p>The Kuira SDK consumes compiled Compact artifacts; it does not
+teach Compact authoring beyond what's in this recipe.</p>
+</div>
 <hr />
-<h2 id="choose-your-rpid">Choose your rpId<a class="headerlink" href="#choose-your-rpid" title="Permanent link">&para;</a></h2>
-<p>Your <code>rpId</code> should be the GitHub Pages host of the user or organization
-that owns your project. Derive it from the project's git remote:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>-v
-<span class="c1"># origin  https://github.com/&lt;user-or-org&gt;/&lt;repo&gt;.git</span>
+<h2 id="the-counter-contract">The counter contract<a class="headerlink" href="#the-counter-contract" title="Permanent link">&para;</a></h2>
+<div class="highlight"><span class="filename">contract/src/counter.compact</span><pre><span></span><code>pragma language_version 0.23.0;
+
+import CompactStandardLibrary;
+
+export ledger count: Counter;
+
+export circuit increment(): [] {
+    count.increment(1);
+}
 </code></pre></div>
-<p>From that:</p>
+<p>Six lines. What each one does:</p>
 <ul>
-<li><strong>Your <code>rpId</code></strong> is <code>&lt;user-or-org&gt;.github.io</code> (hostname only, no
-  scheme, no path).</li>
-<li><strong>The repo that backs that rpId</strong> is <code>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io</code>
-  — that exact, specially-named repo is the only one whose
-  <code>.well-known/assetlinks.json</code> is reachable at the URL the passkey
-  API needs (<code>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json</code>).</li>
+<li><code>pragma language_version 0.23.0;</code> — pins the Compact language
+  grammar version. The Compact language is versioned independently
+  from <code>compactc</code> (the compiler) and from <code>@midnight-ntwrk/compact-runtime</code>
+  (the JS runtime that compiled contracts call into). Mismatched
+  versions produce a <code>language version X.Y.Z mismatch</code> error at
+  compile time.</li>
+<li><code>import CompactStandardLibrary;</code> — brings in the standard library
+  types and helpers, including <code>Counter</code>.</li>
+<li><code>export ledger count: Counter;</code> — declares a single on-chain ledger
+  field, named <code>count</code>, of type <code>Counter</code>. The Standard Library's
+  <code>Counter</code> wraps a <code>Uint&lt;64&gt;</code> with built-in <code>.increment()</code> and
+  <code>.read()</code> helpers. <code>export ledger</code> makes the field readable by
+  off-chain clients (the Kuira SDK reads it via
+  <code>MidnightContract.ledger().getUint64("count")</code>).</li>
+<li><code>export circuit increment(): [] { count.increment(1); }</code> — a single
+  circuit that takes no arguments and bumps the counter by 1.
+  Circuits are the on-chain entrypoints; calling one produces a
+  ZK proof + a transaction that updates ledger state.</li>
 </ul>
-<p>For example, this project's origin is
-<code>github.com/kuiralabs/kuira-starter-android</code>, so its natural rpId is
-<code>kuiralabs.github.io</code> and assetlinks goes in <code>kuiralabs/kuiralabs.github.io</code>.</p>
-<p>Check whether that repo already exists:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
-</code></pre></div>
-<p>If it doesn't, you'll create it in Step 3. If you want to use a
-different domain (a custom domain you own, or a personal site you
-already host other apps on), use that instead — same constraints apply.</p>
+<p>No witnesses, no privacy controls, no access checks. Anyone with DUST
+can increment. The point is the SDK-integration story, not contract
+design — for non-trivial patterns, jump to the <a href="https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts">Midnight examples</a>.</p>
 <hr />
-<h2 id="step-1-get-the-debug-fingerprint">Step 1 — Get the debug fingerprint<a class="headerlink" href="#step-1-get-the-debug-fingerprint" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Configuration-cache gotcha</p>
-<p>If your project sets <code>org.gradle.configuration-cache=true</code> in
-<code>gradle.properties</code>, <code>signingReport</code> fails with a class-loader
-error (<code>Class 'com.android.build.gradle.internal.dsl.SigningConfig$AgpDecorated' not found</code>).
-Run it with <code>--no-configuration-cache</code>:</p>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport<span class="w"> </span>--no-configuration-cache
-</code></pre></div>
-</div>
-<p>Find the <code>Variant: debug</code> block. Copy its <code>SHA-256:</code> line (keep the
-colons):</p>
-<div class="highlight"><pre><span></span><code>Variant: debug
-…
-SHA-256: AB:CD:EF:12:34:…
-</code></pre></div>
-<hr />
-<h2 id="step-2-write-assetlinksjson">Step 2 — Write <code>assetlinks.json</code><a class="headerlink" href="#step-2-write-assetlinksjson" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">assetlinks.json</span><pre><span></span><code><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;delegate_permission/common.get_login_creds&quot;</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;android_app&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example.myapp&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;sha256_cert_fingerprints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;AB:CD:EF:12:34:56:…&quot;</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
-</code></pre></div>
-<p>Two fields:</p>
-<ul>
-<li><code>package_name</code> — your app's <code>applicationId</code> from <code>app/build.gradle.kts</code>.</li>
-<li><code>sha256_cert_fingerprints[0]</code> — the SHA-256 from Step 1.</li>
-</ul>
-<p>Both relations are required: <code>get_login_creds</code> makes passkey ceremonies
-work; <code>handle_all_urls</code> lets the same file double as App Links binding
-if you add deep links later.</p>
-<hr />
-<h2 id="step-3-host-it-on-your-rpid-domain">Step 3 — Host it on your <code>rpId</code> domain<a class="headerlink" href="#step-3-host-it-on-your-rpid-domain" title="Permanent link">&para;</a></h2>
-<p>Path: <code>https://&lt;rpId&gt;/.well-known/assetlinks.json</code>. Must be served over
-HTTPS, with <code>Content-Type: application/json</code>, with no redirect and no
-auth wall.</p>
-<p>You chose the rpId + backing repo in the <strong>Choose your rpId</strong> section
-above. Two cases:</p>
-<h3 id="case-a-the-backing-repo-already-exists">Case A — the backing repo already exists<a class="headerlink" href="#case-a-the-backing-repo-already-exists" title="Permanent link">&para;</a></h3>
-<p>Clone it, append your new target to any existing <code>assetlinks.json</code>
-array (don't overwrite — other apps may already be bound to the same
-host), commit, push:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
-<span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
-<span class="c1"># Edit .well-known/assetlinks.json: append your target object to the</span>
-<span class="c1"># top-level JSON array. If the file doesn&#39;t exist yet, create it with</span>
-<span class="c1"># just your target inside an array.</span>
-git<span class="w"> </span>add<span class="w"> </span>.well-known/assetlinks.json
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;passkey: bind &lt;your-package-name&gt;&quot;</span>
-git<span class="w"> </span>push
-</code></pre></div>
-<h3 id="case-b-the-backing-repo-doesnt-exist-yet">Case B — the backing repo doesn't exist yet<a class="headerlink" href="#case-b-the-backing-repo-doesnt-exist-yet" title="Permanent link">&para;</a></h3>
-<p>Create it, drop the JSON in <strong>plus a <code>.nojekyll</code> marker</strong>, push, enable
-Pages:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>create<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io<span class="w"> </span>--public<span class="w"> </span>--add-readme
-gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
-<span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
-mkdir<span class="w"> </span>-p<span class="w"> </span>.well-known
-<span class="c1"># Write .well-known/assetlinks.json with the JSON from Step 2.</span>
-touch<span class="w"> </span>.nojekyll
-git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;host assetlinks.json&quot;</span>
-git<span class="w"> </span>push
-</code></pre></div>
-<div class="admonition danger">
-<p class="admonition-title">Why <code>.nojekyll</code> matters</p>
-<p>GitHub Pages's default static-site processor is Jekyll, which
-<strong>silently excludes every dot-prefixed path</strong> from the build
-output. Without <code>.nojekyll</code>, <code>.well-known/assetlinks.json</code> is in
-your repo and visible in the GitHub web UI, but the deployed Pages
-site returns <code>HTTP 404</code> for it.</p>
-<p>Adding an empty <code>.nojekyll</code> file at the repo root tells Pages to
-skip Jekyll entirely and serve the repo's files verbatim. This is
-the universal fix for any Pages site that hosts a <code>.well-known/*</code>
-path — App Links, passkey assetlinks, ACME challenge files,
-<code>security.txt</code>, etc.</p>
-<p>Symptom if you forget: the apex <code>https://&lt;name&gt;.github.io/</code>
-returns 200 (Pages is live), the file is present in the repo,
-but <code>curl -I https://&lt;name&gt;.github.io/.well-known/assetlinks.json</code>
-returns 404. Add <code>.nojekyll</code> and re-push to fix; the deploy
-re-runs in ~30 seconds.</p>
-</div>
-<p>For <code>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io</code> repos, GitHub Pages
-auto-enables on the default branch. If for some reason it didn't:
-<strong>Settings → Pages → Source: <code>main</code></strong> in the repo UI, or via API:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;/repos/&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io/pages&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-f<span class="w"> </span><span class="s1">&#39;source[branch]=main&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;source[path]=/&#39;</span>
-</code></pre></div>
-<p>Either way: GitHub Pages serves <code>.json</code> as <code>application/json</code> by
-default — no extra config. The file is live at
-<code>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json</code> within
-~30 seconds.</p>
-<h3 id="hosting-elsewhere-vercel-cloudflare-nginx">Hosting elsewhere (Vercel / Cloudflare / nginx)<a class="headerlink" href="#hosting-elsewhere-vercel-cloudflare-nginx" title="Permanent link">&para;</a></h3>
-<p>Same constraints — HTTPS, <code>Content-Type: application/json</code>, no
-redirects, no auth — drop <code>assetlinks.json</code> at <code>/.well-known/assetlinks.json</code>
-of your hostname's web root. Platform-specific notes are out of scope
-here; the rest of the recipe is unchanged.</p>
-<hr />
-<h2 id="step-4-point-your-app-at-the-rpid-then-verify">Step 4 — Point your app at the rpId, then verify<a class="headerlink" href="#step-4-point-your-app-at-the-rpid-then-verify" title="Permanent link">&para;</a></h2>
-<p>First, update your app's <code>PasskeyConfig</code> so the in-binary rpId matches
-the domain that now serves your <code>assetlinks.json</code>. In a starter built
-from <code>kuiralabs/kuira-starter-android</code>, that's the <code>PASSKEY_RP_ID</code>
-constant in <code>app/src/main/java/.../di/PasskeyConfigModule.kt</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PASSKEY_RP_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;user-or-org&gt;.github.io&quot;</span>
-</code></pre></div>
-<p>Then verify the hosting:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-I<span class="w"> </span>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json
-<span class="c1"># Expected:</span>
-<span class="c1"># HTTP/2 200</span>
-<span class="c1"># content-type: application/json</span>
-</code></pre></div>
-<p>Then on device:</p>
-<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>uninstall<span class="w"> </span>&lt;your-package-name&gt;<span class="w">          </span><span class="c1"># if a previous build is installed</span>
-./gradlew<span class="w"> </span>:app:installDebug
-</code></pre></div>
-<p>Launch the app and tap <strong>Forge</strong>. You should get a biometric prompt →
-success → Sigil panel transitions to <code>Forged</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Uninstall before re-installing</p>
-<p><code>adb install -r</code> does NOT refresh credential-manager state on some
-devices. After hosting changes or rpId changes, always
-<code>adb uninstall &lt;pkg&gt;</code> first.</p>
-</div>
-<hr />
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>If Forge fails, almost every symptom maps to the same root cause:</p>
+<h2 id="toolchain-pinning">Toolchain pinning<a class="headerlink" href="#toolchain-pinning" title="Permanent link">&para;</a></h2>
+<p>Three versions move independently. Mismatched values surface as
+compile errors with the <em>generated</em> language version, not the version
+you typed:</p>
 <table>
 <thead>
 <tr>
-<th>Symptom</th>
-<th>First thing to check</th>
+<th>Layer</th>
+<th>Pinned value</th>
+<th>Where it lives</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>RP_ID_MISMATCH</code></td>
-<td><code>curl -I</code> returns 200 with <code>content-type: application/json</code>?</td>
+<td><code>compactc</code> binary</td>
+<td><strong>0.31.0</strong></td>
+<td><code>~/.compact/versions/0.31.0/aarch64-darwin/compactc</code></td>
 </tr>
 <tr>
-<td><code>PRF authentication failed</code></td>
-<td>Same — the passkey API never reaches PRF if assetlinks doesn't validate</td>
+<td>Compact language pragma</td>
+<td><strong>0.23.0</strong></td>
+<td><code>pragma language_version &lt;v&gt;;</code> in your <code>.compact</code> source</td>
 </tr>
 <tr>
-<td>Biometric prompt appears, dismisses silently</td>
-<td>Same</td>
-</tr>
-<tr>
-<td>Worked before, broken after <code>adb install -r</code></td>
-<td><code>adb uninstall &lt;pkg&gt;</code> then re-install — credential-manager state goes stale</td>
+<td><code>@midnight-ntwrk/compact-runtime</code></td>
+<td><strong>0.16.0</strong></td>
+<td><code>contract/package.json</code> deps</td>
 </tr>
 </tbody>
 </table>
-<p>Common <code>curl -I</code> red flags:</p>
-<ul>
-<li><code>301</code> / <code>302</code> — passkey API doesn't follow redirects; fix the redirect</li>
-<li><code>403</code> / <code>401</code> — allow <code>/.well-known/*</code> through your auth</li>
-<li><code>content-type: text/html</code> — force <code>application/json</code> via your hosting config</li>
-<li><code>404</code> on GitHub Pages, file IS in the repo — Jekyll silently stripped
-  the <code>.well-known/</code> dotfile path. Add an empty <code>.nojekyll</code> at repo
-  root, push, wait ~30s for redeploy (see Step 3 Case B for the full
-  explanation)</li>
-<li><code>404</code>, file is NOT in the repo / wrong hostname — re-check your push
-  landed on the served branch, and that the <code>rpId</code> matches the
-  hostname you <code>curl</code>ed</li>
-</ul>
-<p>If the <code>curl</code> looks clean and Forge still fails, paste your hosting URL
-+ package name + fingerprint into Google's
-<a href="https://developers.google.com/digital-asset-links/tools/generator">Statement List Tester</a>
-— it reports any mismatch with a precise error string.</p>
+<p>Each <code>compactc</code> binary self-introspects:</p>
+<div class="highlight"><pre><span></span><code>compactc<span class="w"> </span>--version<span class="w">            </span><span class="c1"># → 0.31.0</span>
+compactc<span class="w"> </span>--language-version<span class="w">   </span><span class="c1"># → 0.23.0</span>
+compactc<span class="w"> </span>--runtime-version<span class="w">    </span><span class="c1"># → 0.16.0</span>
+</code></pre></div>
+<p>When upgrading, run the three flags on the new binary first to
+discover the matching triple before editing any pragma. The starter's
+<a href="https://github.com/kuiralabs/kuira-starter-android/blob/main/contract/README.md"><code>contract/README.md</code></a>
+documents the upgrade recipe step by step.</p>
 <hr />
-<h2 id="when-you-ship">When you ship<a class="headerlink" href="#when-you-ship" title="Permanent link">&para;</a></h2>
-<p>The setup above covers development with debug builds. Shipping to the
-Play Store or distributing a signed release build to testers needs a
-release keystore, <code>keystore.properties</code> wiring, and the release
-fingerprint added to the same <code>assetlinks.json</code>. A dedicated recipe for
-that is coming; for now,
-<a href="https://developer.android.com/build/building-cmdline#signing_report"><code>./gradlew :app:signingReport</code></a>
-+ <a href="https://developer.android.com/build/build-variants#signing">the AGP signing config docs</a>
-cover the missing pieces.</p>
+<h2 id="compile-verify">Compile + verify<a class="headerlink" href="#compile-verify" title="Permanent link">&para;</a></h2>
+<p>From your project root:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>contract/src/managed
+~/.compact/versions/0.31.0/aarch64-darwin/compactc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>contract/src/counter.compact<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>contract/src/managed/counter
+</code></pre></div>
+<p>Output: a <code>contract/src/managed/counter/</code> directory containing
+<code>contract/index.js</code> (the runnable contract), <code>keys/increment.verifier</code>
++ <code>keys/increment.prover</code> (proving + verifying keys), and <code>zkir/</code> (the
+intermediate representation). This is what the Kuira SDK consumes via
+<code>MidnightContract.create(config) { contractJs = assets.open(...) }</code>.</p>
+<p>Quick sanity check with the <code>mn</code> CLI:</p>
+<div class="highlight"><pre><span></span><code>mn<span class="w"> </span>contract<span class="w"> </span>inspect<span class="w"> </span>--managed<span class="w"> </span>contract/src/managed/counter
+</code></pre></div>
+<p>Output should show:</p>
+<div class="highlight"><pre><span></span><code>Compiler:       0.31.0
+Language:       0.23.0
+Runtime:        0.16.0
+
+Circuits
+  increment()  — impure, proof
+
+Witnesses
+  (none)
+</code></pre></div>
+<p>If those three versions don't match what you have on disk, you've got
+a mismatch between the <code>compactc</code> you ran and the <code>@midnight-ntwrk/compact-runtime</code>
+your project pins. Re-align using the toolchain table above.</p>
+<p>For a full localnet verify loop (deploy → call → read state), follow
+the starter's
+<a href="https://github.com/kuiralabs/kuira-starter-android/blob/main/contract/README.md"><code>contract/README.md</code> § Verify against a localnet</a>.</p>
 <hr />
-<h2 id="whats-next">What's next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="../set-up-sigil-identity/">Set up Sigil identity</a></strong> — now that the
-  passkey domain is bound, wire <code>SigilStatusPanel</code> and forge your
-  first sigil.</li>
-</ul>
+<h2 id="wire-it-into-an-android-app">Wire it into an Android app<a class="headerlink" href="#wire-it-into-an-android-app" title="Permanent link">&para;</a></h2>
+<p>Once the contract is compiled, the Kuira SDK consumes it as Android
+assets. See <strong><a href="../deploy-and-call-a-compact-contract/">Deploy and call a Compact contract</a></strong>
+for the integration walkthrough — <code>syncContractAssets</code> Gradle task
+(today) or the <code>com.midnight.kuira.contract</code> plugin (alpha02+), then
+<code>MidnightContract.create(config) { … }</code> and <code>.deploy()</code> / <code>.call()</code>.</p>
+<hr />
+<h2 id="where-to-go-from-here">Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Working reference implementation</td>
+<td><a href="https://github.com/kuiralabs/kuira-starter-android"><code>kuiralabs/kuira-starter-android</code></a> — this counter contract end-to-end with Android UI</td>
+</tr>
+<tr>
+<td>Witnesses + on-chain verification of off-chain compute</td>
+<td><a href="https://github.com/midnightntwrk/midnight-docs/blob/main/docs/examples/contracts/calculator.mdx">Calculator example</a> (Midnight docs)</td>
+</tr>
+<tr>
+<td>Multi-party patterns + commit-reveal</td>
+<td><a href="https://github.com/midnightntwrk/midnight-docs/blob/main/docs/examples/contracts/battleship-simple.mdx">Battleship Simple example</a> (Midnight docs)</td>
+</tr>
+<tr>
+<td>Selective-disclosure + private state</td>
+<td><a href="https://github.com/midnightntwrk/midnight-docs/blob/main/docs/examples/contracts/private-guest-list.mdx">Private Guest List</a> + <a href="https://github.com/midnightntwrk/midnight-docs/blob/main/docs/examples/contracts/private-reserve-auction.mdx">Private Reserve Auction</a> (Midnight docs)</td>
+</tr>
+<tr>
+<td>Token + asset transfer patterns</td>
+<td><a href="https://github.com/midnightntwrk/midnight-docs/blob/main/docs/examples/contracts/token-transfers.mdx">Token Transfers example</a> (Midnight docs)</td>
+</tr>
+<tr>
+<td>Voting / quorum patterns</td>
+<td><a href="https://github.com/midnightntwrk/midnight-docs/blob/main/docs/examples/contracts/election.mdx">Election example</a> (Midnight docs)</td>
+</tr>
+<tr>
+<td>Full Compact language reference</td>
+<td><a href="https://github.com/midnightntwrk/midnight-docs">Midnight docs root</a> (Midnight project)</td>
+</tr>
+</tbody>
+</table>
+<p>The Kuira SDK is happy to consume any Compact contract that <code>compactc</code>
+produces — once you've moved beyond the counter, the Android-side
+integration story doesn't change. Compile, drop the artifacts under
+<code>contract/src/managed/&lt;name&gt;/</code>, point <code>MidnightContract.create</code> at
+them, deploy, call.</p>
 
 
 
