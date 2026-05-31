@@ -70,6 +70,16 @@ agent and let it execute the recipe in your project.
     Compile a `.compact` contract, sync artifacts into your assets,
     deploy via the SDK, and call a circuit. ~30 minutes.
 
+-   :material-stethoscope: **[Run kuiraDoctor before each release](run-kuira-doctor.md)**
+
+    ---
+
+    The `kuiraDoctor` Gradle task runs four preflight checks that
+    catch misconfigurations at build time — `assetlinks.json`
+    reachability + applicationId match, `minSdk` floor, debug-
+    cleartext manifest, Compact runtime pin — before they surface
+    as runtime crashes on a user's device. Run before each release.
+
 </div>
 
 ---

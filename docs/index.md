@@ -40,6 +40,7 @@ Pick a task and an agent. We generate the prompt; you paste it into your tool. S
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="set-up-sigil-identity" data-task-title="Set up Sigil identity">Set up Sigil identity</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="hello-compact" data-task-title="Write a minimal Compact contract">Hello Compact</button>
 <button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="deploy-and-call-a-compact-contract" data-task-title="Deploy a Compact contract and call a circuit">Deploy a Compact contract</button>
+<button class="kuira-picker__chip" type="button" role="radio" aria-pressed="false" data-task-key="run-kuira-doctor" data-task-title="Wire and run kuiraDoctor preflight">Run kuiraDoctor</button>
 </div>
 </div>
 

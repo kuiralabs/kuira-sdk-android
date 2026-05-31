@@ -106,6 +106,7 @@ nav:
     - Set up Sigil identity: recipes/set-up-sigil-identity.md
     - Hello Compact — write your first contract: recipes/hello-compact.md
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
+    - Run kuiraDoctor before each release: recipes/run-kuira-doctor.md
   - API reference: api-reference.md
   - Security: security.md
 
