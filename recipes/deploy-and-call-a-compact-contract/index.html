@@ -1123,8 +1123,8 @@ produces the same asset layout the plugin would.</p>
 <ol>
 <li>The plugin ships to Maven Central. Add <code>mavenCentral()</code> to
    <code>pluginManagement.repositories</code> so <code>plugins { id(...) }</code> can
-   resolve it. (A Gradle Plugin Portal listing is planned for
-   <code>alpha03</code> so this extra repo entry will go away.)</li>
+   resolve it. (A Gradle Plugin Portal listing is on the roadmap;
+   once published there, this extra repo entry goes away.)</li>
 <li><code>alias</code> is optional — defaults to the dirname of <code>source</code>. So
    <code>contract/src/managed/penalty</code> resolves to alias <code>penalty</code>,
    which lands the contract JS as
@@ -1180,9 +1180,9 @@ is what the plugin replaces — same output, more lines.</p>
 
 <span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dependsOn</span><span class="p">(</span><span class="n">syncContractAssets</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>When you migrate to alpha02, replace the entire block above with
-the four-line <code>kuiraContract { source.set("…") }</code> plugin pattern
-in the other tab.</p>
+<p>Once the <code>com.midnight.kuira.contract</code> plugin is published to
+Maven Central, replace this entire block with the four-line
+<code>kuiraContract { source.set("…") }</code> plugin pattern in the other tab.</p>
 </div>
 </div>
 </div>
@@ -1215,9 +1215,9 @@ are all present.</p>
 <li><code>null</code> while you're still going to call <code>deploy()</code> — set this to the
    returned address for every subsequent call.</li>
 <li>Stub witness — replace with your contract's actual witness layout.
-   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), see wishlist
-   <code>#12</code> (typed witness factories on the alpha02 roadmap); today you
-   pack bytes by hand.</li>
+   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), typed witness
+   factories are on the roadmap to eliminate the manual byte-packing;
+   today you pack bytes by hand.</li>
 </ol>
 <p><strong>Verify:</strong> the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
@@ -1258,9 +1258,9 @@ non-null state.</p>
 <li>Returns the post-call ledger state.</li>
 </ol>
 <p>For long-running circuits (sub-second to a few seconds), wire up
-<code>TransactionBalancer</code> progress callbacks for UX feedback —
-wishlist <code>#1</code> covers the SDK-side primitive
-(<code>awaitIndexerSynced(blockHeight)</code>) that replaces today's fixed delays.</p>
+<code>TransactionBalancer</code> progress callbacks for UX feedback. An SDK-side
+<code>awaitIndexerSynced(blockHeight)</code> primitive is on the roadmap; it
+will replace today's fixed delays once it lands.</p>
 <p><strong>Verify:</strong> the transaction confirms within ~10s on PREPROD. Query
 <code>contract.ledger()</code> and check the field your circuit mutates.</p>
 <hr />
@@ -1287,12 +1287,12 @@ wishlist <code>#1</code> covers the SDK-side primitive
 <tr>
 <td><code>Indexer says contract not found</code> after deploy</td>
 <td>Indexer hasn't caught up yet.</td>
-<td>Today's workaround: 3–5s delay between deploy and first call. Wishlist <code>#1</code> (<code>awaitIndexerSynced</code>) lands in alpha02.</td>
+<td>Today's workaround: 3–5s delay between deploy and first call. An SDK-side <code>awaitIndexerSynced</code> primitive is on the roadmap.</td>
 </tr>
 <tr>
 <td><code>Invalid witness</code> at call time</td>
 <td>Witness <code>ByteArray</code> length doesn't match the circuit's declared shape.</td>
-<td>Cross-check the witness layout. Typed factories (wishlist <code>#12</code>) eliminate this whole class of bug in alpha02.</td>
+<td>Cross-check the witness layout. Typed witness factories on the roadmap eliminate this whole class of bug.</td>
 </tr>
 <tr>
 <td><code>Deadline expired</code> even though you set it in the future</td>
