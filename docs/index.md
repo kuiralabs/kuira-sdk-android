@@ -188,6 +188,49 @@ against*.
 
 ---
 
+## What's coming next — Sigil V2
+
+The currently-shipped sigil architecture (**Sigil V1**) derives the
+wallet seed deterministically from a passkey PRF assertion. That gives
+a one-tap onboarding story but binds the sigil to a single WebAuthn
+`rpId` — so a user's funds cannot be shared across multiple Kuira
+apps that ship under different domains, and recovery is gated on the
+same Google account holding the synced passkey.
+
+**Sigil V2** keeps the one-tap-onboarding promise but treats the
+master seed as portable data: PRF becomes an *unlock key* for a
+persisted seed envelope rather than the seed itself. Three properties
+follow:
+
+- **Cross-app sigil portability via explicit enrollment.** A user
+  installs a second Kuira app, taps "Use my Kuira sigil from
+  \[Wallet]," and the existing app hands the seed over a secure
+  biometric-gated AIDL channel. Both apps now share the same wallet,
+  same DID, same on-chain history.
+- **Cross-device, cross-Google-account recovery.** PIN-based
+  recovery via an opaque cloud bucket (Signal SVR2 pattern, no
+  enclave needed); the seed survives device loss and account
+  changes.
+- **Midnight Passport plug-in path.** Versioned envelope codec +
+  storage-tier interface + frozen HKDF signer namespace reserve a
+  clean integration surface for Midnight's protocol-native account
+  abstraction, universal DID, and verifiable-credential layers when
+  Passport's spec is public.
+
+The same primitive is already shipped in production by Dashlane,
+Bitwarden, 1Password, Signal SVR2, and WhatsApp E2EE backups — five
+independent systems that converged on the same shape for the same
+reason.
+
+Sigil V2 is the **next architecture** for Kuira, not the next alpha.
+Track A (master seed lifecycle, tiered storage, cross-app enrollment)
+ships after `alpha02`; Track B (cloud-bucket PIN recovery) follows.
+Detailed design lives in the (private) monorepo at
+`docs/research/SIGIL_V2_DESIGN.md`, with the Track A plan and viability
+analysis alongside.
+
+---
+
 ## License
 
 Apache License 2.0 — see [LICENSE](https://github.com/kuiralabs/kuira-sdk-android/blob/main/LICENSE).
