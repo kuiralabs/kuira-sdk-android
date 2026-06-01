@@ -97,6 +97,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Capabilities: capabilities.md
   - Get started:
     - Install + integrate: integration.md
   - Recipes:
