@@ -58,6 +58,15 @@ Benefit-first — the capabilities your app can offer the people using it.
     switch devices and the wallet comes back *(encrypted device-transfer
     backup under the hood)*.
 
+-   :material-cloud-sync:{ .lg .middle } __Wallet data follows you across devices__
+
+    ---
+
+    The wallet's sync state is backed up encrypted to the user's own cloud
+    storage and restored on a new device, so it's ready in seconds instead
+    of re-scanning the whole chain *(opt-in; the data is encrypted on-device
+    before upload — the cloud only ever holds ciphertext)*.
+
 -   :material-swap-horizontal:{ .lg .middle } __Testnet to mainnet, same code__
 
     ---

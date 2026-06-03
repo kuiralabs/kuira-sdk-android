@@ -80,6 +80,16 @@ agent and let it execute the recipe in your project.
     cleartext manifest, Compact runtime pin — before they surface
     as runtime crashes on a user's device. Run before each release.
 
+-   :material-cloud-sync: **[Back up wallet data across devices](back-up-wallet-across-devices.md)**
+
+    ---
+
+    Register a Google Cloud OAuth client for the `drive.appdata`
+    scope so the wallet's encrypted sync state rides the user's own
+    Drive to a new device — a fast delta restore instead of a full
+    genesis replay. Covers the `appDataFolder` invisibility and the
+    same-account caveat.
+
 </div>
 
 ---
