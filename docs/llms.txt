@@ -1,6 +1,6 @@
 # Kuira Android SDK
 
-> Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, and a Compact contract runtime — added to a consumer project as one Gradle dependency. Published to Maven Central as `io.github.kuiralabs:*`.
+> Android SDK for building Midnight zero-knowledge dApps. On-device ZK proving (no proof server), passkey-derived identity, embedded wallet, and a Compact contract runtime — added to a consumer project as one Gradle dependency. Published to Maven Central as `io.github.kuiralabs:*`.
 
 Kuira's cookbook is designed for both human and agent consumption.
 Every recipe URL below is a raw markdown file that can be fetched

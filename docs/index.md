@@ -11,10 +11,10 @@ hide:
 <div class="kuira-hero__inner" markdown>
 <div class="kuira-hero__eyebrow"><span>Kuira · v{{ kuira_version }}</span><span>Maven Central</span></div>
 
-<h1 class="kuira-hero__headline">The first Android SDK <em>built for AI-paired development.</em></h1>
+<h1 class="kuira-hero__headline">Zero-knowledge apps that <em>prove on the phone</em> — no server, no seed phrase.</h1>
 
 <p class="kuira-hero__lede">
-Midnight zero-knowledge dApps on Android — passkey identity, embedded wallet, Compact contract runtime. Every recipe ships with a one-tap prompt for your coding agent.
+Kuira is the Android SDK for Midnight: on-device ZK proving, passkey identity, an embedded wallet, and the Compact runtime — the full private-app stack, self-custodial. Built to pair with your coding agent: every recipe ships a one-tap prompt.
 </p>
 
 <div class="kuira-hero__cta">

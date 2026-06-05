@@ -1,10 +1,10 @@
 # Kuira Android SDK
 
-**Build [Midnight](https://midnight.network) zero-knowledge dApps on Android.**
+**Build [Midnight](https://midnight.network) zero-knowledge dApps on Android — proofs run on the phone.**
 
-Build privacy-first Android apps on Midnight: passkey-derived identity, an
-embedded wallet, and a Compact contract runtime — added to your project as
-a single Gradle dependency.
+Privacy-first Android apps on Midnight: on-device ZK proving (no proof
+server), passkey-derived identity, an embedded wallet, and the Compact
+contract runtime — added to your project as a single Gradle dependency.
 
 > **Status:** Alpha (`0.1.0-alpha01`). The API may change between alpha
 > bumps. Production usage is not recommended; we're looking for early
