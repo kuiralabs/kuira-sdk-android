@@ -14,7 +14,8 @@ it.
     proving** — is a native Rust library compiled straight to an Android
     `.so` and called over JNI. It runs as native ARM64 machine code, not
     the Midnight stack's WebAssembly modules inside an embedded runtime.
-    That's the foundation that makes on-device proving viable.
+    That's the foundation that makes [on-device proving](on-device-proving.md)
+    viable.
 
     *(Compact contract logic itself executes in a QuickJS runtime; the
     claim here is about the crypto/proving core, not contract execution.)*
