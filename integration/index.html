@@ -710,6 +710,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Minimal &#34;Hello World&#34; — deploy + call">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-install-your-contracts-proving-keys-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Install your contract's proving keys (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1226,6 +1243,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Minimal &#34;Hello World&#34; — deploy + call">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-install-your-contracts-proving-keys-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Install your contract's proving keys (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1312,12 +1346,17 @@
 <h1 id="kuira-sdk-integration-guide">Kuira SDK — Integration Guide<a class="headerlink" href="#kuira-sdk-integration-guide" title="Permanent link">&para;</a></h1>
 <p><strong>Alpha — <code>0.1.0-alpha01</code></strong></p>
 <p>Build a Midnight zero-knowledge dApp on Android by adding <strong>one dependency</strong>, declaring your <strong>own passkey domain</strong>, and hosting <strong>one tiny JSON file</strong> on it. That's the whole on-ramp.</p>
-<p>This guide walks the recipe end-to-end. Two reference dApps — <strong>Midnight
-Kicks</strong> (a PvP penalty shoot-out demonstrating commit-reveal + ZK proving)
-and <strong>BBoard</strong> (a simpler community-board app) — consume the SDK exactly
-as described below. Their sources are currently in a private repository
-while the SDK is published here; the code patterns below are extracted
-from those apps, so prefer the description here as the canonical guide.</p>
+<p>This guide walks the recipe end-to-end. Two <strong>public</strong> reference apps consume
+the SDK exactly as described below — clone either and read along:</p>
+<ul>
+<li><strong><a href="https://github.com/kuiralabs/kuira-starter-android">Kuira Starter</a></strong> — the
+  minimal counter dApp. Sigil identity + wallet + a one-circuit Compact contract.
+  Clone it, set your <code>applicationId</code> + <code>rpId</code>, run. (Also a GitHub template.)</li>
+<li><strong><a href="https://github.com/kuiralabs/example-bboard-android">BBoard</a></strong> — a shared
+  on-chain bulletin board (post / take-down) showing the deploy → call → read flow.</li>
+</ul>
+<p>The snippets below are extracted from those apps; when in doubt, the linked
+source is the ground truth.</p>
 <hr />
 <h2 id="what-the-sdk-gives-you">What the SDK gives you<a class="headerlink" href="#what-the-sdk-gives-you" title="Permanent link">&para;</a></h2>
 <p>Adding the one line below brings:</p>
@@ -1492,49 +1531,90 @@ own — release stays cleartext-free.</p>
 </blockquote>
 <hr />
 <h2 id="6-minimal-hello-world-deploy-call">6. Minimal "Hello World" — deploy + call<a class="headerlink" href="#6-minimal-hello-world-deploy-call" title="Permanent link">&para;</a></h2>
-<p>Assuming you picked <code>dapp-ui</code> (panel) and your app's main activity is a
-Hilt'd <code>FragmentActivity</code>:</p>
+<p>Your <code>Application</code> is <code>@HiltAndroidApp</code>, and your activity is a Hilt'd
+<strong><code>FragmentActivity</code></strong> — <code>AppCompatActivity</code> is the usual choice, since
+<code>SigilStatusPanel</code> hosts a biometric prompt that needs a FragmentActivity host:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@HiltAndroidApp</span>
 <span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">()</span>
 
 <span class="nd">@AndroidEntryPoint</span>
-<span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">FragmentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Inject</span><span class="w"> </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">sdkProvider</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightSdkProvider</span>
-
+<span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
 <span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// Drop-in wallet + sigil panel. Renders status, exposes Backup</span>
-<span class="w">            </span><span class="c1">// / Restore / Send / Receive without any further plumbing.</span>
-<span class="w">            </span><span class="n">WalletPanel</span><span class="p">(</span><span class="n">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="nd">@MainActivity</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Column</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Drop-in SDK panels — each owns its own state. The wallet</span>
+<span class="w">                </span><span class="c1">// panel builds the SDK (one biometric) the first time it shows.</span>
+<span class="w">                </span><span class="n">SigilStatusPanel</span><span class="p">()</span><span class="w">   </span><span class="c1">// forge / restore identity (DID)</span>
+<span class="w">                </span><span class="n">WalletStatusPanel</span><span class="p">()</span><span class="w">  </span><span class="c1">// balance, receive, dust register, network</span>
+<span class="w">                </span><span class="n">MyDappScreen</span><span class="p">()</span><span class="w">       </span><span class="c1">// your UI</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Your dApp logic, e.g. deploy + call a contract:</span>
-<span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">deployAndCall</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdkProvider</span><span class="p">.</span><span class="na">ensureSdk</span><span class="p">(</span>
-<span class="w">            </span><span class="n">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">,</span>
-<span class="w">            </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WalletConfig</span><span class="p">(</span><span class="n">network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightNetwork</span><span class="p">.</span><span class="na">UNDEPLOYED</span><span class="p">),</span>
-<span class="w">        </span><span class="p">)</span>
-
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// your compiled `.compact` JS + proving keys, dropped in assets/</span>
-<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my-contract.js&quot;</span>
-<span class="w">            </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">wallet</span>
-<span class="w">            </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">…</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>For a real, multi-step contract (commit / reveal / ZK proofs / sudden
-death), the reference Midnight Kicks dApp implements a ~600-line
-state-machine that exercises every SDK surface — protocol orchestration,
-witness packing, indexer-state polling, transaction retry, force-resync,
-deadline computation. The patterns described throughout this guide come
-from that code path; once the reference repository opens to the public,
-this section will link directly to it.</p>
+<p>Your dApp logic gets the SDK from the injected <code>MidnightSdkProvider</code> — observe
+<code>sdkProvider.sdk</code> (a <code>StateFlow&lt;MidnightSdk?&gt;</code>, non-null once the wallet panel
+has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@HiltViewModel</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyDappViewModel</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="nd">@ApplicationContext</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">sdkProvider</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightSdkProvider</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">deployAndCall</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdkProvider</span><span class="p">.</span><span class="na">awaitSdk</span><span class="p">()</span><span class="w">   </span><span class="c1">// waits for the panel to bootstrap it</span>
+
+<span class="w">        </span><span class="c1">// 1. Install your contract&#39;s proving keys — required before the first</span>
+<span class="w">        </span><span class="c1">//    deploy/call (see §6.1), or proving fails.</span>
+<span class="w">        </span><span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
+
+<span class="w">        </span><span class="c1">// 2. Build a write-capable handle. create() takes the SDK&#39;s config;</span>
+<span class="w">        </span><span class="c1">//    contractJs is an InputStream from assets; deploy/call need the</span>
+<span class="w">        </span><span class="c1">//    coin public key + each circuit&#39;s verifier-key bytes.</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">verifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span>
+<span class="w">            </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/mycontract/keys/myCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mycontract&quot;</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/mycontract/contract/index.js&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
+<span class="w">            </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// 3. Deploy, then call a circuit.</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">().</span><span class="na">contractAddress</span>
+<span class="w">        </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// 4. Read typed ledger state (lossless — no cell-hex parsing).</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">readOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/mycontract/contract/index.js&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">address</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readOnly</span><span class="p">.</span><span class="na">ledger</span><span class="p">().</span><span class="na">getUint64</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="61-install-your-contracts-proving-keys-required">6.1 Install your contract's proving keys (required)<a class="headerlink" href="#61-install-your-contracts-proving-keys-required" title="Permanent link">&para;</a></h3>
+<p>ZK proofs run <strong>on the device</strong>, so every circuit your contract calls needs its
+proving keys + a BLS parameter set present <strong>before the first deploy/call</strong> —
+otherwise the call fails at the proving step. Ship them in <code>assets/</code> (compactc
+emits the <code>managed/&lt;name&gt;/{contract,keys,zkir}</code> layout; the
+<code>com.midnight.kuira.contract</code> Gradle plugin syncs them there for you) and
+install once — it's idempotent, so call it before each action:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Discovers the managed/&lt;name&gt;/{keys,zkir} bundled in assets and stages them</span>
+<span class="c1">// where the on-device prover looks.</span>
+<span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
+</code></pre></div>
+<p>A small contract may need a smaller BLS param set than the wallet bundle ships
+(e.g. <code>bls_midnight_2p5</code> for a counter). Bundle it under
+<code>assets/managed/&lt;name&gt;/bls/</code> and it's picked up alongside the circuit keys. The
+<strong><a href="https://github.com/kuiralabs/kuira-starter-android">Kuira Starter</a></strong>'s
+<code>CounterContract</code> shows the full pattern end-to-end.</p>
+<blockquote>
+<p>For a larger, multi-step contract (commit / reveal / sudden-death, witness
+packing, indexer-state polling, retry, force-resync), see the World-Cup PvP
+reference app — coming as a public release soon.</p>
+</blockquote>
 <hr />
 <h2 id="7-going-headless-no-panel">7. Going headless (no panel)<a class="headerlink" href="#7-going-headless-no-panel" title="Permanent link">&para;</a></h2>
 <p>If you don't want the Compose wallet panel, swap the dep:</p>
@@ -1565,6 +1645,10 @@ throws <code>SigilRequiredException</code> until a sigil exists. Forge it throug
 <tr>
 <td>Biometric prompt fails / PRF returns null</td>
 <td>Step 4 — <code>assetlinks.json</code> missing, wrong <code>package_name</code>, or wrong cert SHA-256.</td>
+</tr>
+<tr>
+<td>Contract call fails at the proving step / <em>"circuit keys not found"</em> / <em>"BLS params"</em></td>
+<td>§6.1 — install your contract's proving keys before the first deploy/call (and bundle the right BLS set for small circuits).</td>
 </tr>
 <tr>
 <td>App balance stays at 0 after an airdrop</td>
@@ -1612,6 +1696,8 @@ version bump; no app-side code change.</p>
 <hr />
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong><a href="https://github.com/kuiralabs/kuira-starter-android">Kuira Starter</a></strong> — clone-and-run minimal dApp (also a GitHub template).</li>
+<li><strong><a href="https://github.com/kuiralabs/example-bboard-android">BBoard</a></strong> — on-chain bulletin board; the deploy → call → read flow end-to-end.</li>
 <li><a href="../">Home</a> — install instructions and the full module list.</li>
 <li><a href="../security/">Security</a> — threat model, vulnerability reporting, signature verification.</li>
 <li><a href="https://central.sonatype.com/namespace/io.github.kuiralabs">Maven Central — <code>io.github.kuiralabs</code></a> — every published artifact (binary AAR, sources jar, javadoc jar, POM, PGP signature).</li>

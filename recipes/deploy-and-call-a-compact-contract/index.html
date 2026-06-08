@@ -1358,45 +1358,57 @@ APK and confirm <code>assets/runtime/your-contract-contract.js</code>,
 are all present.</p>
 <hr />
 <h2 id="step-2-build-the-contract-handle">Step 2 — Build the contract handle<a class="headerlink" href="#step-2-build-the-contract-handle" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.sdk.contract.MidnightContract</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">android.content.Context</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.compact.MidnightContract</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.compact.WitnessResult</span>
 
 <span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">buildContract</span><span class="p">(</span>
+<span class="w">    </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="n">sdk</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightSdk</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wallet</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightWallet</span><span class="p">,</span>
 <span class="w">    </span><span class="n">contractAddress</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">    </span><span class="c1">// (1)</span>
-<span class="p">):</span><span class="w"> </span><span class="n">MidnightContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;runtime/your-contract-contract.js&quot;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contractAddress</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wallet</span><span class="p">.</span><span class="na">coinPublicKey</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">witnesses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;localSecret&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Any?</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">            </span><span class="n">WitnessResult</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="c1">// (2)</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">)</span>
+<span class="p">):</span><span class="w"> </span><span class="n">MidnightContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Deploy embeds each circuit&#39;s verifier key on-chain — load the bytes.</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">verifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span>
+<span class="w">        </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/yourcontract/keys/yourCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">     </span><span class="c1">// (2) config is positional</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;yourcontract&quot;</span>
+<span class="w">        </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/yourcontract/contract/index.js&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// (3)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">contractAddress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contractAddress</span>
+<span class="w">        </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
+<span class="w">        </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">&quot;yourCircuit&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
+<span class="w">        </span><span class="n">witness</span><span class="p">(</span><span class="s">&quot;localSecret&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">WitnessResult</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// (4)</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <ol>
 <li><code>null</code> while you're still going to call <code>deploy()</code> — set this to the
    returned address for every subsequent call.</li>
-<li>Stub witness — replace with your contract's actual witness layout.
-   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), typed witness
-   factories are on the roadmap to eliminate the manual byte-packing;
-   today you pack bytes by hand.</li>
+<li><code>create()</code> takes the SDK's <code>MidnightConfig</code> (<code>sdk.config</code>) as its first
+   argument — not an <code>sdk</code> builder property.</li>
+<li><code>contractJs</code> is an <strong><code>InputStream</code></strong> from your assets (the compactc
+   <code>managed/&lt;name&gt;/contract/index.js</code>), not a path string.</li>
+<li><code>witness(name) { … }</code> — stub; replace with your contract's actual witness
+   layout. (A contract with no private state, like the counter, omits this.)
+   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), pack bytes by hand
+   today; typed factories are on the roadmap.</li>
 </ol>
 <p><strong>Verify:</strong> the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
 descriptors typecheck against the bytecode.</p>
 <hr />
 <h2 id="step-3-deploy">Step 3 — Deploy<a class="headerlink" href="#step-3-deploy" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">deployResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deployResult</span><span class="p">.</span><span class="na">address</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Required once before the first deploy/call: stage your circuit&#39;s proving</span>
+<span class="c1">// keys (+ BLS params) from assets where the on-device prover looks. Idempotent.</span>
+<span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">deployResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deployResult</span><span class="p">.</span><span class="na">contractAddress</span>
 <span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="s">&quot;MyApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Deployed at </span><span class="si">$</span><span class="n">address</span><span class="s">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><code>deploy()</code> performs the deploy transaction, waits for the indexer to
 confirm it, and returns the contract address. Re-use this address for
-every subsequent <code>MidnightContract.create { … address = address }</code> call.</p>
+every subsequent <code>MidnightContract.create(sdk.config) { … address = address }</code>
+call.</p>
 <p><strong>Verify:</strong> <code>address</code> should be a 64-character hex string. Querying
 <code>sdk.indexerClient.queryContractState(address)</code> should return a
 non-null state.</p>
