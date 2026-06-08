@@ -265,10 +265,12 @@ class MyDappViewModel @Inject constructor(
 
 ZK proofs run **on the device**, so every circuit your contract calls needs its
 proving keys + a BLS parameter set present **before the first deploy/call** —
-otherwise the call fails at the proving step. Ship them in `assets/` (compactc
-emits the `managed/<name>/{contract,keys,zkir}` layout; the
-`com.midnight.kuira.contract` Gradle plugin syncs them there for you) and
-install once — it's idempotent, so call it before each action:
+otherwise the call fails at the proving step. Ship them in `assets/`
+(compactc emits the `managed/<name>/{contract,keys,zkir}` layout) — sync them
+in with either the `com.midnight.kuira.contract` Gradle plugin or, **until that
+plugin is on Central (alpha01 today), the hand-rolled `Copy` task shown in the
+[deploy-and-call recipe](recipes/deploy-and-call-a-compact-contract.md)**. Then
+install once at runtime — it's idempotent, so call it before each action:
 
 ```kotlin
 // Discovers the managed/<name>/{keys,zkir} bundled in assets and stages them
