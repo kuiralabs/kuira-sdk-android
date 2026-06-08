@@ -170,11 +170,71 @@ For debug builds, the default keystore is `~/.android/debug.keystore` (alias
 
 ---
 
-## 5. *(Localnet dev only)* Allow cleartext to `10.0.2.2`
+## 5. Develop against a localnet
 
-Production hits HTTPS. For local testing against a localnet node + indexer at
-`http://10.0.2.2:9944` / `:8088`, declare cleartext **in a debug-only manifest**
-so release builds stay HTTPS-clean:
+You don't need testnet tokens or a deployed contract to build. The **`UNDEPLOYED`**
+network is a full Midnight stack — node + indexer + proof server — running
+locally in Docker: instant, free, and ephemeral (reset it any time). It's the
+recommended loop for day-to-day development; switch to PREPROD only when you want
+the hosted chain.
+
+### 5a. Start the localnet — the Midnight Wallet CLI (recommended)
+
+Our preferred way to run and fund a localnet is the
+**[Midnight Wallet CLI](https://github.com/nel349/midnight-wallet-cli)** (`mn`).
+It wraps the Docker stack and wallet funding behind a few commands:
+
+```bash
+# one-time — needs Docker running + Node 20+
+npm install -g midnight-wallet-cli          # installs `midnight` (alias `mn`)
+
+mn localnet up                              # start node + indexer + proof server (Docker)
+mn localnet status                          # check it's healthy
+# … develop …
+mn localnet down                            # tear it down
+```
+
+Fund the wallet your app shows (copy its address from the wallet panel's receive
+screen):
+
+```bash
+mn airdrop 10000 --wallet mn_addr_undeployed1…   # NIGHT for fees
+mn dust register --wallet mn_addr_undeployed1…   # enable DUST (gas) generation
+```
+
+> Localnet is ephemeral — `mn localnet down` (or a Docker restart) wipes all
+> state, including funded balances. Re-airdrop after each fresh `up`.
+
+### 5b. Let the app reach the localnet
+
+The SDK already maps `UNDEPLOYED` to the right host per device type
+(`NetworkConfig`):
+
+- **Emulator** — `10.0.2.2` (the emulator's alias for your machine's
+  `localhost`). Nothing to do.
+- **Physical device** — `127.0.0.1`, so forward the three localnet ports over
+  USB with `adb reverse`:
+
+  ```bash
+  adb reverse tcp:9944 tcp:9944   # node RPC
+  adb reverse tcp:8088 tcp:8088   # indexer
+  adb reverse tcp:6300 tcp:6300   # proof server
+  ```
+
+  A handy Gradle task to do all three at once (drop in your `app/build.gradle.kts`):
+
+  ```kotlin
+  tasks.register<Exec>("adbReverseLocalnet") {
+      group = "kuira"
+      commandLine("sh", "-c",
+          "adb reverse tcp:9944 tcp:9944 && adb reverse tcp:8088 tcp:8088 && adb reverse tcp:6300 tcp:6300")
+  }
+  ```
+
+### 5c. Allow cleartext to the localnet (debug only)
+
+Production hits HTTPS. Localnet is plain HTTP, so declare cleartext **in a
+debug-only manifest** — release builds stay HTTPS-clean:
 
 ```xml
 <!-- app/src/debug/AndroidManifest.xml -->
