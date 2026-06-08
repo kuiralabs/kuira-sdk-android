@@ -691,13 +691,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-localnet-dev-only-allow-cleartext-to-10022" class="md-nav__link">
+  <a href="#5-develop-against-a-localnet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. (Localnet dev only) Allow cleartext to 10.0.2.2
+        5. Develop against a localnet
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5. Develop against a localnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5a-start-the-localnet-the-midnight-wallet-cli-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5a. Start the localnet — the Midnight Wallet CLI (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5b-let-the-app-reach-the-localnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5b. Let the app reach the localnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5c-allow-cleartext-to-the-localnet-debug-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5c. Allow cleartext to the localnet (debug only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1224,13 +1263,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-localnet-dev-only-allow-cleartext-to-10022" class="md-nav__link">
+  <a href="#5-develop-against-a-localnet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. (Localnet dev only) Allow cleartext to 10.0.2.2
+        5. Develop against a localnet
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5. Develop against a localnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5a-start-the-localnet-the-midnight-wallet-cli-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5a. Start the localnet — the Midnight Wallet CLI (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5b-let-the-app-reach-the-localnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5b. Let the app reach the localnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5c-allow-cleartext-to-the-localnet-debug-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5c. Allow cleartext to the localnet (debug only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1514,10 +1592,56 @@ prompt fails and PRF can't derive your sigil. This is a one-time host;
 updates are needed only when you change signing certs.</p>
 </blockquote>
 <hr />
-<h2 id="5-localnet-dev-only-allow-cleartext-to-10022">5. <em>(Localnet dev only)</em> Allow cleartext to <code>10.0.2.2</code><a class="headerlink" href="#5-localnet-dev-only-allow-cleartext-to-10022" title="Permanent link">&para;</a></h2>
-<p>Production hits HTTPS. For local testing against a localnet node + indexer at
-<code>http://10.0.2.2:9944</code> / <code>:8088</code>, declare cleartext <strong>in a debug-only manifest</strong>
-so release builds stay HTTPS-clean:</p>
+<h2 id="5-develop-against-a-localnet">5. Develop against a localnet<a class="headerlink" href="#5-develop-against-a-localnet" title="Permanent link">&para;</a></h2>
+<p>You don't need testnet tokens or a deployed contract to build. The <strong><code>UNDEPLOYED</code></strong>
+network is a full Midnight stack — node + indexer + proof server — running
+locally in Docker: instant, free, and ephemeral (reset it any time). It's the
+recommended loop for day-to-day development; switch to PREPROD only when you want
+the hosted chain.</p>
+<h3 id="5a-start-the-localnet-the-midnight-wallet-cli-recommended">5a. Start the localnet — the Midnight Wallet CLI (recommended)<a class="headerlink" href="#5a-start-the-localnet-the-midnight-wallet-cli-recommended" title="Permanent link">&para;</a></h3>
+<p>Our preferred way to run and fund a localnet is the
+<strong><a href="https://github.com/nel349/midnight-wallet-cli">Midnight Wallet CLI</a></strong> (<code>mn</code>).
+It wraps the Docker stack and wallet funding behind a few commands:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># one-time — needs Docker running + Node 20+</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>midnight-wallet-cli<span class="w">          </span><span class="c1"># installs `midnight` (alias `mn`)</span>
+
+mn<span class="w"> </span>localnet<span class="w"> </span>up<span class="w">                              </span><span class="c1"># start node + indexer + proof server (Docker)</span>
+mn<span class="w"> </span>localnet<span class="w"> </span>status<span class="w">                          </span><span class="c1"># check it&#39;s healthy</span>
+<span class="c1"># … develop …</span>
+mn<span class="w"> </span>localnet<span class="w"> </span>down<span class="w">                            </span><span class="c1"># tear it down</span>
+</code></pre></div>
+<p>Fund the wallet your app shows (copy its address from the wallet panel's receive
+screen):</p>
+<div class="highlight"><pre><span></span><code>mn<span class="w"> </span>airdrop<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># NIGHT for fees</span>
+mn<span class="w"> </span>dust<span class="w"> </span>register<span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># enable DUST (gas) generation</span>
+</code></pre></div>
+<blockquote>
+<p>Localnet is ephemeral — <code>mn localnet down</code> (or a Docker restart) wipes all
+state, including funded balances. Re-airdrop after each fresh <code>up</code>.</p>
+</blockquote>
+<h3 id="5b-let-the-app-reach-the-localnet">5b. Let the app reach the localnet<a class="headerlink" href="#5b-let-the-app-reach-the-localnet" title="Permanent link">&para;</a></h3>
+<p>The SDK already maps <code>UNDEPLOYED</code> to the right host per device type
+(<code>NetworkConfig</code>):</p>
+<ul>
+<li><strong>Emulator</strong> — <code>10.0.2.2</code> (the emulator's alias for your machine's
+  <code>localhost</code>). Nothing to do.</li>
+<li><strong>Physical device</strong> — <code>127.0.0.1</code>, so forward the three localnet ports over
+  USB with <code>adb reverse</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>reverse<span class="w"> </span>tcp:9944<span class="w"> </span>tcp:9944<span class="w">   </span><span class="c1"># node RPC</span>
+adb<span class="w"> </span>reverse<span class="w"> </span>tcp:8088<span class="w"> </span>tcp:8088<span class="w">   </span><span class="c1"># indexer</span>
+adb<span class="w"> </span>reverse<span class="w"> </span>tcp:6300<span class="w"> </span>tcp:6300<span class="w">   </span><span class="c1"># proof server</span>
+</code></pre></div>
+<p>A handy Gradle task to do all three at once (drop in your <code>app/build.gradle.kts</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="o">&lt;</span><span class="n">Exec</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;adbReverseLocalnet&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kuira&quot;</span>
+<span class="w">    </span><span class="n">commandLine</span><span class="p">(</span><span class="s">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;adb reverse tcp:9944 tcp:9944 &amp;&amp; adb reverse tcp:8088 tcp:8088 &amp;&amp; adb reverse tcp:6300 tcp:6300&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="5c-allow-cleartext-to-the-localnet-debug-only">5c. Allow cleartext to the localnet (debug only)<a class="headerlink" href="#5c-allow-cleartext-to-the-localnet-debug-only" title="Permanent link">&para;</a></h3>
+<p>Production hits HTTPS. Localnet is plain HTTP, so declare cleartext <strong>in a
+debug-only manifest</strong> — release builds stay HTTPS-clean:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- app/src/debug/AndroidManifest.xml --&gt;</span>
 <span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;application</span><span class="w"> </span><span class="na">android:usesCleartextTraffic=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
