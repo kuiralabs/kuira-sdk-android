@@ -164,32 +164,39 @@ are all present.
 ## Step 2 — Build the contract handle
 
 ```kotlin
-import com.midnight.kuira.sdk.contract.MidnightContract
+import android.content.Context
+import com.midnight.kuira.core.compact.MidnightContract
 import com.midnight.kuira.core.compact.WitnessResult
 
 suspend fun buildContract(
+    context: Context,
     sdk: MidnightSdk,
-    wallet: MidnightWallet,
     contractAddress: String? = null,    // (1)
-): MidnightContract = MidnightContract.create {
-    this.sdk = sdk
-    this.contractJs = "runtime/your-contract-contract.js"
-    this.address = contractAddress
-    this.coinPublicKey = wallet.coinPublicKey
-    this.witnesses = mapOf(
-        "localSecret" to { _: Map<String, Any?> ->
-            WitnessResult(null, ByteArray(32) { 0 })  // (2)
-        },
-    )
+): MidnightContract {
+    // Deploy embeds each circuit's verifier key on-chain — load the bytes.
+    val verifier = context.assets
+        .open("managed/yourcontract/keys/yourCircuit.verifier").use { it.readBytes() }
+    return MidnightContract.create(sdk.config) {     // (2) config is positional
+        name = "yourcontract"
+        contractJs = context.assets.open("managed/yourcontract/contract/index.js")  // (3)
+        if (contractAddress != null) this.address = contractAddress
+        coinPublicKey = sdk.coinPublicKey
+        circuitVerifierKeys = mapOf("yourCircuit" to verifier)
+        witness("localSecret") { WitnessResult(null, ByteArray(32) { 0 }) }  // (4)
+    }
 }
 ```
 
 1. `null` while you're still going to call `deploy()` — set this to the
    returned address for every subsequent call.
-2. Stub witness — replace with your contract's actual witness layout.
-   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), typed witness
-   factories are on the roadmap to eliminate the manual byte-packing;
-   today you pack bytes by hand.
+2. `create()` takes the SDK's `MidnightConfig` (`sdk.config`) as its first
+   argument — not an `sdk` builder property.
+3. `contractJs` is an **`InputStream`** from your assets (the compactc
+   `managed/<name>/contract/index.js`), not a path string.
+4. `witness(name) { … }` — stub; replace with your contract's actual witness
+   layout. (A contract with no private state, like the counter, omits this.)
+   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), pack bytes by hand
+   today; typed factories are on the roadmap.
 
 **Verify:** the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
@@ -200,14 +207,19 @@ descriptors typecheck against the bytecode.
 ## Step 3 — Deploy
 
 ```kotlin
+// Required once before the first deploy/call: stage your circuit's proving
+// keys (+ BLS params) from assets where the on-device prover looks. Idempotent.
+ProvingKeyManager(context).installCircuitKeysFromAssets()
+
 val deployResult = contract.deploy()
-val address = deployResult.address
+val address = deployResult.contractAddress
 Log.i("MyApp", "Deployed at $address")
 ```
 
 `deploy()` performs the deploy transaction, waits for the indexer to
 confirm it, and returns the contract address. Re-use this address for
-every subsequent `MidnightContract.create { … address = address }` call.
+every subsequent `MidnightContract.create(sdk.config) { … address = address }`
+call.
 
 **Verify:** `address` should be a 64-character hex string. Querying
 `sdk.indexerClient.queryContractState(address)` should return a

@@ -4,12 +4,17 @@
 
 Build a Midnight zero-knowledge dApp on Android by adding **one dependency**, declaring your **own passkey domain**, and hosting **one tiny JSON file** on it. That's the whole on-ramp.
 
-This guide walks the recipe end-to-end. Two reference dApps — **Midnight
-Kicks** (a PvP penalty shoot-out demonstrating commit-reveal + ZK proving)
-and **BBoard** (a simpler community-board app) — consume the SDK exactly
-as described below. Their sources are currently in a private repository
-while the SDK is published here; the code patterns below are extracted
-from those apps, so prefer the description here as the canonical guide.
+This guide walks the recipe end-to-end. Two **public** reference apps consume
+the SDK exactly as described below — clone either and read along:
+
+- **[Kuira Starter](https://github.com/kuiralabs/kuira-starter-android)** — the
+  minimal counter dApp. Sigil identity + wallet + a one-circuit Compact contract.
+  Clone it, set your `applicationId` + `rpId`, run. (Also a GitHub template.)
+- **[BBoard](https://github.com/kuiralabs/example-bboard-android)** — a shared
+  on-chain bulletin board (post / take-down) showing the deploy → call → read flow.
+
+The snippets below are extracted from those apps; when in doubt, the linked
+source is the ground truth.
 
 ---
 
@@ -187,52 +192,99 @@ so release builds stay HTTPS-clean:
 
 ## 6. Minimal "Hello World" — deploy + call
 
-Assuming you picked `dapp-ui` (panel) and your app's main activity is a
-Hilt'd `FragmentActivity`:
+Your `Application` is `@HiltAndroidApp`, and your activity is a Hilt'd
+**`FragmentActivity`** — `AppCompatActivity` is the usual choice, since
+`SigilStatusPanel` hosts a biometric prompt that needs a FragmentActivity host:
 
 ```kotlin
 @HiltAndroidApp
 class MyApp : Application()
 
 @AndroidEntryPoint
-class MainActivity : FragmentActivity() {
-    @Inject lateinit var sdkProvider: MidnightSdkProvider
-
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            // Drop-in wallet + sigil panel. Renders status, exposes Backup
-            // / Restore / Send / Receive without any further plumbing.
-            WalletPanel(activity = this@MainActivity)
+            Column {
+                // Drop-in SDK panels — each owns its own state. The wallet
+                // panel builds the SDK (one biometric) the first time it shows.
+                SigilStatusPanel()   // forge / restore identity (DID)
+                WalletStatusPanel()  // balance, receive, dust register, network
+                MyDappScreen()       // your UI
+            }
         }
-    }
-
-    // Your dApp logic, e.g. deploy + call a contract:
-    suspend fun deployAndCall() {
-        val sdk = sdkProvider.ensureSdk(
-            activity = this,
-            config = WalletConfig(network = MidnightNetwork.UNDEPLOYED),
-        )
-
-        val contract = MidnightContract.create {
-            // your compiled `.compact` JS + proving keys, dropped in assets/
-            contractJs = "my-contract.js"
-            wallet = sdk.wallet
-            coinPublicKey = sdk.coinPublicKey
-        }
-        val address = contract.deploy()
-        val result = contract.call("myCircuit", args = …)
     }
 }
 ```
 
-For a real, multi-step contract (commit / reveal / ZK proofs / sudden
-death), the reference Midnight Kicks dApp implements a ~600-line
-state-machine that exercises every SDK surface — protocol orchestration,
-witness packing, indexer-state polling, transaction retry, force-resync,
-deadline computation. The patterns described throughout this guide come
-from that code path; once the reference repository opens to the public,
-this section will link directly to it.
+Your dApp logic gets the SDK from the injected `MidnightSdkProvider` — observe
+`sdkProvider.sdk` (a `StateFlow<MidnightSdk?>`, non-null once the wallet panel
+has bootstrapped) or suspend on `awaitSdk()`:
+
+```kotlin
+@HiltViewModel
+class MyDappViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val sdkProvider: MidnightSdkProvider,
+) : ViewModel() {
+
+    fun deployAndCall() = viewModelScope.launch {
+        val sdk = sdkProvider.awaitSdk()   // waits for the panel to bootstrap it
+
+        // 1. Install your contract's proving keys — required before the first
+        //    deploy/call (see §6.1), or proving fails.
+        ProvingKeyManager(context).installCircuitKeysFromAssets()
+
+        // 2. Build a write-capable handle. create() takes the SDK's config;
+        //    contractJs is an InputStream from assets; deploy/call need the
+        //    coin public key + each circuit's verifier-key bytes.
+        val verifier = context.assets
+            .open("managed/mycontract/keys/myCircuit.verifier").use { it.readBytes() }
+        val contract = MidnightContract.create(sdk.config) {
+            name = "mycontract"
+            contractJs = context.assets.open("managed/mycontract/contract/index.js")
+            coinPublicKey = sdk.coinPublicKey
+            circuitVerifierKeys = mapOf("myCircuit" to verifier)
+        }
+
+        // 3. Deploy, then call a circuit.
+        val address = contract.deploy().contractAddress
+        contract.call("myCircuit")
+
+        // 4. Read typed ledger state (lossless — no cell-hex parsing).
+        val readOnly = MidnightContract.create(sdk.config) {
+            contractJs = context.assets.open("managed/mycontract/contract/index.js")
+            this.address = address
+        }
+        val count = readOnly.ledger().getUint64("count")
+    }
+}
+```
+
+### 6.1 Install your contract's proving keys (required)
+
+ZK proofs run **on the device**, so every circuit your contract calls needs its
+proving keys + a BLS parameter set present **before the first deploy/call** —
+otherwise the call fails at the proving step. Ship them in `assets/` (compactc
+emits the `managed/<name>/{contract,keys,zkir}` layout; the
+`com.midnight.kuira.contract` Gradle plugin syncs them there for you) and
+install once — it's idempotent, so call it before each action:
+
+```kotlin
+// Discovers the managed/<name>/{keys,zkir} bundled in assets and stages them
+// where the on-device prover looks.
+ProvingKeyManager(context).installCircuitKeysFromAssets()
+```
+
+A small contract may need a smaller BLS param set than the wallet bundle ships
+(e.g. `bls_midnight_2p5` for a counter). Bundle it under
+`assets/managed/<name>/bls/` and it's picked up alongside the circuit keys. The
+**[Kuira Starter](https://github.com/kuiralabs/kuira-starter-android)**'s
+`CounterContract` shows the full pattern end-to-end.
+
+> For a larger, multi-step contract (commit / reveal / sudden-death, witness
+> packing, indexer-state polling, retry, force-resync), see the World-Cup PvP
+> reference app — coming as a public release soon.
 
 ---
 
@@ -259,6 +311,7 @@ throws `SigilRequiredException` until a sigil exists. Forge it through
 | Dagger: *"PasskeyConfig cannot be provided without an @Provides-annotated method"* | Step 3 — declare your own `PasskeyConfig` module. |
 | Runtime: *"CLEARTEXT communication to 10.0.2.2 not permitted by network security policy"* | Step 5 — add the debug manifest. |
 | Biometric prompt fails / PRF returns null | Step 4 — `assetlinks.json` missing, wrong `package_name`, or wrong cert SHA-256. |
+| Contract call fails at the proving step / *"circuit keys not found"* / *"BLS params"* | §6.1 — install your contract's proving keys before the first deploy/call (and bundle the right BLS set for small circuits). |
 | App balance stays at 0 after an airdrop | The wallet's background subscription is live; check `adb logcat` for indexer connectivity. On localnet, state is ephemeral — restarting the localnet wipes funds. |
 | `IllegalArgumentException: Could not find io.github.kuiralabs:…` | Check the alpha version is current; the SDK is `{{ kuira_version }}` at the time of writing. |
 
@@ -306,6 +359,8 @@ version bump; no app-side code change.
 
 ## See also
 
+- **[Kuira Starter](https://github.com/kuiralabs/kuira-starter-android)** — clone-and-run minimal dApp (also a GitHub template).
+- **[BBoard](https://github.com/kuiralabs/example-bboard-android)** — on-chain bulletin board; the deploy → call → read flow end-to-end.
 - [Home](index.md) — install instructions and the full module list.
 - [Security](security.md) — threat model, vulnerability reporting, signature verification.
 - [Maven Central — `io.github.kuiralabs`](https://central.sonatype.com/namespace/io.github.kuiralabs) — every published artifact (binary AAR, sources jar, javadoc jar, POM, PGP signature).

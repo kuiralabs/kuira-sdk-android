@@ -20,6 +20,7 @@ Kuira is the Android SDK for Midnight: on-device ZK proving, passkey identity, a
 <div class="kuira-hero__cta">
 <a href="recipes/" class="md-button md-button--primary">Browse the cookbook</a>
 <a href="integration/" class="md-button">Read the integration guide</a>
+<a href="https://github.com/kuiralabs/kuira-starter-android" class="md-button">Clone the starter</a>
 </div>
 </div>
 </section>
@@ -150,6 +151,10 @@ you the complete SDK graph. Need just the headless wallet? Use
 
 [Full integration guide →](integration.md){ .md-button .md-button--primary }
 [Security & verification](security.md){ .md-button }
+
+**Working examples** — clone, build, read the source:
+[Kuira Starter](https://github.com/kuiralabs/kuira-starter-android) (minimal counter, also a GitHub template) ·
+[BBoard](https://github.com/kuiralabs/example-bboard-android) (on-chain bulletin board).
 
 ---
 
