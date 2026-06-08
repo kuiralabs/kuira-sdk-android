@@ -1597,10 +1597,12 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 <h3 id="61-install-your-contracts-proving-keys-required">6.1 Install your contract's proving keys (required)<a class="headerlink" href="#61-install-your-contracts-proving-keys-required" title="Permanent link">&para;</a></h3>
 <p>ZK proofs run <strong>on the device</strong>, so every circuit your contract calls needs its
 proving keys + a BLS parameter set present <strong>before the first deploy/call</strong> —
-otherwise the call fails at the proving step. Ship them in <code>assets/</code> (compactc
-emits the <code>managed/&lt;name&gt;/{contract,keys,zkir}</code> layout; the
-<code>com.midnight.kuira.contract</code> Gradle plugin syncs them there for you) and
-install once — it's idempotent, so call it before each action:</p>
+otherwise the call fails at the proving step. Ship them in <code>assets/</code>
+(compactc emits the <code>managed/&lt;name&gt;/{contract,keys,zkir}</code> layout) — sync them
+in with either the <code>com.midnight.kuira.contract</code> Gradle plugin or, <strong>until that
+plugin is on Central (alpha01 today), the hand-rolled <code>Copy</code> task shown in the
+<a href="../recipes/deploy-and-call-a-compact-contract/">deploy-and-call recipe</a></strong>. Then
+install once at runtime — it's idempotent, so call it before each action:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Discovers the managed/&lt;name&gt;/{keys,zkir} bundled in assets and stages them</span>
 <span class="c1">// where the on-device prover looks.</span>
 <span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
