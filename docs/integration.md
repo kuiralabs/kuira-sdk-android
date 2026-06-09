@@ -23,7 +23,7 @@ source is the ground truth.
 Adding the one line below brings:
 
 - **Sigil identity** — a passkey-derived DID (`did:key` + Ed25519). One biometric, no recovery phrase, no maintainer dependency. Backed up to Google Block Store, encrypted with a key you can't read.
-- **Wallet** — Midnight HD wallet (unshielded + shielded NIGHT, DUST gas), with live balance, send, receive, and a drop-in Compose **wallet panel** if you want it.
+- **Wallet** — Midnight HD wallet (unshielded + shielded NIGHT, Dust gas), with live balance, send, receive, and a drop-in Compose **wallet panel** if you want it.
 - **Contract surface** — deploy / call / read state on any `.compact` contract; ZK proof generation runs on-device (no proof-server hop required).
 - **Indexer + chain client** — block / state / event subscription, backed by Midnight's official indexer.
 - **App-state cloud backup** — your dApp's per-user data rides the sigil's Block Store backup automatically. The backup blob is PRF-encrypted client-side before Google's Block Store touches it.
@@ -39,7 +39,7 @@ You can use it headless or pull in the panel UI — see the dependency choice be
 | Android Gradle Plugin | **≥ 8.13** (matches the SDK build) |
 | Kotlin | **≥ 2.3** |
 | `compileSdk` | 35+ |
-| `minSdk` | **30** — required (`core:auth` uses keystore APIs added in API 30: biometric ⊕ device-credential) |
+| `minSdk` | **30** — required (the SDK uses keystore APIs added in API 30: biometric ⊕ device-credential) |
 | Hilt + KSP | Required — the SDK is Hilt-first; your app applies both |
 | A web domain you control | Required for the passkey relying party (GitHub Pages is fine for dev) |
 | Your app's signing-cert SHA-256 | Needed for `assetlinks.json` (step 4) |
@@ -73,7 +73,7 @@ android {
 dependencies {
     // ── Pick ONE Kuira entry ──
     //
-    // With the wallet + sigil PANEL (Compose). Use this for Kicks / BBoard-style
+    // With the wallet + sigil PANEL (Compose). Use this for BBoard-style
     // apps that want the wallet UI dropped in.
     implementation("io.github.kuiralabs:dapp-ui:{{ kuira_version }}")
     //
@@ -180,9 +180,9 @@ the hosted chain.
 
 ### 5a. Start the localnet — the Midnight Wallet CLI (recommended)
 
-Our preferred way to run and fund a localnet is the
-**[Midnight Wallet CLI](https://github.com/nel349/midnight-wallet-cli)** (`mn`).
-It wraps the Docker stack and wallet funding behind a few commands:
+The recommended way to run and fund a localnet is the **Midnight Wallet CLI**
+(`mn`), installed from npm as `midnight-wallet-cli`. It wraps the Docker stack
+and wallet funding behind a few commands:
 
 ```bash
 # one-time — needs Docker running + Node 20+
@@ -199,7 +199,7 @@ screen):
 
 ```bash
 mn airdrop 10000 --wallet mn_addr_undeployed1…   # NIGHT for fees
-mn dust register --wallet mn_addr_undeployed1…   # enable DUST (gas) generation
+mn dust register --wallet mn_addr_undeployed1…   # enable Dust (gas) generation
 ```
 
 > Localnet is ephemeral — `mn localnet down` (or a Docker restart) wipes all
@@ -243,10 +243,9 @@ debug-only manifest** — release builds stay HTTPS-clean:
 </manifest>
 ```
 
-> Why debug-only: previously this was inherited transitively from a `core:`
-> module's debug AAR; once the SDK started publishing release variants for the
-> alpha that allowance no longer reaches consumers. So each app declares its
-> own — release stays cleartext-free.
+> Why debug-only: the SDK's release variants are HTTPS-clean and don't grant
+> any cleartext allowance, so each app declares its own in a debug-only manifest
+> — release stays cleartext-free.
 
 ---
 
@@ -299,10 +298,10 @@ class MyDappViewModel @Inject constructor(
         //    contractJs is an InputStream from assets; deploy/call need the
         //    coin public key + each circuit's verifier-key bytes.
         val verifier = context.assets
-            .open("managed/mycontract/keys/myCircuit.verifier").use { it.readBytes() }
+            .open("keys/myCircuit.verifier").use { it.readBytes() }
         val contract = MidnightContract.create(sdk.config) {
             name = "mycontract"
-            contractJs = context.assets.open("managed/mycontract/contract/index.js")
+            contractJs = context.assets.open("runtime/mycontract-contract.js")
             coinPublicKey = sdk.coinPublicKey
             circuitVerifierKeys = mapOf("myCircuit" to verifier)
         }
@@ -313,7 +312,7 @@ class MyDappViewModel @Inject constructor(
 
         // 4. Read typed ledger state (lossless — no cell-hex parsing).
         val readOnly = MidnightContract.create(sdk.config) {
-            contractJs = context.assets.open("managed/mycontract/contract/index.js")
+            contractJs = context.assets.open("runtime/mycontract-contract.js")
             this.address = address
         }
         val count = readOnly.ledger().getUint64("count")
@@ -325,28 +324,29 @@ class MyDappViewModel @Inject constructor(
 
 ZK proofs run **on the device**, so every circuit your contract calls needs its
 proving keys + a BLS parameter set present **before the first deploy/call** —
-otherwise the call fails at the proving step. Ship them in `assets/`
-(compactc emits the `managed/<name>/{contract,keys,zkir}` layout) — sync them
-in with either the `com.midnight.kuira.contract` Gradle plugin or, **until that
-plugin is on Central (alpha01 today), the hand-rolled `Copy` task shown in the
-[deploy-and-call recipe](recipes/deploy-and-call-a-compact-contract.md)**. Then
+otherwise the call fails at the proving step. Ship them in `assets/` — sync them
+in with the `com.midnight.kuira.contract` Gradle plugin
+(`{{ kuira_contract_plugin_version }}`), the recommended path, which stages the
+contract runtime and circuit keys into `assets/` for you. Without the plugin, use
+the hand-rolled `Copy` task shown in the
+[deploy-and-call recipe](recipes/deploy-and-call-a-compact-contract.md). Then
 install once at runtime — it's idempotent, so call it before each action:
 
 ```kotlin
-// Discovers the managed/<name>/{keys,zkir} bundled in assets and stages them
+// Discovers the circuit keys bundled in assets and stages them
 // where the on-device prover looks.
 ProvingKeyManager(context).installCircuitKeysFromAssets()
 ```
 
 A small contract may need a smaller BLS param set than the wallet bundle ships
-(e.g. `bls_midnight_2p5` for a counter). Bundle it under
-`assets/managed/<name>/bls/` and it's picked up alongside the circuit keys. The
+(e.g. `bls_midnight_2p5` for a counter). Bundle the contract's BLS parameter set
+alongside its circuit keys and it's picked up at install time. The
 **[Kuira Starter](https://github.com/kuiralabs/kuira-starter-android)**'s
 `CounterContract` shows the full pattern end-to-end.
 
-> For a larger, multi-step contract (commit / reveal / sudden-death, witness
-> packing, indexer-state polling, retry, force-resync), see the World-Cup PvP
-> reference app — coming as a public release soon.
+> For a larger, multi-step contract (commit / reveal, witness packing,
+> indexer-state polling, retry, force-resync), the **[BBoard](https://github.com/kuiralabs/example-bboard-android)**
+> reference app shows the deploy → call → read flow end-to-end.
 
 ---
 
@@ -388,7 +388,7 @@ evolve as Midnight matures.
 ### Proving infrastructure downloads from a Midnight *dev* URL
 
 On first launch the SDK fetches Midnight's **protocol-level** proving assets
-— the universal BLS parameters and the wallet's shielded-spend / dust circuit
+— the universal BLS parameters and the wallet's shielded-spend / Dust circuit
 keys — from
 `https://midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com`.
 This is the same bucket Midnight's own tooling uses; it's **Midnight's
@@ -405,14 +405,14 @@ no production SLA on it.
 
 **Your own `.compact` contract's proving keys are NOT affected by this.** Those
 download from a URL **you** supply when you call
-`ProvingKeyManager.downloadCircuitKeys(baseUrl = …, …)` — Kicks hosts Kicks's
-keys, BBoard hosts BBoard's. You always own your contract's keys. This
+`ProvingKeyManager.downloadCircuitKeys(baseUrl = …, …)` — e.g. BBoard hosts
+BBoard's keys. You always own your contract's keys. This
 limitation is only about the *protocol-wide* keys that every Midnight dApp
 shares.
 
 **How it will evolve.** When Midnight publishes a production URL — or, if
 that's not in their immediate roadmap, when the SDK mirrors these files under
-a `kuira-labs`-controlled URL with a version pin (`ProvingKeyManager.CURRENT_VERSION`
+a `kuiralabs`-controlled URL with a version pin (`ProvingKeyManager.CURRENT_VERSION`
 tracks the protocol version, currently 9) — the SDK swaps the constant and
 re-publishes. The expected migration cost for a consumer is a single SDK
 version bump; no app-side code change.

@@ -142,4 +142,4 @@ The DevX side — wired so you write app logic, not plumbing.
 
 See the [integration guide](integration.md) to wire it up, the
 [cookbook](recipes/index.md) for task-by-task recipes, and the
-[roadmap](roadmap.md) for what's not built yet.
+[roadmap](roadmap.md) for where the SDK is headed.

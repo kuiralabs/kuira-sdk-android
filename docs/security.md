@@ -94,9 +94,9 @@ Please report these to the appropriate upstream project, not to us:
 - Issues only reproducible on rooted devices, emulators with debugging
   bridges, or with the user having installed malicious apps — see *Known
   limitations* below.
-- The Kuira wallet app (not yet published) and example dApps in
-  `examples/` (BBoard, Midnight Kicks) — these are reference
-  implementations demonstrating SDK usage, not production products.
+- The Kuira wallet app (not yet published) and the public example dApps
+  (BBoard, the Kuira Starter) — these are reference implementations
+  demonstrating SDK usage, not production products.
 
 ---
 
@@ -152,7 +152,7 @@ We're explicit about this because hiding it isn't honest:
   on the roadmap but **not yet shipped**. A borrowed-while-unlocked
   device is a real risk.
 - **BLS proving parameters supply chain:** The SDK fetches Midnight's
-  protocol-level proving keys (BLS params + wallet / zswap / dust
+  protocol-level proving keys (BLS params + wallet / zswap / Dust
   circuits) from `midnight-s3-fileshare-dev-eu-west-1`, a Midnight-team
   S3 bucket labeled "dev." A compromise of that bucket would let an
   attacker substitute proving keys. Documented in
@@ -208,11 +208,9 @@ gpg --verify $ARTIFACT.asc $ARTIFACT
 ```
 
 A successful verification output names the key as
-`Good signature from "nel349 <kuiralabs@gmail.com>"`, optionally
-followed by an `aka` line for a secondary UID on the same key — both
-identify the maintainer. Any other outcome means the artifact does
-**not** correspond to a release the maintainer published — do not
-use it.
+`Good signature from "nel349 <kuiralabs@gmail.com>"`. Any other outcome
+means the artifact does **not** correspond to a release the maintainer
+published — do not use it.
 
 The fingerprint is also published in this file and in the project's
 GitHub repository description, so an attacker would have to compromise

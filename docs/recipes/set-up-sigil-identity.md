@@ -227,7 +227,7 @@ sync after a few seconds.
 |---|---|---|
 | Panel stuck on `None` even though Block Store should have a backup | Different Google account on this device, or Block Store backup hasn't propagated yet. | Verify GPM signed-in account; wait 1–2 min after first forge for backup to land in Block Store. |
 | Forge fails with `RP_ID_MISMATCH` | `assetlinks.json` not reachable, or `PasskeyConfig.rpId` ≠ the domain that hosts it. | See Recipe 1 Step 3. |
-| Two devices on the same Google account resolve to the same sigil | This is by design — passkeys are per-account in GPM. For PvP testing on emulators, use distinct Google accounts. | See the Kuira wishlist `#28` (debug-only per-device identity seam). |
+| Two devices on the same Google account resolve to the same sigil | This is by design — passkeys are per-account in GPM. For testing distinct identities on emulators, use distinct Google accounts. | A debug-only per-device identity seam is not supported today. |
 | Restore prompt fails with `BackupException` | Backup blob missing or corrupted, or the user tapped restore when they should have forged. | The `Error` body offers retry. If still failing, tap "Sign out → Forge" (data-layer guard prevents accidental overwrite). |
 
 ---

@@ -39,16 +39,15 @@ end-to-end from `.compact` source to an on-chain transaction.
 If you don't have these yet, run `npm run compact` (or your project's
 equivalent) inside the `contract/` directory first.
 
-!!! warning "Compact authoring is currently a 'you provide' prereq"
+!!! warning "Compact authoring is a 'you provide' prereq"
     This recipe wires a **pre-compiled** Compact contract into your
     Android app. **It does not teach Compact authoring** — writing a
     `.compact` source file, installing `compactc`, or setting up the
-    JS toolchain. Until the upcoming **Hello Compact** recipe lands,
-    the cleanest path is to clone the [Midnight Network sample
-    contracts](https://github.com/midnightntwrk) or use an existing
-    contract from a Midnight Build Club fellowship project. Recipe 3
-    assumes the `contract/src/managed/<name>/` directory already
-    exists; getting to that point is on you.
+    JS toolchain. For that, see **[Hello Compact](hello-compact.md)**,
+    or clone the [Midnight Network sample
+    contracts](https://github.com/midnightntwrk). This recipe assumes
+    the `contract/src/managed/<name>/` directory already exists;
+    getting to that point is covered there.
 
 ---
 
@@ -61,11 +60,12 @@ your APK's assets. The canonical layout is:
 - `assets/keys/*.prover`, `*.verifier`, `*.bzkir`
 
 There are two ways to wire it. The Gradle plugin is the recommended
-path; it ships with `{{ kuira_contract_plugin_version }}`. Until that version is published
-to Maven Central, use the hand-rolled `Copy` task instead — it
-produces the same asset layout the plugin would.
+path; it's published to Maven Central as
+`{{ kuira_contract_plugin_version }}`. The hand-rolled `Copy` task is
+the equivalent if you'd rather not add the plugin — it produces the
+same asset layout the plugin would.
 
-=== "Gradle plugin (alpha02+)"
+=== "Gradle plugin (recommended)"
 
     ```kotlin title="settings.gradle.kts"
     pluginManagement {
@@ -90,8 +90,8 @@ produces the same asset layout the plugin would.
 
     1. The plugin ships to Maven Central. Add `mavenCentral()` to
        `pluginManagement.repositories` so `plugins { id(...) }` can
-       resolve it. (A Gradle Plugin Portal listing is on the roadmap;
-       once published there, this extra repo entry goes away.)
+       resolve it. (It is not listed on the Gradle Plugin Portal, so
+       this repo entry is required.)
     2. `alias` is optional — defaults to the dirname of `source`. So
        `contract/src/managed/penalty` resolves to alias `penalty`,
        which lands the contract JS as
@@ -109,9 +109,9 @@ produces the same asset layout the plugin would.
       and `zkir/*.bzkir` → `assets/keys/`. Wired into `preBuild` so
       it runs automatically before any APK is assembled.
 
-=== "Hand-rolled Copy task (alpha01 today)"
+=== "Hand-rolled Copy task"
 
-    Until the plugin lands on Central, hand-roll the same task. This
+    If you'd rather not add the plugin, hand-roll the same task. This
     is what the plugin replaces — same output, more lines.
 
     ```kotlin title="app/build.gradle.kts"
@@ -150,9 +150,9 @@ produces the same asset layout the plugin would.
     tasks.named("preBuild") { dependsOn(syncContractAssets) }
     ```
 
-    Once the `com.midnight.kuira.contract` plugin is published to
-    Maven Central, replace this entire block with the four-line
-    `kuiraContract { source.set("…") }` plugin pattern in the other tab.
+    To switch to the plugin later, replace this entire block with the
+    four-line `kuiraContract { source.set("…") }` plugin pattern in the
+    other tab.
 
 **Verify:** after `./gradlew :app:assembleDebug`, unzip the resulting
 APK and confirm `assets/runtime/your-contract-contract.js`,
@@ -175,10 +175,10 @@ suspend fun buildContract(
 ): MidnightContract {
     // Deploy embeds each circuit's verifier key on-chain — load the bytes.
     val verifier = context.assets
-        .open("managed/yourcontract/keys/yourCircuit.verifier").use { it.readBytes() }
+        .open("keys/yourCircuit.verifier").use { it.readBytes() }
     return MidnightContract.create(sdk.config) {     // (2) config is positional
         name = "yourcontract"
-        contractJs = context.assets.open("managed/yourcontract/contract/index.js")  // (3)
+        contractJs = context.assets.open("runtime/yourcontract-contract.js")  // (3)
         if (contractAddress != null) this.address = contractAddress
         coinPublicKey = sdk.coinPublicKey
         circuitVerifierKeys = mapOf("yourCircuit" to verifier)
@@ -191,12 +191,12 @@ suspend fun buildContract(
    returned address for every subsequent call.
 2. `create()` takes the SDK's `MidnightConfig` (`sdk.config`) as its first
    argument — not an `sdk` builder property.
-3. `contractJs` is an **`InputStream`** from your assets (the compactc
-   `managed/<name>/contract/index.js`), not a path string.
+3. `contractJs` is an **`InputStream`** from your assets — the synced
+   `runtime/<alias>-contract.js`, not a path string.
 4. `witness(name) { … }` — stub; replace with your contract's actual witness
    layout. (A contract with no private state, like the counter, omits this.)
-   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), pack bytes by hand
-   today; typed factories are on the roadmap.
+   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), pack the bytes by
+   hand.
 
 **Verify:** the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
@@ -252,9 +252,7 @@ The call:
 4. Returns the post-call ledger state.
 
 For long-running circuits (sub-second to a few seconds), wire up
-`TransactionBalancer` progress callbacks for UX feedback. An SDK-side
-`awaitIndexerSynced(blockHeight)` primitive is on the roadmap; it
-will replace today's fixed delays once it lands.
+`TransactionBalancer` progress callbacks for UX feedback.
 
 **Verify:** the transaction confirms within ~10s on PREPROD. Query
 `contract.ledger()` and check the field your circuit mutates.
@@ -267,8 +265,8 @@ will replace today's fixed delays once it lands.
 |---|---|---|
 | `Contract not compiled at …` at Gradle time | Step 1 prereq not done. | Run `npm run compact` in `contract/`. |
 | `Unsupported bytecode version` at runtime | Your compactc emitted bytecode for a different runtime version than the SDK ships. | Pin compactc to match your contract's `@midnight-ntwrk/compact-runtime` version. |
-| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Today's workaround: 3–5s delay between deploy and first call. An SDK-side `awaitIndexerSynced` primitive is on the roadmap. |
-| `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout. Typed witness factories on the roadmap eliminate this whole class of bug. |
+| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Add a 3–5s delay between deploy and first call. |
+| `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout against the circuit's declared shape. |
 | `Deadline expired` even though you set it in the future | Using `System.currentTimeMillis()` instead of chain time. | Switch to chain-anchored time (last block's timestamp). |
 
 ---

@@ -14,7 +14,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main
 
 # Back up wallet data across devices
 
-**Outcome:** the wallet's dust sync state is backed up — encrypted — to
+**Outcome:** the wallet's Dust sync state is backed up — encrypted — to
 the user's own Google Drive and restored on a new device, so the first
 sync on a fresh install is a fast delta instead of replaying the whole
 chain from genesis.
@@ -26,7 +26,7 @@ chain from genesis.
 
 ## What you get, and what you don't have to do
 
-The SDK already does the work: it encrypts the dust checkpoint with a
+The SDK already does the work: it encrypts the Dust checkpoint with a
 key **derived from the wallet seed** (AES-256-GCM, on-device — the cloud
 only ever holds ciphertext), uploads it to Google Drive's hidden
 per-app **`appDataFolder`**, and on another device pulls it back and

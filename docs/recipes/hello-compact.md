@@ -70,13 +70,13 @@ Six lines. What each one does:
   `Counter` wraps a `Uint<64>` with built-in `.increment()` and
   `.read()` helpers. `export ledger` makes the field readable by
   off-chain clients (the Kuira SDK reads it via
-  `MidnightContract.ledger().getUint64("count")`).
+  `contract.ledger().getUint64("count")`).
 - `export circuit increment(): [] { count.increment(1); }` — a single
   circuit that takes no arguments and bumps the counter by 1.
   Circuits are the on-chain entrypoints; calling one produces a
   ZK proof + a transaction that updates ledger state.
 
-No witnesses, no privacy controls, no access checks. Anyone with DUST
+No witnesses, no privacy controls, no access checks. Anyone with Dust
 can increment. The point is the SDK-integration story, not contract
 design — for non-trivial patterns, jump to the [Midnight examples](https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts).
 
@@ -123,8 +123,9 @@ mkdir -p contract/src/managed
 Output: a `contract/src/managed/counter/` directory containing
 `contract/index.js` (the runnable contract), `keys/increment.verifier`
 + `keys/increment.prover` (proving + verifying keys), and `zkir/` (the
-intermediate representation). This is what the Kuira SDK consumes via
-`MidnightContract.create(config) { contractJs = assets.open(...) }`.
+intermediate representation). After syncing into your app's assets as
+`runtime/<alias>-contract.js`, this is what the Kuira SDK consumes via
+`MidnightContract.create(sdk.config) { contractJs = context.assets.open(...) }`.
 
 Quick sanity check with the `mn` CLI:
 
@@ -160,9 +161,9 @@ the starter's
 
 Once the contract is compiled, the Kuira SDK consumes it as Android
 assets. See **[Deploy and call a Compact contract](deploy-and-call-a-compact-contract.md)**
-for the integration walkthrough — `syncContractAssets` Gradle task
-(today) or the `com.midnight.kuira.contract` plugin (alpha02+), then
-`MidnightContract.create(config) { … }` and `.deploy()` / `.call()`.
+for the integration walkthrough — the `com.midnight.kuira.contract`
+Gradle plugin (or a hand-rolled `syncContractAssets` Copy task), then
+`MidnightContract.create(sdk.config) { … }` and `.deploy()` / `.call()`.
 
 ---
 

@@ -290,8 +290,8 @@ If the `curl` looks clean and Forge still fails, paste your hosting URL
 The setup above covers development with debug builds. Shipping to the
 Play Store or distributing a signed release build to testers needs a
 release keystore, `keystore.properties` wiring, and the release
-fingerprint added to the same `assetlinks.json`. A dedicated recipe for
-that is coming; for now,
+fingerprint added to the same `assetlinks.json`. That path is not
+covered here;
 [`./gradlew :app:signingReport`](https://developer.android.com/build/building-cmdline#signing_report)
 + [the AGP signing config docs](https://developer.android.com/build/build-variants#signing)
 cover the missing pieces.

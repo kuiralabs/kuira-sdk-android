@@ -108,6 +108,7 @@ nav:
     - Set up Sigil identity: recipes/set-up-sigil-identity.md
     - Hello Compact — write your first contract: recipes/hello-compact.md
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
+    - Back up your wallet across devices: recipes/back-up-wallet-across-devices.md
     - Run kuiraDoctor before each release: recipes/run-kuira-doctor.md
   - API reference: api-reference.md
   - Roadmap: roadmap.md
@@ -127,10 +128,9 @@ extra:
   # - `kuira_version` — the SDK artifacts on Maven Central
   #   (io.github.kuiralabs:dapp-ui, midnight-sdk, identity, …).
   # - `kuira_contract_plugin_version` — the com.midnight.kuira.contract
-  #   Gradle plugin. Will track `kuira_version` from alpha02 onward,
-  #   but is a separate pin today because the plugin was authored
-  #   during alpha02 dev and was never published as alpha01.
-  kuira_version: "0.1.0-alpha01"
+  #   Gradle plugin. Tracks `kuira_version`; kept as a separate key so
+  #   the two can diverge during a transition window if ever needed.
+  kuira_version: "0.1.0-alpha02"
   kuira_contract_plugin_version: "0.1.0-alpha02"
   # Compact toolchain triple — versioned independently from the Kuira
   # SDK alphas. compactc / language pragma / runtime npm package each

@@ -13,7 +13,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main
 
 # Run `kuiraDoctor` before each release
 
-**Outcome:** the `kuiraDoctor` Gradle task runs four preflight checks
+**Outcome:** the `kuiraDoctor` Gradle task runs five preflight checks
 against your app's configuration and surfaces every misconfiguration
 that the SDK would otherwise convert into a runtime crash on a user's
 device. Run it before each release; wire it into CI to gate builds.
@@ -31,6 +31,7 @@ device. Run it before each release; wire it into CI to gate builds.
 | **Debug-cleartext manifest** | Localnet indexer connection fails with a generic `IOException`; user sees an unrecoverable "Loading…" state with no diagnostic. |
 | **`assetlinks.json` reachability + applicationId match** | Forge fails with `RP_ID_MISMATCH` / `PRF authentication failed` / silent biometric dismissal. Causes include: file not hosted, wrong hostname, Jekyll-stripped the `.well-known` path on GitHub Pages, applicationId not in the targets array. |
 | **Compact runtime pin** | QuickJS contract runtime crashes with `Unsupported bytecode version` the first time the user calls a circuit. |
+| **SDK-bundled-runtime layer** | The `@midnight-ntwrk/compact-runtime` bundled inside the SDK doesn't match the version your contract was compiled against — proofs fail or the runtime rejects the bytecode at call time. |
 
 The runtime-pin check is also enforced by `validateKuiraContractSource`
 at build time independently; `kuiraDoctor` rolls it into a unified
@@ -84,8 +85,10 @@ You'll see a unified report:
             https://kuiralabs.github.io/ loads at all.
 ✓ PASS  compact-runtime-pin
        Contract emits + consumer pins @midnight-ntwrk/compact-runtime {{ compact_runtime_version }}.
+✓ PASS  sdk-bundled-runtime
+       SDK-bundled @midnight-ntwrk/compact-runtime matches the contract ({{ compact_runtime_version }}).
 ─────────────────────────────────────────────────────────
-3 passed, 0 warning, 1 error, 0 skipped
+4 passed, 0 warning, 1 error, 0 skipped
 ```
 
 The task does **not** fail by default — it logs the report and
@@ -174,10 +177,9 @@ tasks.named("preBuild") {
 
 ## What it does NOT check
 
-These are out of scope for v1 but on the roadmap:
+These are out of scope:
 
-- **`<queries>` declarations** for cross-app sigil enrollment (Sigil V2
-  Track A).
+- **`<queries>` declarations** for cross-app sigil enrollment.
 - **Hilt wiring** of `PasskeyConfig` (Dagger already catches this at
   build time, just with a verbose error).
 - **Signing-cert fingerprint comparison** against the hosted

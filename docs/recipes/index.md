@@ -74,11 +74,12 @@ agent and let it execute the recipe in your project.
 
     ---
 
-    The `kuiraDoctor` Gradle task runs four preflight checks that
+    The `kuiraDoctor` Gradle task runs five preflight checks that
     catch misconfigurations at build time — `assetlinks.json`
     reachability + applicationId match, `minSdk` floor, debug-
-    cleartext manifest, Compact runtime pin — before they surface
-    as runtime crashes on a user's device. Run before each release.
+    cleartext manifest, Compact runtime pin, SDK-bundled-runtime
+    layer — before they surface as runtime crashes on a user's
+    device. Run before each release.
 
 -   :material-cloud-sync: **[Back up wallet data across devices](back-up-wallet-across-devices.md)**
 
