@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">
+        <div class="library-version" id="library-version">0.1.0-alpha02
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -131,6 +131,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="279494877%2FClasslikes%2F1897323951" anchor-label="DustCheckpoint" id="279494877%2FClasslikes%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dust-checkpoint/index.html"><span>Dust</span><wbr><span><span>Checkpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="279494877%2FClasslikes%2F1897323951"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-dust-checkpoint/index.html">DustCheckpoint</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>state<span class="token operator">: </span><a href="../../../../core/crypto/com.midnight.kuira.core.crypto.dust/-dust-local-state/index.html">DustLocalState</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lastEventId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A dust checkpoint = the serialized <a href="../../../../core/crypto/com.midnight.kuira.core.crypto.dust/-dust-local-state/index.html">DustLocalState</a> plus the resume cursor (<a href="-dust-checkpoint/last-event-id.html">lastEventId</a>) it was built up to. The two MUST describe the same chain point: the commitment-tree frontier carried inside the state has to equal the commitment index the event after <a href="-dust-checkpoint/last-event-id.html">lastEventId</a> will try to insert at, or delta replay fails with <code class="lang-kotlin">NonLinearInsertion</code>. <a href="-dust-checkpoint/state.html">state</a> is owned by the caller and must be closed.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -274,6 +289,21 @@
               </div>
             </div>
           </div>
+<a data-name="961143662%2FFunctions%2F1897323951" anchor-label="hasCheckpoint" id="961143662%2FFunctions%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-checkpoint.html"><span>has</span><wbr><span><span>Checkpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="961143662%2FFunctions%2F1897323951"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="has-checkpoint.html"><span class="token function">hasCheckpoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True only when BOTH halves of a checkpoint are present — cheaper than <a href="load-checkpoint.html">loadCheckpoint</a> (no deserialize) for a presence test. A half-written checkpoint reads as absent, forcing a clean genesis sync.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-84400092%2FFunctions%2F1897323951" anchor-label="initializeIfNeeded" id="-84400092%2FFunctions%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -285,6 +315,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="initialize-if-needed.html"><span class="token function">initializeIfNeeded</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Initialize dust wallet for an address if not already initialized.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1787643088%2FFunctions%2F1897323951" anchor-label="loadCheckpoint" id="1787643088%2FFunctions%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load-checkpoint.html"><span>load</span><wbr><span><span>Checkpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1787643088%2FFunctions%2F1897323951"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="load-checkpoint.html"><span class="token function">loadCheckpoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-dust-checkpoint/index.html">DustRepository.DustCheckpoint</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Load the checkpoint (state + cursor) as ONE consistent snapshot. Reads both keys from a single DataStore emission, so the returned pair can never be torn across a concurrent write. Returns null if EITHER half is missing or the state fails to deserialize — callers then fall back to genesis rather than resuming on a half-checkpoint. The returned <a href="-dust-checkpoint/state.html">DustCheckpoint.state</a> is owned by the caller and must be closed.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -360,6 +405,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="observe-balance.html"><span class="token function">observeBalance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Observe dust balance for an address (live updates).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2127089453%2FFunctions%2F1897323951" anchor-label="saveCheckpoint" id="2127089453%2FFunctions%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="save-checkpoint.html"><span>save</span><wbr><span><span>Checkpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2127089453%2FFunctions%2F1897323951"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="save-checkpoint.html"><span class="token function">saveCheckpoint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">state<span class="token operator">: </span><a href="../../../../core/crypto/com.midnight.kuira.core.crypto.dust/-dust-local-state/index.html">DustLocalState</a><span class="token punctuation">, </span></span><span class="parameter ">lastEventId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Persist <a href="save-checkpoint.html">state</a> and its resume cursor <a href="save-checkpoint.html">lastEventId</a> as ONE atomic unit.</p></div></div></div>
                 </div>
               </div>
             </div>
