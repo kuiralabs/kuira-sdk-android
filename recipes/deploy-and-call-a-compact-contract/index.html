@@ -17,7 +17,7 @@
         <link rel="prev" href="../hello-compact/">
       
       
-        <link rel="next" href="../run-kuira-doctor/">
+        <link rel="next" href="../back-up-wallet-across-devices/">
       
       
         
@@ -955,6 +955,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../back-up-wallet-across-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back up your wallet across devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../run-kuira-doctor/" class="md-nav__link">
         
   
@@ -1243,16 +1271,15 @@ end-to-end from <code>.compact</code> source to an on-chain transaction.</p>
 <p>If you don't have these yet, run <code>npm run compact</code> (or your project's
 equivalent) inside the <code>contract/</code> directory first.</p>
 <div class="admonition warning">
-<p class="admonition-title">Compact authoring is currently a 'you provide' prereq</p>
+<p class="admonition-title">Compact authoring is a 'you provide' prereq</p>
 <p>This recipe wires a <strong>pre-compiled</strong> Compact contract into your
 Android app. <strong>It does not teach Compact authoring</strong> — writing a
 <code>.compact</code> source file, installing <code>compactc</code>, or setting up the
-JS toolchain. Until the upcoming <strong>Hello Compact</strong> recipe lands,
-the cleanest path is to clone the <a href="https://github.com/midnightntwrk">Midnight Network sample
-contracts</a> or use an existing
-contract from a Midnight Build Club fellowship project. Recipe 3
-assumes the <code>contract/src/managed/&lt;name&gt;/</code> directory already
-exists; getting to that point is on you.</p>
+JS toolchain. For that, see <strong><a href="../hello-compact/">Hello Compact</a></strong>,
+or clone the <a href="https://github.com/midnightntwrk">Midnight Network sample
+contracts</a>. This recipe assumes
+the <code>contract/src/managed/&lt;name&gt;/</code> directory already exists;
+getting to that point is covered there.</p>
 </div>
 <hr />
 <h2 id="step-1-sync-the-compiled-artifacts-into-your-apps-assets">Step 1 — Sync the compiled artifacts into your app's assets<a class="headerlink" href="#step-1-sync-the-compiled-artifacts-into-your-apps-assets" title="Permanent link">&para;</a></h2>
@@ -1263,10 +1290,11 @@ your APK's assets. The canonical layout is:</p>
 <li><code>assets/keys/*.prover</code>, <code>*.verifier</code>, <code>*.bzkir</code></li>
 </ul>
 <p>There are two ways to wire it. The Gradle plugin is the recommended
-path; it ships with <code>0.1.0-alpha02</code>. Until that version is published
-to Maven Central, use the hand-rolled <code>Copy</code> task instead — it
-produces the same asset layout the plugin would.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle plugin (alpha02+)</label><label for="__tabbed_1_2">Hand-rolled Copy task (alpha01 today)</label></div>
+path; it's published to Maven Central as
+<code>0.1.0-alpha02</code>. The hand-rolled <code>Copy</code> task is
+the equivalent if you'd rather not add the plugin — it produces the
+same asset layout the plugin would.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle plugin (recommended)</label><label for="__tabbed_1_2">Hand-rolled Copy task</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">settings.gradle.kts</span><pre><span></span><code><span class="n">pluginManagement</span><span class="w"> </span><span class="p">{</span>
@@ -1289,8 +1317,8 @@ produces the same asset layout the plugin would.</p>
 <ol>
 <li>The plugin ships to Maven Central. Add <code>mavenCentral()</code> to
    <code>pluginManagement.repositories</code> so <code>plugins { id(...) }</code> can
-   resolve it. (A Gradle Plugin Portal listing is on the roadmap;
-   once published there, this extra repo entry goes away.)</li>
+   resolve it. (It is not listed on the Gradle Plugin Portal, so
+   this repo entry is required.)</li>
 <li><code>alias</code> is optional — defaults to the dirname of <code>source</code>. So
    <code>contract/src/managed/penalty</code> resolves to alias <code>penalty</code>,
    which lands the contract JS as
@@ -1310,7 +1338,7 @@ produces the same asset layout the plugin would.</p>
 </ul>
 </div>
 <div class="tabbed-block">
-<p>Until the plugin lands on Central, hand-roll the same task. This
+<p>If you'd rather not add the plugin, hand-roll the same task. This
 is what the plugin replaces — same output, more lines.</p>
 <div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">contractDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">&quot;contract&quot;</span><span class="p">)</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">contractManaged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractDir</span><span class="s">/src/managed/your-contract&quot;</span><span class="p">)</span>
@@ -1346,9 +1374,9 @@ is what the plugin replaces — same output, more lines.</p>
 
 <span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dependsOn</span><span class="p">(</span><span class="n">syncContractAssets</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>Once the <code>com.midnight.kuira.contract</code> plugin is published to
-Maven Central, replace this entire block with the four-line
-<code>kuiraContract { source.set("…") }</code> plugin pattern in the other tab.</p>
+<p>To switch to the plugin later, replace this entire block with the
+four-line <code>kuiraContract { source.set("…") }</code> plugin pattern in the
+other tab.</p>
 </div>
 </div>
 </div>
@@ -1369,10 +1397,10 @@ are all present.</p>
 <span class="p">):</span><span class="w"> </span><span class="n">MidnightContract</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Deploy embeds each circuit&#39;s verifier key on-chain — load the bytes.</span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">verifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span>
-<span class="w">        </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/yourcontract/keys/yourCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;keys/yourCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">     </span><span class="c1">// (2) config is positional</span>
 <span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;yourcontract&quot;</span>
-<span class="w">        </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/yourcontract/contract/index.js&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// (3)</span>
+<span class="w">        </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;runtime/yourcontract-contract.js&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// (3)</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">contractAddress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contractAddress</span>
 <span class="w">        </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
 <span class="w">        </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">&quot;yourCircuit&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
@@ -1385,12 +1413,12 @@ are all present.</p>
    returned address for every subsequent call.</li>
 <li><code>create()</code> takes the SDK's <code>MidnightConfig</code> (<code>sdk.config</code>) as its first
    argument — not an <code>sdk</code> builder property.</li>
-<li><code>contractJs</code> is an <strong><code>InputStream</code></strong> from your assets (the compactc
-   <code>managed/&lt;name&gt;/contract/index.js</code>), not a path string.</li>
+<li><code>contractJs</code> is an <strong><code>InputStream</code></strong> from your assets — the synced
+   <code>runtime/&lt;alias&gt;-contract.js</code>, not a path string.</li>
 <li><code>witness(name) { … }</code> — stub; replace with your contract's actual witness
    layout. (A contract with no private state, like the counter, omits this.)
-   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), pack bytes by hand
-   today; typed factories are on the roadmap.</li>
+   For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), pack the bytes by
+   hand.</li>
 </ol>
 <p><strong>Verify:</strong> the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
@@ -1436,9 +1464,7 @@ non-null state.</p>
 <li>Returns the post-call ledger state.</li>
 </ol>
 <p>For long-running circuits (sub-second to a few seconds), wire up
-<code>TransactionBalancer</code> progress callbacks for UX feedback. An SDK-side
-<code>awaitIndexerSynced(blockHeight)</code> primitive is on the roadmap; it
-will replace today's fixed delays once it lands.</p>
+<code>TransactionBalancer</code> progress callbacks for UX feedback.</p>
 <p><strong>Verify:</strong> the transaction confirms within ~10s on PREPROD. Query
 <code>contract.ledger()</code> and check the field your circuit mutates.</p>
 <hr />
@@ -1465,12 +1491,12 @@ will replace today's fixed delays once it lands.</p>
 <tr>
 <td><code>Indexer says contract not found</code> after deploy</td>
 <td>Indexer hasn't caught up yet.</td>
-<td>Today's workaround: 3–5s delay between deploy and first call. An SDK-side <code>awaitIndexerSynced</code> primitive is on the roadmap.</td>
+<td>Add a 3–5s delay between deploy and first call.</td>
 </tr>
 <tr>
 <td><code>Invalid witness</code> at call time</td>
 <td>Witness <code>ByteArray</code> length doesn't match the circuit's declared shape.</td>
-<td>Cross-check the witness layout. Typed witness factories on the roadmap eliminate this whole class of bug.</td>
+<td>Cross-check the witness layout against the circuit's declared shape.</td>
 </tr>
 <tr>
 <td><code>Deadline expired</code> even though you set it in the future</td>

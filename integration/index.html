@@ -1072,6 +1072,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../recipes/back-up-wallet-across-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back up your wallet across devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../recipes/run-kuira-doctor/" class="md-nav__link">
         
   
@@ -1422,7 +1450,7 @@
 
 
 <h1 id="kuira-sdk-integration-guide">Kuira SDK — Integration Guide<a class="headerlink" href="#kuira-sdk-integration-guide" title="Permanent link">&para;</a></h1>
-<p><strong>Alpha — <code>0.1.0-alpha01</code></strong></p>
+<p><strong>Alpha — <code>0.1.0-alpha02</code></strong></p>
 <p>Build a Midnight zero-knowledge dApp on Android by adding <strong>one dependency</strong>, declaring your <strong>own passkey domain</strong>, and hosting <strong>one tiny JSON file</strong> on it. That's the whole on-ramp.</p>
 <p>This guide walks the recipe end-to-end. Two <strong>public</strong> reference apps consume
 the SDK exactly as described below — clone either and read along:</p>
@@ -1440,7 +1468,7 @@ source is the ground truth.</p>
 <p>Adding the one line below brings:</p>
 <ul>
 <li><strong>Sigil identity</strong> — a passkey-derived DID (<code>did:key</code> + Ed25519). One biometric, no recovery phrase, no maintainer dependency. Backed up to Google Block Store, encrypted with a key you can't read.</li>
-<li><strong>Wallet</strong> — Midnight HD wallet (unshielded + shielded NIGHT, DUST gas), with live balance, send, receive, and a drop-in Compose <strong>wallet panel</strong> if you want it.</li>
+<li><strong>Wallet</strong> — Midnight HD wallet (unshielded + shielded NIGHT, Dust gas), with live balance, send, receive, and a drop-in Compose <strong>wallet panel</strong> if you want it.</li>
 <li><strong>Contract surface</strong> — deploy / call / read state on any <code>.compact</code> contract; ZK proof generation runs on-device (no proof-server hop required).</li>
 <li><strong>Indexer + chain client</strong> — block / state / event subscription, backed by Midnight's official indexer.</li>
 <li><strong>App-state cloud backup</strong> — your dApp's per-user data rides the sigil's Block Store backup automatically. The backup blob is PRF-encrypted client-side before Google's Block Store touches it.</li>
@@ -1470,7 +1498,7 @@ source is the ground truth.</p>
 </tr>
 <tr>
 <td><code>minSdk</code></td>
-<td><strong>30</strong> — required (<code>core:auth</code> uses keystore APIs added in API 30: biometric ⊕ device-credential)</td>
+<td><strong>30</strong> — required (the SDK uses keystore APIs added in API 30: biometric ⊕ device-credential)</td>
 </tr>
 <tr>
 <td>Hilt + KSP</td>
@@ -1511,13 +1539,13 @@ config to add. In <code>app/build.gradle.kts</code>:</p>
 <span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ── Pick ONE Kuira entry ──</span>
 <span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="c1">// With the wallet + sigil PANEL (Compose). Use this for Kicks / BBoard-style</span>
+<span class="w">    </span><span class="c1">// With the wallet + sigil PANEL (Compose). Use this for BBoard-style</span>
 <span class="w">    </span><span class="c1">// apps that want the wallet UI dropped in.</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha01&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha02&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// OR — headless (no Compose pulled by the SDK). For dApps building their</span>
 <span class="w">    </span><span class="c1">// own UI top-to-bottom.</span>
-<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha01&quot;)</span>
+<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha02&quot;)</span>
 
 <span class="w">    </span><span class="c1">// Hilt processor — required, the SDK is Hilt-first</span>
 <span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-android-compiler:2.58&quot;</span><span class="p">)</span>
@@ -1599,9 +1627,9 @@ locally in Docker: instant, free, and ephemeral (reset it any time). It's the
 recommended loop for day-to-day development; switch to PREPROD only when you want
 the hosted chain.</p>
 <h3 id="5a-start-the-localnet-the-midnight-wallet-cli-recommended">5a. Start the localnet — the Midnight Wallet CLI (recommended)<a class="headerlink" href="#5a-start-the-localnet-the-midnight-wallet-cli-recommended" title="Permanent link">&para;</a></h3>
-<p>Our preferred way to run and fund a localnet is the
-<strong><a href="https://github.com/nel349/midnight-wallet-cli">Midnight Wallet CLI</a></strong> (<code>mn</code>).
-It wraps the Docker stack and wallet funding behind a few commands:</p>
+<p>The recommended way to run and fund a localnet is the <strong>Midnight Wallet CLI</strong>
+(<code>mn</code>), installed from npm as <code>midnight-wallet-cli</code>. It wraps the Docker stack
+and wallet funding behind a few commands:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># one-time — needs Docker running + Node 20+</span>
 npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>midnight-wallet-cli<span class="w">          </span><span class="c1"># installs `midnight` (alias `mn`)</span>
 
@@ -1613,7 +1641,7 @@ mn<span class="w"> </span>localnet<span class="w"> </span>down<span class="w">  
 <p>Fund the wallet your app shows (copy its address from the wallet panel's receive
 screen):</p>
 <div class="highlight"><pre><span></span><code>mn<span class="w"> </span>airdrop<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># NIGHT for fees</span>
-mn<span class="w"> </span>dust<span class="w"> </span>register<span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># enable DUST (gas) generation</span>
+mn<span class="w"> </span>dust<span class="w"> </span>register<span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># enable Dust (gas) generation</span>
 </code></pre></div>
 <blockquote>
 <p>Localnet is ephemeral — <code>mn localnet down</code> (or a Docker restart) wipes all
@@ -1648,10 +1676,9 @@ debug-only manifest</strong> — release builds stay HTTPS-clean:</p>
 <span class="nt">&lt;/manifest&gt;</span>
 </code></pre></div>
 <blockquote>
-<p>Why debug-only: previously this was inherited transitively from a <code>core:</code>
-module's debug AAR; once the SDK started publishing release variants for the
-alpha that allowance no longer reaches consumers. So each app declares its
-own — release stays cleartext-free.</p>
+<p>Why debug-only: the SDK's release variants are HTTPS-clean and don't grant
+any cleartext allowance, so each app declares its own in a debug-only manifest
+— release stays cleartext-free.</p>
 </blockquote>
 <hr />
 <h2 id="6-minimal-hello-world-deploy-call">6. Minimal "Hello World" — deploy + call<a class="headerlink" href="#6-minimal-hello-world-deploy-call" title="Permanent link">&para;</a></h2>
@@ -1697,10 +1724,10 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 <span class="w">        </span><span class="c1">//    contractJs is an InputStream from assets; deploy/call need the</span>
 <span class="w">        </span><span class="c1">//    coin public key + each circuit&#39;s verifier-key bytes.</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">verifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span>
-<span class="w">            </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/mycontract/keys/myCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;keys/myCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mycontract&quot;</span>
-<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/mycontract/contract/index.js&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;runtime/mycontract-contract.js&quot;</span><span class="p">)</span>
 <span class="w">            </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
 <span class="w">            </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
@@ -1711,7 +1738,7 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 
 <span class="w">        </span><span class="c1">// 4. Read typed ledger state (lossless — no cell-hex parsing).</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">readOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;managed/mycontract/contract/index.js&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;runtime/mycontract-contract.js&quot;</span><span class="p">)</span>
 <span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">address</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readOnly</span><span class="p">.</span><span class="na">ledger</span><span class="p">().</span><span class="na">getUint64</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">)</span>
@@ -1721,30 +1748,31 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 <h3 id="61-install-your-contracts-proving-keys-required">6.1 Install your contract's proving keys (required)<a class="headerlink" href="#61-install-your-contracts-proving-keys-required" title="Permanent link">&para;</a></h3>
 <p>ZK proofs run <strong>on the device</strong>, so every circuit your contract calls needs its
 proving keys + a BLS parameter set present <strong>before the first deploy/call</strong> —
-otherwise the call fails at the proving step. Ship them in <code>assets/</code>
-(compactc emits the <code>managed/&lt;name&gt;/{contract,keys,zkir}</code> layout) — sync them
-in with either the <code>com.midnight.kuira.contract</code> Gradle plugin or, <strong>until that
-plugin is on Central (alpha01 today), the hand-rolled <code>Copy</code> task shown in the
-<a href="../recipes/deploy-and-call-a-compact-contract/">deploy-and-call recipe</a></strong>. Then
+otherwise the call fails at the proving step. Ship them in <code>assets/</code> — sync them
+in with the <code>com.midnight.kuira.contract</code> Gradle plugin
+(<code>0.1.0-alpha02</code>), the recommended path, which stages the
+contract runtime and circuit keys into <code>assets/</code> for you. Without the plugin, use
+the hand-rolled <code>Copy</code> task shown in the
+<a href="../recipes/deploy-and-call-a-compact-contract/">deploy-and-call recipe</a>. Then
 install once at runtime — it's idempotent, so call it before each action:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Discovers the managed/&lt;name&gt;/{keys,zkir} bundled in assets and stages them</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Discovers the circuit keys bundled in assets and stages them</span>
 <span class="c1">// where the on-device prover looks.</span>
 <span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
 </code></pre></div>
 <p>A small contract may need a smaller BLS param set than the wallet bundle ships
-(e.g. <code>bls_midnight_2p5</code> for a counter). Bundle it under
-<code>assets/managed/&lt;name&gt;/bls/</code> and it's picked up alongside the circuit keys. The
+(e.g. <code>bls_midnight_2p5</code> for a counter). Bundle the contract's BLS parameter set
+alongside its circuit keys and it's picked up at install time. The
 <strong><a href="https://github.com/kuiralabs/kuira-starter-android">Kuira Starter</a></strong>'s
 <code>CounterContract</code> shows the full pattern end-to-end.</p>
 <blockquote>
-<p>For a larger, multi-step contract (commit / reveal / sudden-death, witness
-packing, indexer-state polling, retry, force-resync), see the World-Cup PvP
-reference app — coming as a public release soon.</p>
+<p>For a larger, multi-step contract (commit / reveal, witness packing,
+indexer-state polling, retry, force-resync), the <strong><a href="https://github.com/kuiralabs/example-bboard-android">BBoard</a></strong>
+reference app shows the deploy → call → read flow end-to-end.</p>
 </blockquote>
 <hr />
 <h2 id="7-going-headless-no-panel">7. Going headless (no panel)<a class="headerlink" href="#7-going-headless-no-panel" title="Permanent link">&para;</a></h2>
 <p>If you don't want the Compose wallet panel, swap the dep:</p>
-<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha01&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
+<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha02&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
 </code></pre></div>
 <p>You still own bootstrap + sigil forging — <code>MidnightSdkProvider.ensureSdk(...)</code>
 throws <code>SigilRequiredException</code> until a sigil exists. Forge it through
@@ -1782,7 +1810,7 @@ throws <code>SigilRequiredException</code> until a sigil exists. Forge it throug
 </tr>
 <tr>
 <td><code>IllegalArgumentException: Could not find io.github.kuiralabs:…</code></td>
-<td>Check the alpha version is current; the SDK is <code>0.1.0-alpha01</code> at the time of writing.</td>
+<td>Check the alpha version is current; the SDK is <code>0.1.0-alpha02</code> at the time of writing.</td>
 </tr>
 </tbody>
 </table>
@@ -1793,7 +1821,7 @@ blocker for building, but it shapes what "alpha" means in practice and will
 evolve as Midnight matures.</p>
 <h3 id="proving-infrastructure-downloads-from-a-midnight-dev-url">Proving infrastructure downloads from a Midnight <em>dev</em> URL<a class="headerlink" href="#proving-infrastructure-downloads-from-a-midnight-dev-url" title="Permanent link">&para;</a></h3>
 <p>On first launch the SDK fetches Midnight's <strong>protocol-level</strong> proving assets
-— the universal BLS parameters and the wallet's shielded-spend / dust circuit
+— the universal BLS parameters and the wallet's shielded-spend / Dust circuit
 keys — from
 <code>https://midnight-s3-fileshare-dev-eu-west-1.s3.eu-west-1.amazonaws.com</code>.
 This is the same bucket Midnight's own tooling uses; it's <strong>Midnight's
@@ -1809,13 +1837,13 @@ no production SLA on it.</p>
 </ul>
 <p><strong>Your own <code>.compact</code> contract's proving keys are NOT affected by this.</strong> Those
 download from a URL <strong>you</strong> supply when you call
-<code>ProvingKeyManager.downloadCircuitKeys(baseUrl = …, …)</code> — Kicks hosts Kicks's
-keys, BBoard hosts BBoard's. You always own your contract's keys. This
+<code>ProvingKeyManager.downloadCircuitKeys(baseUrl = …, …)</code> — e.g. BBoard hosts
+BBoard's keys. You always own your contract's keys. This
 limitation is only about the <em>protocol-wide</em> keys that every Midnight dApp
 shares.</p>
 <p><strong>How it will evolve.</strong> When Midnight publishes a production URL — or, if
 that's not in their immediate roadmap, when the SDK mirrors these files under
-a <code>kuira-labs</code>-controlled URL with a version pin (<code>ProvingKeyManager.CURRENT_VERSION</code>
+a <code>kuiralabs</code>-controlled URL with a version pin (<code>ProvingKeyManager.CURRENT_VERSION</code>
 tracks the protocol version, currently 9) — the SDK swaps the constant and
 re-publishes. The expected migration cost for a consumer is a single SDK
 version bump; no app-side code change.</p>

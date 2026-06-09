@@ -933,6 +933,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../back-up-wallet-across-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back up your wallet across devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../run-kuira-doctor/" class="md-nav__link">
         
   
@@ -1221,13 +1249,13 @@ export circuit increment(): [] {
   <code>Counter</code> wraps a <code>Uint&lt;64&gt;</code> with built-in <code>.increment()</code> and
   <code>.read()</code> helpers. <code>export ledger</code> makes the field readable by
   off-chain clients (the Kuira SDK reads it via
-  <code>MidnightContract.ledger().getUint64("count")</code>).</li>
+  <code>contract.ledger().getUint64("count")</code>).</li>
 <li><code>export circuit increment(): [] { count.increment(1); }</code> — a single
   circuit that takes no arguments and bumps the counter by 1.
   Circuits are the on-chain entrypoints; calling one produces a
   ZK proof + a transaction that updates ledger state.</li>
 </ul>
-<p>No witnesses, no privacy controls, no access checks. Anyone with DUST
+<p>No witnesses, no privacy controls, no access checks. Anyone with Dust
 can increment. The point is the SDK-integration story, not contract
 design — for non-trivial patterns, jump to the <a href="https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts">Midnight examples</a>.</p>
 <hr />
@@ -1281,8 +1309,9 @@ documents the upgrade recipe step by step.</p>
 <p>Output: a <code>contract/src/managed/counter/</code> directory containing
 <code>contract/index.js</code> (the runnable contract), <code>keys/increment.verifier</code>
 + <code>keys/increment.prover</code> (proving + verifying keys), and <code>zkir/</code> (the
-intermediate representation). This is what the Kuira SDK consumes via
-<code>MidnightContract.create(config) { contractJs = assets.open(...) }</code>.</p>
+intermediate representation). After syncing into your app's assets as
+<code>runtime/&lt;alias&gt;-contract.js</code>, this is what the Kuira SDK consumes via
+<code>MidnightContract.create(sdk.config) { contractJs = context.assets.open(...) }</code>.</p>
 <p>Quick sanity check with the <code>mn</code> CLI:</p>
 <div class="highlight"><pre><span></span><code>mn<span class="w"> </span>contract<span class="w"> </span>inspect<span class="w"> </span>--managed<span class="w"> </span>contract/src/managed/counter
 </code></pre></div>
@@ -1307,9 +1336,9 @@ the starter's
 <h2 id="wire-it-into-an-android-app">Wire it into an Android app<a class="headerlink" href="#wire-it-into-an-android-app" title="Permanent link">&para;</a></h2>
 <p>Once the contract is compiled, the Kuira SDK consumes it as Android
 assets. See <strong><a href="../deploy-and-call-a-compact-contract/">Deploy and call a Compact contract</a></strong>
-for the integration walkthrough — <code>syncContractAssets</code> Gradle task
-(today) or the <code>com.midnight.kuira.contract</code> plugin (alpha02+), then
-<code>MidnightContract.create(config) { … }</code> and <code>.deploy()</code> / <code>.call()</code>.</p>
+for the integration walkthrough — the <code>com.midnight.kuira.contract</code>
+Gradle plugin (or a hand-rolled <code>syncContractAssets</code> Copy task), then
+<code>MidnightContract.create(sdk.config) { … }</code> and <code>.deploy()</code> / <code>.call()</code>.</p>
 <hr />
 <h2 id="where-to-go-from-here">Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permanent link">&para;</a></h2>
 <table>

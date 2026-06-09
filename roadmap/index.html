@@ -826,6 +826,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../recipes/back-up-wallet-across-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back up your wallet across devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../recipes/run-kuira-doctor/" class="md-nav__link">
         
   
@@ -897,6 +925,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -913,6 +959,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recently-shipped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recently shipped
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contract-ergonomics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract ergonomics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wallet-security-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wallet security &amp; recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-permissionless-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open, permissionless integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proving-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proving &amp; performance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backup &amp; sync
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -965,6 +1096,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recently-shipped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recently shipped
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contract-ergonomics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contract ergonomics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wallet-security-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wallet security &amp; recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-permissionless-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open, permissionless integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proving-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proving &amp; performance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backup &amp; sync
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -984,236 +1189,84 @@
 
 
 <h1 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h1>
-<p>This is the public wishlist for the Kuira Android SDK — patterns the
-SDK should bake in so the next dApp doesn't reinvent them.</p>
-<p>Items are added as real dApps (BBoard, Midnight Kicks, the Kuira
-Starter, CipherDefense) bump into the same friction. The list is
-deliberately bigger than the next release — most items wait until a
-second consumer hits the same gap. Each row records the workaround the
-example apps use today so a consumer hitting the same shape knows how
-to bridge it locally.</p>
-<p>Items are promoted out of this list when they ship.</p>
+<p>Where the Kuira Android SDK is headed. These are the capabilities we're
+building toward so each new dApp writes less plumbing and more product. It's
+intentionally broader than any single release — items land as real apps prove
+the need.</p>
+<p>This is a direction, not a commitment to dates or ordering.</p>
 <hr />
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Wish</th>
-<th>Why it'd help</th>
-<th>Today's workaround</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>awaitIndexerSynced(blockHeight)</code> primitive</td>
-<td>Replace fixed <code>delay(5000)</code> waits between deploy → first call and between sequential tx. Reduces total match time and makes flow deterministic.</td>
-<td>Hard-coded 3–8s sleeps in MatchManager (INDEXER_SETTLE_MS, POST_JOIN_SETTLE_MS).</td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>MidnightContract.stateFlow(): Flow&lt;ContractState&gt;</code></td>
-<td>StatePoller becomes a one-liner. Lets UI react to opponent actions without polling boilerplate.</td>
-<td>Caller writes a polling loop against the indexer GraphQL.</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Retry policy on <code>contract.call(...)</code></td>
-<td>"Indexer says contract not found, wait + retry" is a near-universal pattern after deploy. Bake retry-with-backoff into the call surface.</td>
-<td>MatchManager.aiJoin loops 10× by hand, matching on <code>"not found"</code> substring.</td>
-</tr>
-<tr>
-<td>4</td>
-<td>✅ <strong>DONE — Serializable state snapshot for BlockStore backup</strong></td>
-<td>Realized: <code>MatchStore.snapshotBytes()</code> / <code>restoreFromBytes()</code> round-trip the active-match set (address + role + secret key + nonces + picks) as a versioned blob, and <code>MatchStoreBackupProvider</code> (bound as the SDK's <code>AppDataBackupProvider</code>) packs it into <code>SigilBackup.appMetadata</code> so it rides into Block Store next to the seed. Reinstall → sigil restore repopulates unfinished matches. Completed games are pruned on <code>Resolved</code> (<code>store.delete</code>), so the blob stays lean. The long-term archive tier (history / stats / completed games beyond Block Store's size budget) is <strong>#30</strong>.</td>
-<td>(was: manual serialization in the app layer)</td>
-</tr>
-<tr>
-<td>5</td>
-<td>First-class <code>Player</code> / <code>Identity</code> abstraction</td>
-<td>The two-player witness pattern (P1 secret key, P2 secret key, swap on each call) is a recurring shape. A <code>Player</code> with <code>secretKey</code> + <code>coinPublicKey</code> + witness-registration helper would shrink each call site.</td>
-<td>MatchManager passes raw <code>ByteArray</code> secrets through every helper.</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Auto force-resync of dust around contract calls</td>
-<td>Every tx after a deploy or another tx needs <code>wallet.forceResyncDust()</code> to see the new UTXO state. Should happen inside <code>contract.call</code> when needed.</td>
-<td>Manual <code>forceResyncDust()</code> between every tx in MatchManager.</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Deadline / timeout helper</td>
-<td><code>BigInteger.valueOf(System.currentTimeMillis() / 1000 + N)</code> for unix-second deadlines is everywhere a circuit takes a deadline.</td>
-<td>Computed by hand in MatchManager.aiJoin.</td>
-</tr>
-<tr>
-<td>8</td>
-<td>"Test-mode seed" path</td>
-<td>The shared test seed (<code>TEST_SEED</code> in KicksActivity) for fast iteration on faucet networks should be a single SDK opt-in, not a literal in every example app.</td>
-<td>Hex literal in KicksActivity.</td>
-</tr>
-<tr>
-<td>9a</td>
-<td>✅ <strong>DONE — Lossless ledger reads via SDK (<code>MidnightContract.ledger()</code>)</strong></td>
-<td>Promoted from wishlist to friction log + landed in 2026-05-20. The cell-hex parsing path turned out to be fundamentally lossy: <code>MidnightConfig.queryState</code> exposes a flattened JSON cell tree where <code>Vector&lt;N, Uint&lt;8&gt;&gt;</code> cells with zero elements lose positional info (each Uint&lt;8&gt;=0 serializes to a zero-length byte array, so the cell hex is a concatenation of only the non-zero elements). No dApp can recover the original arrays from this view. <strong>Fix:</strong> the SDK now offers <code>MidnightContract.ledger()</code> which spins up QuickJs, invokes the contract's own generated <code>ledger(state)</code> function, and marshals the typed return values back to Kotlin via <a href="https://github.com/nel349/kuira-android-wallet/blob/main/core/compact-engine/src/main/kotlin/com/midnight/kuira/core/compact/MidnightLedger.kt"><code>MidnightLedger</code></a> — the same lossless path the contract uses internally. Each typed accessor (<code>getUint8</code>, <code>getUint64</code>, <code>getBoolean</code>, <code>getBytes</code>, <code>getVectorUint8</code>, + <code>OrNull</code> variants) carries range/shape validation; missing fields throw <code>MissingLedgerFieldException</code> with the known-fields list, type mismatches throw <code>WrongLedgerFieldTypeException</code> — loud failures beat the silent-zeros the cell-hex parser produced. Kicks's <code>ContractStateSnapshot</code> and BBoard's <code>BBoardRepository</code> migrate to <code>contract.ledger()</code> and drop their bespoke parsers.</td>
-<td>Lossy cell-hex parsing in each dApp (<code>ContractStateSnapshot.kt</code>, <code>BBoardRepository.kt</code>), which silently misdecoded any <code>Vector&lt;N, Uint&lt;8&gt;&gt;</code> containing zero elements.</td>
-</tr>
-<tr>
-<td>9b</td>
-<td>Typed <code>Ledger&lt;T&gt;</code> codegen from <code>.compact</code></td>
-<td>With #9a in place, the runtime decoding is lossless and shared. The remaining ergonomic gap is compile-time type safety: today consumers write <code>ledger.getUint8("p1Score")</code> instead of <code>ledger.p1Score</code>. A Gradle plugin (<code>com.midnight.kuira.contract</code>) that reads the compiled JS's <code>ledger()</code> descriptor and emits a typed Kotlin data class per contract (<code>PenaltyLedger(val p1Shoots: IntArray, val p1Score: Int, ...)</code>) would close it. Lower urgency now that the correctness problem is solved — defer until a second consumer (e.g. CipherDefense) needs it.</td>
-<td>String-keyed accessors with runtime field-name validation. Works correctly, just less ergonomic than a generated data class.</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Public block subscription</td>
-<td><code>MidnightSdk.indexerClient</code> is <code>private</code>, so app code can't reach <code>subscribeToBlocks()</code> for push-based contract-state watching. Expose either the indexer or a thin <code>MidnightContract.stateFlow()</code> over it.</td>
-<td><code>StatePoller</code> falls back to 3s polling.</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Kuira Gradle plugin for contract artifact sync</td>
-<td>Copying compiled <code>.compact</code> outputs into Android assets (<code>penalty-contract.js</code> + <code>keys/*.{prover,verifier,bzkir}</code>) is the same shape across every Kuira dApp, but each one hand-rolls a Gradle Copy task with hardcoded contract names and paths. A <code>com.midnight.kuira.contract</code> plugin should let dApps declare <code>kuiraContract { source = "contract/src/managed/penalty" }</code> (or auto-discover from a sibling module) and get sync-before-<code>mergeAssets</code> for free.</td>
-<td><code>app/build.gradle.kts</code> registers a hand-rolled <code>syncContractAssets</code> Copy task with the contract path and circuit-key globs baked in.</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Typed witness factories for non-scalar types</td>
-<td><code>WitnessResult(null, ByteArray)</code> works for <code>Bytes&lt;32&gt;</code> / <code>Uint&lt;8&gt;</code>, but for <code>Vector&lt;N, T&gt;</code> and other compound types the developer has to know the runtime's serialization (concatenated element bytes) and assemble it by hand. SDK should expose factory helpers like <code>vectorWitness(length=5) { intArrayOf(L, C, R, L, R) }</code> and <code>boolWitness { true }</code> that produce the right <code>ByteArray</code> for the underlying compact-runtime descriptor.</td>
-<td>MatchManager packs Vector witnesses by hand: <code>byteArrayOf(*shoots.map(Int::toByte).toByteArray())</code>.</td>
-</tr>
-<tr>
-<td>13</td>
-<td>Compactc version pinning</td>
-<td>Compactc's <code>--runtime-version</code> must match the project's <code>@midnight-ntwrk/compact-runtime</code> npm version, but there's no in-repo way to declare which compactc version to use — developers find out via a runtime error after <code>npm run compact</code> writes incompatible bytecode. Either a <code>.compact-version</code> file in <code>contract/</code> honored by the <code>compact</code> wrapper, or auto-pinning where <code>compact compile</code> reads package.json's pinned runtime version and switches itself.</td>
-<td>Kicks V3 requires compactc 0.30.0 (runtime 0.15.0); 0.31.0 is the user default and emits incompatible 0.16.0 bytecode. Workaround: invoke <code>~/.compact/versions/0.30.0/aarch64-darwin/compactc</code> directly or run <code>compact update 0.30.0</code>.</td>
-</tr>
-<tr>
-<td>14</td>
-<td><strong>🔴 CRITICAL — Session auto-lock for the wallet SDK</strong></td>
-<td>The decrypted seed lives in the one <code>MidnightSdk</code> instance now owned process-wide by <code>MidnightSdkProvider</code> (<code>sdk:wallet-runtime</code>, landed 2026-05-24). After one biometric on first SDK build, every subsequent value-bearing call (register, send, deploy, Kicks join/commit/reveal, payout claim) runs with <strong>zero re-authentication</strong>. The Keystore's 30s validity window is bypassed by SDK caching — we never re-call <code>loadSeed</code>, so Keystore is never re-consulted. A borrowed-while-foregrounded device drains funds in one tap. SDK needs three independent re-lock triggers: idle timeout (default 5–15 min), background timeout (re-lock on resume after N seconds backgrounded), and screen-lock observer (re-lock when device locks). Plus a manual "Lock now" affordance in the wallet panel. <strong>Now unblocked (2026-05-24):</strong> the provider owns the single cached SDK and exposes <code>close()</code>, so all three triggers + manual lock collapse to "call <code>close()</code>, force re-bootstrap (biometric) on the next call" in one place instead of per-consumer.</td>
-<td>The teardown seam now exists (<code>MidnightSdkProvider.close()</code>); no caller invokes it yet — no idle eviction, no foreground re-arm, no manual lock.</td>
-</tr>
-<tr>
-<td>15</td>
-<td><strong>🔴 CRITICAL — Sigil UX safety (no destructive-button-on-Error trap, no missing sign-out)</strong></td>
-<td>The <code>SigilStatusPanel</code> has two compounding UX gaps that together make a sigil look deleted with one wrong tap. (a) When <code>restoreSeed</code> fails (e.g. user taps Restore on a Forged sigil but there's no cloud backup, or PRF fails, or any other <code>BackupException</code>), the catch block sets status to <code>Error</code> and <code>ErrorBody</code> renders a <strong>forge sigil</strong> button. <code>forgeSigil</code> → <code>persistSigil</code> unconditionally overwrites the existing prefs. One tap from "I just wanted to try restore" to "the sigil I had is gone." (b) There is no in-app <strong>sign out</strong> affordance from <code>Forged</code> state — the only way to leave a sigil is force-uninstall the app, so users in distress end up tapping any visible action including the forge-in-Error path. Required fixes: (1) <code>signOut()</code> on <code>SigilPanelViewModel</code> that wipes <code>sigil_identity</code> prefs + optionally deletes Block Store blob, status → <code>None</code>, biometric-gated; (2) sign-out button in <code>ForgedBody</code> under a "danger zone" divider with a confirmation modal; (3) <code>restoreSeed</code>'s catch must distinguish "restore failed from None" (Error with forge button is fine — nothing to lose) from "restore failed from Forged" (return to <code>Forged</code> with a transient banner, never show forge); (4) <code>ErrorBody</code>'s forge button only renders when previous state was <code>None</code> / <code>BackupAvailable</code>. <strong>Update (2026-05-24) — generalised + multi-wallet decision.</strong> The trap fires for <em>any</em> error while Forged, not just restore; the proximate harm is <code>persistSigil</code> overwriting the local sigil pointer (DID/cred/pubkey) with no guard. So beneath the UI fixes above, add a <strong>data-layer guard</strong>: <code>persistSigil</code> refuses to overwrite an existing sigil unless an explicit <code>replace = true</code> is passed — set only by the deliberate sign-out → forge path. Defense-in-depth, so a missed UI path can't silently destroy a sigil. <strong>Recoverability nuance:</strong> forging mints a <em>new</em> passkey and leaves the old one in GPM, but the panel offers no <strong>sign in with existing passkey</strong> (<code>SigilSession.signIn</code> exists but is unwired) — only forge (new) and restore-from-cloud. So an accidental forge <strong>orphans</strong> the old wallet unless a Block Store backup exists. Wire sign-in-with-existing-passkey as a recovery path. <strong>Multi-wallet (multi-sigil) considered + deferred (2026-05-24):</strong> the DID is PRF-derived 1:1 from a passkey, so "multi-sigil" = track + switch among multiple passkeys — the <code>MidnightSdkProvider</code> rebuilds the wallet per active sigil, plus per-sigil Block Store backup and a switcher UI. A v1.1+ product decision that departs from the one-sigil-one-identity vision; this item's lifecycle work (no silent overwrite + explicit sign-out/replace) is its prerequisite either way.</td>
-<td>Force-quit + restart the app to reload prefs (if they exist), or accept the visual deletion. No in-app safety.</td>
-</tr>
-<tr>
-<td>16</td>
-<td><strong>Resume-aware multi-step protocol orchestrator</strong></td>
-<td><code>MatchManager</code> is ~600 lines of state-machine + transitions + resume logic that's ~90% generic. Three bugs landed on 2026-05-20 — <code>joinAsP2</code> precondition fail when state was already <code>Deployed</code>, <code>awaitOpponentJoin</code> precondition fail when state was already <code>Joined</code>, <code>MatchReady.CONTINUE</code> launching Unity's choice picker on a session where picks were already on chain — all reduce to "code path assumes I'm at step 1 but state is at step N." The fix in each case was the same shape: walk the steps and skip whichever ones are already reflected on chain. <code>resumePlayAsP1</code> / <code>resumePlayAsP2</code> are hand-rolled versions of this per role. SDK should provide a <code>Protocol&lt;S&gt;</code> DSL where each step declares (a) precondition on a typed <a href="https://github.com/nel349/kuira-android-wallet/blob/main/core/compact-engine/src/main/kotlin/com/midnight/kuira/core/compact/MidnightLedger.kt"><code>MidnightLedger</code></a>, (b) the action, (c) an "already done on ledger?" predicate. <code>protocol.runFrom(contract.ledger())</code> would auto-skip steps the chain already shows landed and resume from the right point. Folds in #1 (settle waits become declarative timeouts on each step) and #6 (force-resync becomes a between-step concern).</td>
-<td>Per-dApp orchestrator + per-dApp <code>resumePlayAsP*</code> helpers + per-dApp precondition catches. Three live bugs in this session, all the same shape.</td>
-</tr>
-<tr>
-<td>17</td>
-<td><strong><code>MidnightContract.callIdempotent(circuit, args, isDoneOnLedger)</code></strong></td>
-<td>Closely related to #16, but applicable outside a full multi-step protocol. Every action we wrote on 2026-05-20 had to add a catch-block for "the contract already reflects this transition" — <code>joinAsP2</code> matches on the <code>"WAITING phase"</code> substring; <code>awaitOpponentJoin</code> had to learn to no-op when state was past <code>Deployed</code>. Each dApp re-invents the same <code>try { call } catch { if (chain says it's done) ok }</code> pattern, and missing it means a wasted tx + a <code>Failed</code> state on resume. SDK could ship <code>contract.callIdempotent(circuit, args, isDoneOnLedger = { ledger -&gt; ledger.getUint8("phase") &gt; PHASE_WAITING })</code>. The SDK reads the ledger first; if the predicate is true, returns synthetically without a chain call. Eliminates the per-dApp catch pattern that's now appeared in three places.</td>
-<td>Hand-rolled catch + substring-match pattern in <code>joinAsP2</code>, <code>awaitOpponentJoin</code>'s new idempotent shortcut, and (implicitly) <code>submitP1Picks</code>/<code>submitP2Picks</code> whenever resume drives those.</td>
-</tr>
-<tr>
-<td>18</td>
-<td><strong><code>WitnessStore</code> — encrypted, multi-slot witness persistence</strong></td>
-<td><code>MatchStore</code> is ~250 lines per dApp: <code>EncryptedSharedPreferences</code> setup, role-aware rehydration through <code>rehydrateLocalIdentity</code>, content-equality boilerplate on <code>ByteArray</code> fields (the same trap <code>ContractStateSnapshot</code> had — see #9a), Block Store cloud backup wiring through <code>MatchStoreBackupProvider</code>. The whole rehydrate-witnesses-after-process-death pattern is generic but every dApp implements it. Without this layer the resume orchestrator (#16) can't actually work — it needs the witnesses to drive the remaining steps. SDK should ship a <code>WitnessStore(scope: String)</code> keyed by <code>(contractAddress, slotName)</code>, with PRF-encrypted persistence + Block Store backup baked in. dApp code becomes <code>store.save(address, "p1Regulation", witnessBundle)</code> / <code>store.load(address, "p1Regulation")</code>. Composes with #16: each <code>Step</code> declares the witness slot it owns; resume auto-rehydrates before walking.</td>
-<td>Per-dApp <code>MatchStore</code> + <code>MatchStoreBackupProvider</code> + manual <code>rehydrateLocalIdentity</code> for each role + content-equality boilerplate per witness type.</td>
-</tr>
-<tr>
-<td>19</td>
-<td><strong><code>MidnightContract.readOnly(...)</code> factory</strong></td>
-<td>We made <code>coinPublicKey: ByteArray?</code> nullable on 2026-05-20 to support polling contracts that don't have a wallet attached. But the read-only pattern still requires cargo: skip witness registration, omit cpk, remember not to call <code>.call()</code> until runtime. A future dApp author won't know that's a valid shape from reading the builder. A dedicated <code>MidnightContract.readOnly(config) { contractJs = …; address = … }</code> factory that returns a typed <code>MidnightContractReadOnly</code> interface with <code>ledger()</code> + <code>stateFlow()</code> but NO <code>call</code>/<code>prepare</code>/<code>deploy</code> would make the misuse compile-time impossible instead of surfacing as <code>IllegalStateException</code> at the first write call.</td>
-<td>Today's pattern: <code>MidnightContract.create { ... }</code> with implicit cpk-null sentinel + <code>requireWriteCapable()</code> runtime check inside every write method.</td>
-</tr>
-<tr>
-<td>20</td>
-<td><strong><code>MidnightContract.observeLedger(): Flow&lt;MidnightLedger&gt;</code></strong></td>
-<td>Sibling of #10 — the SDK already has the infrastructure (private indexer subscription), what's missing is the dApp-facing shape. Today every dApp's <code>StatePoller</code> is a 3-second polling loop calling <code>contract.ledger()</code> + <code>distinctUntilChanged</code>. A push-based <code>Flow&lt;MidnightLedger&gt;</code> backed by <code>subscribeToBlocks</code> would (a) drop the per-dApp poller class entirely, (b) cut detection latency from ~3s to ≤ one block (~6s on PREPROD but ≤ 1 block deterministically), and (c) compose with #16: the protocol orchestrator subscribes to the flow and reacts to phase changes instead of awaiting fixed predicates with hand-tuned timeouts.</td>
-<td><code>StatePoller</code> 3s loop in Kicks; once #10 lands without the typed-Flow shape, every dApp will still write that loop.</td>
-</tr>
-<tr>
-<td>21</td>
-<td><strong><code>compact-engine-testing</code> artifact — <code>FakeMidnightContract</code> for state-machine unit tests</strong></td>
-<td>While writing the 2026-05-20 precondition tests for <code>resumePlayAsP1</code>/<code>resumePlayAsP2</code>, the third bespoke test seam landed in <code>TestableMatchManager</code>: <code>executeDeploy</code>, <code>executeJoinMatch</code>, now <code>readResumeSnapshot</code>. Pattern is now obvious — every dApp will write the same test scaffolding. A published <code>compact-engine-testing</code> artifact shipping <code>FakeMidnightContract</code> (canned <code>MidnightLedger</code> snapshots, deferred-await knobs for "opponent commits now", invocation counters per circuit) would let dApp authors unit-test their state machines without spinning up QuickJs or the real chain. Folds into #16's <code>Protocol</code> DSL once it exists: the fake feeds canned ledger snapshots, the protocol walks the steps, the test asserts which steps fired.</td>
-<td>Three hand-rolled <code>internal open suspend fun</code> seams in <code>MatchManager</code>, plus the <code>TestableMatchManager</code> subclass per-dApp.</td>
-</tr>
-<tr>
-<td>22</td>
-<td><strong>🔴 CRITICAL — Open-SDK permissionless integration (drop default <code>PasskeyConfig</code>)</strong></td>
-<td><code>core:identity:IdentityModule.providePasskeyConfig()</code> hardcodes <code>rpId = "nel349.github.io"</code> + <code>rpName = "Kuira"</code> as the default Hilt binding. Any third-party dApp that consumes the SDK and forgets to override that provider silently lands on the maintainer's domain — and PRF then doesn't work for them unless the maintainer adds their package + cert SHA-256 to the maintainer-hosted <code>assetlinks.json</code>. That coupling means the SDK is effectively permissioned: every new dApp requires a PR to the maintainer's <code>nel349.github.io</code> repo. The post-PRF architecture is supposed to be permissionless (any dApp picks its own domain → hosts its own <code>assetlinks.json</code> → uses <code>:sdk:wallet-seed</code> and gets its own sigil-derived wallet with zero maintainer touch), but the default provider undermines that by giving wrong-but-working semantics to a misconfigured host. Required: (1) remove <code>providePasskeyConfig</code> from <code>IdentityModule</code> — host-provided with no fallback, so Hilt fails fast with a clear missing-binding error instead of silently routing through someone else's domain; (2) each of our example apps (BBoard, Kicks) ships its own ~5-line <code>*IdentityModule</code> providing its own <code>PasskeyConfig</code> (also gives per-app <code>rpName</code> branding in the passkey prompt — "Midnight Kicks" vs "Kuira"); (3) <code>INTEGRATION.md</code> at the SDK root showing third-parties the 4-step recipe (domain → assetlinks → Hilt module → maven deps). Cost: ~5 files (1 main repo, 1 per example, 1 doc). Removes the last "Kuira owns the authority" coupling and makes the SDK genuinely open.</td>
-<td>Default <code>PasskeyConfig</code> lives in <code>IdentityModule</code> pointing at <code>nel349.github.io</code>; new third-party dApp authors don't know they have to override it; if they don't, PRF fails until the maintainer manually adds them to a maintainer-hosted assetlinks.json.</td>
-</tr>
-<tr>
-<td>23</td>
-<td><strong>🔴 VITAL UX — Single-biometric sigil forge (PRF-on-create extension)</strong></td>
-<td><strong>Status (2026-05-24):</strong> the <em>sign-in</em> path is already single-biometric — <code>SigilSession</code> runs one multi-salt PRF assertion (<code>eval.first</code>=SIGIL_SALT + <code>eval.second</code>=SEED_SALT) covering both DID derivation and wallet seed. This item is now scoped to the <em>forge/create</em> path only. After the Path A2 sigil refactor, the first-run forge flow shows <strong>two consecutive biometric prompts</strong>: one for <code>createPasskey</code> (which registers the credential and returns its P-256 pubkey for <code>KeyAuthorization</code>), then a second for <code>sigilIdentityProvider.deriveSigilDid</code> (which does <code>authenticateWithPrf(SIGIL_SALT)</code> to derive the Ed25519 identity keypair). That's a regression from the pre-A2 single-prompt forge, and "tap fingerprint, wait, tap fingerprint again" is exactly the friction that drops first-run conversion. <strong>The fix is WebAuthn's PRF extension on <code>create</code>:</strong> the spec allows <code>prf.eval.first = SIGIL_SALT</code> to be passed into a registration ceremony, and supporting authenticators return the PRF output in the same response that delivers the pubkey + credentialId. One biometric, both outputs, identical security. Implementation surface: (1) extend <code>PasskeyManager.createPasskey</code> to accept <code>prfSalt: ByteArray? = null</code> and parse the PRF output out of the registration response's <code>clientExtensionResults.prf.results.first</code> field; add it as a nullable <code>prfOutput</code> on <code>PasskeyRegistrationResult</code>; (2) <code>SigilPanelViewModel.forgeSigil</code> passes <code>SIGIL_SALT</code> into the create call, then uses <code>result.prfOutput?.let { Ed25519PrfSigilProvider.ed25519DidFromSeed(it) }</code> to derive the DID directly when available — only falls back to the existing two-prompt path when <code>prfOutput == null</code> (older authenticators that don't support PRF-on-create); (3) update the existing <code>Ed25519PrfSigilProvider.ed25519DidFromSeed</code> test plus add an end-to-end test that pins the "create returns PRF → no second prompt" path. Coverage note: Google Password Manager added PRF-on-create support in Chrome 132 / GMS Core ~24.x (2024); hardware authenticators (YubiKey 5C NFC etc.) have it; the fallback handles the rest. Cost: ~3 files, mostly mechanical JSON parsing for the assertion-extension field.</td>
-<td>Two biometric prompts on first forge — the user has to authenticate twice in immediate succession with no semantic distinction between the two prompts. Subsequent sign-ins are unaffected (already one prompt).</td>
-</tr>
-<tr>
-<td>24</td>
-<td><strong>🔴 CRITICAL — Sovereign recovery-phrase export (reveal the PRF-derived BIP-39 mnemonic)</strong></td>
-<td>Today a Sigil-onboarded wallet's only recovery path is re-deriving the seed from the passkey, which rides on Google/Apple account sync. If that account is lost, locked, or unavailable in-jurisdiction (Google services blocked), the user has <strong>no way out — the funds are gone</strong>; "self-custody" is really platform-custody of the recovery path. The architecture can already close this: the PRF output is valid 32-byte BIP-39 entropy, and <code>SeedDeriver</code> already transiently materializes it as a 24-word mnemonic (its own "known limitation" comment) via <code>BIP39.entropyToMnemonic</code>. Promote that incidental transient into an intentional, biometric-gated <code>revealRecoveryPhrase(activity)</code> SDK primitive that returns a wipeable holder and zeroes entropy/seed in <code>finally</code>, then wire the existing <code>RecoveryPhraseWireframe</code> into production Settings nav. Result: the user can write down 24 words and import them into any BIP-39 wallet — a sovereign exit independent of Google/Apple. This is the load-bearing piece for the self-custody / web2.5 / international story; without it the promise is false for anyone who loses platform access. Must read the <em>live</em> funding seed (PRF-derived for Sigil wallets, random for create-onboarded ones) so the exported words match the seed actually holding funds, and must be <code>FLAG_SECURE</code> + no-default-clipboard + never-logged.</td>
-<td>Half-built round trip: import-from-phrase works (onboarding restore validates + derives via <code>BIP39.mnemonicToSeed</code>), but export does not — <code>RecoveryPhraseWireframe</code> lives in the dev portal only and Settings' "View recovery phrase" is a no-op. No production way to see the words the Sigil derives.</td>
-</tr>
-<tr>
-<td>27</td>
-<td><strong>🟡 Delegated access keys — scoped, time-bounded authorization for non-sibling keys</strong></td>
-<td>The <code>KeyAuthorization</code> payload (Magic + rootPubkey + accessPubkey + scope + timestamp + expiry, ECDSA-signed by the passkey) was originally shipped as a BBoard demonstrator. We removed the demonstrator in the post-A2 cleanup because under PRF-derived sigil + wallet, <strong>both keys are siblings of the same passkey</strong> — they share a common root via PRF salt domain separation, so a separate authorize attestation is redundant for the <em>local</em> wallet use case. <strong>The type stays in <code>core:identity</code></strong> (<code>KeyAuthorization.kt</code>, <code>AuthorizationStore.kt</code>, <code>AuthorizationRecord.kt</code>, plus <code>IdentityModule</code>'s Hilt provider for the store), waiting for the real consumer it was designed for: signing an attestation that authorizes a SEPARATE, non-sibling key to act on the sigil's behalf. Use cases: (a) a remote agent / browser session signing transactions on the user's behalf for 24 hours with <code>AuthorizationScope.SEND_ONLY</code>; (b) a third-party dApp the user wants to grant transient permissions to without sharing the passkey; (c) a future multi-sig where one device's sigil authorizes another device's access key. None of those exist yet, so no UI consumer exists; the next iteration's design work is (1) UX for "review and approve this delegation request" coming from an external scope, (2) revocation mechanism (write a new authorization with expiry in the past, or maintain a revocation list), (3) on-chain or off-chain verification — verifiers need to know <code>which Ed25519 sigil DID signed this P-256 authorization</code>, which is awkward because the DID encodes Ed25519 but the signature is over P-256. Solution direction: sign authorizations with the Ed25519 sigil key (derivable from PRF on demand) rather than the passkey P-256 — self-contained verification from the DID alone.</td>
-<td>The demonstrator was the only consumer; removing it stranded the type. No active flow uses authorization today. Future delegated-key consumers will need to start from scratch UI-wise, but the cryptographic primitives + persistence are ready.</td>
-</tr>
-<tr>
-<td>28</td>
-<td><strong>🟡 Choose which identity/account backs a sigil at forge time</strong></td>
-<td>The sigil is PRF-derived from a Google Password Manager passkey, and WebAuthn deliberately hides the account from the relying-party app — it can't choose, or even see, which account answers. GPM serves its one configured account. So a user with multiple Google accounts signed into a device has <strong>no way, inside our app, to bind a sigil to a chosen account</strong>: two devices (or two users) whose GPM points at the same account collide to the <em>same</em> sigil. This bit hard during PvP testing — two emulators resolved to one wallet, with no in-app lever to separate them. Two directions, both worth having: <strong>(i) a debug-only per-device identity seam</strong> so two installs (even on the same account) get distinct sigils for local/PvP testing without Google-account juggling; <strong>(ii) product-level identity selection</strong> — since the platform won't expose account choice, the app must own picking among multiple identities (this is the multi-sigil direction, extends #15). The constraint to record: you cannot solve this with an in-app "pick this Google account" button over the passkey API — that choice lives in Google Password Manager / the system sheet, outside the app.</td>
-<td>Switch Google Password Manager's account in Android Settings before forging (system-level, no guarantee of an in-sheet account picker), or use entirely separate Google accounts per device. No in-app choice.</td>
-</tr>
-<tr>
-<td>29</td>
-<td><strong>🟡 Rematch re-pairing — share / reuse / link the new contract</strong></td>
-<td>REMATCH currently auto-deploys a fresh contract (P1) or routes to the join screen (P2), but there's <strong>no friendly bridge between the two</strong>: P1 has a new address and no smooth way to push it to the same opponent, and P2 lands on a blank join screen with no idea of the new address. The only link between players is the contract, and a resolved one is single-use, so "play the same opponent again" falls back to re-doing QR/deep-link matchmaking by hand. Three directions worth weighing as game logic, not just UX: <strong>(i) reusable/extensible contract</strong> — make <code>penalty.compact</code> replayable (a <code>resetMatch</code> circuit that re-opens commit phase for the same two registered players, or an N-matches-per-contract series with a running aggregate score), so REMATCH is a single circuit call with zero re-pairing; <strong>(ii) linked contracts</strong> — the new contract references the previous (<code>prevMatch</code> address) so each side can fetch the opponent's identity/stake from the old one and auto-join without re-sharing; <strong>(iii) a lightweight re-pair channel</strong> — P1's REMATCH deploys + the new address rides back to P2 over the existing relay / a deep-link the app surfaces as a one-tap "your opponent wants a rematch — join?" prompt. (i) is the cleanest game-feel but needs contract work + a stake-handling rethink (who funds the rematch pot); (ii)/(iii) keep the one-match-one-contract model but add a pairing hop.</td>
-<td>REMATCH → P1 re-runs CREATE (manual QR/link share), P2 → blank Join screen (manual address entry). No auto-pairing, no contract reuse, no link to the prior match.</td>
-</tr>
-<tr>
-<td>30</td>
-<td><strong>🟡 Two-tier persistence — Block Store for active recovery, Drive <code>appDataFolder</code> for the long-term archive</strong></td>
-<td>Block Store is a small, transparent device-transfer vault (a few KB) — right for the <em>critical</em> recovery set (seed + <strong>active</strong>-match witnesses, already shipped via #4), wrong for archival data. As concurrent matches grow, the seed + per-match witnesses (each ~32B key + 32B×N nonces + picks) share that tiny budget; and completed-game history / stats / saved replays can't live there at all. Two complementary directions: <strong>(a) Tier-2 archive on Google Drive <code>appDataFolder</code></strong> — a hidden, per-account, quota-bounded (effectively unlimited for metadata) folder for completed-match history, head-to-head stats, and replay payloads; sigil-derived-key encrypted before upload (same "we encrypt, cloud is just transport" stance as the Block Store blob), fetched lazily for a "match history" screen. <strong>(b) Shrink Tier-1 to near-zero</strong> by <em>deriving</em> each match's witnesses (secret key + commit nonces) deterministically from the sigil seed + contract address (+ round) over an HD path, instead of backing the random bytes up — then Block Store only needs the <strong>list of active contract addresses</strong> (tiny), or nothing if the indexer can enumerate "contracts where my key participates" (a participant-indexed query the indexer doesn't expose yet — the real <strong>discovery</strong> gap for "fetch my active matches after restore" without a local list). (a) is the user-facing "history that survives a device hop"; (b) is the scalability fix so Tier-1 never outgrows Block Store. Completed-game archive explicitly deferred for now. <strong>Transport de-risked (2026-06-02):</strong> direction (a)'s mechanism — Drive <code>appDataFolder</code> + seed-derived AES-256-GCM, encrypt-on-device + cloud-as-transport — is now <strong>implemented and proven cross-device</strong> by the SDK's dust-checkpoint backup (<code>DustCloudBackup</code> / <code>DriveBackupStorage</code> / <code>DriveAuthManager</code>, see the "Back up wallet data across devices" recipe). Its consumer setup (a <code>drive.appdata</code> OAuth client) and caveats (hidden folder, same-Google-account) are now documented; what remains for #30 is the match-archive <em>payload</em> + the discovery query, not the transport.</td>
-<td>Active matches round-trip through Block Store (#4); no archive tier (completed games are deleted on resolve), and Tier-1 stores full random witnesses per match rather than deriving them, so it scales only to a handful of concurrent matches before bumping the Block Store ceiling.</td>
-</tr>
-<tr>
-<td>31</td>
-<td><strong>🟡 Silent app-state backup + lifecycle auto-trigger — make active-match cloud recovery set-and-forget</strong></td>
-<td>Today the cloud backup (the only thing that makes a match survive uninstall) is <strong>manual</strong>: the sigil panel's Backup button → <code>AppStateBackup.backup(activity)</code> → <code>authenticateWithPrf(BACKUP_SALT)</code>, i.e. a <strong>biometric prompt</strong> every time. So you can't auto-back-up when the app backgrounds/dies (no prompt possible there), and a match created-then-uninstalled before a manual Backup is lost. <strong>Key realization:</strong> post-PRF the backup blob carries <strong>only app metadata</strong> (match state) — the seed/sigil are PRF-reconstructed on any device, not in the blob. So we're stashing <em>game state</em>, not funds, and the per-backup biometric is overkill. <strong>SDK change:</strong> offer a no-prompt app-state backup that derives the <code>appMetadata</code> AES key from the <strong>already-cached session</strong> (unlocked seed) instead of a fresh PRF assertion — runs only while the session is unlocked (interacts with #14's auto-lock; back up <em>before</em> locking) and must run <strong>in the live process</strong> (a deferred WorkManager job is a fresh process with no cached key). <strong>App side (~20 lines):</strong> on <code>ProcessLifecycleOwner</code> <code>ON_STOP</code>, if the active-match snapshot <strong>diffs</strong> from the last backup (hash compare), fire the silent backup; best-effort — if the process is reaped mid-upload the diff still reads "changed" so the next background retries, and the local <code>EncryptedSharedPreferences</code> store always covers same-device resume. Note: <code>ON_STOP</code> is the reliable hook — <code>onDestroy</code>/process-kill give no guaranteed callback for a network upload.</td>
-<td>Cloud backup is a manual sigil-panel tap (biometric-gated); no automatic capture on leave, so a match made-then-uninstalled before a manual Backup never reaches Block Store.</td>
-</tr>
-<tr>
-<td>32</td>
-<td><strong>🟡 Upstream the <code>DustLocalState</code> Merkle-root accessors to <code>midnightntwrk/midnight-ledger</code></strong></td>
-<td><code>kuira-crypto-ffi</code> calls <code>state.commitment_root()</code> and <code>state.generation_root()</code> in 18 places across <code>balance_ffi.rs</code> and <code>dust_ffi.rs</code> (not just diagnostics — <code>balance_ffi.rs</code> uses them in the live balance path). Those accessors are a 10-line fork-only addition in <code>ledger/src/dust.rs</code> on <code>nel349/midnight-ledger</code>, missing from <code>midnightntwrk/midnight-ledger</code>. <strong>Cost of the fork:</strong> every hermetic build (CI, third-party) has to either depend on the fork directly or pin the upstream-team's repo plus a patch. We're nesting <code>nel349/midnight-ledger</code> as a submodule inside <code>kuira-crypto-ffi</code> to make builds reproducible — a sustainable workaround but it commits us to maintaining a fork of a foreign team's repo. <strong>Permanent fix:</strong> open a PR to <code>midnightntwrk/midnight-ledger</code> exposing <code>commitment_root</code> + <code>generation_root</code> as <code>pub fn</code> on <code>DustLocalState</code> (both already wrap their underlying <code>MerkleTree::root</code> calls cleanly — they're idiomatic accessor additions, not behavioral changes). Once merged, drop the submodule, switch the 8 <code>Cargo.toml</code> path deps to git-deps pinned to the upstream rev that includes the merge. Bonus: reduces the build graph's surface area for any future external Kuira contributor — they pull from one canonical Midnight repo, not a maintainer fork.</td>
-<td>Submodule <code>nel349/midnight-ledger</code> inside <code>kuira-crypto-ffi</code>; 8 path-deps in <code>Cargo.toml</code> resolve to the nested submodule; the diff lives on the fork's <code>main</code> indefinitely.</td>
-</tr>
-<tr>
-<td>33</td>
-<td><strong>Contract proving-key DX — <code>ensureBlsParams(k)</code>, <code>installCircuitKeysFromAssets</code>, <code>ensureContractKeys</code></strong></td>
-<td>Every Compact dApp that ships proving keys in APK assets hits the same three gaps. (a) The wallet bundle only ships <code>bls_midnight_2p13/14/15</code>, so small contracts that need a smaller param set (counter needed <code>2p5</code>, only 6.5KB) fail with <code>BLS params file not found</code> on cold install — no public way to fetch arbitrary BLS sizes despite <code>S3_BASE_URL</code> already being a constant in <code>ProvingKeyManager</code>. (b) The asset → cacheDir → <code>installCircuitKeysForProving</code> staging is ~30 lines of boilerplate every dApp re-implements (open three asset streams, stage to <code>cacheDir</code>, hand to the installer). (c) There's no single "make sure everything proves on the first call" entry point that composes (a) + (b) the way <code>ensureWalletKeysAvailable</code> already composes the wallet path. Three additions to <code>ProvingKeyManager</code>: <strong>(1) <code>ensureBlsParams(k: Int)</code></strong> downloads <code>bls_midnight_2p{k}</code> from <code>S3_BASE_URL</code> on demand; <strong>(2) <code>installCircuitKeysFromAssets(context, contractName, circuitNames)</code></strong> does the cacheDir staging in-SDK so dApps drop their copy block; <strong>(3) <code>ensureContractKeys(...)</code></strong> composes the two with <code>ensureWalletKeysAvailable</code>, mirroring the existing wallet shape. Surfaced during the 2026-05-30 starter test-of-fire: increment failed with <code>BLS params file not found: bls_midnight_2p5</code> until the starter manually bundled 2p5 in assets and wrote the staging logic. Folds in the BBoard/Kicks dev-only pattern: both currently rely on <code>adb push /data/local/tmp/bboard_keys/*</code> for their proving keys, which is impossible for any non-dev install — once #33 lands they can both move to APK assets without rewriting the prover path.</td>
-<td>Starter ships <code>bls_midnight_2p5</code> in <code>app/src/main/assets/managed/counter/bls/</code> and <code>CounterContract.installProvingKeys</code> writes ~30 lines of cacheDir staging by hand. BBoard + Kicks still require <code>adb push /data/local/tmp/bboard_keys/*</code> before each first-call, which isn't a production pattern.</td>
-</tr>
-<tr>
-<td>34</td>
-<td><strong>Benchmark on-device proving latency (real devices, per circuit complexity)</strong></td>
-<td>The "proofs run on-device, offline" claim is architecturally verified, but there's <strong>no defensible latency number</strong> to publish. Observed-but-unpublishable figures so far are all arm64-<em>emulator</em> + small circuits + only the Dust-spend leg (<code>balance_ffi: Dust tx proved in 0.5–0.65s</code>; contract circuit proof itself <code>0.00–0.10s</code> for counter/BBoard). A public number needs: (1) a range of <strong>physical devices</strong> (low/mid/high tier), (2) <strong>circuit-complexity tiers</strong> (trivial counter → Kicks' 10-round penalty → heavier), (3) the <strong>Dust leg vs circuit leg broken out separately</strong> (they're different work), (4) a reproducible harness so the number is re-measurable, not a one-off log line. Until then the capabilities doc states only the architectural claim (on-device, offline, no proof server) with <strong>no time figure</strong>. Rule going in: never publish a significant performance number without a reproducible measurement behind it.</td>
-<td>Capabilities/showcase copy omits proving latency entirely; only emulator log lines exist, which must not be quoted as guarantees.</td>
-</tr>
-<tr>
-<td>35</td>
-<td><strong>🟡 Cross-app dust/state sync — DEFERRED to Sigil v2 (identity-model gated)</strong></td>
-<td>One Kuira wallet's dust checkpoint (and later, match/app state) shared across sibling Kuira apps (Kicks, BBoard, CipherDefense) so each app skips a from-genesis dust resync on first use. <strong>Decision (2026-06-04): defer to Sigil v2.</strong> Cross-app sharing is fundamentally an <em>identity-model</em> decision, not transport — two apps share dust only if they share <code>rpId</code> → same passkey → same seed → same wallet. Dev apps share <code>nel349.github.io</code> today, but production dApps host their own domains (see #22) → different wallets → cross-app is moot by design. Making it real requires committing to one Kuira-owned <code>rpId</code> (one wallet across all Kuira apps), which is core Sigil architecture (identity + authority + state) and rides with the multi-sigil / account-selection work in #15 and #28. The encryptor is already <strong>seed-gated and forward-compatible</strong> (<code>DustBackupEncryptor</code> AES-256-GCM under a key from <code>SeedDerivedKeyDeriver.deriveDustBackupKey(dustSeed)</code> — Drive holds only ciphertext, the key never leaves the device), so when v2 adopts the shared-<code>rpId</code> model the <em>same</em> blobs become cross-app-readable with zero rework. <strong>Flips back to v1 only if</strong> a v1.1 demo (e.g. Kicks + CipherDefense sharing one wallet's dust) needs it. <strong>Transport investigation (2026-06-04, Google Drive docs):</strong> <code>appDataFolder</code> scoping (per Cloud <em>project</em> vs per OAuth <em>client</em>) is <strong>NOT clearly documented</strong> — the appData guide says only "created per third-party app" without defining "app". The strongest concrete signal — Drive's "App ID" (the Picker's <code>setAppId</code>) is the Cloud <strong>project number</strong>, not a client id — <strong>leans project-scoped</strong> (all OAuth clients in one project = one Drive app → share the folder); the "per-client" reading (incl. an earlier note here) is just re-interpreting the ambiguous line and is NOT a citation. The earlier "a different app did a full genesis sync" observation is indistinguishable from <em>missing Drive consent</em> (the OAuth-client config gap), so it does not establish per-client scoping. Also confirmed: appData files <strong>cannot be shared app-to-app</strong> (no ACL/grant) — being in the same project is the ONLY appData sharing path. <strong>Two v2 transport paths, both keep the seed-encryption (only same-wallet apps decrypt):</strong> <strong>Path 1 — same-project appData:</strong> put every Kuira app's OAuth client in the one <code>kuira</code> project; the hidden folder is shared IF project-scoped. <strong>Decisive test (run once, ~5 min, when the OAuth client + consent are live):</strong> back up from app A, open app B on the <strong>same Google account</strong> → DELTA dust sync = project-scoped, Path 1 works; from-GENESIS = per-client, use Path 2. <strong>Path 2 — GUARANTEED FALLBACK — seed-encrypted blob in a <em>shareable regular</em> Drive file</strong> at a deterministic location (NOT appData): regular files support cross-app / cross-project access, and the seed-encryption means only same-wallet apps can read it — works even for external/third-party apps in different projects, at the cost of the file being visible in the user's Drive UI (still unreadable without the seed). <strong>So cross-app is not transport-blocked — Path 2 always works; the test only decides whether the cleaner hidden-folder Path 1 is also available.</strong> v2 cross-app planning therefore reduces to the identity-model commitment (shared <code>rpId</code>); transport is solved either way.</td>
-<td>v1 ships <strong>cross-device, same-app</strong> dust recovery (the dust-checkpoint backup; #30 transport, already proven cross-device). Cross-app is deferred — no app reads another's dust today; each app's first dust sync is independent.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<p>Promote items off this list when they ship. Items currently surface
-inside the example apps as workarounds documented in each row's
-rightmost column — that's where to read for the "do today" recipe.</p>
+<h2 id="recently-shipped">Recently shipped<a class="headerlink" href="#recently-shipped" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Lossless typed ledger reads</strong> — <code>MidnightContract.ledger()</code> returns typed,
+  validated contract state (<code>getUint64</code>, <code>getBoolean</code>, <code>getBytes</code>, <code>getVectorUint8</code>,
+  …) instead of hand-parsed cell hex.</li>
+<li><strong>Contract asset Gradle plugin</strong> — <code>com.midnight.kuira.contract</code> syncs your
+  compiled Compact artifacts into the app's assets in the layout the SDK expects,
+  and fails the build early on a runtime-version mismatch.</li>
+<li><strong>Cross-device wallet backup</strong> — encrypt-on-device dust-checkpoint backup to
+  Google Drive, restored on a new device from the same Sigil.</li>
+<li><strong><code>kuiraDoctor</code> preflight</strong> — build-time checks (minSdk, debug-cleartext,
+  <code>assetlinks.json</code> reachability, Compact runtime pin, bundled-runtime layer) that
+  catch misconfigurations before they ship.</li>
+</ul>
+<h2 id="contract-ergonomics">Contract ergonomics<a class="headerlink" href="#contract-ergonomics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Typed ledger classes</strong> generated from your <code>.compact</code> — <code>ledger.p1Score</code>
+  instead of <code>ledger.getUint64("p1Score")</code>, checked at compile time.</li>
+<li><strong>Reactive contract state</strong> — a <code>Flow</code> of ledger snapshots backed by block
+  subscriptions, so your UI reacts to on-chain changes instead of polling.</li>
+<li><strong>Read-only contracts</strong> — a dedicated factory for state-watching contracts with
+  no wallet attached, so the read-only shape is correct by construction.</li>
+<li><strong>Resilient calls</strong> — built-in retry/backoff for the common "indexer hasn't
+  caught up yet" window after deploy, and idempotent calls that no-op when the
+  chain already reflects the transition.</li>
+<li><strong>Multi-step protocol helper</strong> — declare each step with a precondition and a
+  "done?" predicate; the SDK resumes from the right point after process death.</li>
+<li><strong>Witness &amp; timing helpers</strong> — typed factories for compound witness types and
+  helpers for deadlines and indexer-settle waits.</li>
+<li><strong>Testing artifacts</strong> — a fake contract with canned ledger snapshots so you can
+  unit-test your state machine without a live chain or proving stack.</li>
+</ul>
+<h2 id="wallet-security-recovery">Wallet security &amp; recovery<a class="headerlink" href="#wallet-security-recovery" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Session auto-lock</strong> — idle, background, and screen-lock re-authentication, plus
+  a manual "lock now", so a value-bearing call can't run unattended.</li>
+<li><strong>Recovery-phrase export</strong> — reveal the wallet's BIP-39 phrase behind biometrics,
+  so users have a sovereign exit independent of any platform account.</li>
+<li><strong>Hardened identity UX</strong> — guardrails so a Sigil can't be replaced by an
+  accidental tap, in-app sign-out, and sign-in with an existing passkey.</li>
+<li><strong>Single-biometric onboarding</strong> — one prompt to forge a Sigil on authenticators
+  that support it.</li>
+</ul>
+<h2 id="open-permissionless-integration">Open, permissionless integration<a class="headerlink" href="#open-permissionless-integration" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Host-owned passkey domains</strong> — every dApp supplies its own passkey
+  configuration with no shared default, so integration never depends on another
+  app's domain.</li>
+<li><strong>Identity selection</strong> — choose which identity backs a Sigil at creation time,
+  and manage more than one.</li>
+<li><strong>Delegated access keys</strong> — scoped, time-bounded authorization for a separate
+  key (e.g. a remote agent) to act on a Sigil's behalf.</li>
+</ul>
+<h2 id="proving-performance">Proving &amp; performance<a class="headerlink" href="#proving-performance" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>One-call proving-key setup</strong> — a single entry point that fetches the right BLS
+  parameters and stages a contract's circuit keys from assets, so the first call
+  proves without manual setup.</li>
+<li><strong>Published on-device proving benchmarks</strong> — reproducible latency figures across
+  real devices and circuit sizes (we don't publish a number without a measurement
+  behind it).</li>
+</ul>
+<h2 id="backup-sync">Backup &amp; sync<a class="headerlink" href="#backup-sync" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Faster Dust sync</strong> — proactive background sync and tip-aware caching so a
+  transaction is rarely waiting on a cold sync, with clear progress while it runs.</li>
+<li><strong>Long-term archive tier</strong> — an encrypted archive for history and stats beyond
+  the device-transfer vault's budget.</li>
+<li><strong>Automatic backup</strong> — silent, no-prompt capture of app state as it changes.</li>
+<li><strong>Cross-app state</strong> <em>(future)</em> — sibling apps that share an identity sharing one
+  wallet's state, gated on the identity model.</li>
+</ul>
 
 
 

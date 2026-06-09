@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/run-kuira-doctor/">
       
       
-        <link rel="prev" href="../deploy-and-call-a-compact-contract/">
+        <link rel="prev" href="../back-up-wallet-across-devices/">
       
       
         <link rel="next" href="../../api-reference/">
@@ -828,6 +828,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../back-up-wallet-across-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back up your wallet across devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1298,7 +1326,7 @@
 
 
 <h1 id="run-kuiradoctor-before-each-release">Run <code>kuiraDoctor</code> before each release<a class="headerlink" href="#run-kuiradoctor-before-each-release" title="Permanent link">&para;</a></h1>
-<p><strong>Outcome:</strong> the <code>kuiraDoctor</code> Gradle task runs four preflight checks
+<p><strong>Outcome:</strong> the <code>kuiraDoctor</code> Gradle task runs five preflight checks
 against your app's configuration and surfaces every misconfiguration
 that the SDK would otherwise convert into a runtime crash on a user's
 device. Run it before each release; wire it into CI to gate builds.</p>
@@ -1330,6 +1358,10 @@ device. Run it before each release; wire it into CI to gate builds.</p>
 <tr>
 <td><strong>Compact runtime pin</strong></td>
 <td>QuickJS contract runtime crashes with <code>Unsupported bytecode version</code> the first time the user calls a circuit.</td>
+</tr>
+<tr>
+<td><strong>SDK-bundled-runtime layer</strong></td>
+<td>The <code>@midnight-ntwrk/compact-runtime</code> bundled inside the SDK doesn't match the version your contract was compiled against — proofs fail or the runtime rejects the bytecode at call time.</td>
 </tr>
 </tbody>
 </table>
@@ -1374,8 +1406,10 @@ report so the consumer sees one pass/fail surface, not two.</p>
             https://kuiralabs.github.io/ loads at all.
 ✓ PASS  compact-runtime-pin
        Contract emits + consumer pins @midnight-ntwrk/compact-runtime 0.16.0.
+✓ PASS  sdk-bundled-runtime
+       SDK-bundled @midnight-ntwrk/compact-runtime matches the contract (0.16.0).
 ─────────────────────────────────────────────────────────
-3 passed, 0 warning, 1 error, 0 skipped
+4 passed, 0 warning, 1 error, 0 skipped
 </code></pre></div>
 <p>The task does <strong>not</strong> fail by default — it logs the report and
 returns success. Wire <code>requireDoctorPass</code> to <code>true</code> to gate builds
@@ -1464,10 +1498,9 @@ for tighter local feedback), add to your <code>app/build.gradle.kts</code>:</p>
 </code></pre></div>
 <hr />
 <h2 id="what-it-does-not-check">What it does NOT check<a class="headerlink" href="#what-it-does-not-check" title="Permanent link">&para;</a></h2>
-<p>These are out of scope for v1 but on the roadmap:</p>
+<p>These are out of scope:</p>
 <ul>
-<li><strong><code>&lt;queries&gt;</code> declarations</strong> for cross-app sigil enrollment (Sigil V2
-  Track A).</li>
+<li><strong><code>&lt;queries&gt;</code> declarations</strong> for cross-app sigil enrollment.</li>
 <li><strong>Hilt wiring</strong> of <code>PasskeyConfig</code> (Dagger already catches this at
   build time, just with a verbose error).</li>
 <li><strong>Signing-cert fingerprint comparison</strong> against the hosted

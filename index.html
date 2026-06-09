@@ -570,10 +570,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#known-limitations-010-alpha01" class="md-nav__link">
+  <a href="#known-limitations-010-alpha02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Known limitations · 0.1.0-alpha01
+        Known limitations · 0.1.0-alpha02
       
     </span>
   </a>
@@ -978,6 +978,34 @@
   
   
     <li class="md-nav__item">
+      <a href="recipes/back-up-wallet-across-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back up your wallet across devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="recipes/run-kuira-doctor/" class="md-nav__link">
         
   
@@ -1188,10 +1216,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#known-limitations-010-alpha01" class="md-nav__link">
+  <a href="#known-limitations-010-alpha02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Known limitations · 0.1.0-alpha01
+        Known limitations · 0.1.0-alpha02
       
     </span>
   </a>
@@ -1245,7 +1273,7 @@
 <section class="kuira-hero">
 <canvas aria-hidden="true" class="kuira-hero__canvas" data-component="starfield"></canvas>
 <div class="kuira-hero__inner">
-<div class="kuira-hero__eyebrow"><span>Kuira · v0.1.0-alpha01</span><span>Maven Central</span></div>
+<div class="kuira-hero__eyebrow"><span>Kuira · v0.1.0-alpha02</span><span>Maven Central</span></div>
 <h1 class="kuira-hero__headline" id="zero-knowledge-apps-that-prove-on-the-phone-no-server-no-seed-phrase">Zero-knowledge apps that <em>prove on the phone</em> — no server, no seed phrase.<a class="headerlink" href="#zero-knowledge-apps-that-prove-on-the-phone-no-server-no-seed-phrase" title="Permanent link">&para;</a></h1>
 <p class="kuira-hero__lede">
 Kuira is the Android SDK for Midnight: on-device ZK proving, passkey identity, an embedded wallet, and the Compact runtime — the full private-app stack, self-custodial. Built to pair with your coding agent: every recipe ships a one-tap prompt.
@@ -1350,7 +1378,7 @@ Deploy and call Compact circuits on-device. QuickJS contract runtime, witness pa
 
 <span class="c1">// app/build.gradle.kts</span>
 <span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha01&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha02&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -1364,7 +1392,7 @@ Deploy and call Compact circuits on-device. QuickJS contract runtime, witness pa
 
 <span class="c1">// app/build.gradle</span>
 <span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.kuiralabs:dapp-ui:0.1.0-alpha01&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.kuiralabs:dapp-ui:0.1.0-alpha02&#39;</span>
 <span class="o">}</span>
 </code></pre></div>
 </div>
@@ -1388,10 +1416,10 @@ the emerging <a href="https://llmstxt.org">llms.txt</a> convention.</p>
 jars ship next to every AAR on Maven Central, so you can read, audit,
 or step into the implementation through any IDE.</p>
 <hr />
-<h2 id="known-limitations-010-alpha01">Known limitations · 0.1.0-alpha01<a class="headerlink" href="#known-limitations-010-alpha01" title="Permanent link">&para;</a></h2>
+<h2 id="known-limitations-010-alpha02">Known limitations · 0.1.0-alpha02<a class="headerlink" href="#known-limitations-010-alpha02" title="Permanent link">&para;</a></h2>
 <p>Honest naming of where the SDK doesn't go yet. None of these block the
 "identity + wallet + contract call" core path; each will close in a
-tracked future cycle.</p>
+future release.</p>
 <table>
 <thead>
 <tr>
@@ -1407,39 +1435,29 @@ tracked future cycle.</p>
 <td>Closed by intent — the Kuira SDK is the runtime; Midnight owns the language.</td>
 </tr>
 <tr>
-<td><strong>Contract Gradle plugin not on Maven Central yet</strong> — <code>com.midnight.kuira.contract</code> was authored during the alpha02 cycle and has never been published.</td>
-<td>Recipe 3 ships a hand-rolled <code>syncContractAssets</code> <code>Copy</code> task in tab 2; identical asset output, 30 more lines.</td>
-<td><code>alpha02</code></td>
+<td><strong>No recovery-phrase export (BIP-39 mnemonic)</strong> — Sigil-derived wallets currently have no sovereign exit; recovery rides Google account availability.</td>
+<td>Keep access to your Google account. PRF derivation is deterministic, so the wallet re-derives from the passkey.</td>
+<td><code>alpha03</code></td>
 </tr>
 <tr>
-<td><strong>No recovery-phrase export (BIP-39 mnemonic)</strong> — sigil-derived wallets currently have no sovereign exit; recovery rides Google account availability.</td>
-<td>Don't lose your Google account. PRF derivation is deterministic if you can replay the passkey.</td>
-<td><code>alpha03</code> (wishlist <code>#24</code>)</td>
+<td><strong>No session auto-lock</strong> — once a Sigil session is unlocked, value-bearing calls don't re-prompt for biometrics until the process is killed.</td>
+<td>Treat an unlocked session as funds-on-screen. Sign out from the Sigil panel to lock manually.</td>
+<td><code>alpha03</code></td>
 </tr>
 <tr>
-<td><strong>No session auto-lock</strong> — once a sigil session is unlocked, value-bearing calls don't re-prompt biometric until the process is killed.</td>
-<td>Treat unlocked sessions as funds-on-screen. Use sign-out from the Sigil panel to terminate manually.</td>
-<td><code>alpha03</code> (wishlist <code>#14</code>)</td>
+<td><strong>SDK source not browsable on GitHub</strong> — the Dokka API reference doesn't link to source.</td>
+<td>A <code>-sources.jar</code> ships next to every artifact on Maven Central; Android Studio / IntelliJ auto-attach it, so you can step into the implementation as usual.</td>
+<td>By design — sources travel with the artifacts</td>
 </tr>
 <tr>
-<td><strong>SDK source not on GitHub</strong> — the monorepo is private. The Dokka API reference doesn't link to source.</td>
-<td><code>-sources.jar</code> ships next to every artifact on Maven Central. IDEs (Android Studio, IntelliJ) auto-attach sources and you can step into the implementation as usual.</td>
-<td>TBD — strategy decision</td>
-</tr>
-<tr>
-<td><strong>BLS proving params from Midnight's dev S3 bucket</strong> — <code>midnight-s3-fileshare-dev-eu-west-1</code>. A supply-chain assumption labeled "dev."</td>
-<td>None — documented at the protocol-team layer; per-contract proving keys are unaffected (each dApp hosts its own).</td>
+<td><strong>BLS proving params from Midnight's dev S3 bucket</strong> — <code>midnight-s3-fileshare-dev-eu-west-1</code>, a supply-chain assumption labeled "dev."</td>
+<td>None — this lives at the protocol-team layer; per-contract proving keys are unaffected (each dApp hosts its own).</td>
 <td>When Midnight publishes a production URL</td>
 </tr>
 <tr>
 <td><strong>Android only</strong> — no iOS, no React Native bridge, no JS interop.</td>
 <td>If you need cross-platform, build the same surface twice for now.</td>
-<td>iOS spike planned post-<code>alpha02</code></td>
-</tr>
-<tr>
-<td><strong>No <code>kuira doctor</code> preflight checks</strong> — environment misconfigurations (<code>assetlinks.json</code> unreachable, <code>compactc</code> runtime mismatch, missing debug-cleartext manifest) surface as runtime errors instead of build-time gates.</td>
-<td>Read recipe troubleshooting tables; the SDK throws targeted exceptions with cause descriptions.</td>
-<td><code>alpha03</code> (DevX wishlist <code>#8</code>)</td>
+<td>iOS support is planned</td>
 </tr>
 </tbody>
 </table>
@@ -1480,11 +1498,8 @@ Bitwarden, 1Password, Signal SVR2, and WhatsApp E2EE backups — five
 independent systems that converged on the same shape for the same
 reason.</p>
 <p>Sigil V2 is the <strong>next architecture</strong> for Kuira, not the next alpha.
-Track A (master seed lifecycle, tiered storage, cross-app enrollment)
-ships after <code>alpha02</code>; Track B (cloud-bucket PIN recovery) follows.
-Detailed design lives in the (private) monorepo at
-<code>docs/research/SIGIL_V2_DESIGN.md</code>, with the Track A plan and viability
-analysis alongside.</p>
+The master-seed lifecycle, tiered storage, and cross-app enrollment come
+first; cloud-bucket PIN recovery follows.</p>
 <hr />
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>Apache License 2.0 — see <a href="https://github.com/kuiralabs/kuira-sdk-android/blob/main/LICENSE">LICENSE</a>.</p>
