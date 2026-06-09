@@ -325,7 +325,7 @@ class MyDappViewModel @Inject constructor(
 ZK proofs run **on the device**, so every circuit your contract calls needs its
 proving keys + a BLS parameter set present **before the first deploy/call** —
 otherwise the call fails at the proving step. Ship them in `assets/` — sync them
-in with the `com.midnight.kuira.contract` Gradle plugin
+in with the `io.github.kuiralabs.contract` Gradle plugin
 (`{{ kuira_contract_plugin_version }}`), the recommended path, which stages the
 contract runtime and circuit keys into `assets/` for you. Without the plugin, use
 the hand-rolled `Copy` task shown in the

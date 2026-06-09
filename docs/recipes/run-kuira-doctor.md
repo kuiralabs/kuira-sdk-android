@@ -7,7 +7,7 @@ tags:
   - troubleshooting
 prerequisites:
   - Kuira added to your project (see "Add Kuira to an Android project")
-  - The `com.midnight.kuira.contract` Gradle plugin applied
+  - The `io.github.kuiralabs.contract` Gradle plugin applied
 agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/run-kuira-doctor.md
 ---
 
@@ -45,7 +45,7 @@ Add to your `app/build.gradle.kts`:
 
 ```kotlin
 plugins {
-    id("com.midnight.kuira.contract") version "{{ kuira_contract_plugin_version }}"
+    id("io.github.kuiralabs.contract") version "{{ kuira_contract_plugin_version }}"
 }
 
 kuiraContract {

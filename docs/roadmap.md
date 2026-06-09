@@ -14,7 +14,7 @@ This is a direction, not a commitment to dates or ordering.
 - **Lossless typed ledger reads** — `MidnightContract.ledger()` returns typed,
   validated contract state (`getUint64`, `getBoolean`, `getBytes`, `getVectorUint8`,
   …) instead of hand-parsed cell hex.
-- **Contract asset Gradle plugin** — `com.midnight.kuira.contract` syncs your
+- **Contract asset Gradle plugin** — `io.github.kuiralabs.contract` syncs your
   compiled Compact artifacts into the app's assets in the layout the SDK expects,
   and fails the build early on a runtime-version mismatch.
 - **Cross-device wallet backup** — encrypt-on-device dust-checkpoint backup to

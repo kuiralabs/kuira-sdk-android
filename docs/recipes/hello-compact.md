@@ -161,7 +161,7 @@ the starter's
 
 Once the contract is compiled, the Kuira SDK consumes it as Android
 assets. See **[Deploy and call a Compact contract](deploy-and-call-a-compact-contract.md)**
-for the integration walkthrough — the `com.midnight.kuira.contract`
+for the integration walkthrough — the `io.github.kuiralabs.contract`
 Gradle plugin (or a hand-rolled `syncContractAssets` Copy task), then
 `MidnightContract.create(sdk.config) { … }` and `.deploy()` / `.call()`.
 

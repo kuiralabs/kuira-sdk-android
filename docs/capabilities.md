@@ -112,7 +112,7 @@ The DevX side — wired so you write app logic, not plumbing.
 
     ---
 
-    `com.midnight.kuira.contract` syncs compiled `.compact` artifacts into
+    `io.github.kuiralabs.contract` syncs compiled `.compact` artifacts into
     assets, validates the source, and enforces the runtime-version pin.
 
 -   :material-progress-clock:{ .lg .middle } __Progress callbacks__

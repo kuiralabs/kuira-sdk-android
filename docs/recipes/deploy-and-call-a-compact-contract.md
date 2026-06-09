@@ -79,7 +79,7 @@ same asset layout the plugin would.
     ```kotlin title="app/build.gradle.kts"
     plugins {
         id("com.android.application")
-        id("com.midnight.kuira.contract") version "{{ kuira_contract_plugin_version }}"
+        id("io.github.kuiralabs.contract") version "{{ kuira_contract_plugin_version }}"
     }
 
     kuiraContract {
