@@ -207,6 +207,14 @@
     text-decoration-color: var(--kuira-light);
 }
 
+/* Material strips the underline LINE from content links (colour-only), so
+ * the text-decoration-color above had nothing to paint. Force the line on
+ * at rest — scoped to content links, never buttons — so links actually
+ * read as links instead of plain text. */
+.md-typeset a:not(.md-button) {
+    text-decoration-line: underline;
+}
+
 .md-typeset code,
 .md-typeset pre {
     font-family: var(--kuira-font-mono);
