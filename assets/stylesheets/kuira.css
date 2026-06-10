@@ -192,11 +192,12 @@
 }
 
 /* CRITICAL: kill Material's chromatic link color. The brand is
- * luminosity-only. Link tone differs from body by weight + underline. */
+ * luminosity-only — links read as links via a clearly-visible underline
+ * (not a colour shift), which brightens to full on hover. */
 .md-typeset a,
 .md-typeset a:hover {
     color: var(--kuira-light);
-    text-decoration-color: var(--kuira-light-faint);
+    text-decoration-color: var(--kuira-light-muted);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     transition: text-decoration-color 160ms ease;
