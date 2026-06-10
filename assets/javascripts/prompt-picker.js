@@ -76,9 +76,10 @@
             lines.push('');
             lines.push(
                 `Fetch that URL for the SDK API surface, idiomatic patterns,`,
-                `common pitfalls, and the exact version pin. Then implement`,
-                `the integration, asking for confirmation before any`,
-                `irreversible step (deploy, install, spend).`,
+                `common pitfalls, and the exact version pin. Turn its steps`,
+                `into a task list I can follow, then work through them one at`,
+                `a time — asking for confirmation before any irreversible step`,
+                `(deploy, install, spend).`,
             );
             return lines.join('\n');
         }
