@@ -18,7 +18,7 @@ Kuira is the Android SDK for Midnight: on-device ZK proving, passkey identity, a
 </p>
 
 <div class="kuira-hero__cta">
-<a href="recipes/" class="md-button md-button--primary">Browse the cookbook</a>
+<a href="#kuira-picker" class="md-button md-button--primary">Get started</a>
 <a href="integration/" class="md-button">Read the integration guide</a>
 <a href="https://github.com/kuiralabs/kuira-starter-android" class="md-button">Clone the starter</a>
 </div>
@@ -27,9 +27,9 @@ Kuira is the Android SDK for Midnight: on-device ZK proving, passkey identity, a
 
 <section class="kuira-picker" id="kuira-picker" markdown>
 <div class="kuira-picker__header" markdown>
-<h2 class="kuira-picker__title">Try the agent-mode workflow</h2>
+<h2 class="kuira-picker__title">Get started with your coding agent</h2>
 <p class="kuira-picker__subtitle">
-Pick a task and an agent. We generate the prompt; you paste it into your tool. Same prompt structure every recipe ships with.
+Pick a task and your agent. We generate the prompt; you paste it into your tool. The agent lays the steps out as a task list you can follow — same prompt structure every recipe ships with.
 </p>
 </div>
 

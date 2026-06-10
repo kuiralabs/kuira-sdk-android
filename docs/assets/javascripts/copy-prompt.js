@@ -17,8 +17,9 @@
             'Reference: ' + bundleUrl + '\n' +
             '\n' +
             'Fetch that URL for the SDK API surface, idiomatic usage ' +
-            'patterns, common pitfalls, and version pin. Then implement ' +
-            'the integration in this project.';
+            'patterns, common pitfalls, and version pin. Turn its steps ' +
+            'into a task list I can follow, then work through them one at ' +
+            'a time, implementing the integration in this project.';
 
         return navigator.clipboard.writeText(prompt);
     }
