@@ -18,18 +18,51 @@ Kuira is the Android SDK for Midnight: on-device ZK proving, passkey identity, a
 </p>
 
 <div class="kuira-hero__cta">
-<a href="#kuira-picker" class="md-button md-button--primary">Get started</a>
+<a href="#templates" class="md-button md-button--primary">Get started</a>
 <a href="integration/" class="md-button">Read the integration guide</a>
 <a href="https://github.com/kuiralabs/kuira-starter-android" class="md-button">Clone the starter</a>
 </div>
 </div>
 </section>
 
+<section class="kuira-picker" id="templates" markdown>
+<div class="kuira-picker__header" markdown>
+<h2 class="kuira-picker__title">Start from a working template</h2>
+<p class="kuira-picker__subtitle">
+The fastest way in — clone a complete, runnable dApp and make it yours. Hand its README to your coding agent and it'll clone, run, and walk you through customizing it as a task list.
+</p>
+</div>
+
+<div class="grid cards" markdown>
+
+-   <img src="https://raw.githubusercontent.com/kuiralabs/kuira-starter-android/main/docs/screenshot.png" alt="Kuira Starter — counter dApp on device" width="180">
+
+    **Kuira Starter** — minimal counter dApp
+
+    Sigil identity + embedded wallet + a 6-line counter contract you deploy and increment on-chain. ~250 lines of Kotlin, readable in one sitting. Also a GitHub template.
+
+    [:material-github: Use this template / clone](https://github.com/kuiralabs/kuira-starter-android)
+
+    <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-starter-android/main/README.md" data-task="Clone the Kuira Starter Android template and get it running on a device, then help me customize it."></div>
+
+-   <img src="https://raw.githubusercontent.com/kuiralabs/example-bboard-android/main/docs/screenshot.png" alt="BBoard — on-chain bulletin board on device" width="180">
+
+    **BBoard** — on-chain bulletin board
+
+    The deploy → call → read flow end-to-end: create a board on-chain, post and take down messages, or connect to a board someone shared.
+
+    [:material-github: Clone the repo](https://github.com/kuiralabs/example-bboard-android)
+
+    <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/example-bboard-android/main/README.md" data-task="Clone the BBoard Android example and get it running on a device, then help me customize it."></div>
+
+</div>
+</section>
+
 <section class="kuira-picker" id="kuira-picker" markdown>
 <div class="kuira-picker__header" markdown>
-<h2 class="kuira-picker__title">Get started with your coding agent</h2>
+<h2 class="kuira-picker__title">Already have an app? Add Kuira with your agent</h2>
 <p class="kuira-picker__subtitle">
-Pick a task and your agent. We generate the prompt; you paste it into your tool. The agent lays the steps out as a task list you can follow — same prompt structure every recipe ships with.
+Integrating into an existing project, or following a specific recipe? Pick a task and your agent — we generate the prompt; you paste it in. The agent lays the steps out as a task list you can follow.
 </p>
 </div>
 
