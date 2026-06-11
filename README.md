@@ -2,11 +2,14 @@
 
 **Build [Midnight](https://midnight.network) zero-knowledge dApps on Android — proofs run on the phone.**
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.kuiralabs/dapp-ui?label=Maven%20Central&color=blue)](https://central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui)
+
 Privacy-first Android apps on Midnight: on-device ZK proving (no proof
 server), passkey-derived identity, an embedded wallet, and the Compact
 contract runtime — added to your project as a single Gradle dependency.
 
-> **Status:** Alpha (`0.1.0-alpha01`). The API may change between alpha
+> **Status:** Alpha — latest version shown by the Maven Central badge above.
+> The API may change between alpha
 > bumps. Production usage is not recommended; we're looking for early
 > integrators who can give feedback. See
 > [SECURITY.md](https://github.com/kuiralabs/kuira-sdk-android/blob/main/SECURITY.md)
@@ -26,7 +29,7 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha01")
+    implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha03")
 }
 ```
 
@@ -42,8 +45,8 @@ single line gives you the complete SDK graph.
   `PasskeyConfig` Hilt module, `assetlinks.json` hosting, a minimal
   "deploy a contract + call a circuit" skeleton, the troubleshooting
   table, and known limitations.
-- **API reference** *(coming with `0.1.0-alpha02`)* — Dokka-generated
-  reference for every published module.
+- **[API reference](https://kuiralabs.github.io/kuira-sdk-android/api/)** —
+  Dokka-generated reference for every published module.
 
 ---
 

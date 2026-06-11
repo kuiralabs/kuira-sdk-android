@@ -130,8 +130,8 @@ extra:
   # - `kuira_contract_plugin_version` — the com.midnight.kuira.contract
   #   Gradle plugin. Tracks `kuira_version`; kept as a separate key so
   #   the two can diverge during a transition window if ever needed.
-  kuira_version: "0.1.0-alpha02"
-  kuira_contract_plugin_version: "0.1.0-alpha02"
+  kuira_version: "0.1.0-alpha03"
+  kuira_contract_plugin_version: "0.1.0-alpha03"
   # Compact toolchain triple — versioned independently from the Kuira
   # SDK alphas. compactc / language pragma / runtime npm package each
   # move on their own cadence; mismatched values surface as
