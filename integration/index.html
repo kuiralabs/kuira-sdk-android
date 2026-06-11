@@ -1450,7 +1450,7 @@
 
 
 <h1 id="kuira-sdk-integration-guide">Kuira SDK — Integration Guide<a class="headerlink" href="#kuira-sdk-integration-guide" title="Permanent link">&para;</a></h1>
-<p><strong>Alpha — <code>0.1.0-alpha02</code></strong></p>
+<p><strong>Alpha — <code>0.1.0-alpha03</code></strong></p>
 <p>Build a Midnight zero-knowledge dApp on Android by adding <strong>one dependency</strong>, declaring your <strong>own passkey domain</strong>, and hosting <strong>one tiny JSON file</strong> on it. That's the whole on-ramp.</p>
 <p>This guide walks the recipe end-to-end. Two <strong>public</strong> reference apps consume
 the SDK exactly as described below — clone either and read along:</p>
@@ -1541,11 +1541,11 @@ config to add. In <code>app/build.gradle.kts</code>:</p>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// With the wallet + sigil PANEL (Compose). Use this for BBoard-style</span>
 <span class="w">    </span><span class="c1">// apps that want the wallet UI dropped in.</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha02&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha03&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// OR — headless (no Compose pulled by the SDK). For dApps building their</span>
 <span class="w">    </span><span class="c1">// own UI top-to-bottom.</span>
-<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha02&quot;)</span>
+<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha03&quot;)</span>
 
 <span class="w">    </span><span class="c1">// Hilt processor — required, the SDK is Hilt-first</span>
 <span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-android-compiler:2.58&quot;</span><span class="p">)</span>
@@ -1750,7 +1750,7 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 proving keys + a BLS parameter set present <strong>before the first deploy/call</strong> —
 otherwise the call fails at the proving step. Ship them in <code>assets/</code> — sync them
 in with the <code>io.github.kuiralabs.contract</code> Gradle plugin
-(<code>0.1.0-alpha02</code>), the recommended path, which stages the
+(<code>0.1.0-alpha03</code>), the recommended path, which stages the
 contract runtime and circuit keys into <code>assets/</code> for you. Without the plugin, use
 the hand-rolled <code>Copy</code> task shown in the
 <a href="../recipes/deploy-and-call-a-compact-contract/">deploy-and-call recipe</a>. Then
@@ -1772,7 +1772,7 @@ reference app shows the deploy → call → read flow end-to-end.</p>
 <hr />
 <h2 id="7-going-headless-no-panel">7. Going headless (no panel)<a class="headerlink" href="#7-going-headless-no-panel" title="Permanent link">&para;</a></h2>
 <p>If you don't want the Compose wallet panel, swap the dep:</p>
-<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha02&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
+<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha03&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
 </code></pre></div>
 <p>You still own bootstrap + sigil forging — <code>MidnightSdkProvider.ensureSdk(...)</code>
 throws <code>SigilRequiredException</code> until a sigil exists. Forge it through
@@ -1810,7 +1810,7 @@ throws <code>SigilRequiredException</code> until a sigil exists. Forge it throug
 </tr>
 <tr>
 <td><code>IllegalArgumentException: Could not find io.github.kuiralabs:…</code></td>
-<td>Check the alpha version is current; the SDK is <code>0.1.0-alpha02</code> at the time of writing.</td>
+<td>Check the alpha version is current; the SDK is <code>0.1.0-alpha03</code> at the time of writing.</td>
 </tr>
 </tbody>
 </table>
