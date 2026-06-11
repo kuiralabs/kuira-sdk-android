@@ -659,6 +659,8 @@
 
 .kuira-picker__title .headerlink,
 .kuira-feature__title .headerlink,
+.kuira-templates__title .headerlink,
+.kuira-template__title .headerlink,
 .kuira-hero__headline .headerlink {
     display: none;
 }
@@ -829,6 +831,118 @@
     color: var(--kuira-light-soft);
     margin: 0;
     font-weight: var(--kuira-body-weight);
+}
+
+
+/* ── Template launchpad — clone-and-run starting points ───────────── */
+
+.kuira-templates {
+    margin: 0 0 4rem;
+}
+
+.kuira-templates__header {
+    margin: 0 0 1.5rem;
+}
+
+.kuira-templates__title {
+    margin: 0 0 0.35em;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--kuira-light);
+    letter-spacing: -0.01em;
+    padding-top: 0;
+    border-top: none;
+}
+
+.kuira-templates__subtitle {
+    margin: 0;
+    max-width: 48rem;
+    font-size: 0.95rem;
+    color: var(--kuira-light-muted);
+    font-weight: var(--kuira-body-weight);
+}
+
+.kuira-templates__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 760px) {
+    .kuira-templates__grid { grid-template-columns: 1fr; }
+}
+
+.kuira-template {
+    display: flex;
+    gap: 1.3rem;
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 14px;
+    padding: 1.3rem 1.4rem;
+    background: var(--kuira-glass-tint);
+}
+
+/* md_in_html wraps the loose <img> in a <p>, so the real flex child is
+   that wrapper — size the column there, not on the image. */
+.kuira-template > p:first-child {
+    flex: 0 0 46%;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.kuira-template__shot {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--kuira-hairline);
+    border-radius: 12px;
+    display: block;
+}
+
+.kuira-template__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.kuira-template__eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kuira-light-muted);
+    margin-bottom: 0.7em;
+    display: block;
+}
+
+.kuira-template__title {
+    margin: 0 0 0.5em;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--kuira-light);
+    letter-spacing: -0.01em;
+    padding-top: 0;
+    border-top: none;
+}
+
+.kuira-template__desc {
+    margin: 0 0 1.1rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--kuira-light-soft);
+    font-weight: var(--kuira-body-weight);
+}
+
+.kuira-template__actions {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.kuira-template__actions .md-button {
+    margin: 0;
+    font-size: 0.82rem;
+    padding: 0.45em 1.05em;
 }
 
 
