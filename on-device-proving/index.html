@@ -1340,15 +1340,36 @@ remote.</p>
 <hr />
 <h2 id="proving-keys">Proving keys<a class="headerlink" href="#proving-keys" title="Permanent link">&para;</a></h2>
 <p>On-device proving needs proving keys on the device. The wallet keys
-(ZSwap + Dust circuits + shared BLS public parameters) total <strong>~24 MB</strong>, are
-downloaded once from Midnight's key store, and are cached in the app's
-internal storage. Each circuit contributes a prover key, a verifier key, and a
-bytecode-IR file; the BLS public parameters (<code>bls_midnight_2p{k}</code>) are the KZG
-SRS shared across circuits.</p>
-<p>Provisioning happens during SDK bootstrap, so the first proof on a fresh
-install waits on the one-time download; subsequent proofs use the cache.
-dApp-specific contract circuits are bundled in your APK assets and installed
-separately from the wallet keys.</p>
+(ZSwap + Dust circuits + shared BLS public parameters) total <strong>~33 MB</strong>. Each
+circuit contributes a prover key, a verifier key, and a bytecode-IR file; the
+BLS public parameters (<code>bls_midnight_2p{k}</code>, k = 5–15) are the KZG SRS shared
+across circuits.</p>
+<p>There are <strong>two ways to provision them</strong>; the SDK prefers whichever is present
+(<code>ProvingKeyManager.ensureWalletKeysAvailable</code>, run during SDK bootstrap):</p>
+<ol>
+<li>
+<p><strong>Offline bundle — recommended for production.</strong> Ship the wallet keys inside
+   the APK so a fresh device never depends on the network. With the
+   <code>io.github.kuiralabs.contract</code> Gradle plugin:</p>
+<div class="highlight"><pre><span></span><code>kuiraContract { bundleWalletKeys = true }
+</code></pre></div>
+<p>The <code>provisionWalletKeys</code> task downloads the version-pinned keys <strong>once at
+build time</strong> (cached per machine), and stages them into <code>assets/wallet-keys</code>;
+on device the SDK installs them with <code>installWalletKeysFromAssets</code>. Cost:
+~33 MB of APK size. Keep the staged folder git-ignored — it's regenerated.</p>
+</li>
+<li>
+<p><strong>Runtime download — the default.</strong> If the keys aren't bundled, the SDK
+   downloads them once from Midnight's key store on first bootstrap and caches
+   them in internal storage. The first proof on a fresh install then waits on
+   that one-time download (and fails on a flaky/absent network — which is why
+   bundling is preferred for production).</p>
+</li>
+</ol>
+<p>dApp-specific <strong>contract</strong> circuits are a separate, much smaller key set — built
+by <code>compactc</code>, bundled in your APK under <code>assets/keys</code>, and installed with
+<code>installCircuitKeysFromAssets</code> (see the integration guide). The shared BLS set
+above covers small contract circuits too, so you don't bundle BLS per contract.</p>
 <hr />
 <h2 id="performance-benchmarks">Performance &amp; benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permanent link">&para;</a></h2>
 <p><strong>Midnight publishes no official proving wall-clock or memory benchmarks.</strong>

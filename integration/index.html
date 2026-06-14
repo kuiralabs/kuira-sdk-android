@@ -1653,19 +1653,27 @@ state, including funded balances. Re-airdrop after each fresh <code>up</code>.</
 <ul>
 <li><strong>Emulator</strong> — <code>10.0.2.2</code> (the emulator's alias for your machine's
   <code>localhost</code>). Nothing to do.</li>
-<li><strong>Physical device</strong> — <code>127.0.0.1</code>, so forward the three localnet ports over
-  USB with <code>adb reverse</code>:</li>
+<li><strong>Physical device</strong> — <code>127.0.0.1</code>, so the three localnet ports must be
+  tunnelled over the debug bridge. The SDK ships a Gradle plugin that does this
+  automatically on every <code>installDebug</code> — apply it once, no configuration:</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// app/build.gradle.kts</span>
+<span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.localnet&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;&lt;sdk-version&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It registers an <code>adbReverseLocalnet</code> task wired ahead of <code>installDebug</code>, so
+  deploying to a connected physical device forwards ports 9944 (node RPC),
+  8088 (indexer), and 6300 (proof server) for you. Emulators use <code>10.0.2.2</code>
+  and are skipped automatically.</p>
+<p>The example apps apply it exactly this way — see them for a working reference:
+  <a href="https://github.com/kuiralabs/midnight-kicks/blob/main/app/build.gradle.kts">Kicks</a>,
+  <a href="https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts">BBoard</a>,
+  and the <a href="https://github.com/kuiralabs/kuira-starter-android/blob/main/app/build.gradle.kts">starter</a>.</p>
+<p>Prefer a one-off without the plugin? Run it by hand:</p>
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>reverse<span class="w"> </span>tcp:9944<span class="w"> </span>tcp:9944<span class="w">   </span><span class="c1"># node RPC</span>
 adb<span class="w"> </span>reverse<span class="w"> </span>tcp:8088<span class="w"> </span>tcp:8088<span class="w">   </span><span class="c1"># indexer</span>
 adb<span class="w"> </span>reverse<span class="w"> </span>tcp:6300<span class="w"> </span>tcp:6300<span class="w">   </span><span class="c1"># proof server</span>
-</code></pre></div>
-<p>A handy Gradle task to do all three at once (drop in your <code>app/build.gradle.kts</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="o">&lt;</span><span class="n">Exec</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;adbReverseLocalnet&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kuira&quot;</span>
-<span class="w">    </span><span class="n">commandLine</span><span class="p">(</span><span class="s">&quot;sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;adb reverse tcp:9944 tcp:9944 &amp;&amp; adb reverse tcp:8088 tcp:8088 &amp;&amp; adb reverse tcp:6300 tcp:6300&quot;</span><span class="p">)</span>
-<span class="p">}</span>
 </code></pre></div>
 <h3 id="5c-allow-cleartext-to-the-localnet-debug-only">5c. Allow cleartext to the localnet (debug only)<a class="headerlink" href="#5c-allow-cleartext-to-the-localnet-debug-only" title="Permanent link">&para;</a></h3>
 <p>Production hits HTTPS. Localnet is plain HTTP, so declare cleartext <strong>in a
@@ -1759,9 +1767,13 @@ install once at runtime — it's idempotent, so call it before each action:</p>
 <span class="c1">// where the on-device prover looks.</span>
 <span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
 </code></pre></div>
-<p>A small contract may need a smaller BLS param set than the wallet bundle ships
-(e.g. <code>bls_midnight_2p5</code> for a counter). Bundle the contract's BLS parameter set
-alongside its circuit keys and it's picked up at install time. The
+<p>The shared <strong>wallet</strong> proving keys ship the full BLS parameter set
+(<code>bls_midnight_2p5</code>–<code>2p15</code>), so a small contract circuit (e.g. a counter that
+needs <code>2p5</code>) finds the size it requires from the wallet keys — you do <strong>not</strong>
+bundle BLS per contract. Just make sure the wallet keys are provisioned: they
+are, during SDK bootstrap, and you can ship them in the APK to skip the first-run
+download with <code>kuiraContract { bundleWalletKeys = true }</code> (see
+<a href="../on-device-proving/">On-device proving</a>). The
 <strong><a href="https://github.com/kuiralabs/kuira-starter-android">Kuira Starter</a></strong>'s
 <code>CounterContract</code> shows the full pattern end-to-end.</p>
 <blockquote>
