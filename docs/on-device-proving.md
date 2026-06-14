@@ -113,16 +113,35 @@ exist in the upstream catalog but Kuira does not provision them.
 ## Proving keys
 
 On-device proving needs proving keys on the device. The wallet keys
-(ZSwap + Dust circuits + shared BLS public parameters) total **~24 MB**, are
-downloaded once from Midnight's key store, and are cached in the app's
-internal storage. Each circuit contributes a prover key, a verifier key, and a
-bytecode-IR file; the BLS public parameters (`bls_midnight_2p{k}`) are the KZG
-SRS shared across circuits.
+(ZSwap + Dust circuits + shared BLS public parameters) total **~33 MB**. Each
+circuit contributes a prover key, a verifier key, and a bytecode-IR file; the
+BLS public parameters (`bls_midnight_2p{k}`, k = 5–15) are the KZG SRS shared
+across circuits.
 
-Provisioning happens during SDK bootstrap, so the first proof on a fresh
-install waits on the one-time download; subsequent proofs use the cache.
-dApp-specific contract circuits are bundled in your APK assets and installed
-separately from the wallet keys.
+There are **two ways to provision them**; the SDK prefers whichever is present
+(`ProvingKeyManager.ensureWalletKeysAvailable`, run during SDK bootstrap):
+
+1. **Offline bundle — recommended for production.** Ship the wallet keys inside
+   the APK so a fresh device never depends on the network. With the
+   `io.github.kuiralabs.contract` Gradle plugin:
+
+        kuiraContract { bundleWalletKeys = true }
+
+    The `provisionWalletKeys` task downloads the version-pinned keys **once at
+    build time** (cached per machine), and stages them into `assets/wallet-keys`;
+    on device the SDK installs them with `installWalletKeysFromAssets`. Cost:
+    ~33 MB of APK size. Keep the staged folder git-ignored — it's regenerated.
+
+2. **Runtime download — the default.** If the keys aren't bundled, the SDK
+   downloads them once from Midnight's key store on first bootstrap and caches
+   them in internal storage. The first proof on a fresh install then waits on
+   that one-time download (and fails on a flaky/absent network — which is why
+   bundling is preferred for production).
+
+dApp-specific **contract** circuits are a separate, much smaller key set — built
+by `compactc`, bundled in your APK under `assets/keys`, and installed with
+`installCircuitKeysFromAssets` (see the integration guide). The shared BLS set
+above covers small contract circuits too, so you don't bundle BLS per contract.
 
 ---
 

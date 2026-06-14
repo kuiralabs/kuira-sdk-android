@@ -212,23 +212,33 @@ The SDK already maps `UNDEPLOYED` to the right host per device type
 
 - **Emulator** — `10.0.2.2` (the emulator's alias for your machine's
   `localhost`). Nothing to do.
-- **Physical device** — `127.0.0.1`, so forward the three localnet ports over
-  USB with `adb reverse`:
+- **Physical device** — `127.0.0.1`, so the three localnet ports must be
+  tunnelled over the debug bridge. The SDK ships a Gradle plugin that does this
+  automatically on every `installDebug` — apply it once, no configuration:
+
+  ```kotlin
+  // app/build.gradle.kts
+  plugins {
+      id("io.github.kuiralabs.localnet") version "<sdk-version>"
+  }
+  ```
+
+  It registers an `adbReverseLocalnet` task wired ahead of `installDebug`, so
+  deploying to a connected physical device forwards ports 9944 (node RPC),
+  8088 (indexer), and 6300 (proof server) for you. Emulators use `10.0.2.2`
+  and are skipped automatically.
+
+  The example apps apply it exactly this way — see them for a working reference:
+  [Kicks](https://github.com/kuiralabs/midnight-kicks/blob/main/app/build.gradle.kts),
+  [BBoard](https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts),
+  and the [starter](https://github.com/kuiralabs/kuira-starter-android/blob/main/app/build.gradle.kts).
+
+  Prefer a one-off without the plugin? Run it by hand:
 
   ```bash
   adb reverse tcp:9944 tcp:9944   # node RPC
   adb reverse tcp:8088 tcp:8088   # indexer
   adb reverse tcp:6300 tcp:6300   # proof server
-  ```
-
-  A handy Gradle task to do all three at once (drop in your `app/build.gradle.kts`):
-
-  ```kotlin
-  tasks.register<Exec>("adbReverseLocalnet") {
-      group = "kuira"
-      commandLine("sh", "-c",
-          "adb reverse tcp:9944 tcp:9944 && adb reverse tcp:8088 tcp:8088 && adb reverse tcp:6300 tcp:6300")
-  }
   ```
 
 ### 5c. Allow cleartext to the localnet (debug only)
@@ -338,9 +348,13 @@ install once at runtime — it's idempotent, so call it before each action:
 ProvingKeyManager(context).installCircuitKeysFromAssets()
 ```
 
-A small contract may need a smaller BLS param set than the wallet bundle ships
-(e.g. `bls_midnight_2p5` for a counter). Bundle the contract's BLS parameter set
-alongside its circuit keys and it's picked up at install time. The
+The shared **wallet** proving keys ship the full BLS parameter set
+(`bls_midnight_2p5`–`2p15`), so a small contract circuit (e.g. a counter that
+needs `2p5`) finds the size it requires from the wallet keys — you do **not**
+bundle BLS per contract. Just make sure the wallet keys are provisioned: they
+are, during SDK bootstrap, and you can ship them in the APK to skip the first-run
+download with `kuiraContract { bundleWalletKeys = true }` (see
+[On-device proving](on-device-proving.md)). The
 **[Kuira Starter](https://github.com/kuiralabs/kuira-starter-android)**'s
 `CounterContract` shows the full pattern end-to-end.
 
