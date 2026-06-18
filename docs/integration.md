@@ -28,7 +28,7 @@ Adding the one line below brings:
 - **Indexer + chain client** — block / state / event subscription, backed by Midnight's official indexer.
 - **App-state cloud backup** — your dApp's per-user data rides the sigil's Block Store backup automatically. The backup blob is PRF-encrypted client-side before Google's Block Store touches it.
 
-You can use it headless or pull in the panel UI — see the dependency choice below.
+Drop in the prebuilt UI, build your own on the same contracts, or go fully headless — see *Choose your level* below.
 
 ---
 
@@ -47,6 +47,35 @@ You can use it headless or pull in the panel UI — see the dependency choice be
 ---
 
 ## 2. Add the dependency — *one line*
+
+### Choose your level
+
+Kuira meets you at the level you want — and the dependency you pick reflects it:
+
+- **Drop in the prebuilt UI** — `io.github.kuiralabs:dapp-ui`. Ready-made,
+  themeable Compose components — the **wallet pill**, the **sigil pill**, and the
+  **Settings panel** (network, recovery phrase, lock, sign-out), all in one
+  `PanelBar` — wired to SDK state out of the box with safe security defaults
+  (`FLAG_SECURE`, biometric gates, an auto-clearing clipboard). Restyle with a
+  colors object; you write no wallet logic. The fastest path — see
+  [Set up Sigil identity](recipes/set-up-sigil-identity.md).
+- **Build your own experience** — also `dapp-ui` (its ViewModels) or
+  `midnight-sdk`. Render your own screens on the same public contracts the pills
+  are built on — `WalletRecovery`, `WalletPanelViewModel`,
+  `SigilPanelViewModel` / `SigilSession`, `MidnightContract`, `MidnightSdk`. The
+  SDK keeps the hard parts (crypto, secure vault, on-device proving, sync,
+  session-lock); the screens are yours. Every bundled component is just the first
+  consumer of a contract you can call directly — e.g.
+  [Reveal & restore the recovery phrase](recipes/reveal-and-restore-the-recovery-phrase.md).
+- **Go headless** — `io.github.kuiralabs:midnight-sdk`. The full wallet, identity,
+  and contract surface with **no Compose** pulled in; you build the UI layer
+  top-to-bottom. See [§ 7 Going headless](#7-going-headless-no-panel).
+
+!!! note "Theming today, more tuning coming"
+    The prebuilt components expose theming now plus a small set of behavioral
+    knobs; richer per-component tuning hooks are on the roadmap. Until a knob
+    exists, the build-your-own path gives full control of that surface — the
+    contracts carry no UI policy.
 
 Maven Central is already in every Android project's defaults, so there's no repo
 config to add. In `app/build.gradle.kts`:
@@ -71,14 +100,14 @@ android {
 }
 
 dependencies {
-    // ── Pick ONE Kuira entry ──
+    // ── Pick ONE Kuira entry (see "Choose your level" above) ──
     //
-    // With the wallet + sigil PANEL (Compose). Use this for BBoard-style
-    // apps that want the wallet UI dropped in.
+    // Prebuilt pills + the ViewModels behind them (Compose). Drop the wallet
+    // and sigil panels in as-is, OR build your own UI on the same contracts.
     implementation("io.github.kuiralabs:dapp-ui:{{ kuira_version }}")
     //
-    // OR — headless (no Compose pulled by the SDK). For dApps building their
-    // own UI top-to-bottom.
+    // OR — headless core, no Compose pulled in. For dApps building the whole
+    // UI layer top-to-bottom.
     // implementation("io.github.kuiralabs:midnight-sdk:{{ kuira_version }}")
 
     // Hilt processor — required, the SDK is Hilt-first
