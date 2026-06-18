@@ -109,6 +109,7 @@ nav:
     - Hello Compact — write your first contract: recipes/hello-compact.md
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
     - Back up your wallet across devices: recipes/back-up-wallet-across-devices.md
+    - Reveal & restore the recovery phrase: recipes/reveal-and-restore-the-recovery-phrase.md
     - Run kuiraDoctor before each release: recipes/run-kuira-doctor.md
   - API reference: api-reference.md
   - Roadmap: roadmap.md

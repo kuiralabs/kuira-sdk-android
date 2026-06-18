@@ -91,6 +91,15 @@ agent and let it execute the recipe in your project.
     genesis replay. Covers the `appDataFolder` invisibility and the
     same-account caveat.
 
+-   :material-key-variant: **[Reveal & restore the recovery phrase](reveal-and-restore-the-recovery-phrase.md)**
+
+    ---
+
+    Build your own 24-word reveal + restore on the `WalletRecovery`
+    contract — you own the secure screen (`FLAG_SECURE`, clipboard
+    policy, timing) while the SDK owns the crypto. Plus tuning the
+    session auto-lock that scrubs a revealed phrase.
+
 </div>
 
 ---
