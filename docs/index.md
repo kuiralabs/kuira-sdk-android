@@ -183,9 +183,10 @@ Deploy and call Compact circuits on-device. QuickJS contract runtime, witness pa
     }
     ```
 
-`dapp-ui` `api`-exposes the consumer surface, so a single line gives
-you the complete SDK graph. Need just the headless wallet? Use
-`midnight-sdk` instead.
+`dapp-ui` `api`-exposes the consumer surface, so a single line gives you
+the complete SDK graph — **drop in the prebuilt wallet + sigil pills**, or
+**build your own UI** on the same public contracts. Need no Compose at all?
+Use `midnight-sdk`. → [Choose your level](integration.md#choose-your-level)
 
 [Full integration guide →](integration.md){ .md-button .md-button--primary }
 [Security & verification](security.md){ .md-button }
