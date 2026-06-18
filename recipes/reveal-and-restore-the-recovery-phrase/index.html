@@ -11,13 +11,13 @@
       
       
       
-        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/bind-your-app-to-a-passkey-domain/">
+        <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/recipes/reveal-and-restore-the-recovery-phrase/">
       
       
-        <link rel="prev" href="../add-kuira-to-an-android-project/">
+        <link rel="prev" href="../back-up-wallet-across-devices/">
       
       
-        <link rel="next" href="../set-up-sigil-identity/">
+        <link rel="next" href="../run-kuira-doctor/">
       
       
         
@@ -28,7 +28,7 @@
     
     
   
-    <title>Bind your app to a passkey domain - Kuira Android SDK</title>
+    <title>Reveal & restore the recovery phrase - Kuira Android SDK</title>
   
 
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bind-your-app-to-a-passkey-domain" class="md-skip">
+        <a href="#reveal-restore-the-recovery-phrase" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bind your app to a passkey domain
+              Reveal & restore the recovery phrase
             
           </span>
         </div>
@@ -716,37 +716,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bind your app to a passkey domain
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../bind-your-app-to-a-passkey-domain/" class="md-nav__link">
         
   
   
@@ -762,153 +735,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#choose-your-rpid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Choose your rpId
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-get-the-debug-fingerprint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Get the debug fingerprint
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-write-assetlinksjson" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Write assetlinks.json
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-host-it-on-your-rpid-domain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Host it on your rpId domain
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Host it on your rpId domain">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#case-a-the-backing-repo-already-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case A — the backing repo already exists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case-b-the-backing-repo-doesnt-exist-yet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case B — the backing repo doesn't exist yet
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hosting-elsewhere-vercel-cloudflare-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hosting elsewhere (Vercel / Cloudflare / nginx)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-point-your-app-at-the-rpid-then-verify" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4 — Point your app at the rpId, then verify
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-you-ship" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When you ship
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's next
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1030,10 +856,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../reveal-and-restore-the-recovery-phrase/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reveal & restore the recovery phrase
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1049,6 +902,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this exists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-owns-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who owns what
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-get-the-recovery-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Get the recovery contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-reveal-the-phrase-on-a-screen-you-secure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Reveal the phrase on a screen you secure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-restore-a-wallet-from-a-phrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Restore a wallet from a phrase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-tune-the-auto-lock-timing-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Tune the auto-lock timing (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1197,10 +1158,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choose-your-rpid" class="md-nav__link">
+  <a href="#why-this-exists" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choose your rpId
+        Why this exists
       
     </span>
   </a>
@@ -1208,10 +1169,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-get-the-debug-fingerprint" class="md-nav__link">
+  <a href="#who-owns-what" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Get the debug fingerprint
+        Who owns what
       
     </span>
   </a>
@@ -1219,10 +1180,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-write-assetlinksjson" class="md-nav__link">
+  <a href="#step-1-get-the-recovery-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Write assetlinks.json
+        Step 1 — Get the recovery contract
       
     </span>
   </a>
@@ -1230,60 +1191,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-host-it-on-your-rpid-domain" class="md-nav__link">
+  <a href="#step-2-reveal-the-phrase-on-a-screen-you-secure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Host it on your rpId domain
+        Step 2 — Reveal the phrase on a screen you secure
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Step 3 — Host it on your rpId domain">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#case-a-the-backing-repo-already-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case A — the backing repo already exists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case-b-the-backing-repo-doesnt-exist-yet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Case B — the backing repo doesn't exist yet
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hosting-elsewhere-vercel-cloudflare-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hosting elsewhere (Vercel / Cloudflare / nginx)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-point-your-app-at-the-rpid-then-verify" class="md-nav__link">
+  <a href="#step-3-restore-a-wallet-from-a-phrase" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Point your app at the rpId, then verify
+        Step 3 — Restore a wallet from a phrase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-tune-the-auto-lock-timing-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Tune the auto-lock timing (optional)
       
     </span>
   </a>
@@ -1295,17 +1228,6 @@
     <span class="md-ellipsis">
       
         Troubleshooting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-you-ship" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When you ship
       
     </span>
   </a>
@@ -1344,28 +1266,21 @@
       
       
       
-        <span class="md-tag">assetlinks</span>
+        <span class="md-tag">recovery</span>
       
     
       
       
       
       
-        <span class="md-tag">identity</span>
+        <span class="md-tag">security</span>
       
     
       
       
       
       
-        <span class="md-tag">passkey</span>
-      
-    
-      
-      
-      
-      
-        <span class="md-tag">signing</span>
+        <span class="md-tag">wallet</span>
       
     
   </nav>
@@ -1375,253 +1290,211 @@
   
 
 
-<h1 id="bind-your-app-to-a-passkey-domain">Bind your app to a passkey domain<a class="headerlink" href="#bind-your-app-to-a-passkey-domain" title="Permanent link">&para;</a></h1>
-<p><strong>Outcome:</strong> your debug build's signing fingerprint is listed in an
-<code>assetlinks.json</code> served at your <code>rpId</code>, and <strong>Forge</strong> succeeds on
-device — no <code>RP_ID_MISMATCH</code>, no <code>PRF authentication failed</code>, no
-silent prompt dismissal.</p>
-<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/bind-your-app-to-a-passkey-domain.md"
-     data-task="Bind an Android app's debug build to a passkey rpId.
+<h1 id="reveal-restore-the-recovery-phrase">Reveal &amp; restore the recovery phrase<a class="headerlink" href="#reveal-restore-the-recovery-phrase" title="Permanent link">&para;</a></h1>
+<p><strong>Outcome:</strong> your app reveals the user's 24-word BIP-39 recovery phrase on a
+screen <em>you</em> control, restores a wallet from a phrase, and (optionally) tunes
+the session-lock timing — all on the public <code>WalletRecovery</code> contract,
+independent of the bundled wallet pill.</p>
+<div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/reveal-and-restore-the-recovery-phrase.md"
+     data-task="Build a custom recovery-phrase reveal + restore flow on Kuira's WalletRecovery contract: inject WalletRecovery, reveal the 24 words behind a biometric on a FLAG_SECURE screen I own (I control clipboard/copy policy + timing), validate + restore from a phrase with isValidPhrase/restoreFromPhrase, and tune SessionLock.idleTimeoutMs for the auto-lock that scrubs a revealed phrase."></div>
 
-Discover context first: run `git remote -v` in the project. Take the GitHub user-or-org slug from the origin URL. The natural rpId is `<that-slug>.github.io`, hosted in the special-name repo `<that-slug>/<that-slug>.github.io`. Check whether that backing repo exists on GitHub; if it does not, walk the consumer through creating it. If the consumer prefers a different domain, confirm before proceeding.
-
-Then execute the four-step recipe:
-1. `./gradlew :app:signingReport` to capture the debug-variant SHA-256 (add `--no-configuration-cache` if the project sets `org.gradle.configuration-cache=true`).
-2. Compose a single-fingerprint assetlinks.json with the project's applicationId and that SHA-256.
-3. Commit it to `<that-slug>/<that-slug>.github.io` at `.well-known/assetlinks.json`; if that repo also already hosts assetlinks for other apps, append a new target rather than overwriting. **If you're creating that repo fresh, also commit an empty `.nojekyll` file at the repo root — without it, Jekyll silently strips the `.well-known/` path from the Pages build and the URL returns 404 even though the file is in the repo.**
-4. Set PASSKEY_RP_ID in the project's PasskeyConfig module to the chosen domain. Verify with `curl -I` against the live URL; then have the consumer reinstall the debug APK and tap Forge.
-
-After EACH step, output a one-sentence summary of what just happened so the human can follow without reading every tool result. Pause for explicit approval before any git push to a repo other than the project itself, and before any adb install / uninstall.
-
-Production release-keystore setup is out of scope."></div>
-
-<p>This is the <strong>development-only</strong> path. You'll be running debug builds
-on your emulator or device — Android Studio's auto-generated debug
-keystore signs them for you. No keystore generation, no
-<code>keystore.properties</code>, no CI signing setup. ~5 minutes end to end.</p>
 <hr />
-<h2 id="choose-your-rpid">Choose your rpId<a class="headerlink" href="#choose-your-rpid" title="Permanent link">&para;</a></h2>
-<p>Your <code>rpId</code> should be the GitHub Pages host of the user or organization
-that owns your project. Derive it from the project's git remote:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>-v
-<span class="c1"># origin  https://github.com/&lt;user-or-org&gt;/&lt;repo&gt;.git</span>
-</code></pre></div>
-<p>From that:</p>
-<ul>
-<li><strong>Your <code>rpId</code></strong> is <code>&lt;user-or-org&gt;.github.io</code> (hostname only, no
-  scheme, no path).</li>
-<li><strong>The repo that backs that rpId</strong> is <code>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io</code>
-  — that exact, specially-named repo is the only one whose
-  <code>.well-known/assetlinks.json</code> is reachable at the URL the passkey
-  API needs (<code>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json</code>).</li>
-</ul>
-<p>For example, this project's origin is
-<code>github.com/kuiralabs/kuira-starter-android</code>, so its natural rpId is
-<code>kuiralabs.github.io</code> and assetlinks goes in <code>kuiralabs/kuiralabs.github.io</code>.</p>
-<p>Check whether that repo already exists:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
-</code></pre></div>
-<p>If it doesn't, you'll create it in Step 3. If you want to use a
-different domain (a custom domain you own, or a personal site you
-already host other apps on), use that instead — same constraints apply.</p>
-<hr />
-<h2 id="step-1-get-the-debug-fingerprint">Step 1 — Get the debug fingerprint<a class="headerlink" href="#step-1-get-the-debug-fingerprint" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Configuration-cache gotcha</p>
-<p>If your project sets <code>org.gradle.configuration-cache=true</code> in
-<code>gradle.properties</code>, <code>signingReport</code> fails with a class-loader
-error (<code>Class 'com.android.build.gradle.internal.dsl.SigningConfig$AgpDecorated' not found</code>).
-Run it with <code>--no-configuration-cache</code>:</p>
-<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport<span class="w"> </span>--no-configuration-cache
-</code></pre></div>
+<h2 id="why-this-exists">Why this exists<a class="headerlink" href="#why-this-exists" title="Permanent link">&para;</a></h2>
+<p>The Sigil seed is <code>PRF(passkey)</code>, but that PRF output <strong>is</strong> standard BIP-39
+entropy — so every wallet has a canonical 24-word phrase that reconstructs it
+exactly, independent of the passkey, the device, or any provider. It's the
+final, self-custody recovery path (the full model lives in
+<a href="../../security/">Security</a>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Don't need a custom UI? Use the bundled one.</p>
+<p>The drop-in wallet panel already ships this: the gear in the expanded
+panel opens a Settings screen with <strong>View recovery phrase</strong> (reveal) under
+SECURITY, all behind safe defaults — <code>FLAG_SECURE</code>, an auto-clearing
+clipboard, a biometric gate. This recipe is for when you want your <strong>own</strong>
+onboarding/reveal screens instead.</p>
 </div>
-<p>Find the <code>Variant: debug</code> block. Copy its <code>SHA-256:</code> line (keep the
-colons):</p>
-<div class="highlight"><pre><span></span><code>Variant: debug
-…
-SHA-256: AB:CD:EF:12:34:…
-</code></pre></div>
 <hr />
-<h2 id="step-2-write-assetlinksjson">Step 2 — Write <code>assetlinks.json</code><a class="headerlink" href="#step-2-write-assetlinksjson" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">assetlinks.json</span><pre><span></span><code><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;delegate_permission/common.get_login_creds&quot;</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;android_app&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example.myapp&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;sha256_cert_fingerprints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;AB:CD:EF:12:34:56:…&quot;</span>
-<span class="w">      </span><span class="p">]</span>
+<h2 id="who-owns-what">Who owns what<a class="headerlink" href="#who-owns-what" title="Permanent link">&para;</a></h2>
+<p><code>WalletRecovery</code> owns the <strong>cryptography and secure-vault handling</strong> — biometric
+gating, deriving the phrase from the vault, wiping entropy after use. It exposes
+<strong>no UI policy</strong> on purpose: when you render the words yourself, the
+<strong>screen-level security parameters are entirely yours</strong> to set —</p>
+<ul>
+<li>whether copy-to-clipboard is offered at all, and if so, how soon it auto-clears;</li>
+<li><code>FLAG_SECURE</code> (screenshot / recents-thumbnail blocking);</li>
+<li>whether a fresh biometric is required each reveal (it is — <code>revealPhrase</code>
+  always re-authenticates) and any extra re-auth cadence you want on top.</li>
+</ul>
+<p>The one timing knob the SDK itself owns is the <strong>session auto-lock</strong> (Step 4),
+because that lock is what scrubs a revealed phrase from memory.</p>
+<hr />
+<h2 id="step-1-get-the-recovery-contract">Step 1 — Get the recovery contract<a class="headerlink" href="#step-1-get-the-recovery-contract" title="Permanent link">&para;</a></h2>
+<p><code>WalletRecovery</code> is a Hilt-bound singleton. Inject it into a ViewModel (or read
+it off <code>MidnightSdkProvider.recovery</code> if you already hold the provider):</p>
+<div class="highlight"><span class="filename">app/src/main/.../RecoveryViewModel.kt</span><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">com.example.myapp.recovery</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.fragment.app.FragmentActivity</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.lifecycle.ViewModel</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.lifecycle.viewModelScope</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.auth.AuthenticationCancelledException</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.sdk.walletseed.InvalidRecoveryPhraseException</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.sdk.walletseed.RecoveryNotAllowedException</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.sdk.walletseed.WalletRecovery</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">dagger.hilt.android.lifecycle.HiltViewModel</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.flow.MutableStateFlow</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.launch</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">javax.inject.Inject</span>
+
+<span class="nd">@HiltViewModel</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">RecoveryViewModel</span><span class="w"> </span><span class="nd">@Inject</span><span class="w"> </span><span class="k">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">recovery</span><span class="p">:</span><span class="w"> </span><span class="n">WalletRecovery</span><span class="p">,</span><span class="w">            </span><span class="c1">// (1)</span>
+<span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">phrase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;?&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span><span class="w">   </span><span class="c1">// the revealed words, or null</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="kt">String?</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>The SDK binds <code>WalletRecovery</code> → its default implementation in the Hilt
+   graph (<code>@HiltAndroidApp</code> from the install recipe is all that's required).</li>
+</ol>
+<p><strong>Verify:</strong> <code>./gradlew :app:assembleDebug</code> succeeds — Hilt resolves the binding.</p>
+<hr />
+<h2 id="step-2-reveal-the-phrase-on-a-screen-you-secure">Step 2 — Reveal the phrase on a screen you secure<a class="headerlink" href="#step-2-reveal-the-phrase-on-a-screen-you-secure" title="Permanent link">&para;</a></h2>
+<p><code>revealPhrase(activity)</code> triggers the biometric and returns the 24 words. <strong>The
+words are the keys to the wallet</strong> — the caller's security contract is: render
+only under <code>FLAG_SECURE</code>, never log / persist / transmit them, and drop the
+reference promptly.</p>
+<div class="highlight"><span class="filename">RecoveryViewModel.kt (continued)</span><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="nf">reveal</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">FragmentActivity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">error</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">phrase</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recovery</span><span class="p">.</span><span class="na">revealPhrase</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span><span class="w">   </span><span class="c1">// biometric-gated</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">AuthenticationCancelledException</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// User dismissed the prompt — no error, just don&#39;t reveal.</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">error</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Couldn&#39;t reveal the phrase&quot;</span><span class="w">       </span><span class="c1">// never log e with the words</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">clear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">phrase</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// call when the screen leaves</span>
 </code></pre></div>
-<p>Two fields:</p>
-<ul>
-<li><code>package_name</code> — your app's <code>applicationId</code> from <code>app/build.gradle.kts</code>.</li>
-<li><code>sha256_cert_fingerprints[0]</code> — the SHA-256 from Step 1.</li>
-</ul>
-<p>Both relations are required: <code>get_login_creds</code> makes passkey ceremonies
-work; <code>handle_all_urls</code> lets the same file double as App Links binding
-if you add deep links later.</p>
+<p>Your screen owns the rest. A minimal secure host:</p>
+<div class="highlight"><span class="filename">app/src/main/.../RecoveryScreen.kt</span><pre><span></span><code><span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">RecoveryScreen</span><span class="p">(</span><span class="n">vm</span><span class="p">:</span><span class="w"> </span><span class="n">RecoveryViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hiltViewModel</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">FragmentActivity</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">words</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">phrase</span><span class="p">.</span><span class="na">collectAsStateWithLifecycle</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// FLAG_SECURE for the lifetime of this screen — no screenshots / recents.</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span>
+<span class="w">    </span><span class="n">DisposableEffect</span><span class="p">(</span><span class="kt">Unit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="w"> </span><span class="k">as?</span><span class="w"> </span><span class="n">Activity</span><span class="p">)</span><span class="o">?.</span><span class="na">window</span>
+<span class="w">        </span><span class="n">window</span><span class="o">?.</span><span class="na">addFlags</span><span class="p">(</span><span class="n">WindowManager</span><span class="p">.</span><span class="na">LayoutParams</span><span class="p">.</span><span class="na">FLAG_SECURE</span><span class="p">)</span>
+<span class="w">        </span><span class="n">onDispose</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">window</span><span class="o">?.</span><span class="na">clearFlags</span><span class="p">(</span><span class="n">WindowManager</span><span class="p">.</span><span class="na">LayoutParams</span><span class="p">.</span><span class="na">FLAG_SECURE</span><span class="p">)</span>
+<span class="w">            </span><span class="n">vm</span><span class="p">.</span><span class="na">clear</span><span class="p">()</span><span class="w">                                       </span><span class="c1">// drop the words on exit</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">words</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">reveal</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;Reveal recovery phrase&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Render the 24 words. YOUR clipboard policy: e.g. offer no copy at all,</span>
+<span class="w">        </span><span class="c1">// or copy + scrub after a timeout you choose.</span>
+<span class="w">        </span><span class="n">words</span><span class="o">!!</span><span class="p">.</span><span class="na">forEachIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;</span><span class="si">${</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="si">}</span><span class="s">. </span><span class="si">$</span><span class="n">w</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Verify:</strong> open the screen, authenticate — the 24 words render, and a
+screenshot attempt is blocked (black frame). Background the app: the recents
+thumbnail shows nothing.</p>
 <hr />
-<h2 id="step-3-host-it-on-your-rpid-domain">Step 3 — Host it on your <code>rpId</code> domain<a class="headerlink" href="#step-3-host-it-on-your-rpid-domain" title="Permanent link">&para;</a></h2>
-<p>Path: <code>https://&lt;rpId&gt;/.well-known/assetlinks.json</code>. Must be served over
-HTTPS, with <code>Content-Type: application/json</code>, with no redirect and no
-auth wall.</p>
-<p>You chose the rpId + backing repo in the <strong>Choose your rpId</strong> section
-above. Two cases:</p>
-<h3 id="case-a-the-backing-repo-already-exists">Case A — the backing repo already exists<a class="headerlink" href="#case-a-the-backing-repo-already-exists" title="Permanent link">&para;</a></h3>
-<p>Clone it, append your new target to any existing <code>assetlinks.json</code>
-array (don't overwrite — other apps may already be bound to the same
-host), commit, push:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
-<span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
-<span class="c1"># Edit .well-known/assetlinks.json: append your target object to the</span>
-<span class="c1"># top-level JSON array. If the file doesn&#39;t exist yet, create it with</span>
-<span class="c1"># just your target inside an array.</span>
-git<span class="w"> </span>add<span class="w"> </span>.well-known/assetlinks.json
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;passkey: bind &lt;your-package-name&gt;&quot;</span>
-git<span class="w"> </span>push
+<h2 id="step-3-restore-a-wallet-from-a-phrase">Step 3 — Restore a wallet from a phrase<a class="headerlink" href="#step-3-restore-a-wallet-from-a-phrase" title="Permanent link">&para;</a></h2>
+<p>Validate live with <code>isValidPhrase</code> (normalizes casing/whitespace), then
+<code>restoreFromPhrase</code>. It reproduces the <strong>exact</strong> wallet and marks the phrase
+saved on success.</p>
+<div class="highlight"><span class="filename">RecoveryViewModel.kt (continued)</span><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">words</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recovery</span><span class="p">.</span><span class="na">isValidPhrase</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="w">   </span><span class="c1">// live input feedback</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">FragmentActivity</span><span class="p">,</span><span class="w"> </span><span class="n">words</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">recovery</span><span class="p">.</span><span class="na">restoreFromPhrase</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span><span class="w"> </span><span class="n">words</span><span class="p">)</span>
+<span class="w">            </span><span class="c1">// success — wallet is back; navigate on</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">InvalidRecoveryPhraseException</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">error</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Those 24 words aren&#39;t a valid recovery phrase&quot;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">RecoveryNotAllowedException</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">error</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;A wallet already exists — sign out before restoring&quot;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">AuthenticationCancelledException</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// cancelled — let them retry</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="case-b-the-backing-repo-doesnt-exist-yet">Case B — the backing repo doesn't exist yet<a class="headerlink" href="#case-b-the-backing-repo-doesnt-exist-yet" title="Permanent link">&para;</a></h3>
-<p>Create it, drop the JSON in <strong>plus a <code>.nojekyll</code> marker</strong>, push, enable
-Pages:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>create<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io<span class="w"> </span>--public<span class="w"> </span>--add-readme
-gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
-<span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
-mkdir<span class="w"> </span>-p<span class="w"> </span>.well-known
-<span class="c1"># Write .well-known/assetlinks.json with the JSON from Step 2.</span>
-touch<span class="w"> </span>.nojekyll
-git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;host assetlinks.json&quot;</span>
-git<span class="w"> </span>push
-</code></pre></div>
-<div class="admonition danger">
-<p class="admonition-title">Why <code>.nojekyll</code> matters</p>
-<p>GitHub Pages's default static-site processor is Jekyll, which
-<strong>silently excludes every dot-prefixed path</strong> from the build
-output. Without <code>.nojekyll</code>, <code>.well-known/assetlinks.json</code> is in
-your repo and visible in the GitHub web UI, but the deployed Pages
-site returns <code>HTTP 404</code> for it.</p>
-<p>Adding an empty <code>.nojekyll</code> file at the repo root tells Pages to
-skip Jekyll entirely and serve the repo's files verbatim. This is
-the universal fix for any Pages site that hosts a <code>.well-known/*</code>
-path — App Links, passkey assetlinks, ACME challenge files,
-<code>security.txt</code>, etc.</p>
-<p>Symptom if you forget: the apex <code>https://&lt;name&gt;.github.io/</code>
-returns 200 (Pages is live), the file is present in the repo,
-but <code>curl -I https://&lt;name&gt;.github.io/.well-known/assetlinks.json</code>
-returns 404. Add <code>.nojekyll</code> and re-push to fix; the deploy
-re-runs in ~30 seconds.</p>
-</div>
-<p>For <code>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io</code> repos, GitHub Pages
-auto-enables on the default branch. If for some reason it didn't:
-<strong>Settings → Pages → Source: <code>main</code></strong> in the repo UI, or via API:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;/repos/&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io/pages&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-f<span class="w"> </span><span class="s1">&#39;source[branch]=main&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;source[path]=/&#39;</span>
-</code></pre></div>
-<p>Either way: GitHub Pages serves <code>.json</code> as <code>application/json</code> by
-default — no extra config. The file is live at
-<code>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json</code> within
-~30 seconds.</p>
-<h3 id="hosting-elsewhere-vercel-cloudflare-nginx">Hosting elsewhere (Vercel / Cloudflare / nginx)<a class="headerlink" href="#hosting-elsewhere-vercel-cloudflare-nginx" title="Permanent link">&para;</a></h3>
-<p>Same constraints — HTTPS, <code>Content-Type: application/json</code>, no
-redirects, no auth — drop <code>assetlinks.json</code> at <code>/.well-known/assetlinks.json</code>
-of your hostname's web root. Platform-specific notes are out of scope
-here; the rest of the recipe is unchanged.</p>
+<p>Restore only works onto a <strong>fresh</strong> vault — <code>restoreFromPhrase</code> throws
+<code>RecoveryNotAllowedException</code> if a wallet already exists, so the user can't
+silently overwrite one. Sign out first to restore over an existing device.</p>
+<p><strong>Verify:</strong> on a device with no wallet, paste a known good phrase → balance
+resolves after sync. Paste a phrase with one word wrong → <code>InvalidRecoveryPhraseException</code>.</p>
 <hr />
-<h2 id="step-4-point-your-app-at-the-rpid-then-verify">Step 4 — Point your app at the rpId, then verify<a class="headerlink" href="#step-4-point-your-app-at-the-rpid-then-verify" title="Permanent link">&para;</a></h2>
-<p>First, update your app's <code>PasskeyConfig</code> so the in-binary rpId matches
-the domain that now serves your <code>assetlinks.json</code>. In a starter built
-from <code>kuiralabs/kuira-starter-android</code>, that's the <code>PASSKEY_RP_ID</code>
-constant in <code>app/src/main/java/.../di/PasskeyConfigModule.kt</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PASSKEY_RP_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;user-or-org&gt;.github.io&quot;</span>
+<h2 id="step-4-tune-the-auto-lock-timing-optional">Step 4 — Tune the auto-lock timing (optional)<a class="headerlink" href="#step-4-tune-the-auto-lock-timing-optional" title="Permanent link">&para;</a></h2>
+<p>The session auto-lock is what drops the cached seed <strong>and scrubs a revealed
+phrase</strong> from memory. Its timing is host-tunable — inject <code>SessionLock</code> and set
+the windows (defaults: 5 min idle, 30 s background grace):</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Inject</span><span class="w"> </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">sessionLock</span><span class="p">:</span><span class="w"> </span><span class="n">SessionLock</span>
+
+<span class="c1">// e.g. a stricter wallet: lock after 2 min idle, 10 s after backgrounding</span>
+<span class="n">sessionLock</span><span class="p">.</span><span class="na">idleTimeoutMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">60</span><span class="n">_000L</span>
+<span class="n">sessionLock</span><span class="p">.</span><span class="na">backgroundGraceMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="n">_000L</span>
 </code></pre></div>
-<p>Then verify the hosting:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-I<span class="w"> </span>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json
-<span class="c1"># Expected:</span>
-<span class="c1"># HTTP/2 200</span>
-<span class="c1"># content-type: application/json</span>
-</code></pre></div>
-<p>Then on device:</p>
-<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>uninstall<span class="w"> </span>&lt;your-package-name&gt;<span class="w">          </span><span class="c1"># if a previous build is installed</span>
-./gradlew<span class="w"> </span>:app:installDebug
-</code></pre></div>
-<p>Launch the app and tap <strong>Forge</strong>. You should get a biometric prompt →
-success → Sigil panel transitions to <code>Forged</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Uninstall before re-installing</p>
-<p><code>adb install -r</code> does NOT refresh credential-manager state on some
-devices. After hosting changes or rpId changes, always
-<code>adb uninstall &lt;pkg&gt;</code> first.</p>
-</div>
+<p><strong>Verify:</strong> reveal the phrase, then leave the app idle past <code>idleTimeoutMs</code> —
+the session locks and the phrase is gone on return (re-auth required).</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>If Forge fails, almost every symptom maps to the same root cause:</p>
 <table>
 <thead>
 <tr>
 <th>Symptom</th>
-<th>First thing to check</th>
+<th>Likely cause</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>RP_ID_MISMATCH</code></td>
-<td><code>curl -I</code> returns 200 with <code>content-type: application/json</code>?</td>
+<td><code>revealPhrase</code> throws immediately, no biometric</td>
+<td>No wallet on this device yet — nothing to reveal.</td>
+<td>Forge / restore a Sigil first (see "Set up Sigil identity").</td>
 </tr>
 <tr>
-<td><code>PRF authentication failed</code></td>
-<td>Same — the passkey API never reaches PRF if assetlinks doesn't validate</td>
+<td>Reveal prompt appears then nothing happens</td>
+<td>User dismissed the biometric — surfaces as <code>AuthenticationCancelledException</code>.</td>
+<td>Expected; catch it and stay on the consent step (no error).</td>
 </tr>
 <tr>
-<td>Biometric prompt appears, dismisses silently</td>
-<td>Same</td>
+<td>Screenshot still captures the words</td>
+<td><code>FLAG_SECURE</code> not applied — host isn't an <code>Activity</code>, or you set it on the wrong window.</td>
+<td>Set it on the hosting <code>Activity</code>'s window in a <code>DisposableEffect</code>, as shown.</td>
 </tr>
 <tr>
-<td>Worked before, broken after <code>adb install -r</code></td>
-<td><code>adb uninstall &lt;pkg&gt;</code> then re-install — credential-manager state goes stale</td>
+<td><code>restoreFromPhrase</code> throws <code>RecoveryNotAllowedException</code></td>
+<td>A wallet already exists on the device.</td>
+<td>Sign out first; restore targets a fresh vault by design.</td>
+</tr>
+<tr>
+<td>Restored wallet shows zero balance</td>
+<td>Balance hasn't synced yet, or the phrase reconstructs a different (empty) wallet.</td>
+<td>Wait for sync; confirm the phrase matches the funded wallet.</td>
 </tr>
 </tbody>
 </table>
-<p>Common <code>curl -I</code> red flags:</p>
-<ul>
-<li><code>301</code> / <code>302</code> — passkey API doesn't follow redirects; fix the redirect</li>
-<li><code>403</code> / <code>401</code> — allow <code>/.well-known/*</code> through your auth</li>
-<li><code>content-type: text/html</code> — force <code>application/json</code> via your hosting config</li>
-<li><code>404</code> on GitHub Pages, file IS in the repo — Jekyll silently stripped
-  the <code>.well-known/</code> dotfile path. Add an empty <code>.nojekyll</code> at repo
-  root, push, wait ~30s for redeploy (see Step 3 Case B for the full
-  explanation)</li>
-<li><code>404</code>, file is NOT in the repo / wrong hostname — re-check your push
-  landed on the served branch, and that the <code>rpId</code> matches the
-  hostname you <code>curl</code>ed</li>
-</ul>
-<p>If the <code>curl</code> looks clean and Forge still fails, paste your hosting URL
-+ package name + fingerprint into Google's
-<a href="https://developers.google.com/digital-asset-links/tools/generator">Statement List Tester</a>
-— it reports any mismatch with a precise error string.</p>
-<hr />
-<h2 id="when-you-ship">When you ship<a class="headerlink" href="#when-you-ship" title="Permanent link">&para;</a></h2>
-<p>The setup above covers development with debug builds. Shipping to the
-Play Store or distributing a signed release build to testers needs a
-release keystore, <code>keystore.properties</code> wiring, and the release
-fingerprint added to the same <code>assetlinks.json</code>. That path is not
-covered here;
-<a href="https://developer.android.com/build/building-cmdline#signing_report"><code>./gradlew :app:signingReport</code></a>
-+ <a href="https://developer.android.com/build/build-variants#signing">the AGP signing config docs</a>
-cover the missing pieces.</p>
 <hr />
 <h2 id="whats-next">What's next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><a href="../set-up-sigil-identity/">Set up Sigil identity</a></strong> — now that the
-  passkey domain is bound, wire <code>SigilStatusPanel</code> and forge your
-  first sigil.</li>
+<li><strong><a href="../set-up-sigil-identity/">Set up Sigil identity</a></strong> — the passkey-derived
+  identity + wallet this phrase reconstructs.</li>
+<li><strong><a href="../back-up-wallet-across-devices/">Back up wallet data across devices</a></strong> —
+  the automatic, provider-backed recovery layer this sits beneath.</li>
+<li><strong><a href="../../security/">Security</a></strong> — the full recovery model and threat model.</li>
 </ul>
 
 
