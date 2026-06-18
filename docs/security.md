@@ -123,6 +123,13 @@ Please report these to the appropriate upstream project, not to us:
 - **Accidental seed exposure in logs:** Seed and PRF-derived material is
   never logged. Debug log lines that touch sensitive material are gated
   behind `BuildConfig.DEBUG` so R8 strips them from release builds.
+- **Total device + account loss (opt-in sovereign exit):** A user who has
+  exported their 24-word BIP-39 recovery phrase can restore the exact
+  wallet on any device with no passkey, Google account, or cloud backup in
+  the loop. The phrase is derived on demand from the same entropy that
+  backs the seed — never stored or uploaded — and the reveal screen runs
+  under `FLAG_SECURE` (no screenshots / recents thumbnail) with a clipboard
+  that auto-clears.
 
 ### What Kuira does NOT protect against
 
@@ -136,21 +143,23 @@ We're explicit about this because hiding it isn't honest:
 - **Malicious dApp in the same process:** dApps that integrate the SDK
   share the same Android process. There is no inter-dApp sandboxing
   beyond Android's normal process isolation. Vet the dApps you integrate.
-- **User-side passkey loss:** If a user loses their Google Password
-  Manager account *and* their Block Store backup is unrecoverable, funds
-  are unrecoverable — sigil-derived wallets currently have no sovereign
-  exit path. Recovery-phrase export (BIP-39 mnemonic display) is on the
-  roadmap but **not yet shipped in `{{ kuira_version }}`**. Until then,
-  the recovery path rides Google's availability. (The next-generation
-  Sigil V2 architecture, announced on the [home page](index.md#whats-coming-next-sigil-v2),
-  ships PIN-based recovery via an opaque cloud bucket as a separate
-  track.)
-- **Session-cache theft after unlock:** Once a sigil session is unlocked,
-  the decrypted seed lives in `MidnightSdkProvider`'s cached SDK instance.
-  Subsequent value-bearing calls do not re-prompt for biometric.
-  Auto-lock (idle timeout, background timeout, screen-lock observer) is
-  on the roadmap but **not yet shipped**. A borrowed-while-unlocked
-  device is a real risk.
+- **User-side passkey loss with no exported recovery phrase:** A sovereign
+  exit now exists — the user can reveal their 24-word BIP-39 recovery
+  phrase (Settings → recovery phrase, biometric-gated) and restore the
+  exact wallet on any device with no passkey, account, or backup involved.
+  But it is **opt-in and one-way**: until the user deliberately reveals and
+  writes the phrase down, recovery still rides their Google Password
+  Manager passkey + Block Store backup. A user who loses the passkey AND
+  the backup AND never exported the phrase has unrecoverable funds. (Sigil
+  V2, announced on the [home page](index.md#whats-coming-next-sigil-v2),
+  adds PIN-based recovery via an opaque cloud bucket as a separate track.)
+- **Session-cache theft inside the unlock window:** Once a sigil session is
+  unlocked, the decrypted seed lives in `MidnightSdkProvider`'s cached SDK
+  instance, and value-bearing calls within the active window do not
+  re-prompt for biometric. Auto-lock now bounds that window — the session
+  locks on an idle timeout, on backgrounding, and on a device screen-lock,
+  plus a manual "lock now" — but a device borrowed *while still unlocked*
+  remains a real risk until the lock fires.
 - **BLS proving parameters supply chain:** The SDK fetches Midnight's
   protocol-level proving keys (BLS params + wallet / zswap / Dust
   circuits) from `midnight-s3-fileshare-dev-eu-west-1`, a Midnight-team

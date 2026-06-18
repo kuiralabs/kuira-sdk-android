@@ -11,6 +11,14 @@ This is a direction, not a commitment to dates or ordering.
 
 ## Recently shipped
 
+- **Sovereign recovery phrase** — the user can reveal a standard 24-word BIP-39
+  phrase and restore the exact wallet on any device with no passkey, account, or
+  backup in the loop; opt-in, one-way, biometric-gated, shown on a `FLAG_SECURE`
+  screen with an auto-clearing clipboard. A public `WalletRecovery` contract lets
+  a dApp build its own reveal/restore UI instead of the bundled Settings panel.
+- **Session auto-lock** — the unlocked sigil session locks on an idle timeout, on
+  backgrounding, and on a device screen-lock, plus a manual "lock now", so the
+  decrypted seed isn't cached open indefinitely on a borrowed device.
 - **Lossless typed ledger reads** — `MidnightContract.ledger()` returns typed,
   validated contract state (`getUint64`, `getBoolean`, `getBytes`, `getVectorUint8`,
   …) instead of hand-parsed cell hex.

@@ -59,6 +59,16 @@ Benefit-first — the capabilities your app can offer the people using it.
     switch devices and the wallet comes back *(encrypted device-transfer
     backup under the hood)*.
 
+-   :material-key-variant:{ .lg .middle } __A sovereign 24-word backup, if they want one__
+
+    ---
+
+    Beyond the automatic passkey recovery, the user can reveal a standard
+    24-word recovery phrase and restore the exact wallet on **any** device —
+    no passkey, account, or cloud in the loop. Opt-in and one-way; shown
+    once behind a biometric on a screenshot-blocked screen, with a
+    clipboard that auto-clears.
+
 -   :material-cloud-sync:{ .lg .middle } __Wallet data follows you across devices__
 
     ---
