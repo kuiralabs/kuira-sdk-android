@@ -1197,6 +1197,14 @@ the need.</p>
 <hr />
 <h2 id="recently-shipped">Recently shipped<a class="headerlink" href="#recently-shipped" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>Sovereign recovery phrase</strong> — the user can reveal a standard 24-word BIP-39
+  phrase and restore the exact wallet on any device with no passkey, account, or
+  backup in the loop; opt-in, one-way, biometric-gated, shown on a <code>FLAG_SECURE</code>
+  screen with an auto-clearing clipboard. A public <code>WalletRecovery</code> contract lets
+  a dApp build its own reveal/restore UI instead of the bundled Settings panel.</li>
+<li><strong>Session auto-lock</strong> — the unlocked sigil session locks on an idle timeout, on
+  backgrounding, and on a device screen-lock, plus a manual "lock now", so the
+  decrypted seed isn't cached open indefinitely on a borrowed device.</li>
 <li><strong>Lossless typed ledger reads</strong> — <code>MidnightContract.ledger()</code> returns typed,
   validated contract state (<code>getUint64</code>, <code>getBoolean</code>, <code>getBytes</code>, <code>getVectorUint8</code>,
   …) instead of hand-parsed cell hex.</li>
