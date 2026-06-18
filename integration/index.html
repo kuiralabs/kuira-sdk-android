@@ -666,6 +666,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Add the dependency — one line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choose-your-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your level
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1294,6 +1311,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Add the dependency — one line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choose-your-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choose your level
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1501,7 +1535,7 @@ source is the ground truth.</p>
 <li><strong>Indexer + chain client</strong> — block / state / event subscription, backed by Midnight's official indexer.</li>
 <li><strong>App-state cloud backup</strong> — your dApp's per-user data rides the sigil's Block Store backup automatically. The backup blob is PRF-encrypted client-side before Google's Block Store touches it.</li>
 </ul>
-<p>You can use it headless or pull in the panel UI — see the dependency choice below.</p>
+<p>Drop in the prebuilt UI, build your own on the same contracts, or go fully headless — see <em>Choose your level</em> below.</p>
 <hr />
 <h2 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permanent link">&para;</a></h2>
 <table>
@@ -1544,6 +1578,35 @@ source is the ground truth.</p>
 </table>
 <hr />
 <h2 id="2-add-the-dependency-one-line">2. Add the dependency — <em>one line</em><a class="headerlink" href="#2-add-the-dependency-one-line" title="Permanent link">&para;</a></h2>
+<h3 id="choose-your-level">Choose your level<a class="headerlink" href="#choose-your-level" title="Permanent link">&para;</a></h3>
+<p>Kuira meets you at the level you want — and the dependency you pick reflects it:</p>
+<ul>
+<li><strong>Drop in the prebuilt UI</strong> — <code>io.github.kuiralabs:dapp-ui</code>. Ready-made,
+  themeable Compose components — the <strong>wallet pill</strong>, the <strong>sigil pill</strong>, and the
+  <strong>Settings panel</strong> (network, recovery phrase, lock, sign-out), all in one
+  <code>PanelBar</code> — wired to SDK state out of the box with safe security defaults
+  (<code>FLAG_SECURE</code>, biometric gates, an auto-clearing clipboard). Restyle with a
+  colors object; you write no wallet logic. The fastest path — see
+  <a href="../recipes/set-up-sigil-identity/">Set up Sigil identity</a>.</li>
+<li><strong>Build your own experience</strong> — also <code>dapp-ui</code> (its ViewModels) or
+  <code>midnight-sdk</code>. Render your own screens on the same public contracts the pills
+  are built on — <code>WalletRecovery</code>, <code>WalletPanelViewModel</code>,
+  <code>SigilPanelViewModel</code> / <code>SigilSession</code>, <code>MidnightContract</code>, <code>MidnightSdk</code>. The
+  SDK keeps the hard parts (crypto, secure vault, on-device proving, sync,
+  session-lock); the screens are yours. Every bundled component is just the first
+  consumer of a contract you can call directly — e.g.
+  <a href="../recipes/reveal-and-restore-the-recovery-phrase/">Reveal &amp; restore the recovery phrase</a>.</li>
+<li><strong>Go headless</strong> — <code>io.github.kuiralabs:midnight-sdk</code>. The full wallet, identity,
+  and contract surface with <strong>no Compose</strong> pulled in; you build the UI layer
+  top-to-bottom. See <a href="#7-going-headless-no-panel">§ 7 Going headless</a>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Theming today, more tuning coming</p>
+<p>The prebuilt components expose theming now plus a small set of behavioral
+knobs; richer per-component tuning hooks are on the roadmap. Until a knob
+exists, the build-your-own path gives full control of that surface — the
+contracts carry no UI policy.</p>
+</div>
 <p>Maven Central is already in every Android project's defaults, so there's no repo
 config to add. In <code>app/build.gradle.kts</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
@@ -1565,14 +1628,14 @@ config to add. In <code>app/build.gradle.kts</code>:</p>
 <span class="p">}</span>
 
 <span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ── Pick ONE Kuira entry ──</span>
+<span class="w">    </span><span class="c1">// ── Pick ONE Kuira entry (see &quot;Choose your level&quot; above) ──</span>
 <span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="c1">// With the wallet + sigil PANEL (Compose). Use this for BBoard-style</span>
-<span class="w">    </span><span class="c1">// apps that want the wallet UI dropped in.</span>
+<span class="w">    </span><span class="c1">// Prebuilt pills + the ViewModels behind them (Compose). Drop the wallet</span>
+<span class="w">    </span><span class="c1">// and sigil panels in as-is, OR build your own UI on the same contracts.</span>
 <span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha03&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="c1">// OR — headless (no Compose pulled by the SDK). For dApps building their</span>
-<span class="w">    </span><span class="c1">// own UI top-to-bottom.</span>
+<span class="w">    </span><span class="c1">// OR — headless core, no Compose pulled in. For dApps building the whole</span>
+<span class="w">    </span><span class="c1">// UI layer top-to-bottom.</span>
 <span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha03&quot;)</span>
 
 <span class="w">    </span><span class="c1">// Hilt processor — required, the SDK is Hilt-first</span>
