@@ -19,6 +19,16 @@ the user's own Google Drive and restored on a new device, so the first
 sync on a fresh install is a fast delta instead of replaying the whole
 chain from genesis.
 
+> **Seeing a genesis replay on PreProd?** This recipe is the fix. On a
+> long-lived network like **PreProd** the chain history is large, so a wallet's
+> first sync **replays from genesis — minutes, not seconds.** Cloud backup is
+> what turns that into a fast delta restore. The catch: the restore only runs
+> once the one-time OAuth setup below is done. **Without a registered OAuth
+> client, cloud sync silently fails with `UNREGISTERED_ON_API_CONSOLE`, so
+> PreProd keeps replaying from genesis on every fresh sync** — even though the
+> wallet itself works fine. If you expected the cloud restore to kick in and it
+> didn't, this setup is the missing piece.
+
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/back-up-wallet-across-devices.md"
      data-task="Enable cross-device wallet-data backup in this Kuira app: register a Google Cloud OAuth client for the drive.appdata scope (Android client with the app's package name + signing SHA-1), enable the Google Drive API, and verify the wallet panel's cloud sync action succeeds without UNREGISTERED_ON_API_CONSOLE."></div>
 

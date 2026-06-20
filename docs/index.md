@@ -42,7 +42,7 @@ The fastest way in: a complete, runnable app you make your own. Copy the prompt 
 <span class="kuira-template__eyebrow">Starter</span>
 <h3 class="kuira-template__title">Kuira Starter</h3>
 <p class="kuira-template__desc">
-A minimal counter dApp — Sigil identity, embedded wallet, and a 6-line Compact contract you deploy and increment on-chain. ~250 lines, also a GitHub template.
+A minimal counter dApp — Sigil identity, embedded wallet, and a 6-line Compact contract you deploy and increment on-chain. ~700 lines, also a GitHub template.
 </p>
 <div class="kuira-template__actions" data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-starter-android/main/README.md" data-task="Clone the Kuira Starter Android template and get it running on a device, then help me customize it."></div>
 </div>
@@ -219,8 +219,6 @@ future release.
 | Gap | Workaround today | Closes in |
 |---|---|---|
 | **No Compact authoring deep-dive on the Kuira side** — the SDK consumes compiled `.compact` artifacts but does not teach the full Compact language. Witnesses, ZK patterns, selective-disclosure idioms, multi-party state — all live in the Midnight project's documentation, not Kuira's. | Start with the [Hello Compact](recipes/hello-compact.md) recipe for the minimum-viable counter and the toolchain pin matrix, then follow it to the [official Midnight contract examples](https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts) for everything beyond. | Closed by intent — the Kuira SDK is the runtime; Midnight owns the language. |
-| **No recovery-phrase export (BIP-39 mnemonic)** — Sigil-derived wallets currently have no sovereign exit; recovery rides Google account availability. | Keep access to your Google account. PRF derivation is deterministic, so the wallet re-derives from the passkey. | `alpha03` |
-| **No session auto-lock** — once a Sigil session is unlocked, value-bearing calls don't re-prompt for biometrics until the process is killed. | Treat an unlocked session as funds-on-screen. Sign out from the Sigil panel to lock manually. | `alpha03` |
 | **SDK source not browsable on GitHub** — the Dokka API reference doesn't link to source. | A `-sources.jar` ships next to every artifact on Maven Central; Android Studio / IntelliJ auto-attach it, so you can step into the implementation as usual. | By design — sources travel with the artifacts |
 | **BLS proving params from Midnight's dev S3 bucket** — `midnight-s3-fileshare-dev-eu-west-1`, a supply-chain assumption labeled "dev." | None — this lives at the protocol-team layer; per-contract proving keys are unaffected (each dApp hosts its own). | When Midnight publishes a production URL |
 | **Android only** — no iOS, no React Native bridge, no JS interop. | If you need cross-platform, build the same surface twice for now. | iOS support is planned |

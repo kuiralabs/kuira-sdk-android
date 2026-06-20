@@ -156,8 +156,10 @@ If you want to react to sigil state transitions, pass an
 ```kotlin
 SigilStatusPanel(
     onStatusChange = { status ->
-        // status is com.midnight.kuira.dapp.sigil.SigilStatus,
-        // one of None / BackupAvailable / Creating / Forged / Error.
+        // status is com.midnight.kuira.dapp.sigil.SigilStatus — one of:
+        // Initializing, None, BackupAvailable, Creating(stage),
+        // Forged(did, credentialId, publicKeyHex), Error(message).
+        // Initializing is the first value emitted while the panel bootstraps.
     },
 )
 ```
@@ -166,18 +168,29 @@ If you want to restyle the panel, pass a custom `SigilPanelColors`
 or a non-default `Modifier`. Both have sensible defaults; override
 only when you need to.
 
-Behaviourally, the panel renders one of four states:
+Behaviourally, the panel renders one of six states:
 
+- **`Initializing`** — first value emitted while the panel bootstraps;
+  shows a loading state.
 - **`None`** — no sigil on this device; surfaces a **Forge** button.
 - **`BackupAvailable`** — Block Store knows about a previous sigil;
   surfaces a **Restore** button.
+- **`Creating(stage)`** — a forge or restore is in flight; `stage` is a
+  human-readable progress label.
 - **`Forged`** — sigil exists and is unlocked; renders DID, balance,
   copy actions.
-- **`Error`** — recoverable error; shows the message + a retry path.
+- **`Error(message)`** — recoverable error; shows the message + a retry path.
 
 **Verify:** launch your app on an Android 13+ device with a screen
-lock. You should see the panel render one of the four states based
+lock. You should see the panel render one of these states based
 on Block Store presence.
+
+!!! tip "Showing the sigil + wallet together"
+    This recipe drops in the **sigil** panel on its own. To show the sigil
+    **and** the wallet as a pair of draggable floating chips — the current
+    canonical integration — host both in one `PanelBar(floating = true)`
+    rather than placing the panels inline. `PanelBar` drives the same
+    `SigilPanelViewModel`, so everything in this recipe still applies.
 
 ---
 

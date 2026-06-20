@@ -30,6 +30,21 @@ This is a direction, not a commitment to dates or ordering.
 - **`kuiraDoctor` preflight** — build-time checks (minSdk, debug-cleartext,
   `assetlinks.json` reachability, Compact runtime pin, bundled-runtime layer) that
   catch misconfigurations before they ship.
+- **Floating wallet & sigil pills** — opt-in draggable wallet and sigil chips
+  (`PanelBar(floating = true)`) that dock to a screen edge as peek tabs and resize on
+  long-press, so a dApp gets a movable wallet/identity surface with no custom UI.
+- **Themeable wallet UI** — a settings palette picker with built-in themes (Kuira
+  Monochrome, Catppuccin, Nord, Dracula, Tokyo Night, Rosé Pine), persisted across restarts.
+- **Frosted-glass design system** — reusable `GlassPanel` frost components over an
+  animated starfield, shared across the wallet, settings, and recovery screens.
+- **Redesigned send flow** — amount presets, a clearer review step, and honest in-flight
+  copy ("could take longer; keeps running if you leave").
+- **Receive notifications** — background push when NIGHT arrives, carrying the real
+  per-transaction amount from UTXO provenance (no false "change" alerts).
+- **Faster, streamed cold sync** — shielded-state cold sync streams to disk to avoid GC
+  pauses and UI freezes on the first sync.
+- **Cloud-backup controls** — fully disable dust and app-state cloud backups; disabling
+  revokes the cloud grant and deletes the remote blobs.
 
 ## Contract ergonomics
 

@@ -207,6 +207,7 @@ descriptors typecheck against the bytecode.
 ## Step 3 — Deploy
 
 ```kotlin
+// ProvingKeyManager lives in com.midnight.kuira.core.compact.proving.
 // Required once before the first deploy/call: stage your circuit's proving
 // keys (+ BLS params) from assets where the on-device prover looks. Idempotent.
 ProvingKeyManager(context).installCircuitKeysFromAssets()
@@ -221,41 +222,64 @@ confirm it, and returns the contract address. Re-use this address for
 every subsequent `MidnightContract.create(sdk.config) { … address = address }`
 call.
 
-**Verify:** `address` should be a 64-character hex string. Querying
-`sdk.indexerClient.queryContractState(address)` should return a
-non-null state.
+**Verify:** `address` should be a 64-character hex string. Rebuild the
+handle with `this.address = address` and call `contract.ledger()` — it
+returns the deployed contract's initial state.
 
 ---
 
 ## Step 4 — Call a circuit
 
+Circuit arguments are **positional varargs** in the circuit's declared
+order — plain Kotlin values, auto-converted to JS. The first argument is
+the circuit name:
+
 ```kotlin
-val result = contract.call(
-    circuit = "myCircuit",
-    args = mapOf(
-        "playerNum" to 1L,
-        "deadline" to (System.currentTimeMillis() / 1000 + 600),  // (1)
-    ),
-)
+// e.g. a counter's `increment(by: Uint64)`:
+val receipt = contract.call("increment", 1L)
+
+// with progress feedback (proving → balancing → submitting):
+val receipt = contract.call("increment", 1L) { stage ->
+    Log.d("MyApp", "call stage: $stage")   // ContractCallStage
+}
 ```
 
-1. **Avoid wall-clock for chain deadlines.** Use the latest block
-   timestamp from the indexer — wall-clock drift between the dApp
-   and the chain can blow your deadline calculation. See the SDK's
-   `wallet.tip()` helper for the chain-time-anchored value.
-
-The call:
+`call(circuitName, vararg args, onProgress)`:
 
 1. Generates the ZK proof using the artifacts you synced in step 1.
 2. Submits the resulting transaction via the wallet.
 3. Waits for indexer confirmation.
-4. Returns the post-call ledger state.
+4. Returns a **`TransactionReceipt`** (tx hash, status, timings) — **not**
+   the new state. Read state separately with `contract.ledger()` or
+   `observeLedger()` (below).
 
-For long-running circuits (sub-second to a few seconds), wire up
-`TransactionBalancer` progress callbacks for UX feedback.
+!!! warning "Anchor deadlines to chain time, not the device clock"
+    If a circuit takes a deadline argument, derive it from the latest
+    **block timestamp**, not `System.currentTimeMillis()` — wall-clock
+    drift between the device and the chain can blow the deadline and get
+    the transaction rejected.
 
 **Verify:** the transaction confirms within ~10s on PREPROD. Query
 `contract.ledger()` and check the field your circuit mutates.
+
+---
+
+## Step 5 — React to state changes (optional)
+
+Rather than poll `ledger()` in a loop, `observeLedger()` emits the
+current state immediately, then a fresh `MidnightLedger` every time the
+contract's on-chain state actually changes:
+
+```kotlin
+contract.observeLedger().collect { ledger ->
+    val count = ledger.getUint64("count")   // your circuit's field
+    // update UI…
+}
+```
+
+It's backed by the chain's block stream (falling back to polling on a raw
+config), and de-duplicates the raw state before decoding — an unchanged
+block costs only a state fetch, not a re-decode.
 
 ---
 
@@ -273,6 +297,11 @@ For long-running circuits (sub-second to a few seconds), wire up
 
 ## What's next
 
+- **[Back up wallet data across devices](back-up-wallet-across-devices.md)**
+  — testing on **PreProd**? The wallet's first sync replays from genesis
+  (slow); cloud backup turns it into a fast delta restore. Set it up *before*
+  you test on PreProd so you're not stuck watching a genesis replay — and note
+  it needs a one-time Google OAuth client or it silently no-ops.
 - **Browse the [API reference](../api/)** for the full `MidnightContract`,
   `MidnightWallet`, and circuit-execution surface.
 - **[Security § Verifying releases](../security.md#verifying-releases)**

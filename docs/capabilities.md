@@ -85,6 +85,20 @@ Benefit-first — the capabilities your app can offer the people using it.
     Point the app at undeployed, preview, preprod, or mainnet by
     configuration — no code change to move between networks.
 
+-   :material-palette:{ .lg .middle } __A wallet that fits your app's look__
+
+    ---
+
+    Pick from built-in palettes — Kuira Monochrome, Catppuccin, Nord,
+    Dracula, Tokyo Night, Rosé Pine — and the choice sticks across restarts.
+
+-   :material-bell-ring:{ .lg .middle } __Know the moment they're paid__
+
+    ---
+
+    Background notifications when NIGHT lands, showing the real
+    per-transaction amount — no false "change" alerts.
+
 </div>
 
 ---
@@ -145,6 +159,14 @@ The DevX side — wired so you write app logic, not plumbing.
 
     Source jars ship beside every AAR on Maven Central; native libraries
     are 16 KB-page aligned for Android 15+ / Play readiness.
+
+-   :material-drag-variant:{ .lg .middle } __Drop-in floating wallet & sigil pills__
+
+    ---
+
+    `PanelBar(floating = true)` gives draggable wallet + sigil chips that
+    dock to a screen edge as peek tabs and resize on long-press — a movable
+    wallet/identity surface with no custom UI to build.
 
 </div>
 

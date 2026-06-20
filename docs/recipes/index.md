@@ -54,6 +54,14 @@ agent and let it execute the recipe in your project.
     Bootstrap a passkey-derived sigil session: DID + wallet seed from
     a single biometric. ~15 minutes.
 
+-   :material-palette: **[Theme the wallet & sigil panels](theme-the-wallet-panel.md)**
+
+    ---
+
+    Brand the drop-in pills: colour via a custom `WalletPanelColors`,
+    typeface via an inherited `LocalTextStyle`. The panel is
+    brand-neutral, not brand-locked. ~10 minutes.
+
 -   :material-language-typescript: **[Hello Compact — write your first contract](hello-compact.md)**
 
     ---

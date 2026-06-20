@@ -91,7 +91,7 @@ plugins {
 
 android {
     namespace = "com.example.mydapp"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId = "com.example.mydapp"
         minSdk = 30
@@ -207,6 +207,16 @@ locally in Docker: instant, free, and ephemeral (reset it any time). It's the
 recommended loop for day-to-day development; switch to PREPROD only when you want
 the hosted chain.
 
+!!! warning "PreProd's first sync replays from genesis — set up cloud backup first"
+    Localnet is instant. **PreProd is a long-lived chain with a large history**, so
+    a wallet's *first* sync there replays from genesis — minutes, not seconds. To
+    make it a fast delta instead, set up
+    [cloud backup](recipes/back-up-wallet-across-devices.md) **before** you switch
+    to PreProd. It needs a one-time Google OAuth client (your app's package +
+    signing SHA-1); without it, cloud sync silently fails
+    (`UNREGISTERED_ON_API_CONSOLE`) and PreProd keeps replaying from genesis on
+    every fresh sync — the wallet works, it's just slow.
+
 ### 5a. Start the localnet — the Midnight Wallet CLI (recommended)
 
 The recommended way to run and fund a localnet is the **Midnight Wallet CLI**
@@ -258,8 +268,7 @@ The SDK already maps `UNDEPLOYED` to the right host per device type
   and are skipped automatically.
 
   The example apps apply it exactly this way — see them for a working reference:
-  [Kicks](https://github.com/kuiralabs/midnight-kicks/blob/main/app/build.gradle.kts),
-  [BBoard](https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts),
+  [BBoard](https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts)
   and the [starter](https://github.com/kuiralabs/kuira-starter-android/blob/main/app/build.gradle.kts).
 
   Prefer a one-off without the plugin? Run it by hand:
@@ -291,8 +300,8 @@ debug-only manifest** — release builds stay HTTPS-clean:
 ## 6. Minimal "Hello World" — deploy + call
 
 Your `Application` is `@HiltAndroidApp`, and your activity is a Hilt'd
-**`FragmentActivity`** — `AppCompatActivity` is the usual choice, since
-`SigilStatusPanel` hosts a biometric prompt that needs a FragmentActivity host:
+**`FragmentActivity`** — `AppCompatActivity` is the usual choice, since the
+panel hosts a biometric prompt that needs a FragmentActivity host:
 
 ```kotlin
 @HiltAndroidApp
@@ -303,17 +312,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column {
-                // Drop-in SDK panels — each owns its own state. The wallet
-                // panel builds the SDK (one biometric) the first time it shows.
-                SigilStatusPanel()   // forge / restore identity (DID)
-                WalletStatusPanel()  // balance, receive, dust register, network
-                MyDappScreen()       // your UI
+            Box(modifier = Modifier.fillMaxSize()) {
+                MyDappScreen()  // your UI underneath
+
+                // Drop-in combined sigil + wallet UI: a pair of draggable
+                // floating chips that own their own state. The wallet pill
+                // builds the SDK (one biometric) the first time it shows, and
+                // owns network selection — its pick drives the SDK's durable
+                // NetworkPreferenceStore, which your screen can follow.
+                PanelBar(
+                    floating = true,
+                    network = selectedNetwork,
+                    onNetworkChange = ::selectNetwork,
+                )
             }
         }
     }
 }
 ```
+
+This is the canonical integration every reference app uses — see
+[Set up Sigil identity](recipes/set-up-sigil-identity.md). (The lower-level
+`SigilStatusPanel` / `WalletStatusPanel` are still available if you want to
+place each panel inline yourself.)
 
 Your dApp logic gets the SDK from the injected `MidnightSdkProvider` — observe
 `sdkProvider.sdk` (a `StateFlow<MidnightSdk?>`, non-null once the wallet panel
