@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DustCtime</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">0.1.0-alpha04
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:compact-engine:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:compact-engine:dokkaHtmlPartial/release" data-filter=":core:compact-engine:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="compact-engine::com.midnight.kuira.core.compact/DustCtime///PointingToDeclaration//30582046">
+  <div class="breadcrumbs"><a href="../../index.html">compact-engine</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.compact</a><span class="delimiter">/</span><span class="current">DustCtime</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Dust</span><wbr><span><span>Ctime</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">DustCtime</a></div><p class="paragraph">Computes the <code class="lang-kotlin">ctime</code> a dust spend anchors to, keeping it inside the node's dust validity window so the spend is neither rejected as stale nor as out-of-window.</p><p class="paragraph">The node validates every dust action against <code class="lang-kotlin">ctime ∈ [tblock - grace, tblock]</code> (<code class="lang-kotlin">MalformedTransaction::OutOfDustValidityWindow</code>, node error 171; the check lives in the ledger's <code class="lang-kotlin">dust.rs</code> and reads <code class="lang-kotlin">params.dust.dust_grace_period</code>, default 3h). On top of the window check, the spend's committed dust root must equal <code class="lang-kotlin">dust.root_history.get(ctime)</code>.</p><p class="paragraph">Two failure modes pull <code class="lang-kotlin">ctime</code> in opposite directions, so neither a fixed tip nor a fixed sync-time anchor is safe alone:</p><ul><li><p class="paragraph"><strong>Tip anchor → error 170 (</strong><code class="strong lang-kotlin"><strong>InvalidDustSpendProof</strong></code><strong>).</strong> On an active chain the tip     races ahead of our locally-replayed dust state between sync and balance. Anchoring     <code class="lang-kotlin">ctime</code> to the tip resolves a <i>newer</i> root than the one our proof commits to, so the     node rejects the spend (#287). The cure was to anchor to the dust state's <code class="lang-kotlin">sync_time</code>     (the block time of the last replayed dust event), whose predecessor lookup lands on     <i>our</i> root.</p></li><li><p class="paragraph"><strong>Sync-time anchor → error 171 (</strong><code class="strong lang-kotlin"><strong>OutOfDustValidityWindow</strong></code><strong>).</strong> When dust events are     sparse (an idle wallet on a long-running chain), <code class="lang-kotlin">sync_time</code> freezes at the last     event's time — hours old — while the tip advances. <code class="lang-kotlin">ctime = sync_time</code> then drifts     more than <code class="lang-kotlin">grace</code> behind <code class="lang-kotlin">tblock</code> and the node rejects it as out-of-window.</p></li></ul><p class="paragraph">The resolution: keep <code class="lang-kotlin">sync_time</code> while it is <i>recent</i> (a racing tip with unapplied events is always recent → preserves the 170 fix), and clamp toward the tip only once <code class="lang-kotlin">sync_time</code> has drifted toward the edge of the window (idle dust). When dust is at the tip our replayed root already <i>is</i> the current dust root, so any <code class="lang-kotlin">ctime ≥ sync_time</code> resolves to it via the predecessor lookup — clamping to just under the tip stays in the window without resolving a foreign root.</p><p class="paragraph">This is a pure function so the window logic is unit-testable without a live chain; the residual indexer-lag race is covered by the caller's error-171 re-sync-and-retry.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1748386374%2FProperties%2F30582046" anchor-label="SAFETY_WINDOW_MS" id="-1748386374%2FProperties%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-a-f-e-t-y_-w-i-n-d-o-w_-m-s.html"><span>SAFETY_</span><wbr><span>WINDOW_</span><wbr><span>MS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1748386374%2FProperties%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-s-a-f-e-t-y_-w-i-n-d-o-w_-m-s.html">SAFETY_WINDOW_MS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Conservative grace assumed when the live <code class="lang-kotlin">dust_grace_period</code> isn't plumbed through. The ledger default is 3h; we treat the <i>usable</i> window as a fraction of that so a slightly stale sync-time (which still resolves to our root and is preferable for 170 safety) is retained, while a genuinely idle one is clamped well before the real 3h edge. There is no native getter for <code class="lang-kotlin">dust_grace_period</code> (only <code class="lang-kotlin">global_ttl</code>), so this is intentionally smaller than any realistic grace.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1268052031%2FProperties%2F30582046" anchor-label="TIP_BACKOFF_MS" id="-1268052031%2FProperties%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-t-i-p_-b-a-c-k-o-f-f_-m-s.html"><span>TIP_</span><wbr><span>BACKOFF_</span><wbr><span>MS</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1268052031%2FProperties%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-t-i-p_-b-a-c-k-o-f-f_-m-s.html">TIP_BACKOFF_MS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Headroom (ms) below the tip when clamping an idle sync-time. The chosen <code class="lang-kotlin">ctime</code> must be <code class="lang-kotlin">≤ tblock</code> of the block that actually <i>includes</i> the tx, which is a few blocks past the tip we read. Backing off a small margin keeps <code class="lang-kotlin">ctime ≤ tblock</code> even as the chain advances during proving + submission, staying inside the window's upper edge.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1504602400%2FFunctions%2F30582046" anchor-label="anchorMs" id="-1504602400%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="anchor-ms.html"><span>anchor</span><wbr><span><span>Ms</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1504602400%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="anchor-ms.html"><span class="token function">anchorMs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dustSyncTimeMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">tipMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">safetyWindowMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>SAFETY_WINDOW_MS<span class="token punctuation">, </span></span><span class="parameter ">tipBackoffMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>TIP_BACKOFF_MS</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">The <code class="lang-kotlin">ctime</code> to anchor a dust spend to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

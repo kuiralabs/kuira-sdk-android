@@ -69,6 +69,7 @@ module:dapp-ui
 com.midnight.kuira.dapp
 com.midnight.kuira.dapp.backup
 com.midnight.kuira.dapp.di
+com.midnight.kuira.dapp.lock
 com.midnight.kuira.dapp.sigil
 com.midnight.kuira.dapp.wallet
 module:midnight-sdk

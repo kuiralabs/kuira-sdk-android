@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -150,6 +150,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="authorize.html"><span class="token function">authorize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-authorize-outcome/index.html">AuthorizeOutcome</a></div><div class="brief "><p class="paragraph">Request the <code class="lang-kotlin">drive.appdata</code> scope. Returns <a href="../-authorize-outcome/-authorized/index.html">AuthorizeOutcome.Authorized</a> when consent already exists (silent), or <a href="../-authorize-outcome/-needs-consent/index.html">AuthorizeOutcome.NeedsConsent</a> carrying an IntentSender the UI must launch.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1169209552%2FFunctions%2F-1754553396" anchor-label="revoke" id="-1169209552%2FFunctions%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="revoke.html"><span><span>revoke</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1169209552%2FFunctions%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="revoke.html"><span class="token function">revoke</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Revoke the Drive <code class="lang-kotlin">appDataFolder</code> grant (#246 — true backup disable). After this the app no longer has Drive access; the next <a href="authorize.html">authorize</a> returns <a href="../-authorize-outcome/-needs-consent/index.html">AuthorizeOutcome.NeedsConsent</a>. No-op if nothing is currently granted. Best-effort: a network failure to reach the revoke endpoint is logged, not thrown (the local grant is gone from the user's intent either way).</p></div></div></div>
                 </div>
               </div>
             </div>

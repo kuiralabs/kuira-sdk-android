@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>forceResyncUnshielded</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">0.1.0-alpha04
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:midnight-sdk:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filter=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="midnight-sdk::com.midnight.kuira.sdk/MidnightWallet/forceResyncUnshielded/#/PointingToDeclaration//-1598735434">
+  <div class="breadcrumbs"><a href="../../index.html">midnight-sdk</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.sdk</a><span class="delimiter">/</span><a href="index.html">MidnightWallet</a><span class="delimiter">/</span><span class="current">forceResyncUnshielded</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>force</span><wbr><span>Resync</span><wbr><span><span>Unshielded</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="force-resync-unshielded.html"><span class="token function">forceResyncUnshielded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><p class="paragraph">Force-rebuild the unshielded UTXO cache from genesis to self-heal a stale NIGHT balance.</p><p class="paragraph"><strong>What it fixes (roadmap #52).</strong> The unshielded UTXO cache is event-driven — it applies created / spent deltas from the indexer's tx subscription with no reconcile against the indexer's <i>current</i> set. If a spent-event is ever missed — a sibling app on the same shared wallet spent a coin while this app was backgrounded, or a subscription gap — the spent UTXO lingers as a ghost AVAILABLE coin and the balance over-counts (e.g. shows 20k NIGHT while the real spendable is 10k). Replaying the whole tx history from genesis rebuilds the UTXO set from the indexer's truth, so the ghosts drop out.</p><p class="paragraph"><strong>Cancels + re-launches</strong> the long-lived subscription with a one-shot genesis wipe (<a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-subscription-manager/start-subscription.html">com.midnight.kuira.core.indexer.sync.SubscriptionManager.startSubscription</a> <code class="lang-kotlin">forceFullResync = true</code>): the cache is cleared, then re-populated as the indexer replays. So the <strong>unshielded NIGHT balance momentarily drops toward 0, then climbs back</strong> as events arrive — the <a href="balance-flow.html">balanceFlow</a> emits the rebuild live, so a UI bound to it shows the correction without a second action.</p><p class="paragraph"><strong>UTXO-cache only — does NOT touch the dust checkpoint or shielded state.</strong> Those are separate replay models; wiping them would force a heavy dust genesis replay (fatal on PreProd). This is deliberately narrower than a full chain-reset wipe — it heals exactly the unshielded ledger and nothing else.</p><p class="paragraph">A deliberate, user-triggered recovery action (a "Re-sync balance" affordance), NOT something to run on every refresh — the routine <a href="refresh.html">refresh</a> / live subscription already keep NIGHT current. No-op when no subscription controller is wired (e.g. unit tests building the wallet directly).</p></div></div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

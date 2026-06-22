@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -246,6 +246,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-drive-backup-storage/index.html">DriveBackupStorage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">tokenProvider<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span>forceRefresh<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-backup-storage/index.html">BackupStorage</a></div><div class="brief "><p class="paragraph"><a href="-backup-storage/index.html">BackupStorage</a> over Google Drive's <code class="lang-kotlin">appDataFolder</code> — a hidden, per-account folder that syncs across the user's devices and is invisible in the Drive UI. Right for the large (~500 KB) encrypted dust-state blob that exceeds Block Store's 4 KB/entry cap.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-676405044%2FClasslikes%2F-1754553396" anchor-label="DriveConsentRequiredException" id="-676405044%2FClasslikes%2F-1754553396" data-filterable-set=":core:identity:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:identity:dokkaHtmlPartial/release" data-filterable-set=":core:identity:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-drive-consent-required-exception/index.html"><span>Drive</span><wbr><span>Consent</span><wbr><span>Required</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-676405044%2FClasslikes%2F-1754553396"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:identity:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="-drive-consent-required-exception/index.html">DriveConsentRequiredException</a> : <a href="https://developer.android.com/reference/kotlin/java/lang/IllegalStateException.html">IllegalStateException</a></div><div class="brief "><p class="paragraph">Thrown by <a href="silent-token-or-throw.html">silentTokenOrThrow</a> when Drive backup hasn't been consented to yet — a distinct, catchable signal (vs a generic failure) so a headless backup can surface "needs consent" instead of a silent error. Extends <a href="https://developer.android.com/reference/kotlin/java/lang/IllegalStateException.html">IllegalStateException</a> so existing best-effort <code class="lang-kotlin">catch (Exception)</code> paths still behave as before.</p></div></div></div>
                 </div>
               </div>
             </div>

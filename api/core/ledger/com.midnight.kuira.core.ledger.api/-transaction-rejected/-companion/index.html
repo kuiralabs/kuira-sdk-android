@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -101,7 +101,22 @@
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
         <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-549524241%2FProperties%2F714266561" anchor-label="ERROR_EFFECTS_CHECK_FAILURE" id="-549524241%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+        <div class="table"><a data-name="704673672%2FProperties%2F714266561" anchor-label="ERROR_DUST_DOUBLE_SPEND" id="704673672%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-r-r-o-r_-d-u-s-t_-d-o-u-b-l-e_-s-p-e-n-d.html"><span>ERROR_</span><wbr><span>DUST_</span><wbr><span>DOUBLE_</span><wbr><span>SPEND</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="704673672%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-e-r-r-o-r_-d-u-s-t_-d-o-u-b-l-e_-s-p-e-n-d.html">ERROR_DUST_DOUBLE_SPEND</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">196</span></div><div class="brief "><p class="paragraph">The dust UTXO selected to pay the fee has a nullifier already in the node's spent set — its coin was consumed on-chain (often by an immediately-prior send) while the local dust checkpoint still listed it as available. The dust-side sibling of 170: 170 is a stale dust <i>root</i>, 196 is an already-spent dust <i>nullifier</i>. Recovery: full-resync dust to the tip so the spent nullifier drops out, reselect an unspent dust UTXO, and retry.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-549524241%2FProperties%2F714266561" anchor-label="ERROR_EFFECTS_CHECK_FAILURE" id="-549524241%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
@@ -131,6 +146,21 @@
               </div>
             </div>
           </div>
+<a data-name="-1300325033%2FProperties%2F714266561" anchor-label="ERROR_INVALID_DUST_SPEND_PROOF" id="-1300325033%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-r-r-o-r_-i-n-v-a-l-i-d_-d-u-s-t_-s-p-e-n-d_-p-r-o-o-f.html"><span>ERROR_</span><wbr><span>INVALID_</span><wbr><span>DUST_</span><wbr><span>SPEND_</span><wbr><span>PROOF</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1300325033%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-e-r-r-o-r_-i-n-v-a-l-i-d_-d-u-s-t_-s-p-e-n-d_-p-r-o-o-f.html">ERROR_INVALID_DUST_SPEND_PROOF</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">170</span></div><div class="brief "><p class="paragraph">The dust spend proof is invalid because the dust commitment root it commits to isn't one the node accepts — a stale/lagging local root, or a <code class="lang-kotlin">ctime</code> that resolved to a different root via the node's <code class="lang-kotlin">dust.root_history.get(ctime)</code> predecessor lookup. Recovery: re-sync dust to the chain tip and retry. See #287.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="642312041%2FProperties%2F714266561" anchor-label="ERROR_INVALID_PROOF" id="642312041%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -142,6 +172,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-e-r-r-o-r_-i-n-v-a-l-i-d_-p-r-o-o-f.html">ERROR_INVALID_PROOF</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">115</span></div><div class="brief "><p class="paragraph">The ZK proof failed verification (wrong/stale public inputs or key mismatch).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1234566370%2FProperties%2F714266561" anchor-label="ERROR_OUT_OF_DUST_VALIDITY_WINDOW" id="-1234566370%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-r-r-o-r_-o-u-t_-o-f_-d-u-s-t_-v-a-l-i-d-i-t-y_-w-i-n-d-o-w.html"><span>ERROR_</span><wbr><span>OUT_</span><wbr><span>OF_</span><wbr><span>DUST_</span><wbr><span>VALIDITY_</span><wbr><span>WINDOW</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1234566370%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-e-r-r-o-r_-o-u-t_-o-f_-d-u-s-t_-v-a-l-i-d-i-t-y_-w-i-n-d-o-w.html">ERROR_OUT_OF_DUST_VALIDITY_WINDOW</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">171</span></div><div class="brief "><p class="paragraph">The dust spend's <code class="lang-kotlin">ctime</code> fell outside the node's <code class="lang-kotlin">[tblock - grace, tblock]</code> validity window (<code class="lang-kotlin">MalformedTransaction::OutOfDustValidityWindow</code>). The node checks <code class="lang-kotlin">ctime &gt; tblock || ctime + dust_grace_period &lt; tblock</code>. The usual cause is an idle dust state on a long-running chain: its <code class="lang-kotlin">sync_time</code> (the block time of the last replayed dust event) freezes hours behind the advancing tip, so a <code class="lang-kotlin">sync_time</code>- anchored <code class="lang-kotlin">ctime</code> drifts past <code class="lang-kotlin">dust_grace_period</code> (default 3h). The dust-window sibling of 170: 170 = ctime resolved a stale/foreign root, 171 = ctime is out of the time window entirely. Recovery: re-sync dust to the tip so <code class="lang-kotlin">sync_time</code> advances into the window, then retry.</p></div></div></div>
                 </div>
               </div>
             </div>

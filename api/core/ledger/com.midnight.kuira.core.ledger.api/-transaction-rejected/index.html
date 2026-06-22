@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -94,7 +94,7 @@
   <div class="breadcrumbs"><a href="../../index.html">ledger</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.ledger.api</a><span class="delimiter">/</span><span class="current">TransactionRejected</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Transaction</span><wbr><span><span>Rejected</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">TransactionRejected</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>reason<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>txHash<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customErrorCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-node-rpc-exception/index.html">NodeRpcException</a></div><p class="paragraph">Transaction rejected by node (validation failed).</p><p class="paragraph"><strong>Reasons:</strong></p><ul><li><p class="paragraph">Invalid signature</p></li><li><p class="paragraph">Double-spend (UTXO already spent)</p></li><li><p class="paragraph">Insufficient balance</p></li><li><p class="paragraph">TTL expired</p></li><li><p class="paragraph">Invalid format</p></li></ul><p class="paragraph"><strong>Custom Error Codes (authoritative, from midnight-node):</strong></p><ul><li><p class="paragraph">115: InvalidProof (the ZK proof failed verification — regenerate the proof / check the proving-key &amp; contract verifier-key versions match)</p></li><li><p class="paragraph">186: EffectsCheckFailure</p></li><li><p class="paragraph">195: InputNotInUtxos (an unshielded UTXO input is already spent or missing)</p></li></ul><p class="paragraph"><strong>Recovery:</strong> Don't retry (fix transaction)</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">TransactionRejected</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>reason<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>txHash<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>customErrorCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-node-rpc-exception/index.html">NodeRpcException</a></div><p class="paragraph">Transaction rejected by node (validation failed).</p><p class="paragraph"><strong>Reasons:</strong></p><ul><li><p class="paragraph">Invalid signature</p></li><li><p class="paragraph">Double-spend (UTXO already spent)</p></li><li><p class="paragraph">Insufficient balance</p></li><li><p class="paragraph">TTL expired</p></li><li><p class="paragraph">Invalid format</p></li></ul><p class="paragraph"><strong>Custom Error Codes (authoritative, from midnight-node):</strong></p><ul><li><p class="paragraph">115: InvalidProof (the ZK proof failed verification — regenerate the proof / check the proving-key &amp; contract verifier-key versions match)</p></li><li><p class="paragraph">186: EffectsCheckFailure</p></li><li><p class="paragraph">171: OutOfDustValidityWindow (the dust spend's <code class="lang-kotlin">ctime</code> fell outside the node's <code class="lang-kotlin">[tblock - grace, tblock]</code> validity window — typically an idle dust state on a long chain whose <code class="lang-kotlin">sync_time</code> drifted more than <code class="lang-kotlin">dust_grace_period</code> behind the tip; re-sync dust to the tip so its <code class="lang-kotlin">sync_time</code> advances, then retry)</p></li><li><p class="paragraph">195: InputNotInUtxos (an unshielded UTXO input is already spent or missing)</p></li><li><p class="paragraph">196: DustDoubleSpend (the dust UTXO paying the fee was already spent on-chain — re-sync dust to the tip, reselect an unspent dust UTXO, and retry)</p></li></ul><p class="paragraph"><strong>Recovery:</strong> Don't retry (fix transaction)</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
@@ -169,6 +169,36 @@
               </div>
             </div>
           </div>
+<a data-name="-1422801509%2FProperties%2F714266561" anchor-label="isDustDoubleSpend" id="-1422801509%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-dust-double-spend.html"><span>is</span><wbr><span>Dust</span><wbr><span>Double</span><wbr><span><span>Spend</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1422801509%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-dust-double-spend.html">isDustDoubleSpend</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the dust UTXO paying the fee was already spent on-chain (node error 196).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-932555444%2FProperties%2F714266561" anchor-label="isDustSpendProof" id="-932555444%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-dust-spend-proof.html"><span>is</span><wbr><span>Dust</span><wbr><span>Spend</span><wbr><span><span>Proof</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-932555444%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-dust-spend-proof.html">isDustSpendProof</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the dust spend's root was stale / rejected (node error 170).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1578394103%2FProperties%2F714266561" anchor-label="isInvalidProof" id="1578394103%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -180,6 +210,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-invalid-proof.html">isInvalidProof</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the node rejected the transaction's ZK proof (node error 115).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-312214371%2FProperties%2F714266561" anchor-label="isOutOfDustValidityWindow" id="-312214371%2FProperties%2F714266561" data-filterable-set=":core:ledger:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:ledger:dokkaHtmlPartial/release" data-filterable-set=":core:ledger:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-out-of-dust-validity-window.html"><span>is</span><wbr><span>Out</span><wbr><span>Of</span><wbr><span>Dust</span><wbr><span>Validity</span><wbr><span><span>Window</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-312214371%2FProperties%2F714266561"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:ledger:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-out-of-dust-validity-window.html">isOutOfDustValidityWindow</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the dust spend's ctime fell outside the node's validity window (node error 171).</p></div></div></div>
                 </div>
               </div>
             </div>

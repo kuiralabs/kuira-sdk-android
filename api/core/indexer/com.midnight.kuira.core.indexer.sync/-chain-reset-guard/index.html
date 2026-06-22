@@ -1,0 +1,157 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ChainResetGuard</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">0.1.0-alpha04
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":core:indexer:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":core:indexer:dokkaHtmlPartial/release" data-filter=":core:indexer:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="indexer::com.midnight.kuira.core.indexer.sync/ChainResetGuard///PointingToDeclaration//1897323951">
+  <div class="breadcrumbs"><a href="../../index.html">indexer</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.core.indexer.sync</a><span class="delimiter">/</span><span class="current">ChainResetGuard</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Chain</span><wbr><span>Reset</span><wbr><span><span>Guard</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ChainResetGuard</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">indexerClient<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.api/-indexer-client/index.html">IndexerClient</a><span class="token punctuation">, </span></span><span class="parameter ">shieldedRepository<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.repository/-shielded-repository/index.html">ShieldedRepository</a><span class="token punctuation">, </span></span><span class="parameter ">dustRepository<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.repository/-dust-repository/index.html">DustRepository</a><span class="token punctuation">, </span></span><span class="parameter ">syncStateManager<span class="token operator">: </span><a href="../-sync-state-manager/index.html">SyncStateManager</a><span class="token punctuation">, </span></span><span class="parameter ">utxoManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.utxo/-utxo-manager/index.html">UtxoManager</a><span class="token punctuation">, </span></span><span class="parameter ">wipeOnResetEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Detects a chain RESET — a localnet <code class="lang-kotlin">docker</code> down/up replaces the chain with a fresh genesis — and wipes the stale wallet caches so they re-sync from the new chain.</p><p class="paragraph"><strong>Why this exists:</strong> all three sync layers (shielded, dust, unshielded) decide "already synced" by comparing event/transaction-ID COUNTS. After a reset the fresh chain restarts IDs at 0 and, once the wallet is re-funded, re-climbs to the SAME counts — so every layer concludes "at tip" and keeps the OLD balance (the 30,001-NIGHT ghost). Block height and IDs both restart at 0, so they can't be the discriminator; the one value stable within a chain but DIFFERENT across one is the <strong>genesis block hash</strong>. This guard pins it and, on a mismatch, wipes all three caches.</p><p class="paragraph"><strong>Reliability contract</strong> (this path is credibility-critical: a false positive nukes a healthy wallet on PreProd; a false negative leaves the dev staring at a ghost balance):</p><ul><li><p class="paragraph">genesis-hash query fails / null  → <a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-chain-status/-u-n-k-n-o-w-n/index.html">ChainStatus.UNKNOWN</a> → SKIP (never treated as a reset).</p></li><li><p class="paragraph">first sync for this address      → <a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-chain-status/-f-i-r-s-t_-s-y-n-c/index.html">ChainStatus.FIRST_SYNC</a> → pin it, no wipe.</p></li><li><p class="paragraph">pinned == current                → <a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-chain-status/-s-a-m-e/index.html">ChainStatus.SAME</a> → untouched fast path.</p></li><li><p class="paragraph">pinned != current AND <a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-chain-reset-guard/wipe-on-reset-enabled.html">wipeOnResetEnabled</a> → <a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-chain-status/-r-e-s-e-t/index.html">ChainStatus.RESET</a> → wipe shielded + dust +     unshielded (state, cursors, UTXO rows) + re-pin.</p></li><li><p class="paragraph">pinned != current AND NOT <a href="../../../../core/indexer/com.midnight.kuira.core.indexer.sync/-chain-reset-guard/wipe-on-reset-enabled.html">wipeOnResetEnabled</a> (remote chain) → LOG only, no wipe, no re-pin.     Real chains don't reset, and a remote indexer could return     an anomalous height-0 hash — we wipe ONLY for localnet.</p></li></ul><p class="paragraph"><strong>Concurrency + crash safety:</strong> a <span data-unresolved-link="kotlinx.coroutines.sync/Mutex///PointingToDeclaration/">Mutex</span> serializes the decision so concurrent syncs can't double-wipe (and the genesis query runs OUTSIDE the lock so it doesn't serialize every sync on one round-trip). The re-pin happens LAST, after the wipes — so a crash mid-wipe leaves the OLD pin in place and the next sync re-detects the reset and re-wipes (the wipes are idempotent), never a half-wiped wallet pinned to the new chain.</p><p class="paragraph">Call <a href="ensure-fresh-chain.html">ensureFreshChain</a> at the START of every wallet sync entry point (shielded, dust, unshielded). Whichever runs first triggers the wipe; the others then find their state gone and run a full re-sync.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="295785909%2FConstructors%2F1897323951" anchor-label="ChainResetGuard" id="295785909%2FConstructors%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chain-reset-guard.html"><span>Chain</span><wbr><span>Reset</span><wbr><span><span>Guard</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="295785909%2FConstructors%2F1897323951"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">indexerClient<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.api/-indexer-client/index.html">IndexerClient</a><span class="token punctuation">, </span></span><span class="parameter ">shieldedRepository<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.repository/-shielded-repository/index.html">ShieldedRepository</a><span class="token punctuation">, </span></span><span class="parameter ">dustRepository<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.repository/-dust-repository/index.html">DustRepository</a><span class="token punctuation">, </span></span><span class="parameter ">syncStateManager<span class="token operator">: </span><a href="../-sync-state-manager/index.html">SyncStateManager</a><span class="token punctuation">, </span></span><span class="parameter ">utxoManager<span class="token operator">: </span><a href="../../com.midnight.kuira.core.indexer.utxo/-utxo-manager/index.html">UtxoManager</a><span class="token punctuation">, </span></span><span class="parameter ">wipeOnResetEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1049361175%2FFunctions%2F1897323951" anchor-label="ensureFreshChain" id="1049361175%2FFunctions%2F1897323951" data-filterable-set=":core:indexer:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:indexer:dokkaHtmlPartial/release" data-filterable-set=":core:indexer:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ensure-fresh-chain.html"><span>ensure</span><wbr><span>Fresh</span><wbr><span><span>Chain</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1049361175%2FFunctions%2F1897323951"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="ensure-fresh-chain.html"><span class="token function">ensureFreshChain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">address<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Ensure the caches for <a href="ensure-fresh-chain.html">address</a> belong to the CURRENT chain.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

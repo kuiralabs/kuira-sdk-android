@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>WalletOverlayController</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">0.1.0-alpha04
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:dapp-ui:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filter=":sdk:dapp-ui:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="dapp-ui::com.midnight.kuira.dapp.wallet/WalletOverlayController///PointingToDeclaration//-232773247">
+  <div class="breadcrumbs"><a href="../../index.html">dapp-ui</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.dapp.wallet</a><span class="delimiter">/</span><span class="current">WalletOverlayController</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Wallet</span><wbr><span>Overlay</span><wbr><span><span>Controller</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Stable.html"><span class="token annotation builtin">Stable</span></a></div></div><span class="token keyword">class </span><a href="index.html">WalletOverlayController</a></div><p class="paragraph">UI-navigation state holder for the wallet's full-screen overlays.</p><p class="paragraph">Plain class (NOT Hilt): it holds nothing but transient UI-navigation state, which Compose owns. <a href="../-wallet-overlay-host.html">WalletOverlayHost</a> <code class="lang-kotlin">remember {}</code>s one and provides it over its content via <a href="../-local-wallet-overlay.html">LocalWalletOverlay</a>; the pill / PanelBar read the ambient instance and call <a href="open.html">open</a> / <a href="close.html">close</a>.</p><p class="paragraph">The current overlay is plain Compose state, so any reader that touches <a href="active.html">active</a> recomposes when it changes.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1546696604%2FConstructors%2F-232773247" anchor-label="WalletOverlayController" id="1546696604%2FConstructors%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wallet-overlay-controller.html"><span>Wallet</span><wbr><span>Overlay</span><wbr><span><span>Controller</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1546696604%2FConstructors%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1449641019%2FProperties%2F-232773247" anchor-label="active" id="-1449641019%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="active.html"><span><span>active</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1449641019%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="active.html">active</a><span class="token operator">: </span><a href="../-wallet-overlay/index.html">WalletOverlay</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-820162188%2FProperties%2F-232773247" anchor-label="appVersion" id="-820162188%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="app-version.html"><span>app</span><wbr><span><span>Version</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-820162188%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="app-version.html">appVersion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">App version shown in the Settings ABOUT section. The SDK never fabricates this. <a href="../-wallet-overlay-host.html">WalletOverlayHost</a> seeds it from its own <code class="lang-kotlin">appVersion</code>; a content-level host that owns the value (e.g. <code class="lang-kotlin">PanelBar</code>) can set it here so the host need not thread the param. Null hides the ABOUT section.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="826971558%2FProperties%2F-232773247" anchor-label="selectedThemeId" id="826971558%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="selected-theme-id.html"><span>selected</span><wbr><span>Theme</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="826971558%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="selected-theme-id.html">selectedThemeId</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The chosen appearance theme id, as observable Compose state.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="410948771%2FProperties%2F-232773247" anchor-label="sigilSheetReopen" id="410948771%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sigil-sheet-reopen.html"><span>sigil</span><wbr><span>Sheet</span><wbr><span><span>Reopen</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="410948771%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="sigil-sheet-reopen.html">sigilSheetReopen</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Sigil-pill twin of <a href="wallet-sheet-reopen.html">walletSheetReopen</a> — bumped when Settings opened from the SIGIL gear closes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-337120116%2FProperties%2F-232773247" anchor-label="walletSheetReopen" id="-337120116%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="wallet-sheet-reopen.html"><span>wallet</span><wbr><span>Sheet</span><wbr><span><span>Reopen</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-337120116%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="wallet-sheet-reopen.html">walletSheetReopen</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">One-shot "re-open the WALLET pill's sheet" counter. Bumped by <a href="close.html">close</a> when the closed overlay originated from the wallet pill (Send / Receive, or Settings opened from the wallet gear). The wallet pill keys a <code class="lang-kotlin">LaunchedEffect</code> on it so Back from an overlay lands back on the sheet the user came from — not on the bare host content. Starts at 0 (no-op).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-85924169%2FFunctions%2F-232773247" anchor-label="close" id="-85924169%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="close.html"><span><span>close</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-85924169%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Close the active overlay and re-open the ORIGINATING pill's sheet (Send / Receive ⇒ wallet; Settings ⇒ its <a href="../-wallet-overlay/-settings/launch-source.html">WalletOverlay.Settings.launchSource</a>) by bumping that pill's reopen counter. This restores the old back-to-sheet stack: Back from any overlay returns to the sheet that launched it rather than dropping to bare content. Use <a href="dismiss-for-lock.html">dismissForLock</a> for the no-reopen path.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1847442849%2FFunctions%2F-232773247" anchor-label="dismissForLock" id="1847442849%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dismiss-for-lock.html"><span>dismiss</span><wbr><span>For</span><wbr><span><span>Lock</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1847442849%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="dismiss-for-lock.html"><span class="token function">dismissForLock</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Close the active overlay WITHOUT re-opening any sheet. Used when a session lock (#251) tears the overlay down: the lock cover must be the only surface, and the sheet must NOT spring back on unlock. Deliberately does not bump a reopen counter.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1303648255%2FFunctions%2F-232773247" anchor-label="open" id="1303648255%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="open.html"><span><span>open</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1303648255%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="open.html"><span class="token function">open</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">overlay<span class="token operator">: </span><a href="../-wallet-overlay/index.html">WalletOverlay</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

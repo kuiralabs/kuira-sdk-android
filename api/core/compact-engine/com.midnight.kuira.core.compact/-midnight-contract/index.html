@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -169,6 +169,21 @@
               </div>
             </div>
           </div>
+<a data-name="1404576781%2FFunctions%2F30582046" anchor-label="callIdempotent" id="1404576781%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="call-idempotent.html"><span>call</span><wbr><span><span>Idempotent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1404576781%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="call-idempotent.html"><span class="token function">callIdempotent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">circuitName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">vararg </span>args<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">isDoneOnLedger<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">onProgress<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><a href="../-contract-call-stage/index.html">ContractCallStage</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-transaction-receipt/index.html">TransactionReceipt</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Idempotent single call (#254): if <a href="call-idempotent.html">isDoneOnLedger</a> is already true the on-chain effect is present, so this SKIPS the call and returns <code class="lang-kotlin">null</code> (no double-submit); otherwise it runs <a href="call.html">call</a> and returns the receipt.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1853854881%2FFunctions%2F30582046" anchor-label="deploy" id="-1853854881%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -195,6 +210,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="ledger.html"><span class="token function">ledger</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-midnight-ledger/index.html">MidnightLedger</a></div><div class="brief "><p class="paragraph">Read the contract's ledger state losslessly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="565639227%2FFunctions%2F30582046" anchor-label="observeLedger" id="565639227%2FFunctions%2F30582046" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":core:compact-engine:dokkaHtmlPartial/release" data-filterable-set=":core:compact-engine:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observe-ledger.html"><span>observe</span><wbr><span><span>Ledger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="565639227%2FFunctions%2F30582046"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:compact-engine:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="observe-ledger.html"><span class="token function">observeLedger</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../-midnight-ledger/index.html">MidnightLedger</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Observe this contract's ledger state as it changes on-chain (#255).</p></div></div></div>
                 </div>
               </div>
             </div>

@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -94,24 +94,24 @@
   <div class="breadcrumbs"><a href="../../index.html">dapp-ui</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.dapp.wallet</a><span class="delimiter">/</span><span class="current">WalletPanelViewModel</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Wallet</span><wbr><span>Panel</span><wbr><span>View</span><wbr><span><span>Model</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">WalletPanelViewModel</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sdkProvider<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/index.html">MidnightSdkProvider</a><span class="token punctuation">, </span></span><span class="parameter ">sigilStateStore<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-state-store/index.html">SigilStateStore</a><span class="token punctuation">, </span></span><span class="parameter ">driveAuth<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-drive-auth-manager/index.html">DriveAuthManager</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a></div><p class="paragraph">Wallet panel presenter: drives the canonical <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a> and translates SDK / seed state into <a href="../-wallet-status/index.html">WalletStatus</a> for the panel UI.</p><p class="paragraph"><strong>The config authority.</strong> The panel is the only surface with the network / proving-mode / proof-server toggles, so it's where config changes enter the system. It passes the current <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a> to <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/ensure-sdk.html">MidnightSdkProvider.ensureSdk</a>, which builds (or rebuilds) the one shared SDK. Other consumers (BBoard, Kicks) <i>follow</i> that SDK via the provider — they never build their own. That's what makes the app sync once instead of once per consumer.</p><p class="paragraph"><strong>Does NOT own the SDK lifecycle.</strong> <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/index.html">MidnightSdkProvider</a> is a process singleton that survives activity recreation, so there's no SDK to close in <a href="../../../../sdk/dapp-ui/com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/on-cleared.html">onCleared</a>. The provider also owns seed bootstrap (it delegates to <code class="lang-kotlin">WalletSeedSource</code>) and wallet proving-key readiness; this VM just requests the SDK and reads balances off it.</p><p class="paragraph"><strong>Public surface:</strong> <a href="status.html">status</a> (observe), <a href="refresh-balance.html">refreshBalance</a> / <a href="register-dust.html">registerDust</a> (act). Funding needs no handler — the Receive screen shows the airdrop command and the SDK's subscription picks up the credit on its own.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">WalletPanelViewModel</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sdkProvider<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/index.html">MidnightSdkProvider</a><span class="token punctuation">, </span></span><span class="parameter ">sigilStateStore<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-state-store/index.html">SigilStateStore</a><span class="token punctuation">, </span></span><span class="parameter ">driveAuth<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-drive-auth-manager/index.html">DriveAuthManager</a><span class="token punctuation">, </span></span><span class="parameter ">sessionLock<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-session-lock/index.html">SessionLock</a><span class="token punctuation">, </span></span><span class="parameter ">networkStore<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-network-preference-store/index.html">NetworkPreferenceStore</a><span class="token punctuation">, </span></span><span class="parameter ">appContext<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">appDataProvider<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Optional.html">Optional</a><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.dapp.backup/-app-data-backup-provider/index.html">AppDataBackupProvider</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a></div><p class="paragraph">Wallet panel presenter: drives the canonical <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a> and translates SDK / seed state into <a href="../-wallet-status/index.html">WalletStatus</a> for the panel UI.</p><p class="paragraph"><strong>The config authority.</strong> The panel is the only surface with the network / proving-mode / proof-server toggles, so it's where config changes enter the system. It passes the current <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a> to <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/ensure-sdk.html">MidnightSdkProvider.ensureSdk</a>, which builds (or rebuilds) the one shared SDK. Other consumers (BBoard, Kicks) <i>follow</i> that SDK via the provider — they never build their own. That's what makes the app sync once instead of once per consumer.</p><p class="paragraph"><strong>Does NOT own the SDK lifecycle.</strong> <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/index.html">MidnightSdkProvider</a> is a process singleton that survives activity recreation, so there's no SDK to close in <a href="../../../../sdk/dapp-ui/com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/on-cleared.html">onCleared</a>. The provider also owns seed bootstrap (it delegates to <code class="lang-kotlin">WalletSeedSource</code>) and wallet proving-key readiness; this VM just requests the SDK and reads balances off it.</p><p class="paragraph"><strong>Public surface:</strong> <a href="status.html">status</a> (observe), <a href="refresh-balance.html">refreshBalance</a> / <a href="register-dust.html">registerDust</a> (act). Funding needs no handler — the Receive screen shows the airdrop command and the SDK's subscription picks up the credit on its own.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="-1280028736%2FConstructors%2F-232773247" anchor-label="WalletPanelViewModel" id="-1280028736%2FConstructors%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+        <div class="table"><a data-name="-1709935010%2FConstructors%2F-232773247" anchor-label="WalletPanelViewModel" id="-1709935010%2FConstructors%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-wallet-panel-view-model.html"><span>Wallet</span><wbr><span>Panel</span><wbr><span>View</span><wbr><span><span>Model</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1280028736%2FConstructors%2F-232773247"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1709935010%2FConstructors%2F-232773247"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sdkProvider<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/index.html">MidnightSdkProvider</a><span class="token punctuation">, </span></span><span class="parameter ">sigilStateStore<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-state-store/index.html">SigilStateStore</a><span class="token punctuation">, </span></span><span class="parameter ">driveAuth<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-drive-auth-manager/index.html">DriveAuthManager</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sdkProvider<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-midnight-sdk-provider/index.html">MidnightSdkProvider</a><span class="token punctuation">, </span></span><span class="parameter ">sigilStateStore<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.sigil/-sigil-state-store/index.html">SigilStateStore</a><span class="token punctuation">, </span></span><span class="parameter ">driveAuth<span class="token operator">: </span><a href="../../../../core/identity/com.midnight.kuira.core.identity.backup/-drive-auth-manager/index.html">DriveAuthManager</a><span class="token punctuation">, </span></span><span class="parameter ">sessionLock<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-session-lock/index.html">SessionLock</a><span class="token punctuation">, </span></span><span class="parameter ">networkStore<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-network-preference-store/index.html">NetworkPreferenceStore</a><span class="token punctuation">, </span></span><span class="parameter ">appContext<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">appDataProvider<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/Optional.html">Optional</a><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.dapp.backup/-app-data-backup-provider/index.html">AppDataBackupProvider</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -139,17 +139,17 @@
       </div>
       <div data-togglable="PROPERTY">
         <h2 class="">Properties</h2>
-        <div class="table"><a data-name="820636937%2FProperties%2F-232773247" anchor-label="backupStatus" id="820636937%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+        <div class="table"><a data-name="-652920006%2FProperties%2F-232773247" anchor-label="backupSection" id="-652920006%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="backup-status.html"><span>backup</span><wbr><span><span>Status</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="820636937%2FProperties%2F-232773247"></span>
+                  <div><a href="backup-section.html"><span>backup</span><wbr><span><span>Section</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-652920006%2FProperties%2F-232773247"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="backup-status.html">backupStatus</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-dust-backup-ui-state/index.html">DustBackupUiState</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="backup-section.html">backupSection</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.dapp.backup/-backup-section-state/index.html">BackupSectionState</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Branded backup-section state for the pill — the real per-lane status from the wallet (<a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-wallet/backup-status.html">com.midnight.kuira.sdk.MidnightWallet.backupStatus</a>) plus the sigil-presence identity lane. Surfaces "needs consent"/syncing/up-to-date instead of the old silent "cloud sync" label.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -169,6 +169,51 @@
               </div>
             </div>
           </div>
+<a data-name="-452588406%2FProperties%2F-232773247" anchor-label="recoveryError" id="-452588406%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="recovery-error.html"><span>recovery</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-452588406%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="recovery-error.html">recoveryError</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1156258372%2FProperties%2F-232773247" anchor-label="recoveryPhraseSaved" id="1156258372%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="recovery-phrase-saved.html"><span>recovery</span><wbr><span>Phrase</span><wbr><span><span>Saved</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1156258372%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="recovery-phrase-saved.html">recoveryPhraseSaved</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Whether the user has saved their phrase — drives the backup-status chip.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="766689690%2FProperties%2F-232773247" anchor-label="restoreState" id="766689690%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="restore-state.html"><span>restore</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="766689690%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="restore-state.html">restoreState</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-restore-ui-state/index.html">RestoreUiState</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1191763055%2FProperties%2F-232773247" anchor-label="retryRequests" id="-1191763055%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -184,6 +229,51 @@
               </div>
             </div>
           </div>
+<a data-name="-2088630408%2FProperties%2F-232773247" anchor-label="revealedPhrase" id="-2088630408%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="revealed-phrase.html"><span>revealed</span><wbr><span><span>Phrase</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2088630408%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="revealed-phrase.html">revealedPhrase</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The revealed 24 words while the reveal screen is open; null otherwise. Cleared on exit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1231918314%2FProperties%2F-232773247" anchor-label="selectedNetwork" id="1231918314%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="selected-network.html"><span>selected</span><wbr><span><span>Network</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231918314%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="selected-network.html">selectedNetwork</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../../../../core/network/com.midnight.kuira.core.network/-midnight-network/index.html">MidnightNetwork</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The selected network — the DURABLE single source of truth (<a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-network-preference-store/index.html">NetworkPreferenceStore</a>), surviving process death so a session-lock kill can't revert the choice to the localnet default. The panel observes this instead of an in-memory selection.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1069705940%2FProperties%2F-232773247" anchor-label="sendState" id="1069705940%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="send-state.html"><span>send</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1069705940%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="send-state.html">sendState</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-send-ui-state/index.html">SendUiState</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="111967019%2FProperties%2F-232773247" anchor-label="status" id="111967019%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -195,6 +285,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-wallet-status/index.html">WalletStatus</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="933133813%2FProperties%2F-232773247" anchor-label="syncProgress" id="933133813%2FProperties%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sync-progress.html"><span>sync</span><wbr><span><span>Progress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="933133813%2FProperties%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="sync-progress.html">syncProgress</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-wallet-sync-progress/index.html">WalletSyncProgress</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Live sync progress for the sheet's <a href="../-wallet-sync-indicator.html">WalletSyncIndicator</a> — derived from the SDK's <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-wallet/sync-status.html">com.midnight.kuira.sdk.MidnightWallet.syncStatus</a>, the SAME signal the background Live-Update notification uses (#259). So the in-app pill and the notification are always consistent: it shows for EVERY sync (foreground refresh, proactive background tracker, genesis), with the fraction + the phase label resolved through the one shared labelRes mapping. Non-null only while <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-sync-status/-syncing/index.html">SyncStatus.Syncing</a>; null otherwise (the indicator hides).</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -218,6 +323,51 @@
               </div>
             </div>
           </div>
+<a data-name="-943658453%2FFunctions%2F-232773247" anchor-label="clearRevealedPhrase" id="-943658453%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-revealed-phrase.html"><span>clear</span><wbr><span>Revealed</span><wbr><span><span>Phrase</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-943658453%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear-revealed-phrase.html"><span class="token function">clearRevealedPhrase</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Drop the in-memory revealed words (call when the reveal screen closes).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="901104354%2FFunctions%2F-232773247" anchor-label="currentConfig" id="901104354%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-config.html"><span>current</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="901104354%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="current-config.html"><span class="token function">currentConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a></div><div class="brief "><p class="paragraph">The <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a> the user last acted on, or a network-only default if the panel never bootstrapped yet. The full-screen overlay host (<a href="../-wallet-overlay-host.html">WalletOverlayHost</a>) needs this to drive Send: the proving mode / proof-server URL live in the pill's local state, not in the host, so the host reads back the config the pill already built. By the time Send is reachable the pill has called <a href="refresh-balance.html">refreshBalance</a> (which sets <a href="../../../../sdk/dapp-ui/com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/last-requested-config.html">lastRequestedConfig</a>), so this is non-null in practice; the fallback just keeps the contract total.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1422867142%2FFunctions%2F-232773247" anchor-label="disableBackup" id="-1422867142%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="disable-backup.html"><span>disable</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1422867142%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="disable-backup.html"><span class="token function">disableBackup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">TRUE backup disable (#246): delete BOTH cloud blobs (dust + app-state), then revoke the Drive grant, and opt out locally. Order matters — delete the blobs (which need Drive access) BEFORE revoking consent. The wallet + sigil are unaffected (recovery is the passkey); this only drops the cloud copies. The host confirms first via the BackupSection dialog.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="889508464%2FFunctions%2F-232773247" anchor-label="enableCloudBackup" id="889508464%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -229,6 +379,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="enable-cloud-backup.html"><span class="token function">enableCloudBackup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Enable cross-device Dust cloud sync: obtain the Drive <code class="lang-kotlin">drive.appdata</code> grant, then run a full sync. This is <strong>bidirectional</strong> — once consent exists, <code class="lang-kotlin">wallet.refresh()</code> first restores from the cloud checkpoint if this device has none (so a fresh device deltas instead of replaying genesis), then uploads the latest checkpoint. If consent is already granted it runs silently; otherwise it emits an <a href="https://developer.android.com/reference/kotlin/androidx/activity/result/IntentSenderRequest.html">IntentSenderRequest</a> via <a href="consent-requests.html">consentRequests</a> for the panel to launch — the result returns through <a href="on-consent-result.html">onConsentResult</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1443121675%2FFunctions%2F-232773247" anchor-label="forceResyncBalance" id="-1443121675%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="force-resync-balance.html"><span>force</span><wbr><span>Resync</span><wbr><span><span>Balance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443121675%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="force-resync-balance.html"><span class="token function">forceResyncBalance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Deliberate "Re-sync balance" recovery: rebuild the unshielded UTXO cache from genesis to fix a stale NIGHT count (ghost AVAILABLE coins left by a missed spent-event / cross-app spend on the shared wallet, roadmap #52). Reuses <a href="../../../../sdk/dapp-ui/com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/last-requested-config.html">lastRequestedConfig</a> — the config the user last acted on — so the Settings affordance can fire this without re-threading the config through the overlay. No-op if no wallet action has run yet (nothing to resync, and no config to bootstrap with).</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -248,6 +413,51 @@
               </div>
             </div>
           </div>
+<a data-name="387441255%2FFunctions%2F-232773247" anchor-label="isValidRecoveryPhrase" id="387441255%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-valid-recovery-phrase.html"><span>is</span><wbr><span>Valid</span><wbr><span>Recovery</span><wbr><span><span>Phrase</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="387441255%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-valid-recovery-phrase.html"><span class="token function">isValidRecoveryPhrase</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">words<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Validate a phrase without restoring — for live input feedback in the restore screen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="171155794%2FFunctions%2F-232773247" anchor-label="lockNow" id="171155794%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="lock-now.html"><span>lock</span><wbr><span><span>Now</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="171155794%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="lock-now.html"><span class="token function">lockNow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Manually lock the session (the wallet sheet's "Lock now"). Drops the cached SDK; the balance hides and the next action re-authenticates.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1421851215%2FFunctions%2F-232773247" anchor-label="markRecoveryPhraseSaved" id="-1421851215%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mark-recovery-phrase-saved.html"><span>mark</span><wbr><span>Recovery</span><wbr><span>Phrase</span><wbr><span><span>Saved</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1421851215%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mark-recovery-phrase-saved.html"><span class="token function">markRecoveryPhraseSaved</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Record that the user has saved their phrase (their "I've written it down" confirm).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-2131203456%2FFunctions%2F-232773247" anchor-label="onConsentResult" id="-2131203456%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -263,17 +473,17 @@
               </div>
             </div>
           </div>
-<a data-name="964612481%2FFunctions%2F-232773247" anchor-label="refreshBalance" id="964612481%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+<a data-name="2093117411%2FFunctions%2F-232773247" anchor-label="refreshBalance" id="2093117411%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="refresh-balance.html"><span>refresh</span><wbr><span><span>Balance</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="964612481%2FFunctions%2F-232773247"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2093117411%2FFunctions%2F-232773247"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="refresh-balance.html"><span class="token function">refreshBalance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a><span class="token punctuation">, </span></span><span class="parameter ">force<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Bootstrap (if needed) and refresh balances. Progressive: emits Ready as soon as the SDK is built so the user sees their addresses immediately, then re-emits Ready after the full resync lands so the values catch up.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="refresh-balance.html"><span class="token function">refreshBalance</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a><span class="token punctuation">, </span></span><span class="parameter ">force<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">resyncUnshielded<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Bootstrap (if needed) and refresh balances. Progressive: emits Ready as soon as the SDK is built so the user sees their addresses immediately, then re-emits Ready after the full resync lands so the values catch up.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -289,6 +499,126 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="register-dust.html"><span class="token function">registerDust</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Register the wallet's NIGHT key for Dust generation, then poll until the first Dust UTXO surfaces (or <a href="../../../../sdk/dapp-ui/com.midnight.kuira.dapp.wallet/-wallet-panel-view-model/-companion/-d-u-s-t_-v-i-s-i-b-l-e_-t-i-m-e-o-u-t_-m-s.html">DUST_VISIBLE_TIMEOUT_MS</a> elapses). Must run once after the wallet first holds NIGHT — until then the chain won't release spendable Dust and contract calls (fee-paying) fail.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-159783093%2FFunctions%2F-232773247" anchor-label="resetRestoreState" id="-159783093%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset-restore-state.html"><span>reset</span><wbr><span>Restore</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-159783093%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset-restore-state.html"><span class="token function">resetRestoreState</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reset the restore flow to Idle (on screen close / re-edit after an error).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1683983043%2FFunctions%2F-232773247" anchor-label="resetSendState" id="1683983043%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset-send-state.html"><span>reset</span><wbr><span>Send</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1683983043%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset-send-state.html"><span class="token function">resetSendState</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reset the send flow to Idle (on Send-screen close, or to re-edit after a failure).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-776518430%2FFunctions%2F-232773247" anchor-label="restoreFromPhrase" id="-776518430%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="restore-from-phrase.html"><span>restore</span><wbr><span>From</span><wbr><span><span>Phrase</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-776518430%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="restore-from-phrase.html"><span class="token function">restoreFromPhrase</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a><span class="token punctuation">, </span></span><span class="parameter ">words<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Restore a wallet from a 24-word phrase. Result lands in <a href="restore-state.html">restoreState</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="548719005%2FFunctions%2F-232773247" anchor-label="revealRecoveryPhrase" id="548719005%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reveal-recovery-phrase.html"><span>reveal</span><wbr><span>Recovery</span><wbr><span><span>Phrase</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="548719005%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reveal-recovery-phrase.html"><span class="token function">revealRecoveryPhrase</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reveal the recovery phrase (biometric-gated). Result lands in <a href="revealed-phrase.html">revealedPhrase</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1727519369%2FFunctions%2F-232773247" anchor-label="seedNetworkDefault" id="1727519369%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seed-network-default.html"><span>seed</span><wbr><span>Network</span><wbr><span><span>Default</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1727519369%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="seed-network-default.html"><span class="token function">seedNetworkDefault</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">network<span class="token operator">: </span><a href="../../../../core/network/com.midnight.kuira.core.network/-midnight-network/index.html">MidnightNetwork</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Seed the first-run network from a host default; ignored once the user has ever chosen.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="686801751%2FFunctions%2F-232773247" anchor-label="selectNetwork" id="686801751%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="select-network.html"><span>select</span><wbr><span><span>Network</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="686801751%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="select-network.html"><span class="token function">selectNetwork</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">network<span class="token operator">: </span><a href="../../../../core/network/com.midnight.kuira.core.network/-midnight-network/index.html">MidnightNetwork</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Persist the user's network choice durably (synchronous — survives an immediate kill).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2056655410%2FFunctions%2F-232773247" anchor-label="sendNight" id="-2056655410%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="send-night.html"><span>send</span><wbr><span><span>Night</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2056655410%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="send-night.html"><span class="token function">sendNight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a><span class="token punctuation">, </span></span><span class="parameter ">toAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">amount<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/math/BigInteger.html">BigInteger</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Send unshielded NIGHT to <a href="send-night.html">toAddress</a> (#240). Bootstraps/reuses the shared SDK, then calls <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-sdk/send-night.html">MidnightSdk.sendNight</a>, which validates, selects fewest coins, auto-consolidates when needed, signs, pays dust fees, and submits. Surfaces coarse progress (consolidating / submitting) and the typed outcome through <a href="send-state.html">sendState</a>; the live balance observer + a post-send refresh update the pill.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-974586662%2FFunctions%2F-232773247" anchor-label="setDustBackup" id="-974586662%2FFunctions%2F-232773247" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:dapp-ui:dokkaHtmlPartial/release" data-filterable-set=":sdk:dapp-ui:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-dust-backup.html"><span>set</span><wbr><span>Dust</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-974586662%2FFunctions%2F-232773247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:dapp-ui:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-dust-backup.html"><span class="token function">setDustBackup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">config<span class="token operator">: </span><a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-wallet-config/index.html">WalletConfig</a><span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Two-way dust-backup toggle from the pill's Switch.</p></div></div></div>
                 </div>
               </div>
             </div>
