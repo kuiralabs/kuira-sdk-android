@@ -29,13 +29,12 @@ have a clear next stop for everything beyond "make the counter go up."
     understand the toolchain pinning that makes it work, and compile +
     deploy it.
 
-    For deeper Compact learning — witnesses, ZK proof construction,
-    ledger types beyond `Counter`, multi-party patterns, on-chain
-    verification of off-chain compute — go to the **[official Midnight
-    contract examples](https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts)**.
-    Calculator, election, battleship-simple, private-guest-list,
-    private-reserve-auction, token-transfers. Each is a focused tutorial
-    on one Compact pattern.
+    For Compact and Midnight themselves — the language, witnesses, ZK proof
+    construction, ledger types beyond `Counter`, the on-chain model — Kuira is
+    not where you learn them. Start at the **[Midnight documentation](https://docs.midnight.network/)**,
+    then its **[contract examples](https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts)**
+    (calculator, election, battleship, private-guest-list, …) for focused
+    tutorials on each Compact pattern. We assume that familiarity here.
 
     The Kuira SDK consumes compiled Compact artifacts; it does not
     teach Compact authoring beyond what's in this recipe.
@@ -107,9 +106,9 @@ you typed:
 The toolchain self-introspects:
 
 ```bash
-compact --version                          # → {{ compactc_version }}
-compact compile --language-version         # → {{ compact_language_version }}
-compact compile --runtime-version          # → {{ compact_runtime_version }}
+compact list                                                 # installed compilers + the default
+compact compile +{{ compactc_version }} --language-version   # → {{ compact_language_version }}
+compact compile +{{ compactc_version }} --runtime-version    # → {{ compact_runtime_version }}
 ```
 
 The language and runtime flags hang off `compact compile` (the
@@ -149,17 +148,21 @@ From your project root:
 
 ```bash
 mkdir -p contract/src/managed
-compact compile contract/src/counter.compact contract/src/managed/counter
+compact compile +{{ compactc_version }} contract/src/counter.compact contract/src/managed/counter
 ```
 
-!!! note "Use the `compact` wrapper, not the raw binary"
-    `compact` is the Midnight devtools wrapper; it selects the right
-    `compactc` binary for your platform automatically (this is exactly
-    what the starter's `npm run compile` runs). The underlying binary
-    directory varies by OS/arch — `aarch64-darwin`, `x86_64-darwin`,
-    `x86_64-linux`, … — so don't hardcode a path to it. If `compact`
-    is on your `PATH`, just run `compact …`. On Windows, run it under
-    WSL2.
+!!! warning "Pin the compiler version with `+{{ compactc_version }}`"
+    `compact` auto-selects the right binary for your *platform*, but it runs the
+    toolchain's **default** compiler — which may be older than your
+    `pragma language_version`. Compiling **without** the `+` pin fails with
+    `language version X.Y.Z mismatch`; `+{{ compactc_version }}` forces the
+    compiler that matches the pragma. (The `engines.compactc` field in
+    `package.json` is informational — it is *not* enforced, and `npm run compile`
+    must carry the same `+` pin.) Run `compact list` to see installed versions
+    and the default.
+
+    The binary directory varies by OS/arch (`aarch64-darwin`, `x86_64-darwin`,
+    `x86_64-linux`, …) — never hardcode a path to it. On Windows, run under WSL2.
 
 Output: a `contract/src/managed/counter/` directory containing
 `contract/index.js` (the runnable contract), `keys/increment.verifier`
