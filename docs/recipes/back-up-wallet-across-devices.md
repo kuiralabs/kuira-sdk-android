@@ -30,7 +30,7 @@ chain from genesis.
 > didn't, this setup is the missing piece.
 
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/back-up-wallet-across-devices.md"
-     data-task="Enable cross-device wallet-data backup in this Kuira app: register a Google Cloud OAuth client for the drive.appdata scope (Android client with the app's package name + signing SHA-1), enable the Google Drive API, and verify the wallet panel's cloud sync action succeeds without UNREGISTERED_ON_API_CONSOLE."></div>
+     data-task="Enable cross-device wallet-data backup in this Kuira app: register a Google Cloud OAuth client for the drive.appdata scope (Android client with the app's package name + signing SHA-1), enable the Google Drive API, and verify the wallet panel's Backup & recovery → Enable action succeeds without UNREGISTERED_ON_API_CONSOLE."></div>
 
 ---
 
@@ -40,8 +40,10 @@ The SDK already does the work: it encrypts the Dust checkpoint with a
 key **derived from the wallet seed** (AES-256-GCM, on-device — the cloud
 only ever holds ciphertext), uploads it to Google Drive's hidden
 per-app **`appDataFolder`**, and on another device pulls it back and
-seeds the sync. The wallet panel exposes a single **cloud sync** action
-that runs the backup-or-restore in one tap.
+seeds the sync. The wallet panel exposes a **Backup & recovery**
+section with an **Enable** CTA that turns backup on (calling
+`enableCloudBackup()`); a matching **Turn off cloud backup?** flow
+disables it.
 
 The only thing the SDK *can't* do for you is authorize itself with
 Google. That's a one-time setup in the Google Cloud Console: an OAuth
@@ -113,19 +115,24 @@ Google matches the OAuth request on **(package name, SHA-1)** — both
 must match the installed build exactly, so a release build needs its own
 client entry with the release signing fingerprint.
 
+!!! note "SHA-256 vs SHA-1 — don't mix them up"
+    The fingerprint formats differ — `assetlinks.json` (passkey binding)
+    uses **SHA-256**, but the Google Drive Android OAuth client uses
+    **SHA-1**. Don't paste one where the other is expected.
+
 > **Verify:** the new Android client appears under Clients with your
 > package name.
 
-## Step 6 — Run the cloud sync
+## Step 6 — Enable backup
 
-Build, install, sign in, and tap **cloud sync** in the wallet panel.
-First use runs the Drive consent flow (one system dialog); after that
-it's silent.
+Build, install, sign in, and tap **Enable** under **Backup & recovery**
+in the wallet panel (this drives `enableCloudBackup()`). First use runs
+the Drive consent flow (one system dialog); after that it's silent.
 
-> **Verify:** the action reports success (e.g. "cloud synced ✓") with no
-> `UNREGISTERED_ON_API_CONSOLE`. On a second device signed into the
-> **same Google account**, a fresh install's first sync logs a delta
-> resume rather than a full genesis replay.
+> **Verify:** the action completes with no `UNREGISTERED_ON_API_CONSOLE`.
+> On a second device signed into the **same Google account**, a fresh
+> install's first sync logs a delta resume rather than a full genesis
+> replay.
 
 ---
 

@@ -1,0 +1,24 @@
+<!-- Kuira favicon — self-contained app-icon tile.
+     Unlike the nav logo (assets/logo.svg), a favicon can't be styled by
+     CSS, so it can't rely on the light-mode invert filter. A bare white K
+     renders invisible on a light browser tab. So this version carries its
+     own Midnight Void (#000000) tile with the white K on top — "light in
+     darkness" — which reads on both light and dark browser chrome.
+     K geometry is identical to logo.svg (from the Android launcher
+     foreground), centered and scaled into a 64x64 tile. -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     preserveAspectRatio="xMidYMid meet">
+  <!-- Midnight Void tile -->
+  <rect x="0" y="0" width="64" height="64" rx="12" fill="#000000"/>
+  <!-- K monogram (same paths as logo.svg), centered: maps source
+       center (55.5,54) -> (32,32) at 0.73 scale -->
+  <g transform="translate(32,32) scale(0.73) translate(-55.5,-54)">
+    <!-- Vertical stem -->
+    <path fill="#ffffff" d="M38 28 L43 28 L43 80 L38 80 Z"/>
+    <!-- Upper diagonal (top-right arm) -->
+    <path fill="#ffffff" d="M43 52 L68 28 L73 28 L73 33 L47 56 Z"/>
+    <!-- Lower diagonal (bottom-right leg) -->
+    <path fill="#ffffff" d="M43 56 L47 52 L73 75 L73 80 L68 80 Z"/>
+  </g>
+</svg>

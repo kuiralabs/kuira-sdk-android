@@ -83,7 +83,7 @@ same asset layout the plugin would.
     }
 
     kuiraContract {
-        source.set("contract/src/managed/your-contract")
+        source.set("../contract/src/managed/your-contract")                 // (1b)
         // alias.set("your-contract")                                       // (2)
     }
     ```
@@ -92,6 +92,11 @@ same asset layout the plugin would.
        `pluginManagement.repositories` so `plugins { id(...) }` can
        resolve it. (It is not listed on the Gradle Plugin Portal, so
        this repo entry is required.)
+    1b. `source` is resolved relative to the **`app/` module**, and
+       `contract/` is a sibling of `app/`, so the path needs the
+       leading `../` — `../contract/src/managed/<name>`. (The
+       hand-rolled tab below reaches the same directory differently,
+       via `rootProject.file("contract")`.)
     2. `alias` is optional — defaults to the dirname of `source`. So
        `contract/src/managed/penalty` resolves to alias `penalty`,
        which lands the contract JS as
@@ -198,6 +203,11 @@ suspend fun buildContract(
    For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), pack the bytes by
    hand.
 
+`yourCircuit` and `keys/yourCircuit.verifier` are placeholders — substitute
+your circuit's real name. For the [Hello Compact](hello-compact.md) counter
+that's `increment`, so the verifier is `keys/increment.verifier` and the
+key in `circuitVerifierKeys` is `"increment"`.
+
 **Verify:** the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
 descriptors typecheck against the bytecode.
@@ -205,6 +215,25 @@ descriptors typecheck against the bytecode.
 ---
 
 ## Step 3 — Deploy
+
+!!! warning "The embedded wallet must hold Dust first"
+    Deploying (and calling) burns **Dust** to pay for proving + on-chain
+    execution. On a brand-new, unfunded embedded wallet, `deploy()` (or
+    `call()`) **hangs forever at the "Balancing" stage** — it's waiting
+    for Dust that never arrives.
+
+    Fund and register Dust before your first deploy:
+
+    1. Airdrop NIGHT to the embedded wallet's address (the airdrop
+       command takes the raw embedded-wallet address directly):
+
+        ```bash
+        mn airdrop <amount> --wallet <embedded-wallet-address> --network undeployed
+        ```
+
+    2. Register Dust **in-app** — tap **Register dust** in the wallet
+       panel. The CLI cannot register Dust for the embedded wallet; this
+       step has to happen inside the app that owns the seed.
 
 ```kotlin
 // ProvingKeyManager lives in com.midnight.kuira.core.compact.proving.
@@ -288,6 +317,7 @@ block costs only a state fetch, not a re-decode.
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `Contract not compiled at …` at Gradle time | Step 1 prereq not done. | Run `npm run compact` in `contract/`. |
+| Deploy or call hangs at "Balancing" and never finishes | The embedded wallet has no Dust. | Fund it (`mn airdrop … --network undeployed`) and tap **Register dust** in-app, then retry. |
 | `Unsupported bytecode version` at runtime | Your compactc emitted bytecode for a different runtime version than the SDK ships. | Pin compactc to match your contract's `@midnight-ntwrk/compact-runtime` version. |
 | `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Add a 3–5s delay between deploy and first call. |
 | `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout against the circuit's declared shape. |

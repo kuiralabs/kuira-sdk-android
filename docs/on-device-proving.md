@@ -12,7 +12,7 @@ reach for a remote proof server instead.
 !!! abstract "Native Rust, not WebAssembly"
 
     Kuira's prover is the same Rust proving engine the Midnight proof server
-    uses (`midnight-zkir`), compiled to a native ARM64 `.so` and called over
+    uses (`midnight-zkir`), compiled to a native `.so` and called over
     JNI. It is **not** the WebAssembly prover used by Midnight's reference
     wallet. Running as native machine code is what makes proving the full
     wallet flow on-device practical without offloading to a server.
@@ -40,17 +40,21 @@ server. Provision the keys once (see [Proving keys](#proving-keys)) before
 relying on `LOCAL`.
 
 ```kotlin
+import com.midnight.kuira.core.compact.proving.ProvingMode
+
 // LOCAL is the default — no configuration needed.
 val sdk = MidnightSdk.Builder(context)
     .network(MidnightNetwork.PREPROD)
-    .build(seed)
+    .seed(seed)
+    .build()
 
 // Opt into a remote proof server instead:
 val sdk = MidnightSdk.Builder(context)
     .network(MidnightNetwork.PREPROD)
+    .seed(seed)
     .provingMode(ProvingMode.REMOTE)
     .proofServerUrl("http://10.0.2.2:6300")
-    .build(seed)
+    .build()
 ```
 
 ---

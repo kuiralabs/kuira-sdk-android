@@ -12,7 +12,7 @@ it.
 
     The cryptographic core — wallet, ledger, Dust, and **zero-knowledge
     proving** — is a native Rust library compiled straight to an Android
-    `.so` and called over JNI. It runs as native ARM64 machine code, not
+    `.so` and called over JNI. It runs as native machine code, not
     the Midnight stack's WebAssembly modules inside an embedded runtime.
     That's the foundation that makes [on-device proving](on-device-proving.md)
     viable.
@@ -89,7 +89,7 @@ Benefit-first — the capabilities your app can offer the people using it.
 
     ---
 
-    Pick from built-in palettes — Kuira Monochrome, Catppuccin, Nord,
+    Pick from built-in palettes — Monochrome, Paper, Catppuccin, Nord,
     Dracula, Tokyo Night, Rosé Pine — and the choice sticks across restarts.
 
 -   :material-bell-ring:{ .lg .middle } __Know the moment they're paid__
@@ -143,7 +143,8 @@ The DevX side — wired so you write app logic, not plumbing.
 
     ---
 
-    Balance + submit report through six discrete stages, so the
+    Balance + submit report through five discrete stages — fetching
+    state, executing, proving, balancing, submitting — so the
     otherwise-opaque proving/submission wait becomes real UX.
 
 -   :material-table-check:{ .lg .middle } __Lossless typed ledger reads__

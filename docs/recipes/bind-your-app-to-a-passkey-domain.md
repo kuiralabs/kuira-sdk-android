@@ -73,6 +73,12 @@ If it doesn't, you'll create it in Step 3. If you want to use a
 different domain (a custom domain you own, or a personal site you
 already host other apps on), use that instead — same constraints apply.
 
+!!! danger "If you cloned the starter, change `PASSKEY_RP_ID`"
+    The starter ships `PASSKEY_RP_ID = "kuiralabs.github.io"`. You
+    **must** change it to a domain *you* host `assetlinks.json` on (Step
+    4), or every **Forge** fails with `RP_ID_MISMATCH` — your debug
+    fingerprint isn't in the `kuiralabs.github.io` assetlinks file.
+
 ---
 
 ## Step 1 — Get the debug fingerprint

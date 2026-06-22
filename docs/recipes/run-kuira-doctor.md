@@ -129,6 +129,11 @@ tasks.named<com.midnight.kuira.contract.KuiraDoctorTask>("kuiraDoctor") {
 }
 ```
 
+The task only exposes `applicationId`, `minSdk`, and `rpId`. The
+gating and source knobs — `requireDoctorPass`, `contractSource`,
+`expectedCompactRuntime` — are configured on the `kuiraContract { … }`
+extension, not on the task itself.
+
 ### Gating CI
 
 For a CI workflow that blocks merges on `kuiraDoctor` issues:

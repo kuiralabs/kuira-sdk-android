@@ -6,7 +6,8 @@ tags:
   - hello-world
 prerequisites:
   - compactc installed (the Kuira-pinned version is {{ compactc_version }}; see Toolchain below)
-  - npm + a basic understanding of Compact's pragma + import directives
+  - the contract npm project set up — `npm install` in `contract/` (pulls in `@midnight-ntwrk/compact-runtime` + the `compact`/`compactc` devtools), or copy the starter's `contract/` directory as a template
+  - a basic understanding of Compact's pragma + import directives
 agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/hello-compact.md
 ---
 
@@ -90,22 +91,55 @@ you typed:
 
 | Layer | Pinned value | Where it lives |
 |---|---|---|
-| `compactc` binary | **{{ compactc_version }}** | `~/.compact/versions/{{ compactc_version }}/aarch64-darwin/compactc` |
+| `compactc` binary | **{{ compactc_version }}** | installed under `~/.compact/versions/{{ compactc_version }}/<os-arch>/`, driven via the `compact` wrapper |
 | Compact language pragma | **{{ compact_language_version }}** | `pragma language_version <v>;` in your `.compact` source |
 | `@midnight-ntwrk/compact-runtime` | **{{ compact_runtime_version }}** | `contract/package.json` deps |
 
-Each `compactc` binary self-introspects:
+!!! note "On-chain runtime ships with the node"
+    The Compact **runtime** is also embedded in the Midnight node.
+    `midnight-node:0.22.5` — the `mn localnet` default — ships on-chain
+    Compact runtime **{{ compact_runtime_version }}**, the runtime this
+    contract targets. Older nodes (`≤ 0.22.3`) run runtime `0.15.0` and
+    **reject** a {{ compact_runtime_version }} contract with a
+    runtime-version mismatch. Stick with the default node and you're
+    aligned.
+
+The toolchain self-introspects:
 
 ```bash
-compactc --version            # → {{ compactc_version }}
-compactc --language-version   # → {{ compact_language_version }}
-compactc --runtime-version    # → {{ compact_runtime_version }}
+compact --version                          # → {{ compactc_version }}
+compact compile --language-version         # → {{ compact_language_version }}
+compact compile --runtime-version          # → {{ compact_runtime_version }}
 ```
 
-When upgrading, run the three flags on the new binary first to
+The language and runtime flags hang off `compact compile` (the
+subcommand that owns them) — there is no bare `compactc --runtime-version`.
+
+When upgrading, run the three commands on the new toolchain first to
 discover the matching triple before editing any pragma. The starter's
 [`contract/README.md`](https://github.com/kuiralabs/kuira-starter-android/blob/main/contract/README.md)
 documents the upgrade recipe step by step.
+
+---
+
+## Set up the contract project
+
+The compile + runtime live in a small npm project alongside your app.
+The fastest path is to copy the starter's
+[`contract/`](https://github.com/kuiralabs/kuira-starter-android/tree/main/contract)
+directory — it already pins the toolchain — and install it:
+
+```bash
+cd contract
+npm install
+```
+
+This pulls in `@midnight-ntwrk/compact-runtime` (**{{ compact_runtime_version }}**,
+the JS runtime compiled contracts call into) and makes the
+`compact` / `compactc` devtools available, so the compile step below
+has everything it needs. The starter's `contract/package.json` also
+wires up `npm run compile` / `npm run inspect` shortcuts for the
+commands you'll run by hand here.
 
 ---
 
@@ -115,10 +149,17 @@ From your project root:
 
 ```bash
 mkdir -p contract/src/managed
-~/.compact/versions/{{ compactc_version }}/aarch64-darwin/compactc \
-    contract/src/counter.compact \
-    contract/src/managed/counter
+compact compile contract/src/counter.compact contract/src/managed/counter
 ```
+
+!!! note "Use the `compact` wrapper, not the raw binary"
+    `compact` is the Midnight devtools wrapper; it selects the right
+    `compactc` binary for your platform automatically (this is exactly
+    what the starter's `npm run compile` runs). The underlying binary
+    directory varies by OS/arch — `aarch64-darwin`, `x86_64-darwin`,
+    `x86_64-linux`, … — so don't hardcode a path to it. If `compact`
+    is on your `PATH`, just run `compact …`. On Windows, run it under
+    WSL2.
 
 Output: a `contract/src/managed/counter/` directory containing
 `contract/index.js` (the runnable contract), `keys/increment.verifier`
@@ -133,23 +174,33 @@ Quick sanity check with the `mn` CLI:
 mn contract inspect --managed contract/src/managed/counter
 ```
 
-Output should show:
+The compile also writes the machine-readable
+`contract/src/managed/counter/compiler/contract-info.json`, which
+records the exact triple the artifacts were built with plus the
+circuit shapes. For the counter it looks like this (trimmed):
 
+```json title="compiler/contract-info.json"
+{
+  "compiler-version": "{{ compactc_version }}",
+  "language-version": "{{ compact_language_version }}",
+  "runtime-version": "{{ compact_runtime_version }}",
+  "circuits": [
+    { "name": "increment", "pure": false, "proof": true }
+  ],
+  "witnesses": [],
+  "ledger": [
+    { "name": "count", "exported": true, "storage": "Counter" }
+  ]
+}
 ```
-Compiler:       {{ compactc_version }}
-Language:       {{ compact_language_version }}
-Runtime:        {{ compact_runtime_version }}
 
-Circuits
-  increment()  — impure, proof
-
-Witnesses
-  (none)
-```
-
-If those three versions don't match what you have on disk, you've got
-a mismatch between the `compactc` you ran and the `@midnight-ntwrk/compact-runtime`
-your project pins. Re-align using the toolchain table above.
+The exact field set evolves with the compiler, so treat the block
+above as **illustrative, not a byte-for-byte match** — read your own
+file rather than diffing against this. What matters: the three
+`*-version` values are the triple your artifacts were built with. If
+they don't line up with the `@midnight-ntwrk/compact-runtime` and
+`pragma language_version` your project pins, re-align using the
+toolchain table above.
 
 For a full localnet verify loop (deploy → call → read state), follow
 the starter's

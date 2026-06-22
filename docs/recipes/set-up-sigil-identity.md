@@ -42,7 +42,11 @@ recovery-phrase export (BIP-39) is its own flow.
 ## Prerequisites
 
 - The previous recipe ([Add Kuira to an Android project](add-kuira-to-an-android-project.md))
-  completed: dependency, `PasskeyConfig`, `assetlinks.json`.
+  completed: dependency, `PasskeyConfig`, `assetlinks.json`. The
+  `PasskeyConfig` binding is **mandatory** — see
+  **[Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md)**.
+  Without it, `assembleDebug` fails fast with a Dagger missing-binding
+  error by design.
 - A Compose-based UI host. The SDK ships
   `SigilStatusPanel` as a ready-made Compose component you can drop
   in, or you can render a custom UI on top of `SigilPanelViewModel`.
@@ -76,22 +80,44 @@ And declare it in your manifest:
 ```
 
 `@HiltAndroidApp` lights up the dependency graph the SDK's modules
-plug into. Nothing further required — the SDK's `IdentityModule`,
-`AuthModule`, `WalletRuntimeModule`, `SdkModule` are auto-installed
-once Hilt is on.
+plug into. The SDK's `IdentityModule`, `AuthModule`,
+`WalletRuntimeModule`, and `DappUiModule` are auto-installed once Hilt
+is on.
 
-**Verify:** `./gradlew :app:assembleDebug` succeeds and Hilt's
+One thing you **must** supply yourself: a `@Provides PasskeyConfig`
+binding (a `PasskeyConfigModule` — see the
+**[Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md)**
+recipe) before `assembleDebug` will compile. Omitting it is an
+intentional Dagger missing-binding build error — the SDK can't forge a
+sigil without knowing your passkey domain.
+
+**Verify:** with your `PasskeyConfig` binding in place,
+`./gradlew :app:assembleDebug` succeeds and Hilt's
 `MyApp_HiltComponents` is generated under
-`app/build/generated/hilt/`.
+`app/build/generated/hilt/`. (Without the binding, the build fails
+fast with a missing `PasskeyConfig` binding error — that's expected.)
 
 ---
 
 ## Step 2 — Drop the `SigilStatusPanel` Composable into your UI
 
-The panel composable takes a Hilt-provided `SigilPanelViewModel`
-(obtained via `hiltViewModel()` from `androidx.hilt.navigation.compose`)
-plus optional `Modifier`, `SigilPanelColors`, and an `onStatusChange`
-callback. The hosting Activity must subclass `FragmentActivity` so the
+The panel composable's signature, in declaration order, is:
+
+```kotlin
+SigilStatusPanel(
+    modifier = Modifier,
+    colors = SigilPanelColors.Default,
+    viewModel = hiltViewModel(),   // from androidx.hilt.navigation.compose
+    onStatusChange = {},
+    onOpenSettings = {},
+)
+```
+
+Every parameter has a default, so the zero-arg call works as a drop-in.
+`onStatusChange` fires on each sigil state transition; `onOpenSettings`
+is invoked when the user taps the panel's settings affordance, so you
+can route them to your own settings screen. The hosting Activity must
+subclass `FragmentActivity` so the
 panel's internal biometric prompts can run — `AppCompatActivity`
 satisfies this; `ComponentActivity` alone does not.
 
@@ -143,8 +169,9 @@ fun MainScreen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("My Midnight dApp")
         // Zero-arg call is the canonical drop-in: the SDK defaults
-        // `viewModel = hiltViewModel()`, `colors = SigilPanelColors.Default`,
-        // `modifier = Modifier`, and `onStatusChange = { }`.
+        // `modifier = Modifier`, `colors = SigilPanelColors.Default`,
+        // `viewModel = hiltViewModel()`, `onStatusChange = { }`, and
+        // `onOpenSettings = { }`.
         SigilStatusPanel()
     }
 }

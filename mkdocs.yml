@@ -54,7 +54,7 @@ theme:
     - content.tabs.link      # link tabbed content blocks across the page
     - toc.follow             # sidebar TOC tracks scroll position
   logo: assets/logo.svg
-  favicon: assets/logo.svg
+  favicon: assets/favicon.svg
   icon:
     repo: fontawesome/brands/github
 
@@ -100,6 +100,8 @@ nav:
   - Capabilities: capabilities.md
   - On-device proving: on-device-proving.md
   - Get started:
+    - Prerequisites: prerequisites.md
+    - Quickstart: quickstart.md
     - Install + integrate: integration.md
   - Recipes:
     - recipes/index.md

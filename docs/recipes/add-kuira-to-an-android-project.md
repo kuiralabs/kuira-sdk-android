@@ -18,6 +18,10 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main
 recognises your passkey domain, and has the Hilt graph wired so any
 `@HiltViewModel` consuming SDK panels resolves cleanly.
 
+!!! tip "New to Android development?"
+    Get comfortable with Android Studio, the SDK, emulators, and running an app
+    first: <https://developer.android.com/get-started/overview>.
+
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/add-kuira-to-an-android-project.md"
      data-task="Integrate Kuira SDK into this Android project — install the dependency, provide a PasskeyConfig Hilt module for the project's own domain, and enable debug cleartext for localnet (assetlinks.json hosting is left to the developer)."></div>
 
@@ -252,7 +256,7 @@ not permitted`.
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| `Could not resolve io.github.kuiralabs:dapp-ui` | Missing `mavenCentral()` in `settings.gradle.kts` `dependencyResolutionManagement.repositories`. | Add it. |
+| `Could not resolve io.github.kuiralabs:dapp-ui` | Missing `mavenCentral()` in `settings.gradle.kts` `dependencyResolutionManagement.repositories`, or the version isn't published yet. | Add `mavenCentral()`, and confirm the version is published — check [central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui](https://central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui). |
 | `Missing binding for PasskeyConfig` at Hilt KSP time | Step 2 not done. | Create `IdentityConfigModule.kt`. |
 | `Passkey not supported on this device` at runtime | Device lacks Google Password Manager (Android 13 / GMS Core 23.40.13+ required) or screen-lock is disabled. | Enable a device PIN/biometric. |
 | `RP_ID_MISMATCH` at passkey creation | `assetlinks.json` is unreachable, returns wrong content-type, or contains the wrong SHA-256. | Verify `curl -I`, double-check the fingerprint. |

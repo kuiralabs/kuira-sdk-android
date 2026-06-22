@@ -44,6 +44,9 @@ Drop in the prebuilt UI, build your own on the same contracts, or go fully headl
 | A web domain you control | Required for the passkey relying party (GitHub Pages is fine for dev) |
 | Your app's signing-cert SHA-256 | Needed for `assetlinks.json` (step 4) |
 
+Full toolchain (JDK 17, Android Studio, Docker, Node 20+, the `mn` CLI, compactc)
+— see **[Prerequisites](prerequisites.md)**.
+
 ---
 
 ## 2. Add the dependency — *one line*
@@ -111,7 +114,7 @@ dependencies {
     // implementation("io.github.kuiralabs:midnight-sdk:{{ kuira_version }}")
 
     // Hilt processor — required, the SDK is Hilt-first
-    ksp("com.google.dagger:hilt-android-compiler:2.58")
+    ksp("com.google.dagger:hilt-compiler:2.58")
 
     // your own app code, your own Compose deps, etc.
 }
@@ -233,13 +236,33 @@ mn localnet status                          # check it's healthy
 mn localnet down                            # tear it down
 ```
 
+!!! note "Tested localnet stack — pin the node to `0.22.5`"
+    Tested localnet stack: `midnight-node:0.22.5` (on-chain Compact runtime
+    0.16.0). Older nodes (≤0.22.3) ship runtime 0.15.0 and reject a contract
+    compiled for 0.16.0. `mn` pulls the node image; if you run Docker by hand,
+    pin the node tag to `0.22.5`.
+
+!!! warning "Windows — `mn localnet up` can time out"
+    On Windows, `mn localnet up` can fail with `spawnSync … cmd.exe ETIMEDOUT`.
+    Bring the stack up directly:
+
+    ```bash
+    docker compose -f ~/.midnight/localnet/compose.yml up -d
+    ```
+
 Fund the wallet your app shows (copy its address from the wallet panel's receive
 screen):
 
 ```bash
-mn airdrop 10000 --wallet mn_addr_undeployed1…   # NIGHT for fees
-mn dust register --wallet mn_addr_undeployed1…   # enable Dust (gas) generation
+mn airdrop 10000 --wallet mn_addr_undeployed1… --network undeployed   # NIGHT for fees
 ```
+
+Dust (gas) for the app's embedded wallet is enabled **in-app** — tap **Register
+dust** in the wallet panel.
+
+!!! note "`mn dust register` targets a *named* CLI wallet, not the app's wallet"
+    `mn dust register --wallet <name>` needs a *named* wallet from
+    `mn wallet generate`; it cannot target the app's embedded wallet address.
 
 > Localnet is ephemeral — `mn localnet down` (or a Docker restart) wipes all
 > state, including funded balances. Re-airdrop after each fresh `up`.
@@ -251,6 +274,12 @@ The SDK already maps `UNDEPLOYED` to the right host per device type
 
 - **Emulator** — `10.0.2.2` (the emulator's alias for your machine's
   `localhost`). Nothing to do.
+
+  !!! note "Emulator ABI — x86_64 works on `0.1.0-alpha04`+"
+      x86_64 (Intel) and arm64 emulators both work on `0.1.0-alpha04`+ (the
+      native lib ships `arm64-v8a` and `x86_64`). On alpha03 and earlier the lib
+      is arm64-only — an x86_64 AVD fails at launch with
+      `java.lang.UnsatisfiedLinkError`; use alpha04+ or an arm64 AVD.
 - **Physical device** — `127.0.0.1`, so the three localnet ports must be
   tunnelled over the debug bridge. The SDK ships a Gradle plugin that does this
   automatically on every `installDebug` — apply it once, no configuration:
@@ -271,12 +300,23 @@ The SDK already maps `UNDEPLOYED` to the right host per device type
   [BBoard](https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts)
   and the [starter](https://github.com/kuiralabs/kuira-starter-android/blob/main/app/build.gradle.kts).
 
-  Prefer a one-off without the plugin? Run it by hand:
+  **Required for physical devices** — the app can't reach the localnet without
+  these three port forwards (the plugin runs them for you on `installDebug`; run
+  them by hand if you're not using the plugin):
 
   ```bash
   adb reverse tcp:9944 tcp:9944   # node RPC
   adb reverse tcp:8088 tcp:8088   # indexer
   adb reverse tcp:6300 tcp:6300   # proof server
+  ```
+
+  **No "Install via USB" on the phone?** Some devices hide it. Build and push
+  the APK over `adb` instead:
+
+  ```bash
+  ./gradlew :app:assembleDebug
+  adb push app/build/outputs/apk/debug/app-debug.apk /data/local/tmp/app.apk
+  adb shell pm install -r /data/local/tmp/app.apk
   ```
 
 ### 5c. Allow cleartext to the localnet (debug only)
@@ -393,10 +433,19 @@ the hand-rolled `Copy` task shown in the
 install once at runtime — it's idempotent, so call it before each action:
 
 ```kotlin
+import com.midnight.kuira.core.compact.proving.ProvingKeyManager
+
 // Discovers the circuit keys bundled in assets and stages them
 // where the on-device prover looks.
 ProvingKeyManager(context).installCircuitKeysFromAssets()
 ```
+
+!!! note "Imports — use the `core.compact.proving` package"
+    `ProvingKeyManager` and `ProvingMode` both live in
+    `com.midnight.kuira.core.compact.proving`. There is a same-named
+    `ProvingMode` *typealias* in `com.midnight.kuira.core.crypto.proving` — do
+    **not** import that one; always reference
+    `com.midnight.kuira.core.compact.proving.ProvingMode`.
 
 The shared **wallet** proving keys ship the full BLS parameter set
 (`bls_midnight_2p5`–`2p15`), so a small contract circuit (e.g. a counter that
@@ -439,7 +488,10 @@ throws `SigilRequiredException` until a sigil exists. Forge it through
 | Biometric prompt fails / PRF returns null | Step 4 — `assetlinks.json` missing, wrong `package_name`, or wrong cert SHA-256. |
 | Contract call fails at the proving step / *"circuit keys not found"* / *"BLS params"* | §6.1 — install your contract's proving keys before the first deploy/call (and bundle the right BLS set for small circuits). |
 | App balance stays at 0 after an airdrop | The wallet's background subscription is live; check `adb logcat` for indexer connectivity. On localnet, state is ephemeral — restarting the localnet wipes funds. |
-| `IllegalArgumentException: Could not find io.github.kuiralabs:…` | Check the alpha version is current; the SDK is `{{ kuira_version }}` at the time of writing. |
+| Balance stays 0 / *"Loading…"* on a **physical device** | Run the three `adb reverse` commands (9944 node, 8088 indexer, 6300 proof server) or apply the `io.github.kuiralabs.localnet` plugin (§5b). |
+| `java.lang.UnsatisfiedLinkError` at launch on an x86_64 emulator | The native lib is arm64-only before `0.1.0-alpha04`. Upgrade to alpha04+ (ships `x86_64`) or use an arm64 AVD. |
+| `Custom error: 168` or a dust-fee / time-to-dismiss failure on dust registration or the first tx | Fixed in SDK `0.1.0-alpha04` — upgrade. An unexpected `Custom error: N` not in the known set usually means a client↔node ledger-version mismatch — confirm your node is `0.22.5`. |
+| `Could not resolve io.github.kuiralabs:…` | Ensure `mavenCentral()` is in your repositories **and** the version is actually published — check [central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui](https://central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui). |
 
 ---
 
