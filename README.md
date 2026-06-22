@@ -29,7 +29,7 @@ dependencyResolutionManagement {
 
 // app/build.gradle.kts
 dependencies {
-    implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha03")
+    implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha04")
 }
 ```
 

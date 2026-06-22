@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -95,7 +95,7 @@
   <div class="cover ">
     <h1 class="cover"><span>subscribe</span><wbr><span>To</span><wbr><span>Zswap</span><wbr><span><span>Events</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="subscribe-to-zswap-events.html"><span class="token function">subscribeToZswapEvents</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.core.indexer.model/-raw-ledger-event/index.html">RawLedgerEvent</a><span class="token operator">&gt;</span></div><p class="paragraph">Subscribe to zswap events using dedicated WebSocket (not shared with unshielded).</p></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":core:indexer:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="subscribe-to-zswap-events.html"><span class="token function">subscribeToZswapEvents</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fromId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../../com.midnight.kuira.core.indexer.model/-raw-ledger-event/index.html">RawLedgerEvent</a><span class="token operator">&gt;</span></div><p class="paragraph">Subscribe to zswap events using dedicated WebSocket (not shared with unshielded).</p><p class="paragraph"><code class="lang-kotlin">open</code> so tests can substitute a deterministic event source (the production body opens a real WebSocket); see <code class="lang-kotlin">ShieldedRepositorySyncPlanInstrumentedTest</code>.</p></div></div>
 </div>
     <div class="footer">
         <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>

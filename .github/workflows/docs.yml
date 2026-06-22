@@ -34,5 +34,11 @@ jobs:
       - name: Install mkdocs-material
         run: pip install -r requirements.txt
 
+      # Fails the build if the pre-built Dokka HTML under docs/api/ has
+      # drifted from kuira_version in mkdocs.yml — catches a version bump
+      # that shipped without refreshing the API reference.
+      - name: Verify API reference matches kuira_version
+        run: python scripts/check-api-docs-version.py
+
       - name: Build and deploy
         run: mkdocs gh-deploy --force --clean --verbose

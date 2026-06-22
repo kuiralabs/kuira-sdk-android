@@ -41,7 +41,7 @@
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">0.1.0-alpha03
+        <div class="library-version" id="library-version">0.1.0-alpha04
         </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
@@ -135,11 +135,131 @@
               </div>
             </div>
           </div>
+<a data-name="-1079310930%2FProperties%2F-1598735434" anchor-label="appStateBackupEnabled" id="-1079310930%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="app-state-backup-enabled.html"><span>app</span><wbr><span>State</span><wbr><span>Backup</span><wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1079310930%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-volatile/index.html"><span class="token annotation builtin">Volatile</span></a></div></div><span class="token keyword">var </span><a href="app-state-backup-enabled.html">appStateBackupEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Same "disable = stop uploading" gate for the app-state blob (#246). Set false by <a href="disable-app-state-cloud-backup.html">disableAppStateCloudBackup</a>; the host persists the preference and re-applies it after each SDK (re)build — WITHOUT it a disable wouldn't stick (the next <a href="refresh.html">refresh</a> would re-upload the deleted blob). Default true.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1972740284%2FProperties%2F-1598735434" anchor-label="appStateProvider" id="1972740284%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="app-state-provider.html"><span>app</span><wbr><span>State</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1972740284%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-volatile/index.html"><span class="token annotation builtin">Volatile</span></a></div></div><span class="token keyword">var </span><a href="app-state-provider.html">appStateProvider</a><span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Host-registered snapshot of app state to back up automatically on each <a href="refresh.html">refresh</a> (≤2 KB; e.g. Kicks match witnesses). The host sets this once after obtaining the wallet — the SDK can't inject it (the provider lives above this layer). The upload is silent (seed-keyed) + digest-guarded, so it's a no-op when the snapshot is unchanged. Null → nothing to back up.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1755935543%2FProperties%2F-1598735434" anchor-label="backupStatus" id="-1755935543%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backup-status.html"><span>backup</span><wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1755935543%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="backup-status.html">backupStatus</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-backup-status-snapshot/index.html">BackupStatusSnapshot</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Observable cloud-backup status (dust + app-state lanes), updated by the backup methods so the UI can show "syncing / up to date / needs consent / failed" instead of a silent log. Identity recovery (the passkey) is sourced separately at the app layer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="546465776%2FProperties%2F-1598735434" anchor-label="dustBackupEnabled" id="546465776%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dust-backup-enabled.html"><span>dust</span><wbr><span>Backup</span><wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="546465776%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-volatile/index.html"><span class="token annotation builtin">Volatile</span></a></div></div><span class="token keyword">var </span><a href="dust-backup-enabled.html">dustBackupEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">User opt-out for dust cloud backup. When false, <a href="backup-dust-to-cloud.html">backupDustToCloud</a> (and therefore <a href="refresh.html">refresh</a>) <strong>skip the Drive upload entirely</strong> — that's the "disable" semantics: we simply stop uploading. The host persists the preference and re-applies it after each SDK (re)build. Default true.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-805277034%2FProperties%2F-1598735434" anchor-label="nightUtxoJsonProvider" id="-805277034%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="night-utxo-json-provider.html"><span>night</span><wbr><span>Utxo</span><wbr><span>Json</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-805277034%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-volatile/index.html"><span class="token annotation builtin">Volatile</span></a></div></div><span class="token keyword">var </span><a href="night-utxo-json-provider.html">nightUtxoJsonProvider</a><span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Live NIGHT-UTXO list (as the registration-filter JSON) wired by <a href="../-midnight-sdk/index.html">MidnightSdk</a>. Lets <a href="balance.html">balance</a>/<a href="balance-flow.html">balanceFlow</a> compute <code class="lang-kotlin">dustRegistered</code> from true per-UTXO registration state — "are all current NIGHT UTXOs generating dust?" — instead of the dust&gt;0 heuristic (#265). Null → fall back to the heuristic (e.g. before the SDK wires it).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="507052482%2FProperties%2F-1598735434" anchor-label="receipts" id="507052482%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="receipts.html"><span><span>receipts</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="507052482%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="receipts.html">receipts</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../../../../core/indexer/com.midnight.kuira.core.indexer.model/-receipt-event/index.html">ReceiptEvent</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Per-transaction inbound NIGHT receipts (#284), classified by UTXO-set provenance in the indexer subscription: a genuine receipt is a transaction that created NIGHT to us without spending any of our UTXOs. Our own sends (which return change to us) are NEVER receipts, so a consumer wiring this to a notification will never tell the user they "received" their own change. Each event carries the exact amount received IN THAT transaction — not a balance delta. Cold by default (<span data-unresolved-link="kotlinx.coroutines.flow//emptyFlow/#/PointingToDeclaration/">emptyFlow</span>) when no subscription is wired (e.g. tests).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="768853200%2FProperties%2F-1598735434" anchor-label="syncStatus" id="768853200%2FProperties%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sync-status.html"><span>sync</span><wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="768853200%2FProperties%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="sync-status.html">syncStatus</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="../-sync-status/index.html">SyncStatus</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Observable wallet-sync status (#235). EVERY heavy sync this wallet runs publishes here — <a href="sync-dust.html">syncDust</a>, the proactive <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-wallet/proactive-dust-resync.html">proactiveDustResync</a>, the shielded + dust <a href="refresh.html">refresh</a>, and the <a href="../../../../sdk/midnight-sdk/com.midnight.kuira.sdk/-midnight-wallet/force-full-sync.html">forceFullSync</a> genesis rebuild — so a background observer (the foreground-service Live-Update notification) can render progress for whichever phase is in flight without driving the sync itself. The in-app <code class="lang-kotlin">WalletSyncIndicator</code> can also collect this instead of the per-call lambda.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1967520425%2FFunctions%2F-1598735434" anchor-label="backupDustToCloud" id="-1967520425%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+        <div class="table"><a data-name="-509132206%2FFunctions%2F-1598735434" anchor-label="backupAppStateToCloud" id="-509132206%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="backup-app-state-to-cloud.html"><span>backup</span><wbr><span>App</span><wbr><span>State</span><wbr><span>To</span><wbr><span><span>Cloud</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-509132206%2FFunctions%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="backup-app-state-to-cloud.html"><span class="token function">backupAppStateToCloud</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">appMetadata<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Back up host <strong>app state</strong> (≤2 KB; e.g. Kicks match witnesses) to the cloud, encrypted under a seed-derived key — no passkey/biometric, so it's safe to call automatically. No-op when no coordinator is wired. The coordinator hash-guards redundant uploads, so this is cheap to call after every meaningful state change. Never throws to the caller.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1967520425%2FFunctions%2F-1598735434" anchor-label="backupDustToCloud" id="-1967520425%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
@@ -229,6 +349,66 @@
               </div>
             </div>
           </div>
+<a data-name="-1840132034%2FFunctions%2F-1598735434" anchor-label="disableAppStateCloudBackup" id="-1840132034%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="disable-app-state-cloud-backup.html"><span>disable</span><wbr><span>App</span><wbr><span>State</span><wbr><span>Cloud</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1840132034%2FFunctions%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="disable-app-state-cloud-backup.html"><span class="token function">disableAppStateCloudBackup</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Delete the cloud app-state blob (#246 — true backup disable). Clears the remote blob + local upload digest via the coordinator; no-op when none is wired. Recovery is unaffected (the seed is passkey-derived) — this only drops the convenience app-state copy.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-122519808%2FFunctions%2F-1598735434" anchor-label="disableDustCloudBackup" id="-122519808%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="disable-dust-cloud-backup.html"><span>disable</span><wbr><span>Dust</span><wbr><span>Cloud</span><wbr><span><span>Backup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122519808%2FFunctions%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="disable-dust-cloud-backup.html"><span class="token function">disableDustCloudBackup</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Disable dust cloud backup and DELETE the cloud copy (#246 — true backup disable). Stops future uploads (<a href="dust-backup-enabled.html">dustBackupEnabled</a> = false) and clears the remote blob + local upload digests via the coordinator. No-op when no coordinator is wired. The wallet itself is unaffected — recovery is the passkey; the cloud blob is only a dust-sync-speed checkpoint.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="812704851%2FFunctions%2F-1598735434" anchor-label="fetchAppState" id="812704851%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fetch-app-state.html"><span>fetch</span><wbr><span>App</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="812704851%2FFunctions%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="fetch-app-state.html"><span class="token function">fetchAppState</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Fetch the previously backed-up host app state, or null if none / no coordinator / unavailable. Decryption is seed-derived (no biometric), so a freshly-signed-in device recovers its app state silently.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="66027459%2FFunctions%2F-1598735434" anchor-label="forceResyncUnshielded" id="66027459%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="force-resync-unshielded.html"><span>force</span><wbr><span>Resync</span><wbr><span><span>Unshielded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="66027459%2FFunctions%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="force-resync-unshielded.html"><span class="token function">forceResyncUnshielded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Force-rebuild the unshielded UTXO cache from genesis to self-heal a stale NIGHT balance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1180771938%2FFunctions%2F-1598735434" anchor-label="refresh" id="1180771938%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
@@ -239,7 +419,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="refresh.html"><span class="token function">refresh</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a></div><div class="brief "><p class="paragraph">Force a fresh resync of both shielded and dust state.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="refresh.html"><span class="token function">refresh</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Force a fresh resync of both shielded and dust state.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -270,6 +450,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="sync-dust.html"><span class="token function">syncDust</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">onProgress<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span>eventsProcessed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>totalEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sync dust state from the blockchain.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1211140633%2FFunctions%2F-1598735434" anchor-label="unregisteredNightUtxos" id="-1211140633%2FFunctions%2F-1598735434" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:midnight-sdk:dokkaHtmlPartial/release" data-filterable-set=":sdk:midnight-sdk:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unregistered-night-utxos.html"><span>unregistered</span><wbr><span>Night</span><wbr><span><span>Utxos</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1211140633%2FFunctions%2F-1598735434"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:midnight-sdk:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="unregistered-night-utxos.html"><span class="token function">unregisteredNightUtxos</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nightUtxosJson<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">NIGHT UTXOs (from <a href="unregistered-night-utxos.html">nightUtxosJson</a>) that are NOT yet generating dust — i.e. still need a registration. Matched natively against the current synced dust state's backing-nights, so it's correct regardless of the cache-layer tokens. A null/absent dust state means nothing is registered yet, so all are returned. Drives <a href="../-midnight-sdk/register-for-dust-generation.html">MidnightSdk.registerForDustGeneration</a>'s per-UTXO registration loop.</p></div></div></div>
                 </div>
               </div>
             </div>

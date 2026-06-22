@@ -1,0 +1,405 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SessionLock</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Kuira
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">0.1.0-alpha04
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:wallet-runtime:dokkaHtmlPartial/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filter=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Kuira
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="wallet-runtime::com.midnight.kuira.sdk.walletruntime/SessionLock///PointingToDeclaration//761230159">
+  <div class="breadcrumbs"><a href="../../index.html">wallet-runtime</a><span class="delimiter">/</span><a href="../index.html">com.midnight.kuira.sdk.walletruntime</a><span class="delimiter">/</span><span class="current">SessionLock</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Session</span><wbr><span><span>Lock</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation builtin">Singleton</span></span></div></div><span class="token keyword">class </span><a href="index.html">SessionLock</a>&nbsp;<span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span>&nbsp;</span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">provider<span class="token operator">: </span><a href="../-midnight-sdk-provider/index.html">MidnightSdkProvider</a><span class="token punctuation">, </span></span><span class="parameter ">walletSeedSource<span class="token operator">: </span><a href="../../../../sdk/wallet-seed/com.midnight.kuira.sdk.walletseed/-wallet-seed-source/index.html">WalletSeedSource</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Session auto-lock (#14). The decrypted seed lives in the process-singleton MidnightSdk owned by <a href="../-midnight-sdk-provider/index.html">MidnightSdkProvider</a>; after one biometric every value-bearing call runs with zero re-auth (the SDK cache bypasses Keystore's short auth window). This locks the session by dropping that cache — <a href="../-midnight-sdk-provider/close.html">MidnightSdkProvider.close</a> — so the next value-bearing action has to re-authenticate. Because the wallet panel never auto-triggers biometric (actions are user-initiated), a lock holds until the user acts; it is never silently undone.</p><p class="paragraph"><strong>Triggers</strong> (all funnel to <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-session-lock/lock.html">lock</a>):</p><ul><li><p class="paragraph">foreground idle: no <a href="on-user-activity.html">onUserActivity</a> for <a href="idle-timeout-ms.html">idleTimeoutMs</a></p></li><li><p class="paragraph">app backgrounded: <a href="on-background.html">onBackground</a> → lock after <a href="background-grace-ms.html">backgroundGraceMs</a></p></li><li><p class="paragraph">device screen off: <a href="on-screen-off.html">onScreenOff</a></p></li><li><p class="paragraph">manual "Lock now": <a href="lock-now.html">lockNow</a></p></li></ul><p class="paragraph"><strong>Wiring.</strong> Call <a href="-companion/attach.html">attach</a> once from the host <code class="lang-kotlin">Application.onCreate</code> — it registers the background (activity-count) + screen-off hooks. For foreground idle, each <code class="lang-kotlin">Activity</code> forwards <code class="lang-kotlin">onUserInteraction()</code> → <a href="on-user-activity.html">onUserActivity</a>.</p><p class="paragraph"><strong>The lock is whole-app, Chase-style.</strong> The host wraps its Compose root in com.midnight.kuira.dapp.lock.SessionLockGate, which observes <a href="locked.html">locked</a> and, while locked, covers the ENTIRE app with a re-auth screen (no content visible or tappable behind it) and marks the window <code class="lang-kotlin">FLAG_SECURE</code> so nothing leaks to the recents thumbnail. <a href="unlock.html">unlock</a> is the gate's biometric. This class owns the policy + the unlock teeth; the gate owns the full-screen presentation.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="354157731%2FConstructors%2F761230159" anchor-label="SessionLock" id="354157731%2FConstructors%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-session-lock.html"><span>Session</span><wbr><span><span>Lock</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="354157731%2FConstructors%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">provider<span class="token operator">: </span><a href="../-midnight-sdk-provider/index.html">MidnightSdkProvider</a><span class="token punctuation">, </span></span><span class="parameter ">walletSeedSource<span class="token operator">: </span><a href="../../../../sdk/wallet-seed/com.midnight.kuira.sdk.walletseed/-wallet-seed-source/index.html">WalletSeedSource</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="461124167%2FClasslikes%2F761230159" anchor-label="Companion" id="461124167%2FClasslikes%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="461124167%2FClasslikes%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1456255564%2FClasslikes%2F761230159" anchor-label="SessionLockEntryPoint" id="-1456255564%2FClasslikes%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-session-lock-entry-point/index.html"><span>Session</span><wbr><span>Lock</span><wbr><span>Entry</span><wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1456255564%2FClasslikes%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-session-lock-entry-point/index.html">SessionLockEntryPoint</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1015341680%2FProperties%2F761230159" anchor-label="backgroundGraceMs" id="-1015341680%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="background-grace-ms.html"><span>background</span><wbr><span>Grace</span><wbr><span><span>Ms</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1015341680%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="background-grace-ms.html">backgroundGraceMs</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Grace period after backgrounding before locking (covers brief app-switches).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2072767005%2FProperties%2F761230159" anchor-label="backgroundLifetimeMs" id="2072767005%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="background-lifetime-ms.html"><span>background</span><wbr><span>Lifetime</span><wbr><span><span>Ms</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2072767005%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="background-lifetime-ms.html">backgroundLifetimeMs</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Ceiling on how long the decrypted seed may stay alive while the app is backgrounded. Backgrounding only soft-locks (UI gated, SDK kept alive for monitoring), so without this a seed could sit decrypted in memory indefinitely on a device whose screen never turns off. When the ceiling elapses it routes through the hold-aware <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-session-lock/lock.html">lock</a> — so an in-flight operation or a backgrounded Kicks match (which holds the session) DEFERS the wipe until it finishes, never gets torn out mid-flight; an idle, unheld session is wiped. Mutable so hosts can tune it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-87632731%2FProperties%2F761230159" anchor-label="hardLocked" id="-87632731%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hard-locked.html"><span>hard</span><wbr><span><span>Locked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-87632731%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="hard-locked.html">hardLocked</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">True only when a HARD lock (<a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-session-lock/do-lock.html">doLock</a>) has actually torn the SDK down (<code class="lang-kotlin">provider.close()</code>), as opposed to a <a href="../../../../sdk/wallet-runtime/com.midnight.kuira.sdk.walletruntime/-session-lock/soft-lock.html">softLock</a> that gates the UI but keeps the SDK alive. The foreground service keys its immediate-teardown on THIS, not <a href="locked.html">locked</a>: a soft-lock must not stop the FGS while a value-bearing operation is still in flight (that would defeat #261-264). Cleared when the SDK is rebuilt (re-auth / network switch).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1903194771%2FProperties%2F761230159" anchor-label="idleTimeoutMs" id="-1903194771%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="idle-timeout-ms.html"><span>idle</span><wbr><span>Timeout</span><wbr><span><span>Ms</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1903194771%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">var </span><a href="idle-timeout-ms.html">idleTimeoutMs</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Foreground idle timeout before locking. Mutable so hosts can tune it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="317830226%2FProperties%2F761230159" anchor-label="inForeground" id="317830226%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="in-foreground.html"><span>in</span><wbr><span><span>Foreground</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="317830226%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="in-foreground.html">inForeground</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Whether the app is currently foregrounded (≥1 started Activity). Flipped by the activity-lifecycle callbacks. The dust-sync foreground service (#235) uses this to decide when a background notification is warranted — in-app the <code class="lang-kotlin">WalletSyncIndicator</code> already shows progress, so the service only surfaces while backgrounded.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-48098928%2FProperties%2F761230159" anchor-label="locked" id="-48098928%2FProperties%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="locked.html"><span><span>locked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-48098928%2FProperties%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="locked.html">locked</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">True from the moment a lock fires until the SDK is rebuilt (i.e. the user re-authenticated). The wallet panel observes this to hide the balance while locked. Distinct from <code class="lang-kotlin">provider.sdk == null</code>, which is also briefly true during a network-switch rebuild — that must NOT read as "locked".</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1741737173%2FFunctions%2F761230159" anchor-label="acquireHold" id="-1741737173%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="acquire-hold.html"><span>acquire</span><wbr><span><span>Hold</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1741737173%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="acquire-hold.html"><span class="token function">acquireHold</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">Hold off the AUTO-lock (idle / background / screen-off) for the duration of a value-bearing wallet operation, so a backgrounded transaction isn't torn down mid-flight (the SDK stays alive until the op finishes). If an auto-lock fired while the hold was active, it runs the moment the last hold releases. Manual <a href="lock-now.html">lockNow</a> is unaffected.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1813861542%2FFunctions%2F761230159" anchor-label="installPlatformHooks" id="1813861542%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="install-platform-hooks.html"><span>install</span><wbr><span>Platform</span><wbr><span><span>Hooks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1813861542%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="install-platform-hooks.html"><span class="token function">installPlatformHooks</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">application<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/app/Application.html">Application</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Register the app-level lock triggers (background + screen-off). Idempotent. Prefer the <a href="-companion/attach.html">attach</a> companion which resolves the singleton for you.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-543907211%2FFunctions%2F761230159" anchor-label="lockNow" id="-543907211%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="lock-now.html"><span>lock</span><wbr><span><span>Now</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-543907211%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="lock-now.html"><span class="token function">lockNow</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Manual "Lock now" — explicit user intent; ignores operation holds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1732144077%2FFunctions%2F761230159" anchor-label="onBackground" id="1732144077%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-background.html"><span>on</span><wbr><span><span>Background</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1732144077%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-background.html"><span class="token function">onBackground</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">App left the foreground: SOFT-lock after the grace period unless we come back. App-switching isn't the same threat as the device being secured, so backgrounding gates the UI + requires re-auth on return but KEEPS the SDK alive — so background monitoring (received-funds, sync) keeps running instead of dying the moment you switch apps. The HARD triggers (screen-off / idle / manual) still wipe the SDK.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1998542504%2FFunctions%2F761230159" anchor-label="onForeground" id="-1998542504%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-foreground.html"><span>on</span><wbr><span><span>Foreground</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1998542504%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-foreground.html"><span class="token function">onForeground</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">App returned to foreground: cancel the pending background lock + lifetime ceiling, re-arm idle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-914905476%2FFunctions%2F761230159" anchor-label="onScreenOff" id="-914905476%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-screen-off.html"><span>on</span><wbr><span>Screen</span><wbr><span><span>Off</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-914905476%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-screen-off.html"><span class="token function">onScreenOff</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Device screen turned off — lock immediately.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1388678913%2FFunctions%2F761230159" anchor-label="onUserActivity" id="1388678913%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-user-activity.html"><span>on</span><wbr><span>User</span><wbr><span><span>Activity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1388678913%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on-user-activity.html"><span class="token function">onUserActivity</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reset the idle countdown — call on any user interaction.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-297373231%2FFunctions%2F761230159" anchor-label="unlock" id="-297373231%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unlock.html"><span><span>unlock</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-297373231%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="unlock.html"><span class="token function">unlock</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/fragment/app/FragmentActivity.html">FragmentActivity</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Re-authenticate and lift the lock — the unlock half of the session lock, driven by the app-wide com.midnight.kuira.dapp.lock.SessionLockGate.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="103919803%2FFunctions%2F761230159" anchor-label="withHold" id="103919803%2FFunctions%2F761230159" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:wallet-runtime:dokkaHtmlPartial/release" data-filterable-set=":sdk:wallet-runtime:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-hold.html"><span>with</span><wbr><span><span>Hold</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="103919803%2FFunctions%2F761230159"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:wallet-runtime:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="with-hold.html">T</a><span class="token operator">&gt; </span><a href="with-hold.html"><span class="token function">withHold</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="with-hold.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="with-hold.html">T</a></div><div class="brief "><p class="paragraph">Suspend-friendly <a href="acquire-hold.html">acquireHold</a>: holds for the duration of <a href="with-hold.html">block</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
