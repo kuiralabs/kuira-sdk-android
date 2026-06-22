@@ -2,66 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/api-reference/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/capabilities/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/integration/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/on-device-proving/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
+    </url>
+    <url>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/prerequisites/</loc>
+         <lastmod>2026-06-22</lastmod>
+    </url>
+    <url>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/quickstart/</loc>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/roadmap/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/security/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/add-kuira-to-an-android-project/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/back-up-wallet-across-devices/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/bind-your-app-to-a-passkey-domain/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/deploy-and-call-a-compact-contract/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/hello-compact/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/reveal-and-restore-the-recovery-phrase/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/run-kuira-doctor/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
     </url>
     <url>
          <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/set-up-sigil-identity/</loc>
-         <lastmod>2026-06-18</lastmod>
+         <lastmod>2026-06-22</lastmod>
+    </url>
+    <url>
+         <loc>https://kuiralabs.github.io/kuira-sdk-android/recipes/theme-the-wallet-panel/</loc>
+         <lastmod>2026-06-22</lastmod>
     </url>
 </urlset>

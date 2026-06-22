@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../integration/" class="md-tabs__link">
+        <a href="../../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -918,6 +974,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#step-5-react-to-state-changes-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — React to state changes (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1202,6 +1269,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#step-5-react-to-state-changes-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — React to state changes (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1319,7 +1397,7 @@ your APK's assets. The canonical layout is:</p>
 </ul>
 <p>There are two ways to wire it. The Gradle plugin is the recommended
 path; it's published to Maven Central as
-<code>0.1.0-alpha03</code>. The hand-rolled <code>Copy</code> task is
+<code>0.1.0-alpha04</code>. The hand-rolled <code>Copy</code> task is
 the equivalent if you'd rather not add the plugin — it produces the
 same asset layout the plugin would.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle plugin (recommended)</label><label for="__tabbed_1_2">Hand-rolled Copy task</label></div>
@@ -1334,11 +1412,11 @@ same asset layout the plugin would.</p>
 </code></pre></div>
 <div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha03&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha04&quot;</span>
 <span class="p">}</span>
 
 <span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;contract/src/managed/your-contract&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;../contract/src/managed/your-contract&quot;</span><span class="p">)</span><span class="w">                 </span><span class="c1">// (1b)</span>
 <span class="w">    </span><span class="c1">// alias.set(&quot;your-contract&quot;)                                       // (2)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1346,7 +1424,12 @@ same asset layout the plugin would.</p>
 <li>The plugin ships to Maven Central. Add <code>mavenCentral()</code> to
    <code>pluginManagement.repositories</code> so <code>plugins { id(...) }</code> can
    resolve it. (It is not listed on the Gradle Plugin Portal, so
-   this repo entry is required.)</li>
+   this repo entry is required.)
+1b. <code>source</code> is resolved relative to the <strong><code>app/</code> module</strong>, and
+   <code>contract/</code> is a sibling of <code>app/</code>, so the path needs the
+   leading <code>../</code> — <code>../contract/src/managed/&lt;name&gt;</code>. (The
+   hand-rolled tab below reaches the same directory differently,
+   via <code>rootProject.file("contract")</code>.)</li>
 <li><code>alias</code> is optional — defaults to the dirname of <code>source</code>. So
    <code>contract/src/managed/penalty</code> resolves to alias <code>penalty</code>,
    which lands the contract JS as
@@ -1448,12 +1531,38 @@ are all present.</p>
    For typed witnesses (<code>Vector&lt;N, T&gt;</code>, <code>Bytes&lt;32&gt;</code>, …), pack the bytes by
    hand.</li>
 </ol>
+<p><code>yourCircuit</code> and <code>keys/yourCircuit.verifier</code> are placeholders — substitute
+your circuit's real name. For the <a href="../hello-compact/">Hello Compact</a> counter
+that's <code>increment</code>, so the verifier is <code>keys/increment.verifier</code> and the
+key in <code>circuitVerifierKeys</code> is <code>"increment"</code>.</p>
 <p><strong>Verify:</strong> the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
 descriptors typecheck against the bytecode.</p>
 <hr />
 <h2 id="step-3-deploy">Step 3 — Deploy<a class="headerlink" href="#step-3-deploy" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// Required once before the first deploy/call: stage your circuit&#39;s proving</span>
+<div class="admonition warning">
+<p class="admonition-title">The embedded wallet must hold Dust first</p>
+<p>Deploying (and calling) burns <strong>Dust</strong> to pay for proving + on-chain
+execution. On a brand-new, unfunded embedded wallet, <code>deploy()</code> (or
+<code>call()</code>) <strong>hangs forever at the "Balancing" stage</strong> — it's waiting
+for Dust that never arrives.</p>
+<p>Fund and register Dust before your first deploy:</p>
+<ol>
+<li>
+<p>Airdrop NIGHT to the embedded wallet's address (the airdrop
+   command takes the raw embedded-wallet address directly):</p>
+<div class="highlight"><pre><span></span><code>mn<span class="w"> </span>airdrop<span class="w"> </span>&lt;amount&gt;<span class="w"> </span>--wallet<span class="w"> </span>&lt;embedded-wallet-address&gt;<span class="w"> </span>--network<span class="w"> </span>undeployed
+</code></pre></div>
+</li>
+<li>
+<p>Register Dust <strong>in-app</strong> — tap <strong>Register dust</strong> in the wallet
+   panel. The CLI cannot register Dust for the embedded wallet; this
+   step has to happen inside the app that owns the seed.</p>
+</li>
+</ol>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1">// ProvingKeyManager lives in com.midnight.kuira.core.compact.proving.</span>
+<span class="c1">// Required once before the first deploy/call: stage your circuit&#39;s proving</span>
 <span class="c1">// keys (+ BLS params) from assets where the on-device prover looks. Idempotent.</span>
 <span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
 
@@ -1465,36 +1574,53 @@ descriptors typecheck against the bytecode.</p>
 confirm it, and returns the contract address. Re-use this address for
 every subsequent <code>MidnightContract.create(sdk.config) { … address = address }</code>
 call.</p>
-<p><strong>Verify:</strong> <code>address</code> should be a 64-character hex string. Querying
-<code>sdk.indexerClient.queryContractState(address)</code> should return a
-non-null state.</p>
+<p><strong>Verify:</strong> <code>address</code> should be a 64-character hex string. Rebuild the
+handle with <code>this.address = address</code> and call <code>contract.ledger()</code> — it
+returns the deployed contract's initial state.</p>
 <hr />
 <h2 id="step-4-call-a-circuit">Step 4 — Call a circuit<a class="headerlink" href="#step-4-call-a-circuit" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span>
-<span class="w">    </span><span class="n">circuit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;myCircuit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;playerNum&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;deadline&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">600</span><span class="p">),</span><span class="w">  </span><span class="c1">// (1)</span>
-<span class="w">    </span><span class="p">),</span>
-<span class="p">)</span>
+<p>Circuit arguments are <strong>positional varargs</strong> in the circuit's declared
+order — plain Kotlin values, auto-converted to JS. The first argument is
+the circuit name:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// e.g. a counter&#39;s `increment(by: Uint64)`:</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;increment&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span>
+
+<span class="c1">// with progress feedback (proving → balancing → submitting):</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;increment&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;MyApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;call stage: </span><span class="si">$</span><span class="n">stage</span><span class="s">&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// ContractCallStage</span>
+<span class="p">}</span>
 </code></pre></div>
-<ol>
-<li><strong>Avoid wall-clock for chain deadlines.</strong> Use the latest block
-   timestamp from the indexer — wall-clock drift between the dApp
-   and the chain can blow your deadline calculation. See the SDK's
-   <code>wallet.tip()</code> helper for the chain-time-anchored value.</li>
-</ol>
-<p>The call:</p>
+<p><code>call(circuitName, vararg args, onProgress)</code>:</p>
 <ol>
 <li>Generates the ZK proof using the artifacts you synced in step 1.</li>
 <li>Submits the resulting transaction via the wallet.</li>
 <li>Waits for indexer confirmation.</li>
-<li>Returns the post-call ledger state.</li>
+<li>Returns a <strong><code>TransactionReceipt</code></strong> (tx hash, status, timings) — <strong>not</strong>
+   the new state. Read state separately with <code>contract.ledger()</code> or
+   <code>observeLedger()</code> (below).</li>
 </ol>
-<p>For long-running circuits (sub-second to a few seconds), wire up
-<code>TransactionBalancer</code> progress callbacks for UX feedback.</p>
+<div class="admonition warning">
+<p class="admonition-title">Anchor deadlines to chain time, not the device clock</p>
+<p>If a circuit takes a deadline argument, derive it from the latest
+<strong>block timestamp</strong>, not <code>System.currentTimeMillis()</code> — wall-clock
+drift between the device and the chain can blow the deadline and get
+the transaction rejected.</p>
+</div>
 <p><strong>Verify:</strong> the transaction confirms within ~10s on PREPROD. Query
 <code>contract.ledger()</code> and check the field your circuit mutates.</p>
+<hr />
+<h2 id="step-5-react-to-state-changes-optional">Step 5 — React to state changes (optional)<a class="headerlink" href="#step-5-react-to-state-changes-optional" title="Permanent link">&para;</a></h2>
+<p>Rather than poll <code>ledger()</code> in a loop, <code>observeLedger()</code> emits the
+current state immediately, then a fresh <code>MidnightLedger</code> every time the
+contract's on-chain state actually changes:</p>
+<div class="highlight"><pre><span></span><code><span class="n">contract</span><span class="p">.</span><span class="na">observeLedger</span><span class="p">().</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ledger</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ledger</span><span class="p">.</span><span class="na">getUint64</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// your circuit&#39;s field</span>
+<span class="w">    </span><span class="c1">// update UI…</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It's backed by the chain's block stream (falling back to polling on a raw
+config), and de-duplicates the raw state before decoding — an unchanged
+block costs only a state fetch, not a re-decode.</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <table>
@@ -1510,6 +1636,11 @@ non-null state.</p>
 <td><code>Contract not compiled at …</code> at Gradle time</td>
 <td>Step 1 prereq not done.</td>
 <td>Run <code>npm run compact</code> in <code>contract/</code>.</td>
+</tr>
+<tr>
+<td>Deploy or call hangs at "Balancing" and never finishes</td>
+<td>The embedded wallet has no Dust.</td>
+<td>Fund it (<code>mn airdrop … --network undeployed</code>) and tap <strong>Register dust</strong> in-app, then retry.</td>
 </tr>
 <tr>
 <td><code>Unsupported bytecode version</code> at runtime</td>
@@ -1536,6 +1667,11 @@ non-null state.</p>
 <hr />
 <h2 id="whats-next">What's next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong><a href="../back-up-wallet-across-devices/">Back up wallet data across devices</a></strong>
+  — testing on <strong>PreProd</strong>? The wallet's first sync replays from genesis
+  (slow); cloud backup turns it into a fast delta restore. Set it up <em>before</em>
+  you test on PreProd so you're not stuck watching a genesis replay — and note
+  it needs a one-time Google OAuth client or it silently no-ops.</li>
 <li><strong>Browse the <a href="../api/">API reference</a></strong> for the full <code>MidnightContract</code>,
   <code>MidnightWallet</code>, and circuit-execution surface.</li>
 <li><strong><a href="../../security/#verifying-releases">Security § Verifying releases</a></strong>

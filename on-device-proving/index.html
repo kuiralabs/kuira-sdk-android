@@ -17,13 +17,13 @@
         <link rel="prev" href="../capabilities/">
       
       
-        <link rel="next" href="../integration/">
+        <link rel="next" href="../prerequisites/">
       
       
         
       
       
-      <link rel="icon" href="../assets/logo.svg">
+      <link rel="icon" href="../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -298,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../integration/" class="md-tabs__link">
+        <a href="../prerequisites/" class="md-tabs__link">
           
   
   
@@ -676,6 +676,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1224,7 +1280,7 @@ reach for a remote proof server instead.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Native Rust, not WebAssembly</p>
 <p>Kuira's prover is the same Rust proving engine the Midnight proof server
-uses (<code>midnight-zkir</code>), compiled to a native ARM64 <code>.so</code> and called over
+uses (<code>midnight-zkir</code>), compiled to a native <code>.so</code> and called over
 JNI. It is <strong>not</strong> the WebAssembly prover used by Midnight's reference
 wallet. Running as native machine code is what makes proving the full
 wallet flow on-device practical without offloading to a server.</p>
@@ -1265,17 +1321,21 @@ the unproven transaction is sent to a proof server (default
 proving fails with a clear error rather than silently falling back to a
 server. Provision the keys once (see <a href="#proving-keys">Proving keys</a>) before
 relying on <code>LOCAL</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// LOCAL is the default — no configuration needed.</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.compact.proving.ProvingMode</span>
+
+<span class="c1">// LOCAL is the default — no configuration needed.</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightSdk</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">network</span><span class="p">(</span><span class="n">MidnightNetwork</span><span class="p">.</span><span class="na">PREPROD</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
 
 <span class="c1">// Opt into a remote proof server instead:</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightSdk</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">network</span><span class="p">(</span><span class="n">MidnightNetwork</span><span class="p">.</span><span class="na">PREPROD</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">provingMode</span><span class="p">(</span><span class="n">ProvingMode</span><span class="p">.</span><span class="na">REMOTE</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="na">proofServerUrl</span><span class="p">(</span><span class="s">&quot;http://10.0.2.2:6300&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
 </code></pre></div>
 <hr />
 <h2 id="the-proof-system">The proof system<a class="headerlink" href="#the-proof-system" title="Permanent link">&para;</a></h2>

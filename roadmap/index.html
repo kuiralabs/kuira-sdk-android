@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../assets/logo.svg">
+      <link rel="icon" href="../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../integration/" class="md-tabs__link">
+        <a href="../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1244,6 +1300,21 @@ the need.</p>
 <li><strong><code>kuiraDoctor</code> preflight</strong> — build-time checks (minSdk, debug-cleartext,
   <code>assetlinks.json</code> reachability, Compact runtime pin, bundled-runtime layer) that
   catch misconfigurations before they ship.</li>
+<li><strong>Floating wallet &amp; sigil pills</strong> — opt-in draggable wallet and sigil chips
+  (<code>PanelBar(floating = true)</code>) that dock to a screen edge as peek tabs and resize on
+  long-press, so a dApp gets a movable wallet/identity surface with no custom UI.</li>
+<li><strong>Themeable wallet UI</strong> — a settings palette picker with built-in themes (Kuira
+  Monochrome, Catppuccin, Nord, Dracula, Tokyo Night, Rosé Pine), persisted across restarts.</li>
+<li><strong>Frosted-glass design system</strong> — reusable <code>GlassPanel</code> frost components over an
+  animated starfield, shared across the wallet, settings, and recovery screens.</li>
+<li><strong>Redesigned send flow</strong> — amount presets, a clearer review step, and honest in-flight
+  copy ("could take longer; keeps running if you leave").</li>
+<li><strong>Receive notifications</strong> — background push when NIGHT arrives, carrying the real
+  per-transaction amount from UTXO provenance (no false "change" alerts).</li>
+<li><strong>Faster, streamed cold sync</strong> — shielded-state cold sync streams to disk to avoid GC
+  pauses and UI freezes on the first sync.</li>
+<li><strong>Cloud-backup controls</strong> — fully disable dust and app-state cloud backups; disabling
+  revokes the cloud grant and deletes the remote blobs.</li>
 </ul>
 <h2 id="contract-ergonomics">Contract ergonomics<a class="headerlink" href="#contract-ergonomics" title="Permanent link">&para;</a></h2>
 <ul>

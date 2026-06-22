@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../integration/" class="md-tabs__link">
+        <a href="../../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -850,6 +906,17 @@
     <span class="md-ellipsis">
       
         Toolchain pinning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-the-contract-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up the contract project
       
     </span>
   </a>
@@ -1147,6 +1214,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-the-contract-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up the contract project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#compile-verify" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1240,13 +1318,12 @@ have a clear next stop for everything beyond "make the counter go up."</p>
 the counter contract that ships with <a href="https://github.com/kuiralabs/kuira-starter-android"><code>kuira-starter-android</code></a>,
 understand the toolchain pinning that makes it work, and compile +
 deploy it.</p>
-<p>For deeper Compact learning — witnesses, ZK proof construction,
-ledger types beyond <code>Counter</code>, multi-party patterns, on-chain
-verification of off-chain compute — go to the <strong><a href="https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts">official Midnight
-contract examples</a></strong>.
-Calculator, election, battleship-simple, private-guest-list,
-private-reserve-auction, token-transfers. Each is a focused tutorial
-on one Compact pattern.</p>
+<p>For Compact and Midnight themselves — the language, witnesses, ZK proof
+construction, ledger types beyond <code>Counter</code>, the on-chain model — Kuira is
+not where you learn them. Start at the <strong><a href="https://docs.midnight.network/">Midnight documentation</a></strong>,
+then its <strong><a href="https://github.com/midnightntwrk/midnight-docs/tree/main/docs/examples/contracts">contract examples</a></strong>
+(calculator, election, battleship, private-guest-list, …) for focused
+tutorials on each Compact pattern. We assume that familiarity here.</p>
 <p>The Kuira SDK consumes compiled Compact artifacts; it does not
 teach Compact authoring beyond what's in this recipe.</p>
 </div>
@@ -1303,7 +1380,7 @@ you typed:</p>
 <tr>
 <td><code>compactc</code> binary</td>
 <td><strong>0.31.0</strong></td>
-<td><code>~/.compact/versions/0.31.0/aarch64-darwin/compactc</code></td>
+<td>installed under <code>~/.compact/versions/0.31.0/&lt;os-arch&gt;/</code>, driven via the <code>compact</code> wrapper</td>
 </tr>
 <tr>
 <td>Compact language pragma</td>
@@ -1317,23 +1394,61 @@ you typed:</p>
 </tr>
 </tbody>
 </table>
-<p>Each <code>compactc</code> binary self-introspects:</p>
-<div class="highlight"><pre><span></span><code>compactc<span class="w"> </span>--version<span class="w">            </span><span class="c1"># → 0.31.0</span>
-compactc<span class="w"> </span>--language-version<span class="w">   </span><span class="c1"># → 0.23.0</span>
-compactc<span class="w"> </span>--runtime-version<span class="w">    </span><span class="c1"># → 0.16.0</span>
+<div class="admonition note">
+<p class="admonition-title">On-chain runtime ships with the node</p>
+<p>The Compact <strong>runtime</strong> is also embedded in the Midnight node.
+<code>midnight-node:0.22.5</code> — the <code>mn localnet</code> default — ships on-chain
+Compact runtime <strong>0.16.0</strong>, the runtime this
+contract targets. Older nodes (<code>≤ 0.22.3</code>) run runtime <code>0.15.0</code> and
+<strong>reject</strong> a 0.16.0 contract with a
+runtime-version mismatch. Stick with the default node and you're
+aligned.</p>
+</div>
+<p>The toolchain self-introspects:</p>
+<div class="highlight"><pre><span></span><code>compact<span class="w"> </span>list<span class="w">                                                 </span><span class="c1"># installed compilers + the default</span>
+compact<span class="w"> </span>compile<span class="w"> </span>+0.31.0<span class="w"> </span>--language-version<span class="w">   </span><span class="c1"># → 0.23.0</span>
+compact<span class="w"> </span>compile<span class="w"> </span>+0.31.0<span class="w"> </span>--runtime-version<span class="w">    </span><span class="c1"># → 0.16.0</span>
 </code></pre></div>
-<p>When upgrading, run the three flags on the new binary first to
+<p>The language and runtime flags hang off <code>compact compile</code> (the
+subcommand that owns them) — there is no bare <code>compactc --runtime-version</code>.</p>
+<p>When upgrading, run the three commands on the new toolchain first to
 discover the matching triple before editing any pragma. The starter's
 <a href="https://github.com/kuiralabs/kuira-starter-android/blob/main/contract/README.md"><code>contract/README.md</code></a>
 documents the upgrade recipe step by step.</p>
 <hr />
+<h2 id="set-up-the-contract-project">Set up the contract project<a class="headerlink" href="#set-up-the-contract-project" title="Permanent link">&para;</a></h2>
+<p>The compile + runtime live in a small npm project alongside your app.
+The fastest path is to copy the starter's
+<a href="https://github.com/kuiralabs/kuira-starter-android/tree/main/contract"><code>contract/</code></a>
+directory — it already pins the toolchain — and install it:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>contract
+npm<span class="w"> </span>install
+</code></pre></div>
+<p>This pulls in <code>@midnight-ntwrk/compact-runtime</code> (<strong>0.16.0</strong>,
+the JS runtime compiled contracts call into) and makes the
+<code>compact</code> / <code>compactc</code> devtools available, so the compile step below
+has everything it needs. The starter's <code>contract/package.json</code> also
+wires up <code>npm run compile</code> / <code>npm run inspect</code> shortcuts for the
+commands you'll run by hand here.</p>
+<hr />
 <h2 id="compile-verify">Compile + verify<a class="headerlink" href="#compile-verify" title="Permanent link">&para;</a></h2>
 <p>From your project root:</p>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>contract/src/managed
-~/.compact/versions/0.31.0/aarch64-darwin/compactc<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>contract/src/counter.compact<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>contract/src/managed/counter
+compact<span class="w"> </span>compile<span class="w"> </span>+0.31.0<span class="w"> </span>contract/src/counter.compact<span class="w"> </span>contract/src/managed/counter
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Pin the compiler version with <code>+0.31.0</code></p>
+<p><code>compact</code> auto-selects the right binary for your <em>platform</em>, but it runs the
+toolchain's <strong>default</strong> compiler — which may be older than your
+<code>pragma language_version</code>. Compiling <strong>without</strong> the <code>+</code> pin fails with
+<code>language version X.Y.Z mismatch</code>; <code>+0.31.0</code> forces the
+compiler that matches the pragma. (The <code>engines.compactc</code> field in
+<code>package.json</code> is informational — it is <em>not</em> enforced, and <code>npm run compile</code>
+must carry the same <code>+</code> pin.) Run <code>compact list</code> to see installed versions
+and the default.</p>
+<p>The binary directory varies by OS/arch (<code>aarch64-darwin</code>, <code>x86_64-darwin</code>,
+<code>x86_64-linux</code>, …) — never hardcode a path to it. On Windows, run under WSL2.</p>
+</div>
 <p>Output: a <code>contract/src/managed/counter/</code> directory containing
 <code>contract/index.js</code> (the runnable contract), <code>keys/increment.verifier</code>
 + <code>keys/increment.prover</code> (proving + verifying keys), and <code>zkir/</code> (the
@@ -1343,20 +1458,30 @@ intermediate representation). After syncing into your app's assets as
 <p>Quick sanity check with the <code>mn</code> CLI:</p>
 <div class="highlight"><pre><span></span><code>mn<span class="w"> </span>contract<span class="w"> </span>inspect<span class="w"> </span>--managed<span class="w"> </span>contract/src/managed/counter
 </code></pre></div>
-<p>Output should show:</p>
-<div class="highlight"><pre><span></span><code>Compiler:       0.31.0
-Language:       0.23.0
-Runtime:        0.16.0
-
-Circuits
-  increment()  — impure, proof
-
-Witnesses
-  (none)
+<p>The compile also writes the machine-readable
+<code>contract/src/managed/counter/compiler/contract-info.json</code>, which
+records the exact triple the artifacts were built with plus the
+circuit shapes. For the counter it looks like this (trimmed):</p>
+<div class="highlight"><span class="filename">compiler/contract-info.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;compiler-version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.31.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;language-version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.23.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;runtime-version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.16.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;circuits&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;increment&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;pure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;witnesses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;ledger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;count&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exported&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Counter&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>If those three versions don't match what you have on disk, you've got
-a mismatch between the <code>compactc</code> you ran and the <code>@midnight-ntwrk/compact-runtime</code>
-your project pins. Re-align using the toolchain table above.</p>
+<p>The exact field set evolves with the compiler, so treat the block
+above as <strong>illustrative, not a byte-for-byte match</strong> — read your own
+file rather than diffing against this. What matters: the three
+<code>*-version</code> values are the triple your artifacts were built with. If
+they don't line up with the <code>@midnight-ntwrk/compact-runtime</code> and
+<code>pragma language_version</code> your project pins, re-align using the
+toolchain table above.</p>
 <p>For a full localnet verify loop (deploy → call → read state), follow
 the starter's
 <a href="https://github.com/kuiralabs/kuira-starter-android/blob/main/contract/README.md"><code>contract/README.md</code> § Verify against a localnet</a>.</p>

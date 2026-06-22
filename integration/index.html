@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://kuiralabs.github.io/kuira-sdk-android/integration/">
       
       
-        <link rel="prev" href="../on-device-proving/">
+        <link rel="prev" href="../quickstart/">
       
       
         <link rel="next" href="../recipes/">
@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../assets/logo.svg">
+      <link rel="icon" href="../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -298,7 +298,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../prerequisites/" class="md-tabs__link">
           
   
   
@@ -568,6 +568,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1512,7 +1568,7 @@
 
 
 <h1 id="kuira-sdk-integration-guide">Kuira SDK — Integration Guide<a class="headerlink" href="#kuira-sdk-integration-guide" title="Permanent link">&para;</a></h1>
-<p><strong>Alpha — <code>0.1.0-alpha03</code></strong></p>
+<p><strong>Alpha — <code>0.1.0-alpha04</code></strong></p>
 <p>Build a Midnight zero-knowledge dApp on Android by adding <strong>one dependency</strong>, declaring your <strong>own passkey domain</strong>, and hosting <strong>one tiny JSON file</strong> on it. That's the whole on-ramp.</p>
 <p>This guide walks the recipe end-to-end. Two <strong>public</strong> reference apps consume
 the SDK exactly as described below — clone either and read along:</p>
@@ -1576,6 +1632,8 @@ source is the ground truth.</p>
 </tr>
 </tbody>
 </table>
+<p>Full toolchain (JDK 17, Android Studio, Docker, Node 20+, the <code>mn</code> CLI, compactc)
+— see <strong><a href="../prerequisites/">Prerequisites</a></strong>.</p>
 <hr />
 <h2 id="2-add-the-dependency-one-line">2. Add the dependency — <em>one line</em><a class="headerlink" href="#2-add-the-dependency-one-line" title="Permanent link">&para;</a></h2>
 <h3 id="choose-your-level">Choose your level<a class="headerlink" href="#choose-your-level" title="Permanent link">&para;</a></h3>
@@ -1619,7 +1677,7 @@ config to add. In <code>app/build.gradle.kts</code>:</p>
 
 <span class="n">android</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.mydapp&quot;</span>
-<span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span>
+<span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">36</span>
 <span class="w">    </span><span class="n">defaultConfig</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">applicationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.mydapp&quot;</span>
 <span class="w">        </span><span class="n">minSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
@@ -1632,14 +1690,14 @@ config to add. In <code>app/build.gradle.kts</code>:</p>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// Prebuilt pills + the ViewModels behind them (Compose). Drop the wallet</span>
 <span class="w">    </span><span class="c1">// and sigil panels in as-is, OR build your own UI on the same contracts.</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha03&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha04&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// OR — headless core, no Compose pulled in. For dApps building the whole</span>
 <span class="w">    </span><span class="c1">// UI layer top-to-bottom.</span>
-<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha03&quot;)</span>
+<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha04&quot;)</span>
 
 <span class="w">    </span><span class="c1">// Hilt processor — required, the SDK is Hilt-first</span>
-<span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-android-compiler:2.58&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-compiler:2.58&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// your own app code, your own Compose deps, etc.</span>
 <span class="p">}</span>
@@ -1717,6 +1775,17 @@ network is a full Midnight stack — node + indexer + proof server — running
 locally in Docker: instant, free, and ephemeral (reset it any time). It's the
 recommended loop for day-to-day development; switch to PREPROD only when you want
 the hosted chain.</p>
+<div class="admonition warning">
+<p class="admonition-title">PreProd's first sync replays from genesis — set up cloud backup first</p>
+<p>Localnet is instant. <strong>PreProd is a long-lived chain with a large history</strong>, so
+a wallet's <em>first</em> sync there replays from genesis — minutes, not seconds. To
+make it a fast delta instead, set up
+<a href="../recipes/back-up-wallet-across-devices/">cloud backup</a> <strong>before</strong> you switch
+to PreProd. It needs a one-time Google OAuth client (your app's package +
+signing SHA-1); without it, cloud sync silently fails
+(<code>UNREGISTERED_ON_API_CONSOLE</code>) and PreProd keeps replaying from genesis on
+every fresh sync — the wallet works, it's just slow.</p>
+</div>
 <h3 id="5a-start-the-localnet-the-midnight-wallet-cli-recommended">5a. Start the localnet — the Midnight Wallet CLI (recommended)<a class="headerlink" href="#5a-start-the-localnet-the-midnight-wallet-cli-recommended" title="Permanent link">&para;</a></h3>
 <p>The recommended way to run and fund a localnet is the <strong>Midnight Wallet CLI</strong>
 (<code>mn</code>), installed from npm as <code>midnight-wallet-cli</code>. It wraps the Docker stack
@@ -1729,11 +1798,31 @@ mn<span class="w"> </span>localnet<span class="w"> </span>status<span class="w">
 <span class="c1"># … develop …</span>
 mn<span class="w"> </span>localnet<span class="w"> </span>down<span class="w">                            </span><span class="c1"># tear it down</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tested localnet stack — pin the node to <code>0.22.5</code></p>
+<p>Tested localnet stack: <code>midnight-node:0.22.5</code> (on-chain Compact runtime
+0.16.0). Older nodes (≤0.22.3) ship runtime 0.15.0 and reject a contract
+compiled for 0.16.0. <code>mn</code> pulls the node image; if you run Docker by hand,
+pin the node tag to <code>0.22.5</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Windows — <code>mn localnet up</code> can time out</p>
+<p>On Windows, <code>mn localnet up</code> can fail with <code>spawnSync … cmd.exe ETIMEDOUT</code>.
+Bring the stack up directly:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>~/.midnight/localnet/compose.yml<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+</div>
 <p>Fund the wallet your app shows (copy its address from the wallet panel's receive
 screen):</p>
-<div class="highlight"><pre><span></span><code>mn<span class="w"> </span>airdrop<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># NIGHT for fees</span>
-mn<span class="w"> </span>dust<span class="w"> </span>register<span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w">   </span><span class="c1"># enable Dust (gas) generation</span>
+<div class="highlight"><pre><span></span><code>mn<span class="w"> </span>airdrop<span class="w"> </span><span class="m">10000</span><span class="w"> </span>--wallet<span class="w"> </span>mn_addr_undeployed1…<span class="w"> </span>--network<span class="w"> </span>undeployed<span class="w">   </span><span class="c1"># NIGHT for fees</span>
 </code></pre></div>
+<p>Dust (gas) for the app's embedded wallet is enabled <strong>in-app</strong> — tap <strong>Register
+dust</strong> in the wallet panel.</p>
+<div class="admonition note">
+<p class="admonition-title"><code>mn dust register</code> targets a <em>named</em> CLI wallet, not the app's wallet</p>
+<p><code>mn dust register --wallet &lt;name&gt;</code> needs a <em>named</em> wallet from
+<code>mn wallet generate</code>; it cannot target the app's embedded wallet address.</p>
+</div>
 <blockquote>
 <p>Localnet is ephemeral — <code>mn localnet down</code> (or a Docker restart) wipes all
 state, including funded balances. Re-airdrop after each fresh <code>up</code>.</p>
@@ -1744,10 +1833,15 @@ state, including funded balances. Re-airdrop after each fresh <code>up</code>.</
 <ul>
 <li><strong>Emulator</strong> — <code>10.0.2.2</code> (the emulator's alias for your machine's
   <code>localhost</code>). Nothing to do.</li>
-<li><strong>Physical device</strong> — <code>127.0.0.1</code>, so the three localnet ports must be
-  tunnelled over the debug bridge. The SDK ships a Gradle plugin that does this
-  automatically on every <code>installDebug</code> — apply it once, no configuration:</li>
 </ul>
+<p>!!! note "Emulator ABI — x86_64 works on <code>0.1.0-alpha04</code>+"
+      x86_64 (Intel) and arm64 emulators both work on <code>0.1.0-alpha04</code>+ (the
+      native lib ships <code>arm64-v8a</code> and <code>x86_64</code>). On alpha03 and earlier the lib
+      is arm64-only — an x86_64 AVD fails at launch with
+      <code>java.lang.UnsatisfiedLinkError</code>; use alpha04+ or an arm64 AVD.
+- <strong>Physical device</strong> — <code>127.0.0.1</code>, so the three localnet ports must be
+  tunnelled over the debug bridge. The SDK ships a Gradle plugin that does this
+  automatically on every <code>installDebug</code> — apply it once, no configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// app/build.gradle.kts</span>
 <span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.localnet&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;&lt;sdk-version&gt;&quot;</span>
@@ -1758,13 +1852,20 @@ state, including funded balances. Re-airdrop after each fresh <code>up</code>.</
   8088 (indexer), and 6300 (proof server) for you. Emulators use <code>10.0.2.2</code>
   and are skipped automatically.</p>
 <p>The example apps apply it exactly this way — see them for a working reference:
-  <a href="https://github.com/kuiralabs/midnight-kicks/blob/main/app/build.gradle.kts">Kicks</a>,
-  <a href="https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts">BBoard</a>,
+  <a href="https://github.com/kuiralabs/example-bboard-android/blob/main/app/build.gradle.kts">BBoard</a>
   and the <a href="https://github.com/kuiralabs/kuira-starter-android/blob/main/app/build.gradle.kts">starter</a>.</p>
-<p>Prefer a one-off without the plugin? Run it by hand:</p>
+<p><strong>Required for physical devices</strong> — the app can't reach the localnet without
+  these three port forwards (the plugin runs them for you on <code>installDebug</code>; run
+  them by hand if you're not using the plugin):</p>
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>reverse<span class="w"> </span>tcp:9944<span class="w"> </span>tcp:9944<span class="w">   </span><span class="c1"># node RPC</span>
 adb<span class="w"> </span>reverse<span class="w"> </span>tcp:8088<span class="w"> </span>tcp:8088<span class="w">   </span><span class="c1"># indexer</span>
 adb<span class="w"> </span>reverse<span class="w"> </span>tcp:6300<span class="w"> </span>tcp:6300<span class="w">   </span><span class="c1"># proof server</span>
+</code></pre></div>
+<p><strong>No "Install via USB" on the phone?</strong> Some devices hide it. Build and push
+  the APK over <code>adb</code> instead:</p>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:assembleDebug
+adb<span class="w"> </span>push<span class="w"> </span>app/build/outputs/apk/debug/app-debug.apk<span class="w"> </span>/data/local/tmp/app.apk
+adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>/data/local/tmp/app.apk
 </code></pre></div>
 <h3 id="5c-allow-cleartext-to-the-localnet-debug-only">5c. Allow cleartext to the localnet (debug only)<a class="headerlink" href="#5c-allow-cleartext-to-the-localnet-debug-only" title="Permanent link">&para;</a></h3>
 <p>Production hits HTTPS. Localnet is plain HTTP, so declare cleartext <strong>in a
@@ -1782,8 +1883,8 @@ any cleartext allowance, so each app declares its own in a debug-only manifest
 <hr />
 <h2 id="6-minimal-hello-world-deploy-call">6. Minimal "Hello World" — deploy + call<a class="headerlink" href="#6-minimal-hello-world-deploy-call" title="Permanent link">&para;</a></h2>
 <p>Your <code>Application</code> is <code>@HiltAndroidApp</code>, and your activity is a Hilt'd
-<strong><code>FragmentActivity</code></strong> — <code>AppCompatActivity</code> is the usual choice, since
-<code>SigilStatusPanel</code> hosts a biometric prompt that needs a FragmentActivity host:</p>
+<strong><code>FragmentActivity</code></strong> — <code>AppCompatActivity</code> is the usual choice, since the
+panel hosts a biometric prompt that needs a FragmentActivity host:</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@HiltAndroidApp</span>
 <span class="kd">class</span><span class="w"> </span><span class="nc">MyApp</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">()</span>
 
@@ -1792,17 +1893,28 @@ any cleartext allowance, so each app declares its own in a debug-only manifest
 <span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
 <span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Column</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// Drop-in SDK panels — each owns its own state. The wallet</span>
-<span class="w">                </span><span class="c1">// panel builds the SDK (one biometric) the first time it shows.</span>
-<span class="w">                </span><span class="n">SigilStatusPanel</span><span class="p">()</span><span class="w">   </span><span class="c1">// forge / restore identity (DID)</span>
-<span class="w">                </span><span class="n">WalletStatusPanel</span><span class="p">()</span><span class="w">  </span><span class="c1">// balance, receive, dust register, network</span>
-<span class="w">                </span><span class="n">MyDappScreen</span><span class="p">()</span><span class="w">       </span><span class="c1">// your UI</span>
+<span class="w">            </span><span class="n">Box</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">MyDappScreen</span><span class="p">()</span><span class="w">  </span><span class="c1">// your UI underneath</span>
+
+<span class="w">                </span><span class="c1">// Drop-in combined sigil + wallet UI: a pair of draggable</span>
+<span class="w">                </span><span class="c1">// floating chips that own their own state. The wallet pill</span>
+<span class="w">                </span><span class="c1">// builds the SDK (one biometric) the first time it shows, and</span>
+<span class="w">                </span><span class="c1">// owns network selection — its pick drives the SDK&#39;s durable</span>
+<span class="w">                </span><span class="c1">// NetworkPreferenceStore, which your screen can follow.</span>
+<span class="w">                </span><span class="n">PanelBar</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">floating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selectedNetwork</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">onNetworkChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">selectNetwork</span><span class="p">,</span>
+<span class="w">                </span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>This is the canonical integration every reference app uses — see
+<a href="../recipes/set-up-sigil-identity/">Set up Sigil identity</a>. (The lower-level
+<code>SigilStatusPanel</code> / <code>WalletStatusPanel</code> are still available if you want to
+place each panel inline yourself.)</p>
 <p>Your dApp logic gets the SDK from the injected <code>MidnightSdkProvider</code> — observe
 <code>sdkProvider.sdk</code> (a <code>StateFlow&lt;MidnightSdk?&gt;</code>, non-null once the wallet panel
 has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
@@ -1849,15 +1961,25 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 proving keys + a BLS parameter set present <strong>before the first deploy/call</strong> —
 otherwise the call fails at the proving step. Ship them in <code>assets/</code> — sync them
 in with the <code>io.github.kuiralabs.contract</code> Gradle plugin
-(<code>0.1.0-alpha03</code>), the recommended path, which stages the
+(<code>0.1.0-alpha04</code>), the recommended path, which stages the
 contract runtime and circuit keys into <code>assets/</code> for you. Without the plugin, use
 the hand-rolled <code>Copy</code> task shown in the
 <a href="../recipes/deploy-and-call-a-compact-contract/">deploy-and-call recipe</a>. Then
 install once at runtime — it's idempotent, so call it before each action:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Discovers the circuit keys bundled in assets and stages them</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">com.midnight.kuira.core.compact.proving.ProvingKeyManager</span>
+
+<span class="c1">// Discovers the circuit keys bundled in assets and stages them</span>
 <span class="c1">// where the on-device prover looks.</span>
 <span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Imports — use the <code>core.compact.proving</code> package</p>
+<p><code>ProvingKeyManager</code> and <code>ProvingMode</code> both live in
+<code>com.midnight.kuira.core.compact.proving</code>. There is a same-named
+<code>ProvingMode</code> <em>typealias</em> in <code>com.midnight.kuira.core.crypto.proving</code> — do
+<strong>not</strong> import that one; always reference
+<code>com.midnight.kuira.core.compact.proving.ProvingMode</code>.</p>
+</div>
 <p>The shared <strong>wallet</strong> proving keys ship the full BLS parameter set
 (<code>bls_midnight_2p5</code>–<code>2p15</code>), so a small contract circuit (e.g. a counter that
 needs <code>2p5</code>) finds the size it requires from the wallet keys — you do <strong>not</strong>
@@ -1875,7 +1997,7 @@ reference app shows the deploy → call → read flow end-to-end.</p>
 <hr />
 <h2 id="7-going-headless-no-panel">7. Going headless (no panel)<a class="headerlink" href="#7-going-headless-no-panel" title="Permanent link">&para;</a></h2>
 <p>If you don't want the Compose wallet panel, swap the dep:</p>
-<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha03&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
+<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha04&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
 </code></pre></div>
 <p>You still own bootstrap + sigil forging — <code>MidnightSdkProvider.ensureSdk(...)</code>
 throws <code>SigilRequiredException</code> until a sigil exists. Forge it through
@@ -1912,8 +2034,20 @@ throws <code>SigilRequiredException</code> until a sigil exists. Forge it throug
 <td>The wallet's background subscription is live; check <code>adb logcat</code> for indexer connectivity. On localnet, state is ephemeral — restarting the localnet wipes funds.</td>
 </tr>
 <tr>
-<td><code>IllegalArgumentException: Could not find io.github.kuiralabs:…</code></td>
-<td>Check the alpha version is current; the SDK is <code>0.1.0-alpha03</code> at the time of writing.</td>
+<td>Balance stays 0 / <em>"Loading…"</em> on a <strong>physical device</strong></td>
+<td>Run the three <code>adb reverse</code> commands (9944 node, 8088 indexer, 6300 proof server) or apply the <code>io.github.kuiralabs.localnet</code> plugin (§5b).</td>
+</tr>
+<tr>
+<td><code>java.lang.UnsatisfiedLinkError</code> at launch on an x86_64 emulator</td>
+<td>The native lib is arm64-only before <code>0.1.0-alpha04</code>. Upgrade to alpha04+ (ships <code>x86_64</code>) or use an arm64 AVD.</td>
+</tr>
+<tr>
+<td><code>Custom error: 168</code> or a dust-fee / time-to-dismiss failure on dust registration or the first tx</td>
+<td>Fixed in SDK <code>0.1.0-alpha04</code> — upgrade. An unexpected <code>Custom error: N</code> not in the known set usually means a client↔node ledger-version mismatch — confirm your node is <code>0.22.5</code>.</td>
+</tr>
+<tr>
+<td><code>Could not resolve io.github.kuiralabs:…</code></td>
+<td>Ensure <code>mavenCentral()</code> is in your repositories <strong>and</strong> the version is actually published — check <a href="https://central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui">central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui</a>.</td>
 </tr>
 </tbody>
 </table>

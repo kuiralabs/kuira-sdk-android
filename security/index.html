@@ -21,7 +21,7 @@
         
       
       
-      <link rel="icon" href="../assets/logo.svg">
+      <link rel="icon" href="../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../integration/" class="md-tabs__link">
+        <a href="../prerequisites/" class="md-tabs__link">
           
   
   
@@ -561,6 +561,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1494,7 +1550,7 @@ wrong venue for unpatched vulnerabilities.</p>
 <h3 id="what-to-include">What to include<a class="headerlink" href="#what-to-include" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Affected version(s) — at minimum, the Maven coordinate
-  (e.g. <code>io.github.kuiralabs:midnight-sdk:0.1.0-alpha03</code>).</li>
+  (e.g. <code>io.github.kuiralabs:midnight-sdk:0.1.0-alpha04</code>).</li>
 <li>Steps to reproduce, or a proof-of-concept.</li>
 <li>Your assessment of impact and exploitability.</li>
 <li>Whether you want public credit, and how you'd like to be named.</li>
@@ -1686,9 +1742,9 @@ verify a downloaded artifact:</p>
 gpg<span class="w"> </span>--keyserver<span class="w"> </span>keyserver.ubuntu.com<span class="w"> </span>--recv-keys<span class="w"> </span>189C70EE67261AF5866CF1D052D6F3437CF490FA
 
 <span class="c1"># Download the artifact and its signature</span>
-<span class="nv">ARTIFACT</span><span class="o">=</span>midnight-sdk-0.1.0-alpha03.aar
-curl<span class="w"> </span>-O<span class="w"> </span>https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-alpha03/<span class="nv">$ARTIFACT</span>
-curl<span class="w"> </span>-O<span class="w"> </span>https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-alpha03/<span class="nv">$ARTIFACT</span>.asc
+<span class="nv">ARTIFACT</span><span class="o">=</span>midnight-sdk-0.1.0-alpha04.aar
+curl<span class="w"> </span>-O<span class="w"> </span>https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-alpha04/<span class="nv">$ARTIFACT</span>
+curl<span class="w"> </span>-O<span class="w"> </span>https://repo1.maven.org/maven2/io/github/kuiralabs/midnight-sdk/0.1.0-alpha04/<span class="nv">$ARTIFACT</span>.asc
 
 <span class="c1"># Verify</span>
 gpg<span class="w"> </span>--verify<span class="w"> </span><span class="nv">$ARTIFACT</span>.asc<span class="w"> </span><span class="nv">$ARTIFACT</span>

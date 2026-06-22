@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../integration/" class="md-tabs__link">
+        <a href="../../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -957,10 +1013,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-run-the-cloud-sync" class="md-nav__link">
+  <a href="#step-6-enable-backup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 6 — Run the cloud sync
+        Step 6 — Enable backup
       
     </span>
   </a>
@@ -1257,10 +1313,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-run-the-cloud-sync" class="md-nav__link">
+  <a href="#step-6-enable-backup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 6 — Run the cloud sync
+        Step 6 — Enable backup
       
     </span>
   </a>
@@ -1368,8 +1424,19 @@
 the user's own Google Drive and restored on a new device, so the first
 sync on a fresh install is a fast delta instead of replaying the whole
 chain from genesis.</p>
+<blockquote>
+<p><strong>Seeing a genesis replay on PreProd?</strong> This recipe is the fix. On a
+long-lived network like <strong>PreProd</strong> the chain history is large, so a wallet's
+first sync <strong>replays from genesis — minutes, not seconds.</strong> Cloud backup is
+what turns that into a fast delta restore. The catch: the restore only runs
+once the one-time OAuth setup below is done. <strong>Without a registered OAuth
+client, cloud sync silently fails with <code>UNREGISTERED_ON_API_CONSOLE</code>, so
+PreProd keeps replaying from genesis on every fresh sync</strong> — even though the
+wallet itself works fine. If you expected the cloud restore to kick in and it
+didn't, this setup is the missing piece.</p>
+</blockquote>
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/back-up-wallet-across-devices.md"
-     data-task="Enable cross-device wallet-data backup in this Kuira app: register a Google Cloud OAuth client for the drive.appdata scope (Android client with the app's package name + signing SHA-1), enable the Google Drive API, and verify the wallet panel's cloud sync action succeeds without UNREGISTERED_ON_API_CONSOLE."></div>
+     data-task="Enable cross-device wallet-data backup in this Kuira app: register a Google Cloud OAuth client for the drive.appdata scope (Android client with the app's package name + signing SHA-1), enable the Google Drive API, and verify the wallet panel's Backup & recovery → Enable action succeeds without UNREGISTERED_ON_API_CONSOLE."></div>
 
 <hr />
 <h2 id="what-you-get-and-what-you-dont-have-to-do">What you get, and what you don't have to do<a class="headerlink" href="#what-you-get-and-what-you-dont-have-to-do" title="Permanent link">&para;</a></h2>
@@ -1377,8 +1444,10 @@ chain from genesis.</p>
 key <strong>derived from the wallet seed</strong> (AES-256-GCM, on-device — the cloud
 only ever holds ciphertext), uploads it to Google Drive's hidden
 per-app <strong><code>appDataFolder</code></strong>, and on another device pulls it back and
-seeds the sync. The wallet panel exposes a single <strong>cloud sync</strong> action
-that runs the backup-or-restore in one tap.</p>
+seeds the sync. The wallet panel exposes a <strong>Backup &amp; recovery</strong>
+section with an <strong>Enable</strong> CTA that turns backup on (calling
+<code>enableCloudBackup()</code>); a matching <strong>Turn off cloud backup?</strong> flow
+disables it.</p>
 <p>The only thing the SDK <em>can't</em> do for you is authorize itself with
 Google. That's a one-time setup in the Google Cloud Console: an OAuth
 client that matches your app's package name + signing key, for the
@@ -1435,19 +1504,25 @@ enter:</p>
 <p>Google matches the OAuth request on <strong>(package name, SHA-1)</strong> — both
 must match the installed build exactly, so a release build needs its own
 client entry with the release signing fingerprint.</p>
+<div class="admonition note">
+<p class="admonition-title">SHA-256 vs SHA-1 — don't mix them up</p>
+<p>The fingerprint formats differ — <code>assetlinks.json</code> (passkey binding)
+uses <strong>SHA-256</strong>, but the Google Drive Android OAuth client uses
+<strong>SHA-1</strong>. Don't paste one where the other is expected.</p>
+</div>
 <blockquote>
 <p><strong>Verify:</strong> the new Android client appears under Clients with your
 package name.</p>
 </blockquote>
-<h2 id="step-6-run-the-cloud-sync">Step 6 — Run the cloud sync<a class="headerlink" href="#step-6-run-the-cloud-sync" title="Permanent link">&para;</a></h2>
-<p>Build, install, sign in, and tap <strong>cloud sync</strong> in the wallet panel.
-First use runs the Drive consent flow (one system dialog); after that
-it's silent.</p>
+<h2 id="step-6-enable-backup">Step 6 — Enable backup<a class="headerlink" href="#step-6-enable-backup" title="Permanent link">&para;</a></h2>
+<p>Build, install, sign in, and tap <strong>Enable</strong> under <strong>Backup &amp; recovery</strong>
+in the wallet panel (this drives <code>enableCloudBackup()</code>). First use runs
+the Drive consent flow (one system dialog); after that it's silent.</p>
 <blockquote>
-<p><strong>Verify:</strong> the action reports success (e.g. "cloud synced ✓") with no
-<code>UNREGISTERED_ON_API_CONSOLE</code>. On a second device signed into the
-<strong>same Google account</strong>, a fresh install's first sync logs a delta
-resume rather than a full genesis replay.</p>
+<p><strong>Verify:</strong> the action completes with no <code>UNREGISTERED_ON_API_CONSOLE</code>.
+On a second device signed into the <strong>same Google account</strong>, a fresh
+install's first sync logs a delta resume rather than a full genesis
+replay.</p>
 </blockquote>
 <hr />
 <h2 id="where-the-backup-lives">Where the backup lives<a class="headerlink" href="#where-the-backup-lives" title="Permanent link">&para;</a></h2>

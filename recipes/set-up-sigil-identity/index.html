@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../integration/" class="md-tabs__link">
+        <a href="../../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1316,7 +1372,11 @@ recovery-phrase export (BIP-39) is its own flow.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The previous recipe (<a href="../add-kuira-to-an-android-project/">Add Kuira to an Android project</a>)
-  completed: dependency, <code>PasskeyConfig</code>, <code>assetlinks.json</code>.</li>
+  completed: dependency, <code>PasskeyConfig</code>, <code>assetlinks.json</code>. The
+  <code>PasskeyConfig</code> binding is <strong>mandatory</strong> — see
+  <strong><a href="../bind-your-app-to-a-passkey-domain/">Bind your app to a passkey domain</a></strong>.
+  Without it, <code>assembleDebug</code> fails fast with a Dagger missing-binding
+  error by design.</li>
 <li>A Compose-based UI host. The SDK ships
   <code>SigilStatusPanel</code> as a ready-made Compose component you can drop
   in, or you can render a custom UI on top of <code>SigilPanelViewModel</code>.</li>
@@ -1342,18 +1402,36 @@ singleton via Hilt:</p>
 <span class="nt">&lt;/application&gt;</span>
 </code></pre></div>
 <p><code>@HiltAndroidApp</code> lights up the dependency graph the SDK's modules
-plug into. Nothing further required — the SDK's <code>IdentityModule</code>,
-<code>AuthModule</code>, <code>WalletRuntimeModule</code>, <code>SdkModule</code> are auto-installed
-once Hilt is on.</p>
-<p><strong>Verify:</strong> <code>./gradlew :app:assembleDebug</code> succeeds and Hilt's
+plug into. The SDK's <code>IdentityModule</code>, <code>AuthModule</code>,
+<code>WalletRuntimeModule</code>, and <code>DappUiModule</code> are auto-installed once Hilt
+is on.</p>
+<p>One thing you <strong>must</strong> supply yourself: a <code>@Provides PasskeyConfig</code>
+binding (a <code>PasskeyConfigModule</code> — see the
+<strong><a href="../bind-your-app-to-a-passkey-domain/">Bind your app to a passkey domain</a></strong>
+recipe) before <code>assembleDebug</code> will compile. Omitting it is an
+intentional Dagger missing-binding build error — the SDK can't forge a
+sigil without knowing your passkey domain.</p>
+<p><strong>Verify:</strong> with your <code>PasskeyConfig</code> binding in place,
+<code>./gradlew :app:assembleDebug</code> succeeds and Hilt's
 <code>MyApp_HiltComponents</code> is generated under
-<code>app/build/generated/hilt/</code>.</p>
+<code>app/build/generated/hilt/</code>. (Without the binding, the build fails
+fast with a missing <code>PasskeyConfig</code> binding error — that's expected.)</p>
 <hr />
 <h2 id="step-2-drop-the-sigilstatuspanel-composable-into-your-ui">Step 2 — Drop the <code>SigilStatusPanel</code> Composable into your UI<a class="headerlink" href="#step-2-drop-the-sigilstatuspanel-composable-into-your-ui" title="Permanent link">&para;</a></h2>
-<p>The panel composable takes a Hilt-provided <code>SigilPanelViewModel</code>
-(obtained via <code>hiltViewModel()</code> from <code>androidx.hilt.navigation.compose</code>)
-plus optional <code>Modifier</code>, <code>SigilPanelColors</code>, and an <code>onStatusChange</code>
-callback. The hosting Activity must subclass <code>FragmentActivity</code> so the
+<p>The panel composable's signature, in declaration order, is:</p>
+<div class="highlight"><pre><span></span><code><span class="n">SigilStatusPanel</span><span class="p">(</span>
+<span class="w">    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">,</span>
+<span class="w">    </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SigilPanelColors</span><span class="p">.</span><span class="na">Default</span><span class="p">,</span>
+<span class="w">    </span><span class="n">viewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hiltViewModel</span><span class="p">(),</span><span class="w">   </span><span class="c1">// from androidx.hilt.navigation.compose</span>
+<span class="w">    </span><span class="n">onStatusChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="n">onOpenSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Every parameter has a default, so the zero-arg call works as a drop-in.
+<code>onStatusChange</code> fires on each sigil state transition; <code>onOpenSettings</code>
+is invoked when the user taps the panel's settings affordance, so you
+can route them to your own settings screen. The hosting Activity must
+subclass <code>FragmentActivity</code> so the
 panel's internal biometric prompts can run — <code>AppCompatActivity</code>
 satisfies this; <code>ComponentActivity</code> alone does not.</p>
 <div class="highlight"><span class="filename">app/src/main/.../MainActivity.kt</span><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">com.example.myapp</span>
@@ -1402,8 +1480,9 @@ satisfies this; <code>ComponentActivity</code> alone does not.</p>
 <span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;My Midnight dApp&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// Zero-arg call is the canonical drop-in: the SDK defaults</span>
-<span class="w">        </span><span class="c1">// `viewModel = hiltViewModel()`, `colors = SigilPanelColors.Default`,</span>
-<span class="w">        </span><span class="c1">// `modifier = Modifier`, and `onStatusChange = { }`.</span>
+<span class="w">        </span><span class="c1">// `modifier = Modifier`, `colors = SigilPanelColors.Default`,</span>
+<span class="w">        </span><span class="c1">// `viewModel = hiltViewModel()`, `onStatusChange = { }`, and</span>
+<span class="w">        </span><span class="c1">// `onOpenSettings = { }`.</span>
 <span class="w">        </span><span class="n">SigilStatusPanel</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1412,26 +1491,40 @@ satisfies this; <code>ComponentActivity</code> alone does not.</p>
 <code>onStatusChange</code> callback:</p>
 <div class="highlight"><pre><span></span><code><span class="n">SigilStatusPanel</span><span class="p">(</span>
 <span class="w">    </span><span class="n">onStatusChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">        </span><span class="c1">// status is com.midnight.kuira.dapp.sigil.SigilStatus,</span>
-<span class="w">        </span><span class="c1">// one of None / BackupAvailable / Creating / Forged / Error.</span>
+<span class="w">        </span><span class="c1">// status is com.midnight.kuira.dapp.sigil.SigilStatus — one of:</span>
+<span class="w">        </span><span class="c1">// Initializing, None, BackupAvailable, Creating(stage),</span>
+<span class="w">        </span><span class="c1">// Forged(did, credentialId, publicKeyHex), Error(message).</span>
+<span class="w">        </span><span class="c1">// Initializing is the first value emitted while the panel bootstraps.</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>If you want to restyle the panel, pass a custom <code>SigilPanelColors</code>
 or a non-default <code>Modifier</code>. Both have sensible defaults; override
 only when you need to.</p>
-<p>Behaviourally, the panel renders one of four states:</p>
+<p>Behaviourally, the panel renders one of six states:</p>
 <ul>
+<li><strong><code>Initializing</code></strong> — first value emitted while the panel bootstraps;
+  shows a loading state.</li>
 <li><strong><code>None</code></strong> — no sigil on this device; surfaces a <strong>Forge</strong> button.</li>
 <li><strong><code>BackupAvailable</code></strong> — Block Store knows about a previous sigil;
   surfaces a <strong>Restore</strong> button.</li>
+<li><strong><code>Creating(stage)</code></strong> — a forge or restore is in flight; <code>stage</code> is a
+  human-readable progress label.</li>
 <li><strong><code>Forged</code></strong> — sigil exists and is unlocked; renders DID, balance,
   copy actions.</li>
-<li><strong><code>Error</code></strong> — recoverable error; shows the message + a retry path.</li>
+<li><strong><code>Error(message)</code></strong> — recoverable error; shows the message + a retry path.</li>
 </ul>
 <p><strong>Verify:</strong> launch your app on an Android 13+ device with a screen
-lock. You should see the panel render one of the four states based
+lock. You should see the panel render one of these states based
 on Block Store presence.</p>
+<div class="admonition tip">
+<p class="admonition-title">Showing the sigil + wallet together</p>
+<p>This recipe drops in the <strong>sigil</strong> panel on its own. To show the sigil
+<strong>and</strong> the wallet as a pair of draggable floating chips — the current
+canonical integration — host both in one <code>PanelBar(floating = true)</code>
+rather than placing the panels inline. <code>PanelBar</code> drives the same
+<code>SigilPanelViewModel</code>, so everything in this recipe still applies.</p>
+</div>
 <hr />
 <h2 id="step-3-forge-a-sigil-first-run-flow">Step 3 — Forge a sigil (first-run flow)<a class="headerlink" href="#step-3-forge-a-sigil-first-run-flow" title="Permanent link">&para;</a></h2>
 <p>In the panel UI: tap <strong>Forge sigil</strong>. Under the hood:</p>

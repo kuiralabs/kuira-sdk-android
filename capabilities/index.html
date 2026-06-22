@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../assets/logo.svg">
+      <link rel="icon" href="../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -298,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../integration/" class="md-tabs__link">
+        <a href="../prerequisites/" class="md-tabs__link">
           
   
   
@@ -632,6 +632,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1136,7 +1192,7 @@ it.</p>
 <p class="admonition-title">Built on a native Rust core — not a WASM sandbox</p>
 <p>The cryptographic core — wallet, ledger, Dust, and <strong>zero-knowledge
 proving</strong> — is a native Rust library compiled straight to an Android
-<code>.so</code> and called over JNI. It runs as native ARM64 machine code, not
+<code>.so</code> and called over JNI. It runs as native machine code, not
 the Midnight stack's WebAssembly modules inside an embedded runtime.
 That's the foundation that makes <a href="../on-device-proving/">on-device proving</a>
 viable.</p>
@@ -1198,6 +1254,18 @@ before upload — the cloud only ever holds ciphertext)</em>.</p>
 <p>Point the app at undeployed, preview, preprod, or mainnet by
 configuration — no code change to move between networks.</p>
 </li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 12a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 17.5 9a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-3-4A1.5 1.5 0 0 1 13 6.5 1.5 1.5 0 0 1 14.5 5 1.5 1.5 0 0 1 16 6.5 1.5 1.5 0 0 1 14.5 8m-5 0A1.5 1.5 0 0 1 8 6.5 1.5 1.5 0 0 1 9.5 5 1.5 1.5 0 0 1 11 6.5 1.5 1.5 0 0 1 9.5 8m-3 4A1.5 1.5 0 0 1 5 10.5 1.5 1.5 0 0 1 6.5 9 1.5 1.5 0 0 1 8 10.5 1.5 1.5 0 0 1 6.5 12M12 3a9 9 0 0 0-9 9 9 9 0 0 0 9 9 1.5 1.5 0 0 0 1.5-1.5c0-.39-.15-.74-.39-1-.23-.27-.38-.62-.38-1a1.5 1.5 0 0 1 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8"/></svg></span> <strong>A wallet that fits your app's look</strong></p>
+<hr />
+<p>Pick from built-in palettes — Monochrome, Paper, Catppuccin, Nord,
+Dracula, Tokyo Night, Rosé Pine — and the choice sticks across restarts.</p>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 19v1H3v-1l2-2v-6c0-3.1 2.03-5.83 5-6.71V4a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.29c2.97.88 5 3.61 5 6.71v6zm-7 2a2 2 0 0 1-2 2 2 2 0 0 1-2-2m9.75-17.81-1.42 1.42A8.98 8.98 0 0 1 21 11h2c0-2.93-1.16-5.75-3.25-7.81M1 11h2c0-2.4.96-4.7 2.67-6.39L4.25 3.19A10.96 10.96 0 0 0 1 11"/></svg></span> <strong>Know the moment they're paid</strong></p>
+<hr />
+<p>Background notifications when NIGHT lands, showing the real
+per-transaction amount — no false "change" alerts.</p>
+</li>
 </ul>
 </div>
 <hr />
@@ -1208,7 +1276,7 @@ configuration — no code change to move between networks.</p>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15l-1.89 1.07L16 8.61l1.96-1.11zM6.04 7.5 12 10.85l1.96-1.1-5.88-3.4zM5 15.91l6 3.38v-6.71L5 9.21zm14 0v-6.7l-6 3.37v6.71z"/></svg></span> <strong>One Gradle line, whole SDK</strong></p>
 <hr />
-<p><code>implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha03")</code>
+<p><code>implementation("io.github.kuiralabs:dapp-ui:0.1.0-alpha04")</code>
 <code>api</code>-exposes the full module graph. Need headless? Drop to
 <code>midnight-sdk</code>.</p>
 </li>
@@ -1234,7 +1302,8 @@ assets, validates the source, and enforces the runtime-version pin.</p>
 <li>
 <p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 2.03v2.02c4.39.54 7.5 4.53 6.96 8.92-.46 3.64-3.32 6.53-6.96 6.96v2c5.5-.55 9.5-5.43 8.95-10.93-.45-4.75-4.22-8.5-8.95-8.97m-2 .03c-1.95.19-3.81.94-5.33 2.2L7.1 5.74c1.12-.9 2.47-1.48 3.9-1.68zM4.26 5.67A9.9 9.9 0 0 0 2.05 11h2c.19-1.42.75-2.77 1.64-3.9zM2.06 13c.2 1.96.97 3.81 2.21 5.33l1.42-1.43A8 8 0 0 1 4.06 13zm5.04 5.37-1.43 1.37A10 10 0 0 0 11 22v-2a8 8 0 0 1-3.9-1.63M12.5 7v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg></span> <strong>Progress callbacks</strong></p>
 <hr />
-<p>Balance + submit report through six discrete stages, so the
+<p>Balance + submit report through five discrete stages — fetching
+state, executing, proving, balancing, submitting — so the
 otherwise-opaque proving/submission wait becomes real UX.</p>
 </li>
 <li>
@@ -1248,6 +1317,13 @@ loud failures — no silent misdecode of zero-valued vector cells.</p>
 <hr />
 <p>Source jars ship beside every AAR on Maven Central; native libraries
 are 16 KB-page aligned for Android 15+ / Play readiness.</p>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.67 12-4.49 4.5-2.51-2.5 1.98-2-1.98-1.96 2.51-2.51zM12 1.33l4.47 4.49-2.51 2.51L12 6.35l-2 1.98-2.5-2.51zm0 21.34-4.47-4.49 2.51-2.51L12 17.65l2-1.98 2.5 2.51zM1.33 12l4.49-4.5L8.33 10l-1.98 2 1.98 1.96-2.51 2.51zM12 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> <strong>Drop-in floating wallet &amp; sigil pills</strong></p>
+<hr />
+<p><code>PanelBar(floating = true)</code> gives draggable wallet + sigil chips that
+dock to a screen edge as peek tabs and resize on long-press — a movable
+wallet/identity surface with no custom UI to build.</p>
 </li>
 </ul>
 </div>

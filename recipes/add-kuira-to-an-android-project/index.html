@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../integration/" class="md-tabs__link">
+        <a href="../../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1306,6 +1362,11 @@
 <p><strong>Outcome:</strong> your existing Android app builds against the Kuira SDK,
 recognises your passkey domain, and has the Hilt graph wired so any
 <code>@HiltViewModel</code> consuming SDK panels resolves cleanly.</p>
+<div class="admonition tip">
+<p class="admonition-title">New to Android development?</p>
+<p>Get comfortable with Android Studio, the SDK, emulators, and running an app
+first: <a href="https://developer.android.com/get-started/overview">https://developer.android.com/get-started/overview</a>.</p>
+</div>
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/add-kuira-to-an-android-project.md"
      data-task="Integrate Kuira SDK into this Android project — install the dependency, provide a PasskeyConfig Hilt module for the project's own domain, and enable debug cleartext for localnet (assetlinks.json hosting is left to the developer)."></div>
 
@@ -1406,7 +1467,7 @@ artifacts resolve):</p>
 <div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// One line; pulls in midnight-sdk, wallet-runtime, identity,</span>
 <span class="w">    </span><span class="c1">// compact-engine, designsystem, … as transitive api dependencies.</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha03&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha04&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Hilt — required (the SDK is Hilt-first).</span>
 <span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-android:2.58&quot;</span><span class="p">)</span>
@@ -1431,7 +1492,7 @@ artifacts resolve):</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">app/build.gradle</span><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.kuiralabs:dapp-ui:0.1.0-alpha03&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.kuiralabs:dapp-ui:0.1.0-alpha04&#39;</span>
 
 <span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;com.google.dagger:hilt-android:2.58&#39;</span>
 <span class="w">    </span><span class="n">ksp</span><span class="w"> </span><span class="s1">&#39;com.google.dagger:hilt-compiler:2.58&#39;</span>
@@ -1552,8 +1613,8 @@ not permitted</code>.</p>
 <tbody>
 <tr>
 <td><code>Could not resolve io.github.kuiralabs:dapp-ui</code></td>
-<td>Missing <code>mavenCentral()</code> in <code>settings.gradle.kts</code> <code>dependencyResolutionManagement.repositories</code>.</td>
-<td>Add it.</td>
+<td>Missing <code>mavenCentral()</code> in <code>settings.gradle.kts</code> <code>dependencyResolutionManagement.repositories</code>, or the version isn't published yet.</td>
+<td>Add <code>mavenCentral()</code>, and confirm the version is published — check <a href="https://central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui">central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui</a>.</td>
 </tr>
 <tr>
 <td><code>Missing binding for PasskeyConfig</code> at Hilt KSP time</td>

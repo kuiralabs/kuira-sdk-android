@@ -23,7 +23,7 @@
         
       
       
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -296,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../integration/" class="md-tabs__link">
+        <a href="../../prerequisites/" class="md-tabs__link">
           
   
   
@@ -563,6 +563,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1424,6 +1480,13 @@ that owns your project. Derive it from the project's git remote:</p>
 <p>If it doesn't, you'll create it in Step 3. If you want to use a
 different domain (a custom domain you own, or a personal site you
 already host other apps on), use that instead — same constraints apply.</p>
+<div class="admonition danger">
+<p class="admonition-title">If you cloned the starter, change <code>PASSKEY_RP_ID</code></p>
+<p>The starter ships <code>PASSKEY_RP_ID = "kuiralabs.github.io"</code>. You
+<strong>must</strong> change it to a domain <em>you</em> host <code>assetlinks.json</code> on (Step
+4), or every <strong>Forge</strong> fails with <code>RP_ID_MISMATCH</code> — your debug
+fingerprint isn't in the <code>kuiralabs.github.io</code> assetlinks file.</p>
+</div>
 <hr />
 <h2 id="step-1-get-the-debug-fingerprint">Step 1 — Get the debug fingerprint<a class="headerlink" href="#step-1-get-the-debug-fingerprint" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:signingReport
