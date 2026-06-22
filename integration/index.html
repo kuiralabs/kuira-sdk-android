@@ -853,6 +853,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#8-shipping-a-release-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Shipping a release build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Shipping a release build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-it-costs-in-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it costs in size
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-pitfalls" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1498,6 +1526,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#8-shipping-a-release-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Shipping a release build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Shipping a release build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-it-costs-in-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it costs in size
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-pitfalls" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2003,6 +2059,54 @@ reference app shows the deploy → call → read flow end-to-end.</p>
 throws <code>SigilRequiredException</code> until a sigil exists. Forge it through
 <code>PasskeyManager</code> directly, or use the <code>SigilSession</code> helper.</p>
 <p><code>midnight-sdk</code> does not pull Compose — the headless entry stays small.</p>
+<hr />
+<h2 id="8-shipping-a-release-build">8. Shipping a release build<a class="headerlink" href="#8-shipping-a-release-build" title="Permanent link">&para;</a></h2>
+<p>The starter ships <code>isMinifyEnabled = false</code> so newcomers see exactly what compiles. For a <strong>production release</strong>, turn on R8 and publish an <strong>App Bundle</strong> — both matter a lot, because the SDK carries a native on-device ZK-proving core.</p>
+<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">buildTypes</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">release</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">isMinifyEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="c1">// The SDK ships its own consumer ProGuard rules — AGP applies them automatically.</span>
+<span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">&quot;proguard-android-optimize.txt&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:app:bundleRelease<span class="w">   </span><span class="c1"># an .aab for Play — not a universal .apk</span>
+</code></pre></div>
+<h3 id="what-it-costs-in-size">What it costs in size<a class="headerlink" href="#what-it-costs-in-size" title="Permanent link">&para;</a></h3>
+<p>Measured on the counter starter (one small circuit):</p>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Size</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Universal APK, minify <strong>off</strong></td>
+<td>~152 MB</td>
+<td>both ABIs + an unstripped dex — worst case, never shipped</td>
+</tr>
+<tr>
+<td>Universal APK, R8 <strong>on</strong></td>
+<td>~93 MB</td>
+<td>R8 strips the dex from ~65 MB → ~6 MB (most was SDK code your app never calls)</td>
+</tr>
+<tr>
+<td><strong>Per-device</strong> (App Bundle + R8)</td>
+<td><strong>~60 MB</strong></td>
+<td>Play delivers one ABI per device, not both</td>
+</tr>
+</tbody>
+</table>
+<p>A real release lands around <strong>~60 MB per device</strong> — comfortably inside <a href="https://support.google.com/googleplay/android-developer/answer/9859372">Google Play's 200 MB app-bundle limit</a>. The floor is the <strong>native proving library</strong> (~20–24 MB of Rust — the BLS/halo2 prover + QuickJS): R8 can't shrink it, because it's the cost of proving <strong>on the device</strong> rather than on a server. Bundling the wallet proving keys (<code>bundleWalletKeys = true</code>) adds ~33 MB on top; the default runtime download keeps them out of the binary.</p>
+<div class="admonition tip">
+<p class="admonition-title">Two settings do almost all the work</p>
+<p><code>isMinifyEnabled = true</code> (kills the dex bloat) + <code>bundleRelease</code> (one ABI per device). Everything after that is single-digit MB.</p>
+</div>
 <hr />
 <h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
 <table>
