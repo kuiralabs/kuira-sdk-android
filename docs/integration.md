@@ -479,6 +479,43 @@ throws `SigilRequiredException` until a sigil exists. Forge it through
 
 ---
 
+## 8. Shipping a release build
+
+The starter ships `isMinifyEnabled = false` so newcomers see exactly what compiles. For a **production release**, turn on R8 and publish an **App Bundle** — both matter a lot, because the SDK carries a native on-device ZK-proving core.
+
+```kotlin title="app/build.gradle.kts"
+android {
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            // The SDK ships its own consumer ProGuard rules — AGP applies them automatically.
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+        }
+    }
+}
+```
+
+```bash
+./gradlew :app:bundleRelease   # an .aab for Play — not a universal .apk
+```
+
+### What it costs in size
+
+Measured on the counter starter (one small circuit):
+
+| Build | Size | Why |
+|---|---|---|
+| Universal APK, minify **off** | ~152 MB | both ABIs + an unstripped dex — worst case, never shipped |
+| Universal APK, R8 **on** | ~93 MB | R8 strips the dex from ~65 MB → ~6 MB (most was SDK code your app never calls) |
+| **Per-device** (App Bundle + R8) | **~60 MB** | Play delivers one ABI per device, not both |
+
+A real release lands around **~60 MB per device** — comfortably inside [Google Play's 200 MB app-bundle limit](https://support.google.com/googleplay/android-developer/answer/9859372). The floor is the **native proving library** (~20–24 MB of Rust — the BLS/halo2 prover + QuickJS): R8 can't shrink it, because it's the cost of proving **on the device** rather than on a server. Bundling the wallet proving keys (`bundleWalletKeys = true`) adds ~33 MB on top; the default runtime download keeps them out of the binary.
+
+!!! tip "Two settings do almost all the work"
+    `isMinifyEnabled = true` (kills the dex bloat) + `bundleRelease` (one ABI per device). Everything after that is single-digit MB.
+
+---
+
 ## Common pitfalls
 
 | Symptom | Fix |
