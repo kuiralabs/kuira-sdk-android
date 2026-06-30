@@ -65,6 +65,9 @@
 
     --md-footer-bg-color:            var(--kuira-void);
     --md-footer-bg-color--dark:      var(--kuira-void);
+    --md-footer-fg-color:            var(--kuira-light);
+    --md-footer-fg-color--light:     var(--kuira-light-muted);
+    --md-footer-fg-color--lighter:   var(--kuira-light-faint);
 
     --kuira-hairline:                var(--kuira-light-faint);
     --kuira-glass-tint:              var(--kuira-light-trace);
@@ -128,6 +131,9 @@
 
     --md-footer-bg-color:            var(--kuira-void);
     --md-footer-bg-color--dark:      var(--kuira-void-soft);
+    --md-footer-fg-color:            var(--kuira-light);
+    --md-footer-fg-color--light:     var(--kuira-light-muted);
+    --md-footer-fg-color--lighter:   var(--kuira-light-faint);
 
     --kuira-hairline:                var(--kuira-light-faint);
     --kuira-glass-tint:              var(--kuira-light-trace);
@@ -387,6 +393,48 @@ body[data-md-color-scheme][data-md-color-primary] {
     border-radius: 4px;
     padding: 0.1em 0.4em;
     color: var(--kuira-light);
+}
+
+/* ── Code syntax — MONOCHROME (luminosity + weight, never hue) ──────────
+ * The brand is chromatic-free, so Pygments' default colour theme is
+ * overridden: tokens are distinguished by opacity tier and weight, not
+ * blue/purple/green. Keywords full-ink + medium; comments faint italic;
+ * strings/names soft; operators/punctuation muted. */
+.md-typeset .highlight .c,  .md-typeset .highlight .ch,
+.md-typeset .highlight .cm, .md-typeset .highlight .c1,
+.md-typeset .highlight .cs, .md-typeset .highlight .cp,
+.md-typeset .highlight .cpf {
+    color: var(--kuira-light-faint);
+    font-style: italic;
+}
+.md-typeset .highlight .k,  .md-typeset .highlight .kd,
+.md-typeset .highlight .kn, .md-typeset .highlight .kr,
+.md-typeset .highlight .kt, .md-typeset .highlight .kc,
+.md-typeset .highlight .kp, .md-typeset .highlight .nd,
+.md-typeset .highlight .ow, .md-typeset .highlight .bp {
+    color: var(--kuira-light);
+    font-weight: 500;
+}
+.md-typeset .highlight .o, .md-typeset .highlight .p,
+.md-typeset .highlight .nv {
+    color: var(--kuira-light-muted);
+}
+.md-typeset .highlight .n,  .md-typeset .highlight .nn,
+.md-typeset .highlight .nc, .md-typeset .highlight .nf,
+.md-typeset .highlight .na, .md-typeset .highlight .nb,
+.md-typeset .highlight .no, .md-typeset .highlight .nl,
+.md-typeset .highlight .nx, .md-typeset .highlight .py,
+.md-typeset .highlight .ni, .md-typeset .highlight .nt,
+.md-typeset .highlight .s,  .md-typeset .highlight .s1,
+.md-typeset .highlight .s2, .md-typeset .highlight .sb,
+.md-typeset .highlight .sc, .md-typeset .highlight .sd,
+.md-typeset .highlight .se, .md-typeset .highlight .sh,
+.md-typeset .highlight .si, .md-typeset .highlight .sr,
+.md-typeset .highlight .ss, .md-typeset .highlight .sx,
+.md-typeset .highlight .m,  .md-typeset .highlight .mi,
+.md-typeset .highlight .mf, .md-typeset .highlight .mh,
+.md-typeset .highlight .mo, .md-typeset .highlight .il {
+    color: var(--kuira-light-soft);
 }
 
 .md-typeset .admonition,
@@ -1229,6 +1277,40 @@ body[data-md-color-scheme][data-md-color-primary] {
 
 .md-footer { background: var(--kuira-void); border-top: 1px solid var(--kuira-light-barely); }
 .md-footer-meta { background: var(--kuira-void); }
+
+/* Page-end prev / next — "what's next" navigation as elevated link-cards. */
+.md-footer__inner {
+    gap: 1rem;
+    padding: 1.6rem 0.6rem;
+}
+.md-footer__link {
+    padding: 1rem 1.3rem;
+    border: 1px solid var(--kuira-hairline);
+    border-radius: var(--kuira-radius-md);
+    background: var(--kuira-card-bg);
+    box-shadow: var(--kuira-shadow-pill);
+    opacity: 1;
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+.md-footer__link:hover {
+    border-color: var(--kuira-light-muted);
+    transform: translateY(-2px);
+    box-shadow: var(--kuira-shadow-panel);
+}
+.md-footer__direction {
+    color: var(--kuira-light-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    opacity: 1;
+}
+.md-footer__title {
+    color: var(--kuira-light);
+    font-weight: 400;
+}
+.md-footer__link .md-icon {
+    color: var(--kuira-light-muted);
+}
 .md-search__output { background: var(--kuira-void-soft); border: 1px solid var(--kuira-hairline); }
 
 * {

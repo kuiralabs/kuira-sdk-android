@@ -46,6 +46,7 @@ theme:
     - navigation.tabs        # top-level tabs (Get started / Recipes / API / Security)
     - navigation.sections    # group sub-pages under sections in the sidebar
     - navigation.top         # back-to-top button
+    - navigation.footer      # prev / next "what's next" links at the page bottom
     - navigation.tracking    # update URL hash as user scrolls
     - search.suggest         # autocomplete in search box
     - search.highlight       # highlight matches on the page
