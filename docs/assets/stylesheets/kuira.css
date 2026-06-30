@@ -2,8 +2,8 @@
  * Kuira Android SDK — site skin
  *
  * Source of truth for tokens (do not edit values without checking):
- *   • Palette: core:designsystem/theme/MidnightColors.kt
- *   • Typography: core:designsystem/theme/DuskTypography.kt
+ *   • Design system: kuira-design-system/src/styles/tokens.css  (--kui-* → --kuira-*)
+ *   • Origin (Compose): core:designsystem/theme/{MidnightColors,DuskTypography}.kt
  *   • Glass panel: core:designsystem/component/GlassPanel.kt
  *
  * Design principles applied here:
@@ -26,16 +26,17 @@
     --kuira-void:           #000000;
     --kuira-void-soft:      #0a0a0a;
     --kuira-void-elevated:  #111111;
+    --kuira-card-bg:        #111111;   /* elevated surface — lighter than void */
 
     --kuira-light:          #ffffff;
-    --kuira-light-soft:     rgba(255, 255, 255, 0.85);
-    --kuira-light-muted:    rgba(255, 255, 255, 0.55);
-    --kuira-light-faint:    rgba(255, 255, 255, 0.22);
+    --kuira-light-soft:     rgba(255, 255, 255, 0.80);
+    --kuira-light-muted:    rgba(255, 255, 255, 0.50);
+    --kuira-light-faint:    rgba(255, 255, 255, 0.20);
     --kuira-light-barely:   rgba(255, 255, 255, 0.10);
     --kuira-light-trace:    rgba(255, 255, 255, 0.04);
 
     --kuira-star-bright:    rgba(255, 255, 255, 0.80);
-    --kuira-star-dim:       rgba(255, 255, 255, 0.22);
+    --kuira-star-dim:       rgba(255, 255, 255, 0.20);
 
     /* Body weights bumped relative to design system (W300 → W400 base)
      * because the design system targets ~13-14px sizes; web body type
@@ -68,28 +69,40 @@
     --kuira-hairline:                var(--kuira-light-faint);
     --kuira-glass-tint:              var(--kuira-light-trace);
     --kuira-glass-tint-strong:       rgba(255, 255, 255, 0.06);
+
+    /* Status — the only chromatic exception (DS tokens.css) */
+    --kuira-error:                   #ff4444;
+    --kuira-success:                 #4caf50;
+
+    /* Elevation — soft shadow over the void (DS shadow-panel/pill) */
+    --kuira-shadow-panel:            0 8px 32px rgba(0, 0, 0, 0.45);
+    --kuira-shadow-pill:             0 2px 12px rgba(0, 0, 0, 0.40);
+
+    /* Section-divider star glow — luminous against the void */
+    --kuira-divider-glow:            0 0 12px 2px rgba(255, 255, 255, 0.18);
 }
 
 
 /* ── LIGHT SCHEME (off-brand fallback, properly readable) ──────────── */
 
 [data-md-color-scheme="default"] {
-    /* Inverted: white background, dusk-tier dark text. Opacities are
-     * deeper than the dark scheme's tier — W300 on white at 0.85 alpha
-     * looks anemic; bumped to 0.92 for body and reinforced with W400. */
-    --kuira-void:           #ffffff;
-    --kuira-void-soft:      #f4f4f4;
-    --kuira-void-elevated:  #ebebeb;
+    /* Inverted "Paper": off-white surface, white cards, near-black ink at
+     * the DS alpha tiers (src/styles/tokens.css). Body stays W400 — light
+     * text on a light surface reads thin at W300. */
+    --kuira-void:           #f7f7f7;
+    --kuira-void-soft:      #ffffff;
+    --kuira-void-elevated:  #fafafa;
+    --kuira-card-bg:        #ffffff;   /* white card lifts off the off-white page */
 
     --kuira-light:          #000000;
-    --kuira-light-soft:     rgba(0, 0, 0, 0.92);
-    --kuira-light-muted:    rgba(0, 0, 0, 0.62);
-    --kuira-light-faint:    rgba(0, 0, 0, 0.18);
+    --kuira-light-soft:     rgba(0, 0, 0, 0.80);
+    --kuira-light-muted:    rgba(0, 0, 0, 0.50);
+    --kuira-light-faint:    rgba(0, 0, 0, 0.20);
     --kuira-light-barely:   rgba(0, 0, 0, 0.08);
     --kuira-light-trace:    rgba(0, 0, 0, 0.04);
 
-    --kuira-star-bright:    rgba(0, 0, 0, 0.45);
-    --kuira-star-dim:       rgba(0, 0, 0, 0.18);
+    --kuira-star-bright:    rgba(0, 0, 0, 0.20);
+    --kuira-star-dim:       rgba(0, 0, 0, 0.08);
 
     /* Light text on white at small sizes needs more weight. */
     --kuira-body-weight:    400;
@@ -119,6 +132,27 @@
     --kuira-hairline:                var(--kuira-light-faint);
     --kuira-glass-tint:              var(--kuira-light-trace);
     --kuira-glass-tint-strong:       rgba(0, 0, 0, 0.06);
+
+    /* Status — darker in light mode for contrast (DS tokens.css) */
+    --kuira-error:                   #cc0000;
+    --kuira-success:                 #2e7d32;
+
+    /* Elevation — softer over Paper than over the void */
+    --kuira-shadow-panel:            0 8px 32px rgba(0, 0, 0, 0.12);
+    --kuira-shadow-pill:             0 2px 12px rgba(0, 0, 0, 0.10);
+
+    /* Section-divider halo — subtle on Paper */
+    --kuira-divider-glow:            0 0 6px 1px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Material's slate scheme sets the link color via a two-attribute selector
+   ([data-md-color-scheme][data-md-color-primary], 0,2,0) — a blue that leaks
+   into the TOC active item. Match both attributes and add `body` (0,2,1) to
+   outrank it, pinning both link vars to the brand without !important. */
+body[data-md-color-scheme][data-md-color-primary] {
+    --md-typeset-a-color: var(--kuira-light);
+    --md-accent-fg-color: var(--kuira-light);
 }
 
 
@@ -129,6 +163,26 @@
                        "Inter", "Helvetica Neue", Arial, sans-serif;
     --kuira-font-mono: ui-monospace, "SF Mono", "JetBrains Mono",
                        Menlo, Consolas, monospace;
+
+    /* Radius scale — DS tokens.css */
+    --kuira-radius-pill: 999px;
+    --kuira-radius-lg:   20px;
+    --kuira-radius-md:   14px;
+    --kuira-radius-sm:   10px;
+
+    /* Frosted-glass backdrop blur — DS --kui-blur */
+    --kuira-blur:        24px;
+
+    /* Spacing — 4pt grid (DS tokens.css) */
+    --kuira-space-1:  4px;
+    --kuira-space-2:  8px;
+    --kuira-space-3:  12px;
+    --kuira-space-4:  16px;
+    --kuira-space-5:  20px;
+    --kuira-space-6:  24px;
+    --kuira-space-8:  32px;
+    --kuira-space-10: 40px;
+    --kuira-space-12: 48px;
 }
 
 .md-typeset {
@@ -163,7 +217,24 @@
     letter-spacing: -0.01em;
     margin-block: 2.5em 0.4em;
     padding-top: 1.2em;
-    border-top: 1px solid var(--kuira-hairline);
+    /* Fading hairline section rule (not a hard full-width line). */
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(
+        to right,
+        transparent,
+        var(--kuira-hairline) 18%,
+        var(--kuira-hairline) 82%,
+        transparent
+    ) 1;
+}
+
+/* When a section already breaks with an hr (the star divider), the next
+   heading must not stack its own rule on top of it. */
+.md-typeset hr + h2 {
+    border-image: none;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 1.5em;
 }
 
 .md-typeset h3 {
@@ -189,6 +260,15 @@
     font-weight: var(--kuira-body-weight);
     line-height: 1.65;
     color: var(--kuira-light-soft);
+}
+
+/* Readable measure — cap top-level prose to ~75ch. Structural blocks
+   (grids, code, tables, admonitions) keep the full content width. */
+.md-typeset > p,
+.md-typeset > ul,
+.md-typeset > ol,
+.md-typeset > blockquote {
+    max-width: 46rem;
 }
 
 /* CRITICAL: kill Material's chromatic link color. The brand is
@@ -288,9 +368,10 @@
 
 .md-typeset pre,
 .md-typeset .highlight {
-    background: var(--kuira-glass-tint);
+    background: var(--kuira-card-bg);
     border: 1px solid var(--kuira-hairline);
-    border-radius: 12px;
+    border-radius: var(--kuira-radius-md);
+    box-shadow: var(--kuira-shadow-pill);
     overflow: hidden;
 }
 
@@ -314,11 +395,11 @@
      * amber, note blue, …) — luminosity only across all types. */
     --md-admonition-fg-color: var(--kuira-light);
     --md-admonition-bg-color: transparent;
-    background: var(--kuira-glass-tint);
+    background: var(--kuira-card-bg);
     border: 1px solid var(--kuira-hairline) !important;
     border-left: 1px solid var(--kuira-hairline) !important;
-    border-radius: 12px;
-    box-shadow: none;
+    border-radius: var(--kuira-radius-md);
+    box-shadow: var(--kuira-shadow-pill);
 }
 
 .md-typeset .admonition-title,
@@ -339,9 +420,10 @@
 }
 
 .md-typeset table:not([class]) {
-    background: transparent;
+    background: var(--kuira-card-bg);
     border: 1px solid var(--kuira-hairline);
-    border-radius: 12px;
+    border-radius: var(--kuira-radius-md);
+    box-shadow: var(--kuira-shadow-pill);
     overflow: hidden;
 }
 
@@ -361,8 +443,30 @@
     font-weight: var(--kuira-body-weight);
 }
 
+/* Base hr — a plain, subtle hairline. This is what renders INSIDE grid
+   cards (the `---` between a card's title and body); it must stay simple. */
 .md-typeset hr {
     border: none;
+    height: 1px;
+    margin-block: 1em;
+    background: var(--kuira-light-barely);
+}
+
+/* Section break (TOP-LEVEL only) — a diamond against the void: a heraldic
+   node centred in a gap on a hairline that fades at both edges. Scoped with
+   `>` so card separators never get this treatment. */
+.md-typeset > hr {
+    height: 0;
+    margin-block: 3.5em;
+    background: none;
+    position: relative;
+    overflow: visible;
+}
+
+.md-typeset > hr::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
     height: 1px;
     background: linear-gradient(
         to right,
@@ -371,7 +475,20 @@
         var(--kuira-hairline) 80%,
         transparent
     );
-    margin-block: 3em;
+}
+
+.md-typeset > hr::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--kuira-light-muted);
+    box-shadow:
+        0 0 0 6px var(--md-default-bg-color),
+        var(--kuira-divider-glow);
 }
 
 
@@ -533,7 +650,23 @@
     padding: 5rem 2rem 3rem;
     overflow: hidden;
     isolation: isolate;
-    border-bottom: 1px solid var(--kuira-light-barely);
+}
+
+/* Soft fading bottom edge instead of a hard full-width rule. */
+.kuira-hero::after {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--kuira-hairline) 20%,
+        var(--kuira-hairline) 80%,
+        transparent
+    );
 }
 
 .kuira-hero__canvas {
@@ -568,8 +701,8 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--kuira-light);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+    background: var(--kuira-success);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--kuira-success) 60%, transparent);
     animation: kuira-pulse 2.4s ease-in-out infinite;
 }
 
@@ -803,9 +936,10 @@
 
 .kuira-feature {
     border: 1px solid var(--kuira-hairline);
-    border-radius: 12px;
+    border-radius: var(--kuira-radius-md);
     padding: 1.4rem 1.5rem 1.6rem;
-    background: var(--kuira-glass-tint);
+    background: var(--kuira-card-bg);
+    box-shadow: var(--kuira-shadow-pill);
 }
 
 .kuira-feature__eyebrow {
@@ -876,9 +1010,17 @@
     display: flex;
     gap: 1.3rem;
     border: 1px solid var(--kuira-hairline);
-    border-radius: 14px;
+    border-radius: var(--kuira-radius-md);
     padding: 1.3rem 1.4rem;
-    background: var(--kuira-glass-tint);
+    background: var(--kuira-card-bg);
+    box-shadow: var(--kuira-shadow-pill);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.kuira-template:hover {
+    border-color: var(--kuira-light-faint);
+    transform: translateY(-2px);
+    box-shadow: var(--kuira-shadow-panel);
 }
 
 /* md_in_html wraps the loose <img> in a <p>, so the real flex child is
@@ -978,6 +1120,25 @@
 }
 
 
+/* ── Grid cards — elevated surfaces (DS sheet/panel pattern) ──────── */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > .card {
+    border: 1px solid var(--kuira-hairline);
+    border-radius: var(--kuira-radius-md);
+    background: var(--kuira-card-bg);
+    box-shadow: var(--kuira-shadow-pill);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > .card:hover {
+    border-color: var(--kuira-light-faint);
+    transform: translateY(-2px);
+    box-shadow: var(--kuira-shadow-panel);
+}
+
+
 /* ── Buttons (md-button) ──────────────────────────────────────────── */
 
 .md-typeset .md-button {
@@ -1011,6 +1172,56 @@
     background: var(--kuira-glass-tint);
     color: var(--kuira-light) !important;
     border-color: var(--kuira-light-muted);
+}
+
+
+/* ── Status pill — DS Pill parity (dot + label, tone via status color) ── */
+
+.md-typeset .kuira-pill,
+.kuira-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    font-family: var(--kuira-font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    padding: 0.32em 0.75em;
+    border-radius: var(--kuira-radius-pill);
+    border: 1px solid var(--kuira-hairline);
+    background: var(--kuira-glass-tint);
+    color: var(--kuira-light-muted);
+    vertical-align: middle;
+}
+
+.kuira-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+}
+
+/* Shipped / live / positive. */
+.kuira-pill--ok {
+    color: var(--kuira-light);
+    border-color: color-mix(in srgb, var(--kuira-success) 45%, var(--kuira-hairline));
+}
+.kuira-pill--ok::before { background: var(--kuira-success); }
+
+/* Planned / next. */
+.kuira-pill--soon::before { background: var(--kuira-light-faint); }
+
+
+/* ── Focus-visible — DS accent ring on interactive brand elements ───── */
+
+.md-typeset .md-button:focus-visible,
+.kuira-picker__chip:focus-visible,
+.kuira-picker__action:focus-visible {
+    outline: 2px solid var(--kuira-light);
+    outline-offset: 2px;
 }
 
 

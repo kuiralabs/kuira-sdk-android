@@ -1,105 +1,71 @@
 # Roadmap
 
-Where the Kuira Android SDK is headed. These are the capabilities we're
-building toward so each new dApp writes less plumbing and more product. It's
-intentionally broader than any single release — items land as real apps prove
-the need.
+What the SDK does today, and what's next — checked against the published
+`{{ kuira_version }}`.
 
-This is a direction, not a commitment to dates or ordering.
+<span class="kuira-pill kuira-pill--ok">Shipped</span> works now ·
+<span class="kuira-pill">In progress</span> has the core in place, full scope still landing ·
+<span class="kuira-pill kuira-pill--soon">Planned</span> is on the way.
 
 ---
 
-## Recently shipped
+## Shipped <span class="kuira-pill kuira-pill--ok">alpha04</span>
 
-- **Sovereign recovery phrase** — the user can reveal a standard 24-word BIP-39
-  phrase and restore the exact wallet on any device with no passkey, account, or
-  backup in the loop; opt-in, one-way, biometric-gated, shown on a `FLAG_SECURE`
-  screen with an auto-clearing clipboard. A public `WalletRecovery` contract lets
-  a dApp build its own reveal/restore UI instead of the bundled Settings panel.
-- **Session auto-lock** — the unlocked sigil session locks on an idle timeout, on
-  backgrounding, and on a device screen-lock, plus a manual "lock now", so the
-  decrypted seed isn't cached open indefinitely on a borrowed device.
-- **Lossless typed ledger reads** — `MidnightContract.ledger()` returns typed,
-  validated contract state (`getUint64`, `getBoolean`, `getBytes`, `getVectorUint8`,
-  …) instead of hand-parsed cell hex.
-- **Contract asset Gradle plugin** — `io.github.kuiralabs.contract` syncs your
-  compiled Compact artifacts into the app's assets in the layout the SDK expects,
-  and fails the build early on a runtime-version mismatch.
-- **Cross-device wallet backup** — encrypt-on-device dust-checkpoint backup to
-  Google Drive, restored on a new device from the same Sigil.
-- **`kuiraDoctor` preflight** — build-time checks (minSdk, debug-cleartext,
-  `assetlinks.json` reachability, Compact runtime pin, bundled-runtime layer) that
-  catch misconfigurations before they ship.
-- **Floating wallet & sigil pills** — opt-in draggable wallet and sigil chips
-  (`PanelBar(floating = true)`) that dock to a screen edge as peek tabs and resize on
-  long-press, so a dApp gets a movable wallet/identity surface with no custom UI.
-- **Themeable wallet UI** — a settings palette picker with built-in themes (Kuira
-  Monochrome, Catppuccin, Nord, Dracula, Tokyo Night, Rosé Pine), persisted across restarts.
-- **Frosted-glass design system** — reusable `GlassPanel` frost components over an
-  animated starfield, shared across the wallet, settings, and recovery screens.
-- **Redesigned send flow** — amount presets, a clearer review step, and honest in-flight
-  copy ("could take longer; keeps running if you leave").
-- **Receive notifications** — background push when NIGHT arrives, carrying the real
-  per-transaction amount from UTXO provenance (no false "change" alerts).
-- **Faster, streamed cold sync** — shielded-state cold sync streams to disk to avoid GC
-  pauses and UI freezes on the first sync.
-- **Cloud-backup controls** — fully disable dust and app-state cloud backups; disabling
-  revokes the cloud grant and deletes the remote blobs.
+**Identity & onboarding**
 
-## Contract ergonomics
+- **Single-biometric onboarding** — one prompt forges the passkey, identity, and wallet seed (graceful two-prompt fallback on older authenticators).
+- **Hardened identity UX** — an overwrite guard so a Sigil can't be replaced by a stray tap, in-app sign-out, and sign-in with an existing passkey.
+- **Per-domain Sigil identity** — each dApp binds its own passkey domain (`rpId`, no shared default); apps under the **same** domain share one Sigil, so a user's identity carries across sibling apps instead of minting a duplicate.
+- **Sovereign recovery phrase** — reveal a standard 24-word BIP-39 phrase and restore the exact wallet on any device, biometric-gated, on a `FLAG_SECURE` screen.
+- **Session auto-lock** — idle, background, and screen-lock re-authentication, plus a manual "lock now".
 
-- **Typed ledger classes** generated from your `.compact` — `ledger.p1Score`
-  instead of `ledger.getUint64("p1Score")`, checked at compile time.
-- **Reactive contract state** — a `Flow` of ledger snapshots backed by block
-  subscriptions, so your UI reacts to on-chain changes instead of polling.
-- **Read-only contracts** — a dedicated factory for state-watching contracts with
-  no wallet attached, so the read-only shape is correct by construction.
-- **Resilient calls** — built-in retry/backoff for the common "indexer hasn't
-  caught up yet" window after deploy, and idempotent calls that no-op when the
-  chain already reflects the transition.
-- **Multi-step protocol helper** — declare each step with a precondition and a
-  "done?" predicate; the SDK resumes from the right point after process death.
-- **Witness & timing helpers** — typed factories for compound witness types and
-  helpers for deadlines and indexer-settle waits.
-- **Testing artifacts** — a fake contract with canned ledger snapshots so you can
-  unit-test your state machine without a live chain or proving stack.
+**Contracts**
 
-## Wallet security & recovery
+- **Typed ledger reads** — `ledger().getUint64(…)` returns typed, validated state instead of hand-parsed cell hex.
+- **Reactive contract state** — `observeLedger()`, a `Flow` of ledger snapshots pushed by block subscriptions (not polling).
+- **Resilient & idempotent calls** — built-in retry through the indexer-lag window after deploy, and `callIdempotent` that no-ops when the chain already reflects the transition.
+- **Multi-step protocol helper** — declare each step with a "done?" predicate; the saga resumes from the right step after process death.
+- **Contract Gradle plugin** — syncs compiled `.compact` artifacts, generates typed circuit calls, and enforces the runtime-version pin at build time.
 
-- **Session auto-lock** — idle, background, and screen-lock re-authentication, plus
-  a manual "lock now", so a value-bearing call can't run unattended.
-- **Recovery-phrase export** — reveal the wallet's BIP-39 phrase behind biometrics,
-  so users have a sovereign exit independent of any platform account.
-- **Hardened identity UX** — guardrails so a Sigil can't be replaced by an
-  accidental tap, in-app sign-out, and sign-in with an existing passkey.
-- **Single-biometric onboarding** — one prompt to forge a Sigil on authenticators
-  that support it.
+**Backup & sync**
 
-## Open, permissionless integration
+- **Cross-device wallet backup** — encrypt-on-device dust checkpoint to the user's own cloud, restored on a new device from the same Sigil.
+- **Automatic app-state backup** — silent and no-prompt; fires on each sync and skips unchanged blobs by hash.
+- **Cloud-backup controls** — fully disable dust and app-state backups; disabling deletes the remote blobs (the cloud grant is kept, so re-enabling is instant).
+- **Proactive Dust sync** — delta re-sync on each chain-tip advance, so a transaction rarely waits on a cold sync.
+- **Streamed cold sync** — shielded-state cold sync streams to disk to avoid GC pauses and UI freezes on the first sync.
 
-- **Host-owned passkey domains** — every dApp supplies its own passkey
-  configuration with no shared default, so integration never depends on another
-  app's domain.
-- **Identity selection** — choose which identity backs a Sigil at creation time,
-  and manage more than one.
-- **Delegated access keys** — scoped, time-bounded authorization for a separate
-  key (e.g. a remote agent) to act on a Sigil's behalf.
+**Developer experience & UI**
 
-## Proving & performance
+- **One Gradle line** — `dapp-ui` `api`-exposes the full module graph; drop to `midnight-sdk` for headless.
+- **`kuiraDoctor` preflight** — build-time checks (assetlinks reachability, runtime pin, debug-cleartext, …) that fail fast instead of crashing at runtime.
+- **Floating wallet & sigil pills** — opt-in draggable chips that dock to a screen edge as peek tabs.
+- **Themeable wallet UI** — seven built-in palettes (Kuira Monochrome, Paper, Catppuccin, Nord, Dracula, Tokyo Night, Rosé Pine), persisted.
+- **Frosted-glass design system** — reusable `GlassPanel` surfaces over an animated starfield.
+- **Redesigned send flow** — amount presets, a clearer review step, and honest in-flight copy.
+- **Receive notifications** — background push when NIGHT arrives, carrying the real per-transaction amount.
 
-- **One-call proving-key setup** — a single entry point that fetches the right BLS
-  parameters and stages a contract's circuit keys from assets, so the first call
-  proves without manual setup.
-- **Published on-device proving benchmarks** — reproducible latency figures across
-  real devices and circuit sizes (we don't publish a number without a measurement
-  behind it).
+---
 
-## Backup & sync
+## In progress <span class="kuira-pill">building</span>
 
-- **Faster Dust sync** — proactive background sync and tip-aware caching so a
-  transaction is rarely waiting on a cold sync, with clear progress while it runs.
-- **Long-term archive tier** — an encrypted archive for history and stats beyond
-  the device-transfer vault's budget.
-- **Automatic backup** — silent, no-prompt capture of app state as it changes.
-- **Cross-app state** *(future)* — sibling apps that share an identity sharing one
-  wallet's state, gated on the identity model.
+The core is shipped and usable; the full scope below is still landing.
+
+- **Read-only contract factory** — state-watching works today by building a contract with no wallet attached; a dedicated read-only factory is next.
+- **Delegated access keys** — the key model, permission scopes (silent / notify / approve), expiry, and encrypted store are in place; the end-to-end "grant a scoped, time-bounded key to a remote agent" flow isn't wired into a single call yet.
+- **One-call proving-key setup** — wallet keys (with BLS params) and a contract's circuit keys each stage in one call; a single combined entry point is the remaining piece.
+- **Compound-witness factories** — some timing helpers ship today (`waitForFunding`, indexed-state waits); typed factories for compound (struct) witness types are next.
+
+---
+
+## Planned <span class="kuira-pill kuira-pill--soon">next</span>
+
+- **Typed ledger classes** — generated `ledger.p1Score` accessors checked at compile time (typed *circuit* calls already generate; ledger codegen is the next step).
+- **Contract testing artifacts** — a fake contract with canned ledger snapshots, so you can unit-test your state machine without a live chain or prover.
+- **Published on-device proving benchmarks** — reproducible latency on named hardware. We won't publish a number without a measurement behind it.
+- **Long-term archive tier** — an encrypted archive for history and stats beyond the device-transfer vault's budget.
+- **Cross-domain identity (Sigil V2)** — carry one identity (and its wallet state) across apps on *different* domains, and hold more than one Sigil. Today a Sigil is shared only within a single `rpId` domain; spanning domains needs the planned seed-as-data model.
+
+---
+
+*This is a direction, not a commitment to dates or ordering — items land as real apps prove the need.*
