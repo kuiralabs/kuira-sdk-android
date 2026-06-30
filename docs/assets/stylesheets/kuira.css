@@ -436,6 +436,11 @@ body[data-md-color-scheme][data-md-color-primary] {
 .md-typeset .highlight .mo, .md-typeset .highlight .il {
     color: var(--kuira-light-soft);
 }
+/* Highlighted lines (hl_lines) — monochrome emphasis, not Material's blue tint. */
+.md-typeset .highlight .hll {
+    background: var(--kuira-light-barely);
+    box-shadow: inset 2px 0 0 var(--kuira-light-faint);
+}
 
 .md-typeset .admonition,
 .md-typeset details {
@@ -724,6 +729,24 @@ body[data-md-color-scheme][data-md-color-primary] {
     height: 100%;
     z-index: -1;
     opacity: 0.85;
+}
+
+/* Site-wide starfield — a single fixed canvas behind every page (created by
+   starfield.js). Above the void body background, below content; the content
+   containers are transparent so it shows through on every screen. */
+.kuira-starfield-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+.md-main,
+.md-main__inner,
+.md-content,
+.md-content__inner {
+    background: transparent;
 }
 
 .kuira-hero__inner {
