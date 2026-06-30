@@ -1060,10 +1060,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recently-shipped" class="md-nav__link">
+  <a href="#shipped-alpha04" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recently shipped
+        Shipped alpha04
       
     </span>
   </a>
@@ -1071,10 +1071,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contract-ergonomics" class="md-nav__link">
+  <a href="#in-progress-building" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contract ergonomics
+        In progress building
       
     </span>
   </a>
@@ -1082,43 +1082,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wallet-security-recovery" class="md-nav__link">
+  <a href="#planned-next" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Wallet security &amp; recovery
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#open-permissionless-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open, permissionless integration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proving-performance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proving &amp; performance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-sync" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup &amp; sync
+        Planned next
       
     </span>
   </a>
@@ -1187,10 +1154,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recently-shipped" class="md-nav__link">
+  <a href="#shipped-alpha04" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recently shipped
+        Shipped alpha04
       
     </span>
   </a>
@@ -1198,10 +1165,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contract-ergonomics" class="md-nav__link">
+  <a href="#in-progress-building" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contract ergonomics
+        In progress building
       
     </span>
   </a>
@@ -1209,43 +1176,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wallet-security-recovery" class="md-nav__link">
+  <a href="#planned-next" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Wallet security &amp; recovery
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#open-permissionless-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open, permissionless integration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proving-performance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Proving &amp; performance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-sync" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup &amp; sync
+        Planned next
       
     </span>
   </a>
@@ -1273,107 +1207,67 @@
 
 
 <h1 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h1>
-<p>Where the Kuira Android SDK is headed. These are the capabilities we're
-building toward so each new dApp writes less plumbing and more product. It's
-intentionally broader than any single release — items land as real apps prove
-the need.</p>
-<p>This is a direction, not a commitment to dates or ordering.</p>
+<p>What the SDK does today, and what's next — checked against the published
+<code>0.1.0-alpha04</code>.</p>
+<p><span class="kuira-pill kuira-pill--ok">Shipped</span> works now ·
+<span class="kuira-pill">In progress</span> has the core in place, full scope still landing ·
+<span class="kuira-pill kuira-pill--soon">Planned</span> is on the way.</p>
 <hr />
-<h2 id="recently-shipped">Recently shipped<a class="headerlink" href="#recently-shipped" title="Permanent link">&para;</a></h2>
+<h2 id="shipped-alpha04">Shipped <span class="kuira-pill kuira-pill--ok">alpha04</span><a class="headerlink" href="#shipped-alpha04" title="Permanent link">&para;</a></h2>
+<p><strong>Identity &amp; onboarding</strong></p>
 <ul>
-<li><strong>Sovereign recovery phrase</strong> — the user can reveal a standard 24-word BIP-39
-  phrase and restore the exact wallet on any device with no passkey, account, or
-  backup in the loop; opt-in, one-way, biometric-gated, shown on a <code>FLAG_SECURE</code>
-  screen with an auto-clearing clipboard. A public <code>WalletRecovery</code> contract lets
-  a dApp build its own reveal/restore UI instead of the bundled Settings panel.</li>
-<li><strong>Session auto-lock</strong> — the unlocked sigil session locks on an idle timeout, on
-  backgrounding, and on a device screen-lock, plus a manual "lock now", so the
-  decrypted seed isn't cached open indefinitely on a borrowed device.</li>
-<li><strong>Lossless typed ledger reads</strong> — <code>MidnightContract.ledger()</code> returns typed,
-  validated contract state (<code>getUint64</code>, <code>getBoolean</code>, <code>getBytes</code>, <code>getVectorUint8</code>,
-  …) instead of hand-parsed cell hex.</li>
-<li><strong>Contract asset Gradle plugin</strong> — <code>io.github.kuiralabs.contract</code> syncs your
-  compiled Compact artifacts into the app's assets in the layout the SDK expects,
-  and fails the build early on a runtime-version mismatch.</li>
-<li><strong>Cross-device wallet backup</strong> — encrypt-on-device dust-checkpoint backup to
-  Google Drive, restored on a new device from the same Sigil.</li>
-<li><strong><code>kuiraDoctor</code> preflight</strong> — build-time checks (minSdk, debug-cleartext,
-  <code>assetlinks.json</code> reachability, Compact runtime pin, bundled-runtime layer) that
-  catch misconfigurations before they ship.</li>
-<li><strong>Floating wallet &amp; sigil pills</strong> — opt-in draggable wallet and sigil chips
-  (<code>PanelBar(floating = true)</code>) that dock to a screen edge as peek tabs and resize on
-  long-press, so a dApp gets a movable wallet/identity surface with no custom UI.</li>
-<li><strong>Themeable wallet UI</strong> — a settings palette picker with built-in themes (Kuira
-  Monochrome, Catppuccin, Nord, Dracula, Tokyo Night, Rosé Pine), persisted across restarts.</li>
-<li><strong>Frosted-glass design system</strong> — reusable <code>GlassPanel</code> frost components over an
-  animated starfield, shared across the wallet, settings, and recovery screens.</li>
-<li><strong>Redesigned send flow</strong> — amount presets, a clearer review step, and honest in-flight
-  copy ("could take longer; keeps running if you leave").</li>
-<li><strong>Receive notifications</strong> — background push when NIGHT arrives, carrying the real
-  per-transaction amount from UTXO provenance (no false "change" alerts).</li>
-<li><strong>Faster, streamed cold sync</strong> — shielded-state cold sync streams to disk to avoid GC
-  pauses and UI freezes on the first sync.</li>
-<li><strong>Cloud-backup controls</strong> — fully disable dust and app-state cloud backups; disabling
-  revokes the cloud grant and deletes the remote blobs.</li>
+<li><strong>Single-biometric onboarding</strong> — one prompt forges the passkey, identity, and wallet seed (graceful two-prompt fallback on older authenticators).</li>
+<li><strong>Hardened identity UX</strong> — an overwrite guard so a Sigil can't be replaced by a stray tap, in-app sign-out, and sign-in with an existing passkey.</li>
+<li><strong>Per-domain Sigil identity</strong> — each dApp binds its own passkey domain (<code>rpId</code>, no shared default); apps under the <strong>same</strong> domain share one Sigil, so a user's identity carries across sibling apps instead of minting a duplicate.</li>
+<li><strong>Sovereign recovery phrase</strong> — reveal a standard 24-word BIP-39 phrase and restore the exact wallet on any device, biometric-gated, on a <code>FLAG_SECURE</code> screen.</li>
+<li><strong>Session auto-lock</strong> — idle, background, and screen-lock re-authentication, plus a manual "lock now".</li>
 </ul>
-<h2 id="contract-ergonomics">Contract ergonomics<a class="headerlink" href="#contract-ergonomics" title="Permanent link">&para;</a></h2>
+<p><strong>Contracts</strong></p>
 <ul>
-<li><strong>Typed ledger classes</strong> generated from your <code>.compact</code> — <code>ledger.p1Score</code>
-  instead of <code>ledger.getUint64("p1Score")</code>, checked at compile time.</li>
-<li><strong>Reactive contract state</strong> — a <code>Flow</code> of ledger snapshots backed by block
-  subscriptions, so your UI reacts to on-chain changes instead of polling.</li>
-<li><strong>Read-only contracts</strong> — a dedicated factory for state-watching contracts with
-  no wallet attached, so the read-only shape is correct by construction.</li>
-<li><strong>Resilient calls</strong> — built-in retry/backoff for the common "indexer hasn't
-  caught up yet" window after deploy, and idempotent calls that no-op when the
-  chain already reflects the transition.</li>
-<li><strong>Multi-step protocol helper</strong> — declare each step with a precondition and a
-  "done?" predicate; the SDK resumes from the right point after process death.</li>
-<li><strong>Witness &amp; timing helpers</strong> — typed factories for compound witness types and
-  helpers for deadlines and indexer-settle waits.</li>
-<li><strong>Testing artifacts</strong> — a fake contract with canned ledger snapshots so you can
-  unit-test your state machine without a live chain or proving stack.</li>
+<li><strong>Typed ledger reads</strong> — <code>ledger().getUint64(…)</code> returns typed, validated state instead of hand-parsed cell hex.</li>
+<li><strong>Reactive contract state</strong> — <code>observeLedger()</code>, a <code>Flow</code> of ledger snapshots pushed by block subscriptions (not polling).</li>
+<li><strong>Resilient &amp; idempotent calls</strong> — built-in retry through the indexer-lag window after deploy, and <code>callIdempotent</code> that no-ops when the chain already reflects the transition.</li>
+<li><strong>Multi-step protocol helper</strong> — declare each step with a "done?" predicate; the saga resumes from the right step after process death.</li>
+<li><strong>Contract Gradle plugin</strong> — syncs compiled <code>.compact</code> artifacts, generates typed circuit calls, and enforces the runtime-version pin at build time.</li>
 </ul>
-<h2 id="wallet-security-recovery">Wallet security &amp; recovery<a class="headerlink" href="#wallet-security-recovery" title="Permanent link">&para;</a></h2>
+<p><strong>Backup &amp; sync</strong></p>
 <ul>
-<li><strong>Session auto-lock</strong> — idle, background, and screen-lock re-authentication, plus
-  a manual "lock now", so a value-bearing call can't run unattended.</li>
-<li><strong>Recovery-phrase export</strong> — reveal the wallet's BIP-39 phrase behind biometrics,
-  so users have a sovereign exit independent of any platform account.</li>
-<li><strong>Hardened identity UX</strong> — guardrails so a Sigil can't be replaced by an
-  accidental tap, in-app sign-out, and sign-in with an existing passkey.</li>
-<li><strong>Single-biometric onboarding</strong> — one prompt to forge a Sigil on authenticators
-  that support it.</li>
+<li><strong>Cross-device wallet backup</strong> — encrypt-on-device dust checkpoint to the user's own cloud, restored on a new device from the same Sigil.</li>
+<li><strong>Automatic app-state backup</strong> — silent and no-prompt; fires on each sync and skips unchanged blobs by hash.</li>
+<li><strong>Cloud-backup controls</strong> — fully disable dust and app-state backups; disabling deletes the remote blobs (the cloud grant is kept, so re-enabling is instant).</li>
+<li><strong>Proactive Dust sync</strong> — delta re-sync on each chain-tip advance, so a transaction rarely waits on a cold sync.</li>
+<li><strong>Streamed cold sync</strong> — shielded-state cold sync streams to disk to avoid GC pauses and UI freezes on the first sync.</li>
 </ul>
-<h2 id="open-permissionless-integration">Open, permissionless integration<a class="headerlink" href="#open-permissionless-integration" title="Permanent link">&para;</a></h2>
+<p><strong>Developer experience &amp; UI</strong></p>
 <ul>
-<li><strong>Host-owned passkey domains</strong> — every dApp supplies its own passkey
-  configuration with no shared default, so integration never depends on another
-  app's domain.</li>
-<li><strong>Identity selection</strong> — choose which identity backs a Sigil at creation time,
-  and manage more than one.</li>
-<li><strong>Delegated access keys</strong> — scoped, time-bounded authorization for a separate
-  key (e.g. a remote agent) to act on a Sigil's behalf.</li>
+<li><strong>One Gradle line</strong> — <code>dapp-ui</code> <code>api</code>-exposes the full module graph; drop to <code>midnight-sdk</code> for headless.</li>
+<li><strong><code>kuiraDoctor</code> preflight</strong> — build-time checks (assetlinks reachability, runtime pin, debug-cleartext, …) that fail fast instead of crashing at runtime.</li>
+<li><strong>Floating wallet &amp; sigil pills</strong> — opt-in draggable chips that dock to a screen edge as peek tabs.</li>
+<li><strong>Themeable wallet UI</strong> — seven built-in palettes (Kuira Monochrome, Paper, Catppuccin, Nord, Dracula, Tokyo Night, Rosé Pine), persisted.</li>
+<li><strong>Frosted-glass design system</strong> — reusable <code>GlassPanel</code> surfaces over an animated starfield.</li>
+<li><strong>Redesigned send flow</strong> — amount presets, a clearer review step, and honest in-flight copy.</li>
+<li><strong>Receive notifications</strong> — background push when NIGHT arrives, carrying the real per-transaction amount.</li>
 </ul>
-<h2 id="proving-performance">Proving &amp; performance<a class="headerlink" href="#proving-performance" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="in-progress-building">In progress <span class="kuira-pill">building</span><a class="headerlink" href="#in-progress-building" title="Permanent link">&para;</a></h2>
+<p>The core is shipped and usable; the full scope below is still landing.</p>
 <ul>
-<li><strong>One-call proving-key setup</strong> — a single entry point that fetches the right BLS
-  parameters and stages a contract's circuit keys from assets, so the first call
-  proves without manual setup.</li>
-<li><strong>Published on-device proving benchmarks</strong> — reproducible latency figures across
-  real devices and circuit sizes (we don't publish a number without a measurement
-  behind it).</li>
+<li><strong>Read-only contract factory</strong> — state-watching works today by building a contract with no wallet attached; a dedicated read-only factory is next.</li>
+<li><strong>Delegated access keys</strong> — the key model, permission scopes (silent / notify / approve), expiry, and encrypted store are in place; the end-to-end "grant a scoped, time-bounded key to a remote agent" flow isn't wired into a single call yet.</li>
+<li><strong>One-call proving-key setup</strong> — wallet keys (with BLS params) and a contract's circuit keys each stage in one call; a single combined entry point is the remaining piece.</li>
+<li><strong>Compound-witness factories</strong> — some timing helpers ship today (<code>waitForFunding</code>, indexed-state waits); typed factories for compound (struct) witness types are next.</li>
 </ul>
-<h2 id="backup-sync">Backup &amp; sync<a class="headerlink" href="#backup-sync" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="planned-next">Planned <span class="kuira-pill kuira-pill--soon">next</span><a class="headerlink" href="#planned-next" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Faster Dust sync</strong> — proactive background sync and tip-aware caching so a
-  transaction is rarely waiting on a cold sync, with clear progress while it runs.</li>
-<li><strong>Long-term archive tier</strong> — an encrypted archive for history and stats beyond
-  the device-transfer vault's budget.</li>
-<li><strong>Automatic backup</strong> — silent, no-prompt capture of app state as it changes.</li>
-<li><strong>Cross-app state</strong> <em>(future)</em> — sibling apps that share an identity sharing one
-  wallet's state, gated on the identity model.</li>
+<li><strong>Typed ledger classes</strong> — generated <code>ledger.p1Score</code> accessors checked at compile time (typed <em>circuit</em> calls already generate; ledger codegen is the next step).</li>
+<li><strong>Contract testing artifacts</strong> — a fake contract with canned ledger snapshots, so you can unit-test your state machine without a live chain or prover.</li>
+<li><strong>Published on-device proving benchmarks</strong> — reproducible latency on named hardware. We won't publish a number without a measurement behind it.</li>
+<li><strong>Long-term archive tier</strong> — an encrypted archive for history and stats beyond the device-transfer vault's budget.</li>
+<li><strong>Cross-domain identity (Sigil V2)</strong> — carry one identity (and its wallet state) across apps on <em>different</em> domains, and hold more than one Sigil. Today a Sigil is shared only within a single <code>rpId</code> domain; spanning domains needs the planned seed-as-data model.</li>
 </ul>
+<hr />
+<p><em>This is a direction, not a commitment to dates or ordering — items land as real apps prove the need.</em></p>
 
 
 
@@ -1405,6 +1299,46 @@ the need.</p>
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../api-reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                API reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../security/" class="md-footer__link md-footer__link--next" aria-label="Next: Security">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Security
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1455,7 +1389,7 @@ the need.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
