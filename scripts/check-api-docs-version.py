@@ -31,8 +31,8 @@ API_DIR = REPO_ROOT / "docs" / "api"
 # Kuira releases are tagged X.Y.Z-alphaN / -betaN / -rcN today; the final
 # (suffix-less) form is matched separately via the literal expected string.
 RELEASE_RE = re.compile(r"\b\d+\.\d+\.\d+-(?:alpha|beta|rc)\d+\b")
-# Pull `kuira_version: "0.1.0-alpha04"` out of mkdocs.yml without a YAML
-# parser — the file uses `!!python/name:` tags that trip safe_load.
+# Pull `kuira_version` (e.g. "0.1.0-alphaN") out of mkdocs.yml without a
+# YAML parser — the file uses `!!python/name:` tags that trip safe_load.
 KUIRA_VERSION_RE = re.compile(r'^\s*kuira_version:\s*["\']?([^"\'\s#]+)')
 
 
