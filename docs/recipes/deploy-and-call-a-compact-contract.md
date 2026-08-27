@@ -212,6 +212,24 @@ key in `circuitVerifierKeys` is `"increment"`.
 QuickJS runtime found and loaded your contract JS, and witness
 descriptors typecheck against the bytecode.
 
+!!! warning "Contract-shape constraints on `0.1.0-alpha05`"
+    Three of these are properties of the contract itself, so they are cheaper to
+    design around than to discover at deploy time:
+
+    - **The constructor takes no arguments.** `deploy()` passes only the context.
+    - **The constructor cannot read witnesses.** So the common
+      "deployer becomes the owner" pattern — a `sealed` ledger field set from
+      `localSecretKey()` in the constructor — does not work. Claim it in a
+      circuit called immediately after deploy instead, and be aware that the gap
+      between the two is a race.
+    - **No `HistoricMerkleTree`.** A contract declaring one fails during
+      `initialState`, before any circuit or witness runs. Set-membership designs
+      that rely on a Merkle path need a different ledger type until this lands.
+
+    Every witness the contract declares must also be present in the handle, even
+    ones the circuit you are calling never reads, and `WitnessResult` carries a
+    `ByteArray` regardless of the declared Compact type.
+
 ---
 
 ## Step 3 — Deploy
@@ -357,9 +375,14 @@ costs only a state fetch, not a re-decode.
 | `Contract not compiled at …` at Gradle time | Step 1 prereq not done. | Run `npm run compact` in `contract/`. |
 | Deploy or call hangs at "Balancing" and never finishes | The embedded wallet has no Dust. | Fund it (`mn airdrop … --network undeployed`) and tap **Register dust** in-app, then retry. |
 | `Unsupported bytecode version` at runtime | Your compactc emitted bytecode for a different runtime version than the SDK ships. | Pin compactc to match your contract's `@midnight-ntwrk/compact-runtime` version. |
-| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Add a 3–5s delay between deploy and first call. |
+| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Retry with backoff rather than a fixed wait. 3–5s is usually enough on localnet; PreProd routinely needs longer. |
 | `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout against the circuit's declared shape. |
 | `Deadline expired` even though you set it in the future | Using `System.currentTimeMillis()` instead of chain time. | Switch to chain-anchored time (last block's timestamp). |
+| `first (witnesses) argument to Contract constructor does not contain a function-valued field named <x>` | The handle declares only some of the contract's witnesses. | Declare **every** `witness` the contract has, including ones the circuit you are calling never invokes — the runtime validates the whole set up front. Ones that are never read can return a placeholder. |
+| Kotlin: `Argument type mismatch: actual type is 'BigInteger!', but 'ByteArray' was expected` | Passing a typed value to `WitnessResult`. | `WitnessResult` takes a `ByteArray` only, whatever the Compact type is. Pack a `Uint<64>` (or any other type) into bytes by hand. |
+| `Contract state constructor: expected 2 arguments (as invoked from Typescript), received 1` | The contract's `constructor` declares a parameter. | `deploy()` invokes the constructor with the context only. Give the constructor **no arguments** and seed that state from a constant, or set it in a circuit called after deploy. |
+| `TypeError: not a function` at `initialState` | The `constructor` reads a witness. | The constructor runs without witnesses. Move anything derived from `localSecretKey()` (e.g. recording the deployer as an owner) into an ordinary circuit called straight after deploy. Note this rules out setting a `sealed` ledger field from the caller's identity. |
+| `TypeError: not a function` at `initialState`, contract declares a `HistoricMerkleTree` | The bundled Compact runtime cannot construct a bounded Merkle tree. | No workaround on `0.1.0-alpha05` — the contract will not deploy at all. Verified against a contract whose only change was removing the tree. Membership-proof designs need another ledger type on Android for now. |
 
 ---
 
