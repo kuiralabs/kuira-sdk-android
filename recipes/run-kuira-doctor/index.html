@@ -1622,14 +1622,14 @@ report so the consumer sees one pass/fail surface, not two.</p>
 <h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <p>Add to your <code>app/build.gradle.kts</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha05&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"io.github.kuiralabs.contract"</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">"0.1.0-alpha05"</span>
 <span class="p">}</span>
 
 <span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;contract/src/managed/&lt;your-contract&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"contract/src/managed/&lt;your-contract&gt;"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// For the assetlinks-reachability check:</span>
-<span class="w">    </span><span class="n">rpId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;kuiralabs.github.io&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// YOUR passkey hostname</span>
+<span class="w">    </span><span class="n">rpId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"kuiralabs.github.io"</span><span class="p">)</span><span class="w">   </span><span class="c1">// YOUR passkey hostname</span>
 
 <span class="w">    </span><span class="c1">// Optional: convert FAIL severities into build failures.</span>
 <span class="w">    </span><span class="c1">// Default false (warn-only). Set true on CI / release builds.</span>
@@ -1649,7 +1649,7 @@ report so the consumer sees one pass/fail surface, not two.</p>
        https://kuiralabs.github.io/.well-known/assetlinks.json returned HTTP 404.
        Common causes:
          1. The file is not yet hosted at this path — see the
-            &#39;Bind your app to a passkey domain&#39; recipe.
+            'Bind your app to a passkey domain' recipe.
          2. The file IS in the repo but GitHub Pages stripped it via Jekyll:
             commit an empty .nojekyll at the repo root + redeploy.
          3. The hostname in kuiraContract.rpId is wrong — verify
@@ -1709,8 +1709,8 @@ simple regex:</p>
 <p>If your build script uses computed values or property delegates that
 the regex doesn't match, the corresponding checks downgrade to SKIP
 with a log line. Override explicitly via task properties if needed:</p>
-<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="o">&lt;</span><span class="n">com</span><span class="p">.</span><span class="na">midnight</span><span class="p">.</span><span class="na">kuira</span><span class="p">.</span><span class="na">contract</span><span class="p">.</span><span class="na">KuiraDoctorTask</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;kuiraDoctor&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">applicationId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;com.example.app&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="o">&lt;</span><span class="n">com</span><span class="p">.</span><span class="na">midnight</span><span class="p">.</span><span class="na">kuira</span><span class="p">.</span><span class="na">contract</span><span class="p">.</span><span class="na">KuiraDoctorTask</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"kuiraDoctor"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">applicationId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"com.example.app"</span><span class="p">)</span>
 <span class="w">    </span><span class="n">minSdk</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1727,7 +1727,7 @@ extension, not on the task itself.</p>
 <div class="highlight"><pre><span></span><code><span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// …</span>
 <span class="w">    </span><span class="n">requireDoctorPass</span><span class="p">.</span><span class="na">set</span><span class="p">(</span>
-<span class="w">        </span><span class="n">providers</span><span class="p">.</span><span class="na">gradleProperty</span><span class="p">(</span><span class="s">&quot;kuiraDoctorRequirePass&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">providers</span><span class="p">.</span><span class="na">gradleProperty</span><span class="p">(</span><span class="s">"kuiraDoctorRequirePass"</span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toBoolean</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 <span class="w">            </span><span class="p">.</span><span class="na">orElse</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span>
@@ -1746,8 +1746,8 @@ the property — devs are never blocked, the release lane is.</p>
 </ul>
 <p>If you want to opt into <code>preBuild</code>-coupling (sacrificing the above
 for tighter local feedback), add to your <code>app/build.gradle.kts</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">dependsOn</span><span class="p">(</span><span class="s">&quot;kuiraDoctor&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">"preBuild"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">dependsOn</span><span class="p">(</span><span class="s">"kuiraDoctor"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />

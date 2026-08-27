@@ -1611,13 +1611,13 @@ same asset layout the plugin would.</p>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;0.1.0-alpha05&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"com.android.application"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"io.github.kuiralabs.contract"</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">"0.1.0-alpha05"</span>
 <span class="p">}</span>
 
 <span class="n">kuiraContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;../contract/src/managed/your-contract&quot;</span><span class="p">)</span><span class="w">                 </span><span class="c1">// (1b)</span>
-<span class="w">    </span><span class="c1">// alias.set(&quot;your-contract&quot;)                                       // (2)</span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"../contract/src/managed/your-contract"</span><span class="p">)</span><span class="w">                 </span><span class="c1">// (1b)</span>
+<span class="w">    </span><span class="c1">// alias.set("your-contract")                                       // (2)</span>
 <span class="p">}</span>
 </code></pre></div>
 <ol>
@@ -1651,39 +1651,39 @@ same asset layout the plugin would.</p>
 <div class="tabbed-block">
 <p>If you'd rather not add the plugin, hand-roll the same task. This
 is what the plugin replaces — same output, more lines.</p>
-<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">contractDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">&quot;contract&quot;</span><span class="p">)</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">contractManaged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractDir</span><span class="s">/src/managed/your-contract&quot;</span><span class="p">)</span>
+<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">contractDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">"contract"</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">contractManaged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">contractDir</span><span class="s">/src/managed/your-contract"</span><span class="p">)</span>
 
-<span class="kd">val</span><span class="w"> </span><span class="nv">syncContractAssets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="o">&lt;</span><span class="n">Copy</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;syncContractAssets&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sync compiled Compact contract artifacts into app assets.&quot;</span>
-<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;build&quot;</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">syncContractAssets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="na">register</span><span class="o">&lt;</span><span class="n">Copy</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"syncContractAssets"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Sync compiled Compact contract artifacts into app assets."</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"build"</span>
 
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/contract&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;index.js&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">rename</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;your-contract-contract.js&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;runtime&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/contract"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">"index.js"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">rename</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"your-contract-contract.js"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">"runtime"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/keys&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;*.prover&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*.verifier&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/keys"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">"*.prover"</span><span class="p">,</span><span class="w"> </span><span class="s">"*.verifier"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">"keys"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/zkir&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">&quot;*.bzkir&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;keys&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">from</span><span class="p">(</span><span class="s">"</span><span class="si">$</span><span class="n">contractManaged</span><span class="s">/zkir"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">include</span><span class="p">(</span><span class="s">"*.bzkir"</span><span class="p">)</span>
+<span class="w">        </span><span class="n">into</span><span class="p">(</span><span class="s">"keys"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">into</span><span class="p">(</span><span class="s">&quot;src/main/assets&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">into</span><span class="p">(</span><span class="s">"src/main/assets"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">doFirst</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">contractManaged</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">GradleException</span><span class="p">(</span>
-<span class="w">                </span><span class="s">&quot;Contract not compiled at </span><span class="si">$</span><span class="n">contractManaged</span><span class="s"> — run &quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                </span><span class="s">&quot;`npm run compact` in your contract directory first.&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"Contract not compiled at </span><span class="si">$</span><span class="n">contractManaged</span><span class="s"> — run "</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="s">"`npm run compact` in your contract directory first."</span><span class="p">,</span>
 <span class="w">            </span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">&quot;preBuild&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dependsOn</span><span class="p">(</span><span class="n">syncContractAssets</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n">tasks</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="s">"preBuild"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dependsOn</span><span class="p">(</span><span class="n">syncContractAssets</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>To switch to the plugin later, replace this entire block with the
 four-line <code>kuiraContract { source.set("…") }</code> plugin pattern in the
@@ -1706,16 +1706,16 @@ are all present.</p>
 <span class="w">    </span><span class="n">sdk</span><span class="p">:</span><span class="w"> </span><span class="n">MidnightSdk</span><span class="p">,</span>
 <span class="w">    </span><span class="n">contractAddress</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">    </span><span class="c1">// (1)</span>
 <span class="p">):</span><span class="w"> </span><span class="n">MidnightContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Deploy embeds each circuit&#39;s verifier key on-chain — load the bytes.</span>
+<span class="w">    </span><span class="c1">// Deploy embeds each circuit's verifier key on-chain — load the bytes.</span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">verifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span>
-<span class="w">        </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;keys/yourCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">"keys/yourCircuit.verifier"</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">     </span><span class="c1">// (2) config is positional</span>
-<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;yourcontract&quot;</span>
-<span class="w">        </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;runtime/yourcontract-contract.js&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// (3)</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"yourcontract"</span>
+<span class="w">        </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">"runtime/yourcontract-contract.js"</span><span class="p">)</span><span class="w">  </span><span class="c1">// (3)</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">contractAddress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contractAddress</span>
 <span class="w">        </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
-<span class="w">        </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">&quot;yourCircuit&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
-<span class="w">        </span><span class="n">witness</span><span class="p">(</span><span class="s">&quot;localSecret&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">WitnessResult</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// (4)</span>
+<span class="w">        </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">"yourCircuit"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
+<span class="w">        </span><span class="n">witness</span><span class="p">(</span><span class="s">"localSecret"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">WitnessResult</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">(</span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// (4)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1738,6 +1738,25 @@ key in <code>circuitVerifierKeys</code> is <code>"increment"</code>.</p>
 <p><strong>Verify:</strong> the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
 descriptors typecheck against the bytecode.</p>
+<div class="admonition warning">
+<p class="admonition-title">Contract-shape constraints on <code>0.1.0-alpha05</code></p>
+<p>Three of these are properties of the contract itself, so they are cheaper to
+design around than to discover at deploy time:</p>
+<ul>
+<li><strong>The constructor takes no arguments.</strong> <code>deploy()</code> passes only the context.</li>
+<li><strong>The constructor cannot read witnesses.</strong> So the common
+  "deployer becomes the owner" pattern — a <code>sealed</code> ledger field set from
+  <code>localSecretKey()</code> in the constructor — does not work. Claim it in a
+  circuit called immediately after deploy instead, and be aware that the gap
+  between the two is a race.</li>
+<li><strong>No <code>HistoricMerkleTree</code>.</strong> A contract declaring one fails during
+  <code>initialState</code>, before any circuit or witness runs. Set-membership designs
+  that rely on a Merkle path need a different ledger type until this lands.</li>
+</ul>
+<p>Every witness the contract declares must also be present in the handle, even
+ones the circuit you are calling never reads, and <code>WitnessResult</code> carries a
+<code>ByteArray</code> regardless of the declared Compact type.</p>
+</div>
 <hr />
 <h2 id="step-3-deploy">Step 3 — Deploy<a class="headerlink" href="#step-3-deploy" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
@@ -1762,13 +1781,13 @@ for Dust that never arrives.</p>
 </ol>
 </div>
 <div class="highlight"><pre><span></span><code><span class="c1">// ProvingKeyManager lives in com.midnight.kuira.core.compact.proving.</span>
-<span class="c1">// Required once before the first deploy/call: stage your circuit&#39;s proving</span>
+<span class="c1">// Required once before the first deploy/call: stage your circuit's proving</span>
 <span class="c1">// keys (+ BLS params) from assets where the on-device prover looks. Idempotent.</span>
 <span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
 
 <span class="kd">val</span><span class="w"> </span><span class="nv">deployResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">()</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deployResult</span><span class="p">.</span><span class="na">contractAddress</span>
-<span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="s">&quot;MyApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Deployed at </span><span class="si">$</span><span class="n">address</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="s">"MyApp"</span><span class="p">,</span><span class="w"> </span><span class="s">"Deployed at </span><span class="si">$</span><span class="n">address</span><span class="s">"</span><span class="p">)</span>
 </code></pre></div>
 <p><code>deploy()</code> performs the deploy transaction, waits for the indexer to
 confirm it, and returns the contract address. Re-use this address for
@@ -1782,12 +1801,12 @@ returns the deployed contract's initial state.</p>
 <p>Circuit arguments are <strong>positional varargs</strong> in the circuit's declared
 order — plain Kotlin values, auto-converted to JS. The first argument is
 the circuit name:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// e.g. a counter&#39;s `increment(by: Uint64)`:</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;increment&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// e.g. a counter's `increment(by: Uint64)`:</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">"increment"</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span>
 
 <span class="c1">// with progress feedback (proving → balancing → submitting):</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;increment&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;MyApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;call stage: </span><span class="si">$</span><span class="n">stage</span><span class="s">&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// ContractCallStage</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">"increment"</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"MyApp"</span><span class="p">,</span><span class="w"> </span><span class="s">"call stage: </span><span class="si">$</span><span class="n">stage</span><span class="s">"</span><span class="p">)</span><span class="w">   </span><span class="c1">// ContractCallStage</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>call(circuitName, vararg args, onProgress)</code>:</p>
@@ -1818,11 +1837,11 @@ plugin also generates a typed <code>&lt;Name&gt;Contract</code> facade from your
 <span class="kd">val</span><span class="w"> </span><span class="nv">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CounterContract</span><span class="p">(</span><span class="n">contract</span><span class="p">)</span>
 
 <span class="c1">// increment(by: Uint64) -&gt; increment(by: BigInteger); the value is</span>
-<span class="c1">// range-checked to the declared width. A Long or a String here won&#39;t compile.</span>
+<span class="c1">// range-checked to the declared width. A Long or a String here won't compile.</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">receipt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counter</span><span class="p">.</span><span class="na">increment</span><span class="p">(</span><span class="m">1.</span><span class="n">toBigInteger</span><span class="p">())</span>
 
 <span class="c1">// progress callback is the same trailing lambda:</span>
-<span class="n">counter</span><span class="p">.</span><span class="na">increment</span><span class="p">(</span><span class="m">1.</span><span class="n">toBigInteger</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;MyApp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;stage: </span><span class="si">$</span><span class="n">stage</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n">counter</span><span class="p">.</span><span class="na">increment</span><span class="p">(</span><span class="m">1.</span><span class="n">toBigInteger</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"MyApp"</span><span class="p">,</span><span class="w"> </span><span class="s">"stage: </span><span class="si">$</span><span class="n">stage</span><span class="s">"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>The facade emits, per circuit: a <code>call</code>-style method for a write, <code>read&lt;Name&gt;()</code>
 for an on-chain view (a value-returning circuit), and <code>local&lt;Name&gt;()</code> for a
@@ -1837,7 +1856,7 @@ current state immediately, then a fresh <code>MidnightLedger</code> every time t
 contract's on-chain state actually changes:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Untyped: read fields by name off the raw MidnightLedger.</span>
 <span class="n">contract</span><span class="p">.</span><span class="na">observeLedger</span><span class="p">().</span><span class="na">collect</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ledger</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ledger</span><span class="p">.</span><span class="na">getUint64</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// your circuit&#39;s field</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ledger</span><span class="p">.</span><span class="na">getUint64</span><span class="p">(</span><span class="s">"count"</span><span class="p">)</span><span class="w">   </span><span class="c1">// your circuit's field</span>
 <span class="w">    </span><span class="c1">// update UI…</span>
 <span class="p">}</span>
 
@@ -1882,7 +1901,7 @@ costs only a state fetch, not a re-decode.</p>
 <tr>
 <td><code>Indexer says contract not found</code> after deploy</td>
 <td>Indexer hasn't caught up yet.</td>
-<td>Add a 3–5s delay between deploy and first call.</td>
+<td>Retry with backoff rather than a fixed wait. 3–5s is usually enough on localnet; PreProd routinely needs longer.</td>
 </tr>
 <tr>
 <td><code>Invalid witness</code> at call time</td>
@@ -1893,6 +1912,31 @@ costs only a state fetch, not a re-decode.</p>
 <td><code>Deadline expired</code> even though you set it in the future</td>
 <td>Using <code>System.currentTimeMillis()</code> instead of chain time.</td>
 <td>Switch to chain-anchored time (last block's timestamp).</td>
+</tr>
+<tr>
+<td><code>first (witnesses) argument to Contract constructor does not contain a function-valued field named &lt;x&gt;</code></td>
+<td>The handle declares only some of the contract's witnesses.</td>
+<td>Declare <strong>every</strong> <code>witness</code> the contract has, including ones the circuit you are calling never invokes — the runtime validates the whole set up front. Ones that are never read can return a placeholder.</td>
+</tr>
+<tr>
+<td>Kotlin: <code>Argument type mismatch: actual type is 'BigInteger!', but 'ByteArray' was expected</code></td>
+<td>Passing a typed value to <code>WitnessResult</code>.</td>
+<td><code>WitnessResult</code> takes a <code>ByteArray</code> only, whatever the Compact type is. Pack a <code>Uint&lt;64&gt;</code> (or any other type) into bytes by hand.</td>
+</tr>
+<tr>
+<td><code>Contract state constructor: expected 2 arguments (as invoked from Typescript), received 1</code></td>
+<td>The contract's <code>constructor</code> declares a parameter.</td>
+<td><code>deploy()</code> invokes the constructor with the context only. Give the constructor <strong>no arguments</strong> and seed that state from a constant, or set it in a circuit called after deploy.</td>
+</tr>
+<tr>
+<td><code>TypeError: not a function</code> at <code>initialState</code></td>
+<td>The <code>constructor</code> reads a witness.</td>
+<td>The constructor runs without witnesses. Move anything derived from <code>localSecretKey()</code> (e.g. recording the deployer as an owner) into an ordinary circuit called straight after deploy. Note this rules out setting a <code>sealed</code> ledger field from the caller's identity.</td>
+</tr>
+<tr>
+<td><code>TypeError: not a function</code> at <code>initialState</code>, contract declares a <code>HistoricMerkleTree</code></td>
+<td>The bundled Compact runtime cannot construct a bounded Merkle tree.</td>
+<td>No workaround on <code>0.1.0-alpha05</code> — the contract will not deploy at all. Verified against a contract whose only change was removing the tree. Membership-proof designs need another ledger type on Android for now.</td>
 </tr>
 </tbody>
 </table>

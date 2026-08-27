@@ -1676,15 +1676,15 @@ SHA-256: AB:CD:EF:12:34:…
 <h2 id="step-2-write-assetlinksjson">Step 2 — Write <code>assetlinks.json</code><a class="headerlink" href="#step-2-write-assetlinksjson" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">assetlinks.json</span><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;delegate_permission/common.get_login_creds&quot;</span>
+<span class="w">    </span><span class="nt">"relation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"delegate_permission/common.handle_all_urls"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"delegate_permission/common.get_login_creds"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;android_app&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example.myapp&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;sha256_cert_fingerprints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;AB:CD:EF:12:34:56:…&quot;</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android_app"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"package_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.example.myapp"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"sha256_cert_fingerprints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"AB:CD:EF:12:34:56:…"</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -1712,10 +1712,10 @@ host), commit, push:</p>
 <div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io
 <span class="nb">cd</span><span class="w"> </span>&lt;user-or-org&gt;.github.io
 <span class="c1"># Edit .well-known/assetlinks.json: append your target object to the</span>
-<span class="c1"># top-level JSON array. If the file doesn&#39;t exist yet, create it with</span>
+<span class="c1"># top-level JSON array. If the file doesn't exist yet, create it with</span>
 <span class="c1"># just your target inside an array.</span>
 git<span class="w"> </span>add<span class="w"> </span>.well-known/assetlinks.json
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;passkey: bind &lt;your-package-name&gt;&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"passkey: bind &lt;your-package-name&gt;"</span>
 git<span class="w"> </span>push
 </code></pre></div>
 <h3 id="case-b-the-backing-repo-doesnt-exist-yet">Case B — the backing repo doesn't exist yet<a class="headerlink" href="#case-b-the-backing-repo-doesnt-exist-yet" title="Permanent link">&para;</a></h3>
@@ -1727,7 +1727,7 @@ gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </sp
 mkdir<span class="w"> </span>-p<span class="w"> </span>.well-known
 <span class="c1"># Write .well-known/assetlinks.json with the JSON from Step 2.</span>
 touch<span class="w"> </span>.nojekyll
-git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;host assetlinks.json&quot;</span>
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"host assetlinks.json"</span>
 git<span class="w"> </span>push
 </code></pre></div>
 <div class="admonition danger">
@@ -1751,8 +1751,8 @@ re-runs in ~30 seconds.</p>
 <p>For <code>&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io</code> repos, GitHub Pages
 auto-enables on the default branch. If for some reason it didn't:
 <strong>Settings → Pages → Source: <code>main</code></strong> in the repo UI, or via API:</p>
-<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">&#39;/repos/&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io/pages&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-f<span class="w"> </span><span class="s1">&#39;source[branch]=main&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;source[path]=/&#39;</span>
+<div class="highlight"><pre><span></span><code>gh<span class="w"> </span>api<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s1">'/repos/&lt;user-or-org&gt;/&lt;user-or-org&gt;.github.io/pages'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span><span class="s1">'source[branch]=main'</span><span class="w"> </span>-f<span class="w"> </span><span class="s1">'source[path]=/'</span>
 </code></pre></div>
 <p>Either way: GitHub Pages serves <code>.json</code> as <code>application/json</code> by
 default — no extra config. The file is live at
@@ -1769,7 +1769,7 @@ here; the rest of the recipe is unchanged.</p>
 the domain that now serves your <code>assetlinks.json</code>. In a starter built
 from <code>kuiralabs/kuira-starter-android</code>, that's the <code>PASSKEY_RP_ID</code>
 constant in <code>app/src/main/java/.../di/PasskeyConfigModule.kt</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PASSKEY_RP_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;user-or-org&gt;.github.io&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">PASSKEY_RP_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"&lt;user-or-org&gt;.github.io"</span>
 </code></pre></div>
 <p>Then verify the hosting:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-I<span class="w"> </span>https://&lt;user-or-org&gt;.github.io/.well-known/assetlinks.json

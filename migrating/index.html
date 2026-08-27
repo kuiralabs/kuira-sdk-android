@@ -1346,11 +1346,11 @@
 
 4. Recommended: adopt the new typed contract reads. The contract Gradle plugin now generates
    a typed &lt;Name&gt;Contract facade. Prefer MyContract(handle).ledger().&lt;field&gt; and the generated
-   read&lt;Name&gt;() / local&lt;Name&gt;() over name-keyed ledger().getUint64(&quot;...&quot;).
+   read&lt;Name&gt;() / local&lt;Name&gt;() over name-keyed ledger().getUint64("...").
 
 5. Recommended: if your activity root has a bare SessionLockGate { }, swap it for
    WalletAppShell { } to add the floating wallet + sigil overlay host. WalletAppShell wraps
-   SessionLockGate, so SessionLockGate still works on its own if you don&#39;t want the overlays.
+   SessionLockGate, so SessionLockGate still works on its own if you don't want the overlays.
 
 6. version-coherence preflight and dust-sync reliability land automatically, no code change.
 

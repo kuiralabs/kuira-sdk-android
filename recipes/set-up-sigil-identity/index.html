@@ -1561,9 +1561,9 @@ singleton via Hilt:</p>
 </code></pre></div>
 <p>And declare it in your manifest:</p>
 <div class="highlight"><span class="filename">app/src/main/AndroidManifest.xml</span><pre><span></span><code><span class="nt">&lt;application</span>
-<span class="w">    </span><span class="na">android:name=</span><span class="s">&quot;.MyApp&quot;</span>
-<span class="w">    </span><span class="na">android:allowBackup=</span><span class="s">&quot;false&quot;</span>
-<span class="hll"><span class="w">    </span><span class="na">android:label=</span><span class="s">&quot;Your App&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="na">android:name=</span><span class="s">".MyApp"</span>
+<span class="w">    </span><span class="na">android:allowBackup=</span><span class="s">"false"</span>
+<span class="hll"><span class="w">    </span><span class="na">android:label=</span><span class="s">"Your App"</span><span class="nt">&gt;</span>
 </span><span class="w">    </span><span class="cm">&lt;!-- … --&gt;</span>
 <span class="nt">&lt;/application&gt;</span>
 </code></pre></div>
@@ -1614,7 +1614,7 @@ satisfies this; <code>ComponentActivity</code> alone does not.</p>
 
 <span class="nd">@AndroidEntryPoint</span>
 <span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                       </span><span class="c1">// (1)</span>
-<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
 <span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">MaterialTheme</span><span class="w"> </span><span class="p">{</span><span class="w">                                      </span><span class="c1">// (2)</span>
@@ -1644,7 +1644,7 @@ satisfies this; <code>ComponentActivity</code> alone does not.</p>
 <span class="nd">@Composable</span>
 <span class="kd">fun</span><span class="w"> </span><span class="nf">MainScreen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;My Midnight dApp&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"My Midnight dApp"</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// Zero-arg call is the canonical drop-in: the SDK defaults</span>
 <span class="w">        </span><span class="c1">// `modifier = Modifier`, `colors = SigilPanelColors.Default`,</span>
 <span class="w">        </span><span class="c1">// `viewModel = hiltViewModel()`, `onStatusChange = { }`, and</span>

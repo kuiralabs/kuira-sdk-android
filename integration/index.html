@@ -1890,36 +1890,36 @@ contracts carry no UI policy.</p>
 <p>Maven Central is already in every Android project's defaults, so there's no repo
 config to add. In <code>app/build.gradle.kts</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.application&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.android&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.plugin.compose&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// only if your own UI is Compose</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.devtools.ksp&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.google.dagger.hilt.android&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"com.android.application"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"org.jetbrains.kotlin.android"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"org.jetbrains.kotlin.plugin.compose"</span><span class="p">)</span><span class="w">          </span><span class="c1">// only if your own UI is Compose</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"com.google.devtools.ksp"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"com.google.dagger.hilt.android"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="n">android</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.mydapp&quot;</span>
+<span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.example.mydapp"</span>
 <span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">36</span>
 <span class="w">    </span><span class="n">defaultConfig</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">applicationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.mydapp&quot;</span>
+<span class="w">        </span><span class="n">applicationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.example.mydapp"</span>
 <span class="w">        </span><span class="n">minSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
 <span class="w">        </span><span class="n">targetSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">36</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ── Pick ONE Kuira entry (see &quot;Choose your level&quot; above) ──</span>
+<span class="w">    </span><span class="c1">// ── Pick ONE Kuira entry (see "Choose your level" above) ──</span>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// Prebuilt pills + the ViewModels behind them (Compose). Drop the wallet</span>
 <span class="w">    </span><span class="c1">// and sigil panels in as-is, OR build your own UI on the same contracts.</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:dapp-ui:0.1.0-alpha05&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"io.github.kuiralabs:dapp-ui:0.1.0-alpha05"</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">//</span>
 <span class="w">    </span><span class="c1">// OR — headless core, no Compose pulled in. For dApps building the whole</span>
 <span class="w">    </span><span class="c1">// UI layer top-to-bottom.</span>
-<span class="w">    </span><span class="c1">// implementation(&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha05&quot;)</span>
+<span class="w">    </span><span class="c1">// implementation("io.github.kuiralabs:midnight-sdk:0.1.0-alpha05")</span>
 
 <span class="w">    </span><span class="c1">// Hilt processor — required, the SDK is Hilt-first</span>
-<span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">&quot;com.google.dagger:hilt-compiler:2.58&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ksp</span><span class="p">(</span><span class="s">"com.google.dagger:hilt-compiler:2.58"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// your own app code, your own Compose deps, etc.</span>
 <span class="p">}</span>
@@ -1952,8 +1952,8 @@ and PRF would only work after the maintainer added them to a maintainer-hosted
 <span class="w">    </span><span class="nd">@Provides</span>
 <span class="w">    </span><span class="nd">@Singleton</span>
 <span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">providePasskeyConfig</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PasskeyConfig</span><span class="p">(</span>
-<span class="w">        </span><span class="n">rpId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mydapp.example.com&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// YOUR domain (matches assetlinks.json below)</span>
-<span class="w">        </span><span class="n">rpName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My dApp&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// shown in the biometric prompt</span>
+<span class="w">        </span><span class="n">rpId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">"mydapp.example.com"</span><span class="p">,</span><span class="w">   </span><span class="c1">// YOUR domain (matches assetlinks.json below)</span>
+<span class="w">        </span><span class="n">rpName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"My dApp"</span><span class="p">,</span><span class="w">              </span><span class="c1">// shown in the biometric prompt</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1969,14 +1969,14 @@ may use passkeys for <em>your</em> domain. Place this file at:</p>
 <div class="highlight"><pre><span></span><code>https://&lt;your-domain&gt;/.well-known/assetlinks.json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">[{</span>
-<span class="w">  </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;delegate_permission/common.get_login_creds&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span>
+<span class="w">  </span><span class="nt">"relation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"delegate_permission/common.get_login_creds"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"delegate_permission/common.handle_all_urls"</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;android_app&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;package_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example.mydapp&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;sha256_cert_fingerprints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AB:CD:EF:01:23:45:67:89:...&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"android_app"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"package_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.example.mydapp"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"sha256_cert_fingerprints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"AB:CD:EF:01:23:45:67:89:..."</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}]</span>
 </code></pre></div>
@@ -2016,7 +2016,7 @@ and wallet funding behind a few commands:</p>
 npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>midnight-wallet-cli<span class="w">          </span><span class="c1"># installs `midnight` (alias `mn`)</span>
 
 mn<span class="w"> </span>localnet<span class="w"> </span>up<span class="w">                              </span><span class="c1"># start node + indexer + proof server (Docker)</span>
-mn<span class="w"> </span>localnet<span class="w"> </span>status<span class="w">                          </span><span class="c1"># check it&#39;s healthy</span>
+mn<span class="w"> </span>localnet<span class="w"> </span>status<span class="w">                          </span><span class="c1"># check it's healthy</span>
 <span class="c1"># … develop …</span>
 mn<span class="w"> </span>localnet<span class="w"> </span>down<span class="w">                            </span><span class="c1"># tear it down</span>
 </code></pre></div>
@@ -2066,7 +2066,7 @@ state, including funded balances. Re-airdrop after each fresh <code>up</code>.</
   automatically on every <code>installDebug</code> — apply it once, no configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// app/build.gradle.kts</span>
 <span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs.localnet&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">&quot;&lt;sdk-version&gt;&quot;</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"io.github.kuiralabs.localnet"</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">"&lt;sdk-version&gt;"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>It registers an <code>adbReverseLocalnet</code> task wired ahead of <code>installDebug</code>, so
@@ -2093,8 +2093,8 @@ adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </spa
 <p>Production hits HTTPS. Localnet is plain HTTP, so declare cleartext <strong>in a
 debug-only manifest</strong> — release builds stay HTTPS-clean:</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- app/src/debug/AndroidManifest.xml --&gt;</span>
-<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;application</span><span class="w"> </span><span class="na">android:usesCleartextTraffic=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;application</span><span class="w"> </span><span class="na">android:usesCleartextTraffic=</span><span class="s">"true"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/manifest&gt;</span>
 </code></pre></div>
 <blockquote>
@@ -2112,7 +2112,7 @@ panel hosts a biometric prompt that needs a FragmentActivity host:</p>
 
 <span class="nd">@AndroidEntryPoint</span>
 <span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AppCompatActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
 <span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Box</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -2121,7 +2121,7 @@ panel hosts a biometric prompt that needs a FragmentActivity host:</p>
 <span class="w">                </span><span class="c1">// Drop-in combined sigil + wallet UI: a pair of draggable</span>
 <span class="w">                </span><span class="c1">// floating chips that own their own state. The wallet pill</span>
 <span class="w">                </span><span class="c1">// builds the SDK (one biometric) the first time it shows, and</span>
-<span class="w">                </span><span class="c1">// owns network selection — its pick drives the SDK&#39;s durable</span>
+<span class="w">                </span><span class="c1">// owns network selection — its pick drives the SDK's durable</span>
 <span class="w">                </span><span class="c1">// NetworkPreferenceStore, which your screen can follow.</span>
 <span class="w">                </span><span class="n">PanelBar</span><span class="p">(</span>
 <span class="w">                    </span><span class="n">floating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2149,20 +2149,20 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 <span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">deployAndCall</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdkProvider</span><span class="p">.</span><span class="na">awaitSdk</span><span class="p">()</span><span class="w">   </span><span class="c1">// waits for the panel to bootstrap it</span>
 
-<span class="w">        </span><span class="c1">// 1. Install your contract&#39;s proving keys — required before the first</span>
+<span class="w">        </span><span class="c1">// 1. Install your contract's proving keys — required before the first</span>
 <span class="w">        </span><span class="c1">//    deploy/call (see §6.1), or proving fails.</span>
 <span class="w">        </span><span class="n">ProvingKeyManager</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">installCircuitKeysFromAssets</span><span class="p">()</span>
 
-<span class="w">        </span><span class="c1">// 2. Build a write-capable handle. create() takes the SDK&#39;s config;</span>
+<span class="w">        </span><span class="c1">// 2. Build a write-capable handle. create() takes the SDK's config;</span>
 <span class="w">        </span><span class="c1">//    contractJs is an InputStream from assets; deploy/call need the</span>
-<span class="w">        </span><span class="c1">//    coin public key + each circuit&#39;s verifier-key bytes.</span>
+<span class="w">        </span><span class="c1">//    coin public key + each circuit's verifier-key bytes.</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">verifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span>
-<span class="w">            </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;keys/myCircuit.verifier&quot;</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">"keys/myCircuit.verifier"</span><span class="p">).</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readBytes</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mycontract&quot;</span>
-<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;runtime/mycontract-contract.js&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mycontract"</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">"runtime/mycontract-contract.js"</span><span class="p">)</span>
 <span class="w">            </span><span class="n">coinPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdk</span><span class="p">.</span><span class="na">coinPublicKey</span>
-<span class="w">            </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
+<span class="w">            </span><span class="n">circuitVerifierKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span><span class="s">"myCircuit"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">verifier</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// 3. Deploy, then call a circuit. `call(name, …args)` is stringly-typed;</span>
@@ -2170,14 +2170,14 @@ has bootstrapped) or suspend on <code>awaitSdk()</code>:</p>
 <span class="w">        </span><span class="c1">//    facade so `MyContract(contract).myCircuit()` is checked at compile</span>
 <span class="w">        </span><span class="c1">//    time (see the deploy-and-call recipe).</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contract</span><span class="p">.</span><span class="na">deploy</span><span class="p">().</span><span class="na">contractAddress</span>
-<span class="w">        </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">&quot;myCircuit&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">contract</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="s">"myCircuit"</span><span class="p">)</span>
 
 <span class="w">        </span><span class="c1">// 4. Read typed ledger state (lossless — no cell-hex parsing).</span>
 <span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">readOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MidnightContract</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">sdk</span><span class="p">.</span><span class="na">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">&quot;runtime/mycontract-contract.js&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">contractJs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">assets</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">"runtime/mycontract-contract.js"</span><span class="p">)</span>
 <span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">address</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyContract</span><span class="p">(</span><span class="n">readOnly</span><span class="p">).</span><span class="na">ledger</span><span class="p">().</span><span class="na">count</span><span class="w">   </span><span class="c1">// typed facade; or untyped: readOnly.ledger().getUint64(&quot;count&quot;)</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyContract</span><span class="p">(</span><span class="n">readOnly</span><span class="p">).</span><span class="na">ledger</span><span class="p">().</span><span class="na">count</span><span class="w">   </span><span class="c1">// typed facade; or untyped: readOnly.ledger().getUint64("count")</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2222,7 +2222,7 @@ reference app shows the deploy → call → read flow end-to-end.</p>
 <hr />
 <h2 id="7-going-headless-no-panel">7. Going headless (no panel)<a class="headerlink" href="#7-going-headless-no-panel" title="Permanent link">&para;</a></h2>
 <p>If you don't want the Compose wallet panel, swap the dep:</p>
-<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;io.github.kuiralabs:midnight-sdk:0.1.0-alpha05&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
+<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="s">"io.github.kuiralabs:midnight-sdk:0.1.0-alpha05"</span><span class="p">)</span><span class="w">  </span><span class="c1">// no dapp-ui</span>
 </code></pre></div>
 <p>You still own bootstrap + sigil forging — <code>MidnightSdkProvider.ensureSdk(...)</code>
 throws <code>SigilRequiredException</code> until a sigil exists. Forge it through
@@ -2236,7 +2236,7 @@ throws <code>SigilRequiredException</code> until a sigil exists. Forge it throug
 <span class="w">        </span><span class="n">release</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">isMinifyEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">            </span><span class="c1">// The SDK ships its own consumer ProGuard rules — AGP applies them automatically.</span>
-<span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">&quot;proguard-android-optimize.txt&quot;</span><span class="p">))</span>
+<span class="w">            </span><span class="n">proguardFiles</span><span class="p">(</span><span class="n">getDefaultProguardFile</span><span class="p">(</span><span class="s">"proguard-android-optimize.txt"</span><span class="p">))</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
