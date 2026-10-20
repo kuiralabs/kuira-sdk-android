@@ -99,18 +99,54 @@ Kuira's wallet circuits and the `k` they use:
 
 The on-device prover loads the structured reference string (SRS) matching each
 circuit's `k`. Kuira's wallet circuits top out at **k = 15**; larger SRS sizes
-exist in the upstream catalog but Kuira does not provision them.
+exist in the upstream catalog but Kuira neither provisions them nor proves
+circuits that need them.
 
-!!! note "There is no fixed `k` cutoff for on-device proving"
+!!! warning "The on-device prover refuses circuits above `k = 15`"
 
-    Midnight's own wallet design proposes routing proofs by circuit size —
-    small (low-`k`) circuits proved client-side, large (high-`k`) circuits
-    sent to a remote TEE proof server — but the threshold is explicitly
-    left **undefined ("TBC")**.[^routing] In Kuira, `k` is a per-circuit
-    property (13–15 for the wallet), not a global on/off switch, and the
-    on-device path proves all of them. Treat `k` as the dial that tells you
-    *how expensive* a given circuit is, not a hard line between local and
-    remote.
+    A circuit past a certain size does not fail on a phone — it takes the phone down. Measurements on a Galaxy S10 put `k = 18` at roughly 81 seconds and 3.4 GB, and `k = 19` reproducibly trips the kernel watchdog and reboots the device, which an app cannot catch, report, or recover from.[^ceiling] So the prover refuses anything above `k = 15` with an error naming the size it needed, rather than attempting it.
+
+    That ceiling matches the parameters Kuira provisions, so nothing you can reach today is refused. It is enforced independently of which parameter files happen to be present, so adding a larger one cannot quietly re-open that path.
+
+    A circuit too large to prove locally is not stuck: switch that flow to a remote proof server, or shrink the circuit — `transientHash` is the usual lever (see below).
+
+[^ceiling]: Measured by Webisoft on a Galaxy S10 (SM-G973W) and published in their `midnight-mobile` runtime.
+
+---
+
+## What it costs
+
+Measured on a Galaxy Z Fold 7 (SM-F966U, Android 16), proving a ZSwap output — `k = 14`, the circuit a shielded receive uses:
+
+| | |
+|---|---|
+| First proof in a process | ~3.5 s |
+| Every proof after | ~2.6 s |
+| Spread across runs | within 3% |
+| Proof size added to the transaction | ~4.4 KB |
+
+The first proof pays about a second of warm-up that later ones don't. Proving runs on a bounded thread pool sized to leave a core for the UI, so a proof does not freeze the screen.
+
+Treat these as the fast end of the range, not a promise. A 2025 flagship is the ceiling; an older or mid-range handset will be slower, and a device whose screen is off may be slower still, because the performance cores park. Figures measured on an emulator are not a useful guide in either direction — they have been reported anywhere from 30 seconds to two minutes for work a real phone does in under three.
+
+If a flow is too slow at the size you need, the lever is the circuit, not the device: see `transientHash` below.
+
+---
+
+## Keeping circuits small
+
+Circuit size is the dial that sets both the cost and whether a proof runs on the device at all, and the cheapest way to turn it is to pick the right hash.
+
+Compact offers two. `persistentHash` is the one that produces a value the ledger can store, and it costs roughly **4,167 rows** per hash. `transientHash` costs about **297 rows** — around fourteen times less — and is the right choice for any value that never reaches the ledger.
+
+Merkle work is where this decides the outcome. In a depth-20 membership proof, only the root is ever written on chain; every node on the path between the leaf and the root exists solely to compute it. Hashing those with the persistent primitive puts the circuit near **91,000 rows — `k = 17`**, above the ceiling, so it will not prove on the device. The same circuit built on `transientHash` lands near **7,000 rows — `k = 13`**, comfortably inside it:
+
+| Depth-20 membership proof | rows | `k` | proves on device |
+|---|---|---|---|
+| Built on `persistentHash` | ~91,000 | 17 | no |
+| Built on `transientHash` | ~7,000 | 13 | yes |
+
+Values cross back at the boundary, not throughout. A Merkle root or a nullifier that has to be stored or compared as `Bytes<32>` converts with `upgradeFromTransient`, and `degradeToTransient` converts the other way. Convert at the edge where the ledger is actually touched; converting in the middle of a path walk spends exactly the rows you were trying to save.
 
 ---
 
@@ -151,6 +187,8 @@ above covers small contract circuits too, so you don't bundle BLS per contract.
 
 ## Performance & benchmarks
 
+[What it costs](#what-it-costs) above gives Kuira's own measured figures. This section is about everything *else* you will find while reading around, because most of it does not describe on-device Midnight proving at all.
+
 **Midnight publishes no official proving wall-clock or memory benchmarks.**
 The `midnight-zk` and `midnight-wallet` repositories ship runnable benchmark
 *harnesses* (Criterion), but no recorded result figures, and the
@@ -169,12 +207,7 @@ Two things to keep straight when reading around:
   transactions), which is a server characteristic — do not read it as the
   on-device number.
 
-For a real number on your target hardware, **measure it**: run a representative
-transaction in `LOCAL` mode on the device and time it (the native prover logs
-its own wall-clock duration per proof), or run the Criterion benches in
-`midnight-zk` for per-circuit figures. The cost model above — time `≈ O(2^k log
-2^k)`, memory roughly linear in `2^k` — is the reliable guide until you have
-device measurements.
+For a number on *your* target hardware, measure it rather than extrapolating from ours: run a representative transaction in `LOCAL` mode on the device and time it — the native prover logs its own wall-clock duration per proof — or run the Criterion benches in `midnight-zk` for per-circuit figures. Measure on the oldest handset you intend to support, not the newest; that is the number your users feel. The cost model above — time `≈ O(2^k log 2^k)`, memory roughly linear in `2^k` — tells you how a figure moves as the circuit grows.
 
 ---
 
@@ -182,9 +215,13 @@ device measurements.
 
 - **Default to `LOCAL`.** It's private (inputs never leave the phone), works
   offline, and avoids a network round-trip. This is the point of the SDK.
-- **Reach for `REMOTE`** only if proving a large/complex transaction on a
-  low-end device is too slow for your UX, or you're proving circuits well
-  beyond the wallet's `k = 15` and want to offload the cost.
+- **Reach for `REMOTE`** only if proving a large or complex transaction on a
+  low-end device is too slow for your UX, or the circuit is above `k = 15` and
+  the device prover therefore refuses it. Midnight's own wallet design proposes
+  routing by circuit size for the same reason — small circuits client-side,
+  large ones to a remote proof server — though it leaves the threshold
+  undefined.[^routing] Kuira's refusal point is a safety limit, not that
+  threshold: a circuit can be well worth offloading long before it reaches it.
 - Either way, the balance-and-submit flow reports a proving stage through the
   SDK's progress callbacks, so the wait is visible to the user rather than an
   opaque hang.
