@@ -97,20 +97,19 @@ Kuira's wallet circuits and the `k` they use:
 | ZSwap output | 14 | 16,384 | `bls_midnight_2p14` |
 | ZSwap spend | 15 | 32,768 | `bls_midnight_2p15` |
 
-The on-device prover loads the structured reference string (SRS) matching each
-circuit's `k`. Kuira's wallet circuits top out at **k = 15**; larger SRS sizes
-exist in the upstream catalog but Kuira neither provisions them nor proves
-circuits that need them.
+The on-device prover loads the structured reference string (SRS) matching each circuit's `k`. Kuira's wallet circuits top out at **k = 15**, and that is the largest size Kuira provisions. Midnight publishes the universal parameters well past it — `bls_midnight_2p16` through `2p20` are all served from the same bucket Kuira already downloads from, doubling in size each step from 12 MB to 192 MB — so a larger circuit is a question of provisioning and measurement, not of missing parameters.
 
 !!! warning "The on-device prover refuses circuits above `k = 15`"
 
-    A circuit past a certain size does not fail on a phone — it takes the phone down. Measurements on a Galaxy S10 put `k = 18` at roughly 81 seconds and 3.4 GB, and `k = 19` reproducibly trips the kernel watchdog and reboots the device, which an app cannot catch, report, or recover from.[^ceiling] So the prover refuses anything above `k = 15` with an error naming the size it needed, rather than attempting it.
+    Past a certain size a circuit does not fail on a phone — it takes the phone down. Measurements on a Galaxy S10 put `k = 18` at roughly 81 seconds and 3.4 GB, and `k = 19` reproducibly trips the kernel watchdog and reboots the device, which an app cannot catch, report, or recover from.[^ceiling] So the prover refuses anything above `k = 15` with an error naming the size it needed, rather than attempting it.
 
-    That ceiling matches the parameters Kuira provisions, so nothing you can reach today is refused. It is enforced independently of which parameter files happen to be present, so adding a larger one cannot quietly re-open that path.
+    **The ceiling is a policy gate, not a hardware limit.** It sits at the largest size Kuira provisions parameters for, well below the sizes measured to be fatal; `k = 16` and `k = 17` are simply sizes we have not yet measured on hardware, not sizes known to fail. The gate is enforced independently of which parameter files happen to be present, so dropping in a larger one cannot quietly re-open the path — raising it is a deliberate change that comes with device measurements.
 
-    A circuit too large to prove locally is not stuck: switch that flow to a remote proof server, or shrink the circuit — `transientHash` is the usual lever (see below).
+    A circuit above the ceiling is not stuck: switch that flow to a remote proof server, or shrink the circuit — `transientHash` is the usual lever (see below).
 
 [^ceiling]: Measured by Webisoft on a Galaxy S10 (SM-G973W) and published in their `midnight-mobile` runtime.
+
+[^rows]: Row counts and `k` are the compiler's own cost model, read off circuits compiled with `compactc 0.31.1` — a depth-20 path unrolled over `Bytes<32>` siblings, measured against a 303-row baseline circuit that does no hashing.
 
 ---
 
@@ -137,14 +136,16 @@ If a flow is too slow at the size you need, the lever is the circuit, not the de
 
 Circuit size is the dial that sets both the cost and whether a proof runs on the device at all, and the cheapest way to turn it is to pick the right hash.
 
-Compact offers two. `persistentHash` is the one that produces a value the ledger can store, and it costs roughly **4,167 rows** per hash. `transientHash` costs about **297 rows** — around fourteen times less — and is the right choice for any value that never reaches the ledger.
+Compact offers two. `persistentHash` is the one that produces a value the ledger can store, and it costs about **4,164 rows** per hash. `transientHash` costs about **308 rows** — roughly thirteen times less — and is the right choice for any value that never reaches the ledger.[^rows]
 
-Merkle work is where this decides the outcome. In a depth-20 membership proof, only the root is ever written on chain; every node on the path between the leaf and the root exists solely to compute it. Hashing those with the persistent primitive puts the circuit near **91,000 rows — `k = 17`**, above the ceiling, so it will not prove on the device. The same circuit built on `transientHash` lands near **7,000 rows — `k = 13`**, comfortably inside it:
+Merkle work is where this decides the outcome. In a depth-20 membership proof, only the root is ever written on chain; every node on the path between the leaf and the root exists solely to compute it. Hashing those with the persistent primitive costs **83,591 rows — `k = 17`**, above the ceiling, so this build refuses it. The same path built on `transientHash` costs **6,773 rows — `k = 13`**, comfortably inside it:
 
-| Depth-20 membership proof | rows | `k` | proves on device |
+| Depth-20 membership proof | rows | `k` | this build |
 |---|---|---|---|
-| Built on `persistentHash` | ~91,000 | 17 | no |
-| Built on `transientHash` | ~7,000 | 13 | yes |
+| Built on `persistentHash` | 83,591 | 17 | refused by the ceiling |
+| Built on `transientHash` | 6,773 | 13 | proves locally |
+
+The `k = 17` row is a statement about this build's ceiling, not about what the hardware can do — see the warning above. Upstream publishes parameters well past that size, and a phone that survives `k = 18` at 81 seconds will prove `k = 17` in roughly half that. If your design genuinely needs the persistent primitive on a path, say so on the issue tracker rather than assuming the door is closed; what it needs is parameters provisioned and a measurement, not new cryptography.
 
 Values cross back at the boundary, not throughout. A Merkle root or a nullifier that has to be stored or compared as `Bytes<32>` converts with `upgradeFromTransient`, and `degradeToTransient` converts the other way. Convert at the edge where the ledger is actually touched; converting in the middle of a path walk spends exactly the rows you were trying to save.
 
