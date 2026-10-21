@@ -97,15 +97,17 @@ Kuira's wallet circuits and the `k` they use:
 | ZSwap output | 14 | 16,384 | `bls_midnight_2p14` |
 | ZSwap spend | 15 | 32,768 | `bls_midnight_2p15` |
 
-The on-device prover loads the structured reference string (SRS) matching each circuit's `k`. Kuira's wallet circuits top out at **k = 15**, and that is the largest size Kuira provisions. Midnight publishes the universal parameters well past it — `bls_midnight_2p16` through `2p20` are all served from the same bucket Kuira already downloads from, doubling in size each step from 12 MB to 192 MB — so a larger circuit is a question of provisioning and measurement, not of missing parameters.
+The on-device prover loads the structured reference string (SRS) matching each circuit's `k`. Kuira's wallet circuits top out at **k = 15**, and that is the largest size every app provisions by default. Larger sizes are opt-in at build time — `kuiraContract { maxCircuitK = 16 }` and above — because each step doubles the parameter file, from 12 MB at `k = 16` to 48 MB at `k = 18`. Midnight publishes the universal parameters well past that, all from the same bucket Kuira already downloads from, so a bigger circuit is a question of provisioning, not of missing parameters.
 
-!!! warning "The on-device prover refuses circuits above `k = 15`"
+!!! warning "The on-device prover refuses circuits above `k = 18`, and checks the device's memory below that"
 
-    Past a certain size a circuit does not fail on a phone — it takes the phone down. Measurements on a Galaxy S10 put `k = 18` at roughly 81 seconds and 3.4 GB, and `k = 19` reproducibly trips the kernel watchdog and reboots the device, which an app cannot catch, report, or recover from.[^ceiling] So the prover refuses anything above `k = 15` with an error naming the size it needed, rather than attempting it.
+    Past a certain size a circuit does not fail on a phone — it takes the phone down. A Galaxy S10 was measured at roughly 81 seconds and 3.4 GB for `k = 18`, with `k = 19` reproducibly tripping the kernel watchdog and rebooting the device, which an app cannot catch, report, or recover from.[^ceiling] `k = 19` also wants about 4.6 GB, more than a 2025 flagship has free. So **`k = 18` is the absolute cap**, and the prover refuses anything larger with an error naming the size it needed rather than attempting it.
 
-    **The ceiling is a policy gate, not a hardware limit.** It sits at the largest size Kuira provisions parameters for, well below the sizes measured to be fatal; `k = 16` and `k = 17` are simply sizes we have not yet measured on hardware, not sizes known to fail. The gate is enforced independently of which parameter files happen to be present, so dropping in a larger one cannot quietly re-open the path — raising it is a deliberate change that comes with device measurements.
+    Below that cap the limit is per-device, not fixed. Before each proof the prover reads `MemAvailable` and works out the largest `k` this handset can actually carry, reserving headroom on top of the predicted peak. A 4 GB phone is held to a smaller size than a Fold 7, and the error says so.
 
-    A circuit above the ceiling is not stuck: switch that flow to a remote proof server, or shrink the circuit — `transientHash` is the usual lever (see below).
+    **Provisioning is the separate gate.** Parameters up to `k = 15` ship with every app; `k = 16` to `k = 18` are opt-in via `kuiraContract { maxCircuitK = … }`. Asking for a size you did not provision fails with an error naming that setting, and the size cap is enforced independently of which parameter files are present, so dropping a larger one in cannot quietly re-open the path.
+
+    A circuit above what your build provisions is not stuck: provision the larger size, switch that flow to a remote proof server, or shrink the circuit — `transientHash` is the usual lever (see below).
 
 [^ceiling]: Measured by Webisoft on a Galaxy S10 (SM-G973W) and published in their `midnight-mobile` runtime.
 
@@ -115,18 +117,37 @@ The on-device prover loads the structured reference string (SRS) matching each c
 
 ## What it costs
 
-Measured on a Galaxy Z Fold 7 (SM-F966U, Android 16), proving a ZSwap output — `k = 14`, the circuit a shielded receive uses:
+All figures below come from a Galaxy Z Fold 7 (SM-F966U, Android 16, 11.4 GB), proving in-app through the SDK's own prover.
 
-| | |
+**Real wallet circuits:**
+
+| Circuit | Proof time |
 |---|---|
-| First proof in a process | ~3.5 s |
-| Every proof after | ~2.6 s |
-| Spread across runs | within 3% |
-| Proof size added to the transaction | ~4.4 KB |
+| ZSwap output (`k = 14`) — a shielded receive — first proof in a process | ~3.5 s |
+| ZSwap output (`k = 14`) — every proof after | ~2.6 s |
 
-The first proof pays about a second of warm-up that later ones don't. Proving runs on a bounded thread pool sized to leave a core for the UI, so a proof does not freeze the screen.
+The first proof pays about a second of warm-up that later ones don't; the spread after that is within 3%. A ZSwap output proof adds about 4.4 KB to the transaction. Proving runs on a bounded thread pool sized to leave one core for the UI, so a proof does not freeze the screen.
 
-Treat these as the fast end of the range, not a promise. A 2025 flagship is the ceiling; an older or mid-range handset will be slower, and a device whose screen is off may be slower still, because the performance cores park. Figures measured on an emulator are not a useful guide in either direction — they have been reported anywhere from 30 seconds to two minutes for work a real phone does in under three.
+**Cost by circuit size.** Measured with synthetic circuits built to land on each `k` exactly, which is what the prover's own memory estimate is calibrated against:
+
+| `k` | Proof time | Peak memory |
+|---|---|---|
+| 13 | 0.6 s | 83 MB |
+| 14 | 1.1 s | 153 MB |
+| 15 | 2.0 s | 296 MB |
+| 16 | 4.4 s | 581 MB |
+| 17 | 9.5 s | 1.15 GB |
+| 18 | 18 s | 2.31 GB |
+
+Both time and memory double per step in `k`. Read this table as a floor for a given size, not a prediction: a synthetic circuit built to *reach* `k = 14` proves in 1.1 s, while a real ZSwap output at the same `k` takes 2.6 s, because it does the work the size allows for rather than just occupying it.
+
+!!! note "An independent cross-check, under different conditions"
+
+    Midnight's own ledger-9 proof server (ZKIR v3) was cross-compiled for `aarch64-linux-android` and run natively on the same Fold 7, proving real contract circuits from a Midnight account: `k = 15` in 6.3–7.7 s and `k = 16` in 14.5 s, with wallet dust-fee proofs at 0.7–0.9 s and a 2.36 GB peak across the whole process.
+
+    Those are roughly three times the same-`k` figures above, and the difference is conditions rather than disagreement: it ran with `--num-workers 1`, against the SDK's pool of all-cores-but-one, which is most of the factor. It also ran as a command-line process rather than inside an app, on a different ledger version, and its peak is the maximum across a 94 MB key load and five proofs rather than one proof's own cost. It is useful as confirmation that the engine runs natively on a phone at these sizes — not as a row in the table above.
+
+Treat all of these as the fast end of the range, not a promise. A 2025 flagship is the ceiling; an older or mid-range handset will be slower, and a device whose screen is off may be slower still, because the performance cores park. Figures measured on an emulator are not a useful guide in either direction — they have been reported anywhere from 30 seconds to two minutes for work a real phone does in under three.
 
 If a flow is too slow at the size you need, the lever is the circuit, not the device: see `transientHash` below.
 
@@ -138,14 +159,14 @@ Circuit size is the dial that sets both the cost and whether a proof runs on the
 
 Compact offers two. `persistentHash` is the one that produces a value the ledger can store, and it costs about **4,164 rows** per hash. `transientHash` costs about **308 rows** — roughly thirteen times less — and is the right choice for any value that never reaches the ledger.[^rows]
 
-Merkle work is where this decides the outcome. In a depth-20 membership proof, only the root is ever written on chain; every node on the path between the leaf and the root exists solely to compute it. Hashing those with the persistent primitive costs **83,591 rows — `k = 17`**, above the ceiling, so this build refuses it. The same path built on `transientHash` costs **6,773 rows — `k = 13`**, comfortably inside it:
+Merkle work is where this decides the outcome. In a depth-20 membership proof, only the root is ever written on chain; every node on the path between the leaf and the root exists solely to compute it. Hashing those with the persistent primitive costs **83,591 rows — `k = 17`**, which a default build does not provision parameters for. The same path built on `transientHash` costs **6,773 rows — `k = 13`**, inside what every app ships:
 
-| Depth-20 membership proof | rows | `k` | this build |
+| Depth-20 membership proof | rows | `k` | on a default build |
 |---|---|---|---|
-| Built on `persistentHash` | 83,591 | 17 | refused by the ceiling |
+| Built on `persistentHash` | 83,591 | 17 | needs `maxCircuitK = 17` opted in |
 | Built on `transientHash` | 6,773 | 13 | proves locally |
 
-The `k = 17` row is a statement about this build's ceiling, not about what the hardware can do — see the warning above. Upstream publishes parameters well past that size, and a phone that survives `k = 18` at 81 seconds will prove `k = 17` in roughly half that. If your design genuinely needs the persistent primitive on a path, say so on the issue tracker rather than assuming the door is closed; what it needs is parameters provisioned and a measurement, not new cryptography.
+The `k = 17` row is a statement about what a default build provisions, not about what the hardware can do: a Fold 7 proves `k = 17` in about 9.5 seconds using 1.15 GB. If your design genuinely needs the persistent primitive on a path, opt that size in and measure it on the devices you care about — the door is provisioning and memory, not cryptography. On a smaller phone the per-device memory check may still decline it.
 
 Values cross back at the boundary, not throughout. A Merkle root or a nullifier that has to be stored or compared as `Bytes<32>` converts with `upgradeFromTransient`, and `degradeToTransient` converts the other way. Convert at the edge where the ledger is actually touched; converting in the middle of a path walk spends exactly the rows you were trying to save.
 
@@ -217,8 +238,9 @@ For a number on *your* target hardware, measure it rather than extrapolating fro
 - **Default to `LOCAL`.** It's private (inputs never leave the phone), works
   offline, and avoids a network round-trip. This is the point of the SDK.
 - **Reach for `REMOTE`** only if proving a large or complex transaction on a
-  low-end device is too slow for your UX, or the circuit is above `k = 15` and
-  the device prover therefore refuses it. Midnight's own wallet design proposes
+  low-end device is too slow for your UX, or the circuit is larger than that
+  device can carry — above `k = 18`, or above what its free memory allows.
+  Midnight's own wallet design proposes
   routing by circuit size for the same reason — small circuits client-side,
   large ones to a remote proof server — though it leaves the threshold
   undefined.[^routing] Kuira's refusal point is a safety limit, not that
