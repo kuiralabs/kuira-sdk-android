@@ -34,8 +34,21 @@ mn localnet up
 ```
 On **Windows**, if this fails with `spawnSync … ETIMEDOUT`, use `docker compose -f ~/.midnight/localnet/compose.yml up -d` instead (see [Prerequisites](prerequisites.md#operating-system-notes)).
 
+Then point `mn` at the indexer's full GraphQL path. The root port on its own returns HTTP 404, and a misconfigured indexer fails the airdrop in step 7 as well:
+
+```bash
+mn config set network undeployed
+mn config set indexer-ws ws://127.0.0.1:8088/api/v4/graphql/ws
+```
+
+Endpoint keys are stored against the network selected when you set them, so set `network` first.
+
 !!! check
-    `mn localnet status` shows the node, indexer, and proof server up. Docker is running (`docker info`).
+    All three ports answer — `mn localnet status` can claim a healthy stack whose ports aren't reachable, so probe them instead:
+    ```bash
+    nc -z 127.0.0.1 9944 && nc -z 127.0.0.1 8088 && nc -z 127.0.0.1 6300 \
+      && echo "node / indexer / proof-server reachable"
+    ```
 
 ## 4. Wire the device to localnet
 
@@ -67,7 +80,7 @@ Tap **Forge sigil**. A passkey-derived identity + embedded wallet is created in 
 
 ## 7. Fund the wallet
 
-Copy the wallet address from the panel, then airdrop NIGHT:
+Copy the wallet address with the panel's **copy-address** button, then airdrop NIGHT. Read it from the panel rather than from `adb logcat` — the log line truncates the address, and a truncated address is a silently wasted airdrop:
 ```bash
 mn airdrop 1000 --wallet <addr> --network undeployed
 ```

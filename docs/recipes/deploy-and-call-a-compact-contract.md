@@ -200,8 +200,8 @@ suspend fun buildContract(
    `runtime/<alias>-contract.js`, not a path string.
 4. `witness(name) { … }` — stub; replace with your contract's actual witness
    layout. (A contract with no private state, like the counter, omits this.)
-   For typed witnesses (`Vector<N, T>`, `Bytes<32>`, …), pack the bytes by
-   hand.
+   Three rules govern what goes in here — see [Witness rules](#witness-rules-the-signature-doesnt-show)
+   immediately below.
 
 `yourCircuit` and `keys/yourCircuit.verifier` are placeholders — substitute
 your circuit's real name. For the [Hello Compact](hello-compact.md) counter
@@ -211,6 +211,37 @@ key in `circuitVerifierKeys` is `"increment"`.
 **Verify:** the function returns without throwing — meaning the
 QuickJS runtime found and loaded your contract JS, and witness
 descriptors typecheck against the bytecode.
+
+---
+
+### Witness rules the signature doesn't show
+
+Three rules govern every witness, and none of them is visible in `witness(name) { … }`.
+
+**Bytes are the only carrier.** `WitnessResult.data` is a `ByteArray` whatever the Compact type says. A `Uint<64>` witness is packed by hand into its byte encoding rather than passed as a number — and so is every `Bytes<32>`, `Vector<N, T>`, and struct field.
+
+**Declare every witness the contract declares — not only the ones you call.** The generated constructor looks up all of them when the handle is built, so leaving out a witness that the circuit you're calling never invokes still fails, and it fails at `create()` rather than at `call()`. The error names the missing witness and lists what you supplied.
+
+**Your buffer stays yours.** The SDK copies the bytes out of the `WitnessResult` you return, so handing back an array you keep using — the sibling nodes held inside a Merkle tree, say — is safe across repeated proofs. Zeroing your own copy when you're finished is still worth doing; the SDK can't do it for you, because it can't know when you're done with it.
+
+!!! warning "A constructor cannot read witnesses"
+    A contract's constructor runs before any witness is available, so the usual *deployer-becomes-owner* pattern can't happen at deploy time. Make ownership a separate circuit that the deployer calls right after deploying.
+
+### Constructor arguments
+
+A contract whose constructor takes parameters — a multisig receiving its signer set and threshold, for instance — gets them from `constructorArgs`, in declaration order, as Kotlin values marshaled like circuit-call arguments:
+
+```kotlin
+MidnightContract.create(sdk.config) {
+    name = "yourcontract"
+    contractJs = context.assets.open("runtime/yourcontract-contract.js")
+    coinPublicKey = sdk.coinPublicKey
+    circuitVerifierKeys = mapOf("yourCircuit" to verifier)
+    constructorArgs = listOf(signers, 2)
+}
+```
+
+Leave it empty for a no-arg constructor, which is the counter and BBoard case. Set the same values on every handle you build for that contract, not just the one you deploy with: the call and read paths run the constructor too, to establish the state they then swap the on-chain state into.
 
 ---
 
@@ -254,6 +285,16 @@ call.
 **Verify:** `address` should be a 64-character hex string. Rebuild the
 handle with `this.address = address` and call `contract.ledger()` — it
 returns the deployed contract's initial state.
+
+---
+
+### The indexer lag after a deploy
+
+A contract the node has finalized is not in the indexer the same instant, so a read or a call issued right after a deploy asks for something that doesn't exist yet. The window has no fixed length — localnet clears in a second or two, PreProd can take appreciably longer — which is why a fixed sleep is the wrong shape for it.
+
+You don't have to handle this. `prepare()`, `ledger()` and `read()` each wait up to **30 seconds** for the contract to show up, polling every two seconds, and `deploy()` returns only once the deploy itself is indexed. Write the call you mean, right after the deploy, and let it wait.
+
+Two cases stay yours. `observeLedger()` is a flow driven by ledger signals, so a blocking wait belongs to whoever collects it rather than inside the stream. And `readMany()` takes a `notIndexedTimeoutMs` budget if you want a different one — `0` restores fail-fast, which is what a test wants when an indexing problem should surface rather than hide behind a wait.
 
 ---
 
@@ -357,7 +398,7 @@ costs only a state fetch, not a re-decode.
 | `Contract not compiled at …` at Gradle time | Step 1 prereq not done. | Run `npm run compact` in `contract/`. |
 | Deploy or call hangs at "Balancing" and never finishes | The embedded wallet has no Dust. | Fund it (`mn airdrop … --network undeployed`) and tap **Register dust** in-app, then retry. |
 | `Unsupported bytecode version` at runtime | Your compactc emitted bytecode for a different runtime version than the SDK ships. | Pin compactc to match your contract's `@midnight-ntwrk/compact-runtime` version. |
-| `Indexer says contract not found` after deploy | Indexer hasn't caught up yet. | Add a 3–5s delay between deploy and first call. |
+| `Indexer says contract not found` after deploy | Finalized on the node, not yet in the indexer. | Nothing to add — `prepare()`, `ledger()` and `read()` already wait up to 30s for it. Past that, the indexer is unreachable or lagging: check its URL and that the container is up. |
 | `Invalid witness` at call time | Witness `ByteArray` length doesn't match the circuit's declared shape. | Cross-check the witness layout against the circuit's declared shape. |
 | `Deadline expired` even though you set it in the future | Using `System.currentTimeMillis()` instead of chain time. | Switch to chain-anchored time (last block's timestamp). |
 

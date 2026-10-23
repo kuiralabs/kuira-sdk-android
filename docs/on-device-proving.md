@@ -119,14 +119,19 @@ The on-device prover loads the structured reference string (SRS) matching each c
 
 All figures below come from a Galaxy Z Fold 7 (SM-F966U, Android 16, 11.4 GB), proving in-app through the SDK's own prover.
 
-**Real wallet circuits:**
+**Real circuits — every size the wallet and a contract actually use:**
 
-| Circuit | Proof time |
-|---|---|
-| ZSwap output (`k = 14`) — a shielded receive — first proof in a process | ~3.5 s |
-| ZSwap output (`k = 14`) — every proof after | ~2.6 s |
+| Circuit | `k` | rows | First proof in a process | Later proofs | Peak memory |
+|---|---|---|---|---|---|
+| Contract call — BBoard `post` | 13 | 4,569 | 1.3 s | 0.9 s | 161 MB |
+| ZSwap output — a shielded receive | 14 | 8,493 | 3.5 s | 2.6 s | 282 MB |
+| ZSwap spend — a shielded send | 15 | 17,540 | 9.2 s | 7.9 s | 576 MB |
 
-The first proof pays about a second of warm-up that later ones don't; the spread after that is within 3%. A ZSwap output proof adds about 4.4 KB to the transaction. Proving runs on a bounded thread pool sized to leave one core for the UI, so a proof does not freeze the screen.
+Each figure is the first proof of its size in a fresh process, which is the only way they compare across circuits: a second proof in the same process reads far cheaper because the allocator still holds the first one's arena. The warm-up the first proof pays grows with the circuit — a few hundred milliseconds at `k = 13`, about 1.3 s at `k = 15` — and the spread between later proofs is within 3%.
+
+Peak memory is total PSS, the figure the OS kills a process on. A `k = 15` spend peaks at 576 MB on its first proof, and the process then settles near **650 MB** once the allocator keeps the arena. That steady figure, not one proof's delta, is what decides whether the circuit fits on a smaller device.
+
+A ZSwap output proof adds about 4.4 KB to the transaction, a spend about 4.9 KB. Proving runs on a bounded thread pool sized to leave one core for the UI, so a proof does not freeze the screen.
 
 **Cost by circuit size.** Measured with synthetic circuits built to land on each `k` exactly, which is what the prover's own memory estimate is calibrated against:
 
@@ -141,11 +146,13 @@ The first proof pays about a second of warm-up that later ones don't; the spread
 
 Both time and memory double per step in `k`. Read this table as a floor for a given size, not a prediction: a synthetic circuit built to *reach* `k = 14` proves in 1.1 s, while a real ZSwap output at the same `k` takes 2.6 s, because it does the work the size allows for rather than just occupying it.
 
+Comparing the two tables shows how far above the floor to plan for. **Memory tracks it closely** — each real circuit costs about 1.9x its same-`k` synthetic figure, at all three sizes — so the synthetic number plus 90% is a sound memory estimate. **Time does not**: that gap widens with `k`, from 1.5x at `k = 13` to 4x at `k = 15`. Estimate memory from the floor; measure time.
+
 !!! note "An independent cross-check, under different conditions"
 
     Midnight's own ledger-9 proof server (ZKIR v3) was cross-compiled for `aarch64-linux-android` and run natively on the same Fold 7, proving real contract circuits from a Midnight account: `k = 15` in 6.3–7.7 s and `k = 16` in 14.5 s, with wallet dust-fee proofs at 0.7–0.9 s and a 2.36 GB peak across the whole process.
 
-    Those are roughly three times the same-`k` figures above, and the difference is conditions rather than disagreement: it ran with `--num-workers 1`, against the SDK's pool of all-cores-but-one, which is most of the factor. It also ran as a command-line process rather than inside an app, on a different ledger version, and its peak is the maximum across a 94 MB key load and five proofs rather than one proof's own cost. It is useful as confirmation that the engine runs natively on a phone at these sizes — not as a row in the table above.
+    Those are roughly three times the synthetic figures in the table just above, and the difference is conditions rather than disagreement: it ran with `--num-workers 1`, against the SDK's pool of all-cores-but-one, which is most of the factor. Against a *real* circuit at the same size — the `k = 15` spend at 7.9 s — it lands in the same range instead, on one worker; how much of that is prover efficiency rather than thread count is not something these two runs can separate. It also ran as a command-line process rather than inside an app, on a different ledger version, and its peak is the maximum across a 94 MB key load and five proofs rather than one proof's own cost. It is useful as confirmation that the engine runs natively on a phone at these sizes — not as a row in the table above.
 
 Treat all of these as the fast end of the range, not a promise. A 2025 flagship is the ceiling; an older or mid-range handset will be slower, and a device whose screen is off may be slower still, because the performance cores park. Figures measured on an emulator are not a useful guide in either direction — they have been reported anywhere from 30 seconds to two minutes for work a real phone does in under three.
 
@@ -169,6 +176,28 @@ Merkle work is where this decides the outcome. In a depth-20 membership proof, o
 The `k = 17` row is a statement about what a default build provisions, not about what the hardware can do: a Fold 7 proves `k = 17` in about 9.5 seconds using 1.15 GB. If your design genuinely needs the persistent primitive on a path, opt that size in and measure it on the devices you care about — the door is provisioning and memory, not cryptography. On a smaller phone the per-device memory check may still decline it.
 
 Values cross back at the boundary, not throughout. A Merkle root or a nullifier that has to be stored or compared as `Bytes<32>` converts with `upgradeFromTransient`, and `degradeToTransient` converts the other way. Convert at the edge where the ledger is actually touched; converting in the middle of a path walk spends exactly the rows you were trying to save.
+
+---
+
+### Your build tells you the size
+
+You don't have to infer a row count from your contract's source. The Kuira contract plugin reports every circuit's `k` and row count on each build, read out of the compiled IR using your own Compact toolchain:
+
+```
+[kuiraContract] Circuit sizes (zkir 0.31.1):
+    post                     k=13  rows=4569
+    takeDown                 k=13  rows=4561
+```
+
+A circuit larger than the size your build provisions parameters for is flagged in place:
+
+```
+    heavyHash                k=17  rows=83600   <-- ABOVE maxCircuitK=15
+```
+
+Row counts are specific to the compiler version, so the report names the `zkir` it used and says so when that differs from the version your contract was compiled with. The same output is written to `build/kuira/reportCircuitSizes.txt`, and `./gradlew reportCircuitSizes` runs it on its own.
+
+It never fails the build. A missing toolchain or a contract you haven't compiled yet reports why the sizes are unavailable and moves on, so this is a number you read rather than a gate you fight.
 
 ---
 

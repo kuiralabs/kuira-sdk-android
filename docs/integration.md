@@ -193,8 +193,14 @@ https://<your-domain>/.well-known/assetlinks.json
 ```bash
 keytool -list -v -keystore <your-keystore> -alias <your-alias> | grep SHA256
 ```
-For debug builds, the default keystore is `~/.android/debug.keystore` (alias
-`androiddebugkey`, password `android`).
+For debug builds, the default keystore is `~/.android/debug.keystore` (alias `androiddebugkey`, password `android`). Android Studio creates it on first run, so a command-line-only setup may not have one yet — `signingReport` then reports it missing. Generate the standard debug keystore:
+
+```bash
+keytool -genkeypair -v -keystore ~/.android/debug.keystore \
+  -storepass android -keypass android -alias androiddebugkey \
+  -keyalg RSA -keysize 2048 -validity 10000 \
+  -dname "CN=Android Debug,O=Android,C=US"
+```
 
 > Without this file (or with a wrong package name / SHA-256), the biometric
 > prompt fails and PRF can't derive your sigil. This is a one-time host;
@@ -235,6 +241,9 @@ mn localnet status                          # check it's healthy
 # … develop …
 mn localnet down                            # tear it down
 ```
+
+!!! warning "Configure the indexer path before funding"
+    `mn` needs the indexer's full GraphQL path (`ws://127.0.0.1:8088/api/v4/graphql/ws`) — the root port returns 404 and the airdrop below fails against a misconfigured indexer. One-time setup in [Prerequisites](prerequisites.md#install-and-configure-mn).
 
 !!! note "Tested localnet stack — pin the node to `0.22.5`"
     Tested localnet stack: `midnight-node:0.22.5` (on-chain Compact runtime
@@ -531,6 +540,8 @@ A real release lands around **~60 MB per device** — comfortably inside [Google
 | Balance stays 0 / *"Loading…"* on a **physical device** | Run the three `adb reverse` commands (9944 node, 8088 indexer, 6300 proof server) or apply the `io.github.kuiralabs.localnet` plugin (§5b). |
 | `java.lang.UnsatisfiedLinkError` at launch on an x86_64 emulator | The native lib is arm64-only before `0.1.0-alpha04`. Upgrade to alpha04+ (ships `x86_64`) or use an arm64 AVD. |
 | `Custom error: 168` or a dust-fee / time-to-dismiss failure on dust registration or the first tx | Fixed in SDK `0.1.0-alpha04` — upgrade. An unexpected `Custom error: N` not in the known set usually means a client↔node ledger-version mismatch — confirm your node is `0.22.5`. |
+| `mn` fails with a WebSocket connection error, or the indexer returns HTTP 404 | The indexer WebSocket needs its full GraphQL path: `mn config set indexer-ws ws://127.0.0.1:8088/api/v4/graphql/ws` (run `mn config set network undeployed` first — endpoint keys are per-network). See [Prerequisites](prerequisites.md#install-and-configure-mn). |
+| The Gradle wrapper times out fetching `gradle-8.13-bin.zip` | The wrapper's `networkTimeout` is 10s, which a slow or proxied link exceeds even when the URL opens fine in a browser. Raise it to `networkTimeout=60000` in `gradle/wrapper/gradle-wrapper.properties`, or download the distribution once and point `distributionUrl` at a `file:///` path to your copy. |
 | `Could not resolve io.github.kuiralabs:…` | Ensure `mavenCentral()` is in your repositories **and** the version is actually published — check [central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui](https://central.sonatype.com/artifact/io.github.kuiralabs/dapp-ui). |
 
 ---

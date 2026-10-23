@@ -24,6 +24,36 @@ Everything you need installed before the [Quickstart](quickstart.md) or the [int
 !!! note "You do NOT need the Android NDK"
     The SDK ships prebuilt native libraries (`arm64-v8a` + `x86_64`). You don't compile any native code, so there's no NDK step — don't go install one.
 
+## Install and configure `mn`
+
+```bash
+npm i -g midnight-wallet-cli
+mn --version                                 # 0.4.1 or newer
+```
+
+!!! warning "Match the package name exactly"
+    `midnight-wallet-cli` is community-maintained ([nel349/midnight-wallet-cli](https://github.com/nel349/midnight-wallet-cli), Apache-2.0) and is **not** published under the `@midnight-ntwrk` scope. The unrelated npm package named `midnight-cli` gives you no `mn` command at all.
+
+Point `mn` at the indexer's **full GraphQL path** before you fund anything. The root port on its own returns HTTP 404, and an airdrop issued against a misconfigured indexer fails too — so this is a funding prerequisite, not a convenience:
+
+```bash
+mn config set network undeployed
+mn config set indexer-ws ws://127.0.0.1:8088/api/v4/graphql/ws
+```
+
+!!! note "Endpoint keys are scoped to the network selected when you set them"
+    `mn config set` stores an endpoint against whichever `network` is currently selected. Set `network` first, and re-set the endpoint for every network you use.
+
+### Confirm the stack is really up
+
+`mn localnet status` can report a healthy stack whose ports aren't actually reachable, so probe them yourself before blaming the app — `9944` node, `8088` indexer, `6300` proof server:
+
+```bash
+docker ps                                    # node, indexer, proof-server healthy
+nc -z 127.0.0.1 9944 && nc -z 127.0.0.1 8088 && nc -z 127.0.0.1 6300 \
+  && echo "node / indexer / proof-server reachable"
+```
+
 ## Pinned stack (tested together)
 
 | Layer | Version |
@@ -74,7 +104,14 @@ Everything you need installed before the [Quickstart](quickstart.md) or the [int
     ```bash
     docker compose -f ~/.midnight/localnet/compose.yml up -d
     ```
-    The Compact toolchain is easiest under **WSL2**.
+    The Compact toolchain is easiest under **WSL2**. On a minimal WSL2 image `compact update` fails to extract the compiler and leaves no default compiler set, because the installer shells out to extraction utilities the image doesn't ship:
+    ```bash
+    sudo apt install -y unzip tar gzip curl
+    compact update
+    compact compile --version                # expect {{ compactc_version }}
+    ```
+
+    From PowerShell, `Test-NetConnection -ComputerName 127.0.0.1 -Port 9944` is the port check.
 
 ---
 
