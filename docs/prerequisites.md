@@ -66,6 +66,16 @@ nc -z 127.0.0.1 9944 && nc -z 127.0.0.1 8088 && nc -z 127.0.0.1 6300 \
 !!! warning "Node version matters"
     `midnight-node:0.22.5` ships on-chain Compact runtime `{{ compact_runtime_version }}` — the runtime your contract targets. Older nodes (`≤ 0.22.3`) run `0.15.0` and **reject** a contract compiled for `{{ compact_runtime_version }}` with a runtime-version error. `mn localnet up` pulls the right image; if you run the Docker stack by hand, pin the node tag to `0.22.5`.
 
+## Targeting PreProd
+
+Localnet and Preview need nothing beyond the toolchain above. **PreProd needs a [Blockfrost](https://blockfrost.io) project id of your own** — its original indexer was decommissioned on 2026-10-09 and the replacement authenticates every request, so a dApp without one reads nothing on PreProd. Create a PreProd project (the id starts with `nightpreprod`), put it in **your app's** gitignored `local.properties`, and check it with `./gradlew :app:kuiraDoctor`:
+
+```properties
+kuira.blockfrost.projectId=nightpreprod...
+```
+
+Full setup, including how a shipped app can supply the id at runtime instead, is in the [Integration guide](integration.md).
+
 ## Emulator or device
 
 === "Emulator"

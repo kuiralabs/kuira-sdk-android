@@ -226,6 +226,33 @@ the hosted chain.
     (`UNREGISTERED_ON_API_CONSOLE`) and PreProd keeps replaying from genesis on
     every fresh sync — the wallet works, it's just slow.
 
+!!! danger "PreProd needs your own Blockfrost project id — without one it does not work at all"
+    PreProd's own indexer, `indexer.preprod.midnight.network`, was **decommissioned on 2026-10-09** and now answers HTTP 410. PreProd's indexer is served by [Blockfrost](https://blockfrost.io), which authenticates **every request**, so a dApp with no project id reads nothing on PreProd — no balance, no contract state, no sync. Localnet and Preview are unaffected and need no credential.
+
+    Create a **PreProd** project at [blockfrost.io](https://blockfrost.io) — its id starts with `nightpreprod` — then add it to **your app's** `local.properties`, which is gitignored so the credential never reaches version control:
+
+    ```properties
+    kuira.blockfrost.projectId=nightpreprod...
+    ```
+
+    The Kuira contract plugin turns that into a manifest placeholder and the SDK reads it at runtime; you write no code. An app that resolves its id elsewhere (a backend, remote config) can pass it directly instead:
+
+    ```kotlin
+    MidnightSdk.Builder(context)
+        .network(MidnightNetwork.PREPROD)
+        .blockfrostProjectId(idFromYourBackend)
+        .seed(seed)
+        .build()
+    ```
+
+    The id is **per developer and per app** — a Blockfrost project carries its own rate limit, so sharing one id shares one quota. Check your setup before you hit it at runtime:
+
+    ```bash
+    ./gradlew :app:kuiraDoctor
+    ```
+
+    `kuiraDoctor` verifies the id against the live endpoint and tells you which case you are in: none set, wrong network, or set-but-rejected.
+
 ### 5a. Start the localnet — the Midnight Wallet CLI (recommended)
 
 The recommended way to run and fund a localnet is the **Midnight Wallet CLI**
