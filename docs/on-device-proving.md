@@ -184,9 +184,9 @@ Values cross back at the boundary, not throughout. A Merkle root or a nullifier 
 You don't have to infer a row count from your contract's source. The Kuira contract plugin reports every circuit's `k` and row count on each build, read out of the compiled IR using your own Compact toolchain:
 
 ```
-[kuiraContract] Circuit sizes (zkir 0.31.1):
+[kuiraContract] Circuit sizes (zkir 0.31.0):
     post                     k=13  rows=4569
-    takeDown                 k=13  rows=4561
+    takeDown                 k=13  rows=4580
 ```
 
 A circuit larger than the size your build provisions parameters for is flagged in place:
