@@ -13,10 +13,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main
 
 # Reveal & restore the recovery phrase
 
-**Outcome:** your app reveals the user's 24-word BIP-39 recovery phrase on a
-screen *you* control, restores a wallet from a phrase, and (optionally) tunes
-the session-lock timing — all on the public `WalletRecovery` contract,
-independent of the bundled wallet pill.
+**Outcome:** your app reveals the user's 24-word BIP-39 recovery phrase on a screen you control, restores a wallet from a phrase, and (optionally) tunes the session-lock timing. All of this runs on the public `WalletRecovery` contract, independent of the bundled wallet pill.
 
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/reveal-and-restore-the-recovery-phrase.md"
      data-task="Build a custom recovery-phrase reveal + restore flow on Kuira's WalletRecovery contract: inject WalletRecovery, reveal the 24 words behind a biometric on a FLAG_SECURE screen I own (I control clipboard/copy policy + timing), validate + restore from a phrase with isValidPhrase/restoreFromPhrase, and tune SessionLock.idleTimeoutMs for the auto-lock that scrubs a revealed phrase."></div>
@@ -25,42 +22,28 @@ independent of the bundled wallet pill.
 
 ## Why this exists
 
-The Sigil seed is `PRF(passkey)`, but that PRF output **is** standard BIP-39
-entropy — so every wallet has a canonical 24-word phrase that reconstructs it
-exactly, independent of the passkey, the device, or any provider. It's the
-final, self-custody recovery path (the full model lives in
-[Security](../security.md)).
+The Sigil seed is `PRF(passkey)`, but that PRF output **is** standard BIP-39 entropy. Every wallet therefore has a canonical 24-word phrase that reconstructs it exactly, independent of the passkey, the device, or any provider. It's the final, self-custody recovery path (the full model lives in [Security](../security.md)).
 
 !!! tip "Don't need a custom UI? Use the bundled one."
-    The drop-in wallet panel already ships this: the gear in the expanded
-    panel opens a Settings screen with **View recovery phrase** (reveal) under
-    SECURITY, all behind safe defaults — `FLAG_SECURE`, an auto-clearing
-    clipboard, a biometric gate. This recipe is for when you want your **own**
-    onboarding/reveal screens instead.
+    The drop-in wallet panel already ships this. The gear in the expanded panel opens a Settings screen with **View recovery phrase** (reveal) under SECURITY, all behind safe defaults: `FLAG_SECURE`, an auto-clearing clipboard, and a biometric gate. This recipe is for when you want your **own** onboarding and reveal screens instead.
 
 ---
 
 ## Who owns what
 
-`WalletRecovery` owns the **cryptography and secure-vault handling** — biometric
-gating, deriving the phrase from the vault, wiping entropy after use. It exposes
-**no UI policy** on purpose: when you render the words yourself, the
-**screen-level security parameters are entirely yours** to set —
+`WalletRecovery` owns the **cryptography and secure-vault handling**: biometric gating, deriving the phrase from the vault, and wiping entropy after use. It exposes **no UI policy** on purpose. When you render the words yourself, the **screen-level security parameters are entirely yours** to set:
 
 - whether copy-to-clipboard is offered at all, and if so, how soon it auto-clears;
-- `FLAG_SECURE` (screenshot / recents-thumbnail blocking);
-- whether a fresh biometric is required each reveal (it is — `revealPhrase`
-  always re-authenticates) and any extra re-auth cadence you want on top.
+- `FLAG_SECURE` (screenshot and recents-thumbnail blocking);
+- whether a fresh biometric is required for each reveal (it is, because `revealPhrase` always re-authenticates) and any extra re-auth cadence you want on top.
 
-The one timing knob the SDK itself owns is the **session auto-lock** (Step 4),
-because that lock is what scrubs a revealed phrase from memory.
+The one timing setting the SDK itself owns is the **session auto-lock** (Step 4), because that lock is what scrubs a revealed phrase from memory.
 
 ---
 
-## Step 1 — Get the recovery contract
+## Step 1: Get the recovery contract
 
-`WalletRecovery` is a Hilt-bound singleton. Inject it into a ViewModel (or read
-it off `MidnightSdkProvider.recovery` if you already hold the provider):
+`WalletRecovery` is a Hilt-bound singleton. Inject it into a ViewModel (or read it from `MidnightSdkProvider.recovery` if you already hold the provider):
 
 ```kotlin title="app/src/main/.../RecoveryViewModel.kt"
 package com.example.myapp.recovery
@@ -87,19 +70,15 @@ class RecoveryViewModel @Inject constructor(
 }
 ```
 
-1. The SDK binds `WalletRecovery` → its default implementation in the Hilt
-   graph (`@HiltAndroidApp` from the install recipe is all that's required).
+1. The SDK binds `WalletRecovery` → its default implementation in the Hilt graph (`@HiltAndroidApp` from the install recipe is all that's required).
 
-**Verify:** `./gradlew :app:assembleDebug` succeeds — Hilt resolves the binding.
+**Verify:** `./gradlew :app:assembleDebug` succeeds, which means Hilt resolves the binding.
 
 ---
 
-## Step 2 — Reveal the phrase on a screen you secure
+## Step 2: Reveal the phrase on a screen you secure
 
-`revealPhrase(activity)` triggers the biometric and returns the 24 words. **The
-words are the keys to the wallet** — the caller's security contract is: render
-only under `FLAG_SECURE`, never log / persist / transmit them, and drop the
-reference promptly.
+`revealPhrase(activity)` triggers the biometric and returns the 24 words. **The words are the keys to the wallet.** The caller's security contract is: render them only under `FLAG_SECURE`, never log, persist, or transmit them, and drop the reference promptly.
 
 ```kotlin title="RecoveryViewModel.kt (continued)"
 fun reveal(activity: FragmentActivity) {
@@ -108,7 +87,7 @@ fun reveal(activity: FragmentActivity) {
         try {
             phrase.value = recovery.revealPhrase(activity)   // biometric-gated
         } catch (e: AuthenticationCancelledException) {
-            // User dismissed the prompt — no error, just don't reveal.
+            // User dismissed the prompt: no error, don't reveal.
         } catch (e: Exception) {
             error.value = "Couldn't reveal the phrase"       // never log e with the words
         }
@@ -126,7 +105,7 @@ fun RecoveryScreen(vm: RecoveryViewModel = hiltViewModel()) {
     val activity = LocalContext.current as FragmentActivity
     val words by vm.phrase.collectAsStateWithLifecycle()
 
-    // FLAG_SECURE for the lifetime of this screen — no screenshots / recents.
+    // FLAG_SECURE for the lifetime of this screen: no screenshots or recents.
     val context = LocalContext.current
     DisposableEffect(Unit) {
         val window = (context as? Activity)?.window
@@ -147,17 +126,13 @@ fun RecoveryScreen(vm: RecoveryViewModel = hiltViewModel()) {
 }
 ```
 
-**Verify:** open the screen, authenticate — the 24 words render, and a
-screenshot attempt is blocked (black frame). Background the app: the recents
-thumbnail shows nothing.
+**Verify:** open the screen and authenticate. The 24 words render, and a screenshot attempt is blocked (black frame). Background the app: the recents thumbnail shows nothing.
 
 ---
 
-## Step 3 — Restore a wallet from a phrase
+## Step 3: Restore a wallet from a phrase
 
-Validate live with `isValidPhrase` (normalizes casing/whitespace), then
-`restoreFromPhrase`. It reproduces the **exact** wallet and marks the phrase
-saved on success.
+Validate input as the user types with `isValidPhrase` (it normalizes casing and whitespace), then call `restoreFromPhrase`. It reproduces the **exact** wallet and marks the phrase as saved on success.
 
 ```kotlin title="RecoveryViewModel.kt (continued)"
 fun isValid(words: List<String>) = recovery.isValidPhrase(words)   // live input feedback
@@ -166,32 +141,27 @@ fun restore(activity: FragmentActivity, words: List<String>) {
     viewModelScope.launch {
         try {
             recovery.restoreFromPhrase(activity, words)
-            // success — wallet is back; navigate on
+            // success: wallet is back; navigate on
         } catch (e: InvalidRecoveryPhraseException) {
             error.value = "Those 24 words aren't a valid recovery phrase"
         } catch (e: RecoveryNotAllowedException) {
-            error.value = "A wallet already exists — sign out before restoring"
+            error.value = "A wallet already exists. Sign out before restoring."
         } catch (e: AuthenticationCancelledException) {
-            // cancelled — let them retry
+            // cancelled: let them retry
         }
     }
 }
 ```
 
-Restore only works onto a **fresh** vault — `restoreFromPhrase` throws
-`RecoveryNotAllowedException` if a wallet already exists, so the user can't
-silently overwrite one. Sign out first to restore over an existing device.
+Restore only works onto a **fresh** vault. `restoreFromPhrase` throws `RecoveryNotAllowedException` if a wallet already exists, so the user can't silently overwrite one. To restore on a device that already has a wallet, sign out first.
 
-**Verify:** on a device with no wallet, paste a known good phrase → balance
-resolves after sync. Paste a phrase with one word wrong → `InvalidRecoveryPhraseException`.
+**Verify:** on a device with no wallet, paste a known good phrase; the balance resolves after sync. Paste a phrase with one wrong word; you get `InvalidRecoveryPhraseException`.
 
 ---
 
-## Step 4 — Tune the auto-lock timing (optional)
+## Step 4: Tune the auto-lock timing (optional)
 
-The session auto-lock is what drops the cached seed **and scrubs a revealed
-phrase** from memory. Its timing is host-tunable — inject `SessionLock` and set
-the windows (defaults: 5 min idle, 30 s background grace):
+The session auto-lock drops the cached seed **and scrubs a revealed phrase** from memory. The host app can tune its timing: inject `SessionLock` and set the windows (defaults: 5 min idle, 30 s background grace):
 
 ```kotlin
 @Inject lateinit var sessionLock: SessionLock
@@ -201,8 +171,7 @@ sessionLock.idleTimeoutMs = 2 * 60_000L
 sessionLock.backgroundGraceMs = 10_000L
 ```
 
-**Verify:** reveal the phrase, then leave the app idle past `idleTimeoutMs` —
-the session locks and the phrase is gone on return (re-auth required).
+**Verify:** reveal the phrase, then leave the app idle past `idleTimeoutMs`. The session locks, and the phrase is gone when you return (re-auth required).
 
 ---
 
@@ -210,18 +179,16 @@ the session locks and the phrase is gone on return (re-auth required).
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| `revealPhrase` throws immediately, no biometric | No wallet on this device yet — nothing to reveal. | Forge / restore a Sigil first (see "Set up Sigil identity"). |
-| Reveal prompt appears then nothing happens | User dismissed the biometric — surfaces as `AuthenticationCancelledException`. | Expected; catch it and stay on the consent step (no error). |
-| Screenshot still captures the words | `FLAG_SECURE` not applied — host isn't an `Activity`, or you set it on the wrong window. | Set it on the hosting `Activity`'s window in a `DisposableEffect`, as shown. |
+| `revealPhrase` throws immediately, no biometric | No wallet on this device yet, so there is nothing to reveal. | Forge or restore a Sigil first (see "Set up Sigil identity"). |
+| Reveal prompt appears, then nothing happens | The user dismissed the biometric, which surfaces as `AuthenticationCancelledException`. | Expected; catch it and stay on the consent step (no error). |
+| Screenshot still captures the words | `FLAG_SECURE` is not applied: the host isn't an `Activity`, or you set it on the wrong window. | Set it on the hosting `Activity`'s window in a `DisposableEffect`, as shown. |
 | `restoreFromPhrase` throws `RecoveryNotAllowedException` | A wallet already exists on the device. | Sign out first; restore targets a fresh vault by design. |
-| Restored wallet shows zero balance | Balance hasn't synced yet, or the phrase reconstructs a different (empty) wallet. | Wait for sync; confirm the phrase matches the funded wallet. |
+| Restored wallet shows zero balance | The balance hasn't synced yet, or the phrase reconstructs a different (empty) wallet. | Wait for sync; confirm the phrase matches the funded wallet. |
 
 ---
 
 ## What's next
 
-- **[Set up Sigil identity](set-up-sigil-identity.md)** — the passkey-derived
-  identity + wallet this phrase reconstructs.
-- **[Back up wallet data across devices](back-up-wallet-across-devices.md)** —
-  the automatic, provider-backed recovery layer this sits beneath.
-- **[Security](../security.md)** — the full recovery model and threat model.
+- **[Set up Sigil identity](set-up-sigil-identity.md)**: the passkey-derived identity and wallet this phrase reconstructs.
+- **[Back up wallet data across devices](back-up-wallet-across-devices.md)**: the automatic, provider-backed recovery layer this sits beneath.
+- **[Security](../security.md)**: the full recovery model and threat model.

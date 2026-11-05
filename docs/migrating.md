@@ -1,12 +1,12 @@
 # Migration prompts
 
-Moving between Kuira versions is a copy-paste job for your coding agent. Grab the prompt for your version jump, paste it into your agent (Claude Code, Cursor, Codex, or anything else), and it applies the changes using the live [changelog](changelog.md) as the source of truth. The same prompt works in any agent.
+Moving between Kuira versions is a copy-paste job for your coding agent. Grab the prompt for your version jump, paste it into your agent (Claude Code, Cursor, Codex, or anything else), and it applies the changes using the live [changelog](changelog.md) as the source of truth.
 
 ## alpha04 → alpha05
 
 Adds typed contract reads, the unshielded money path, constructor arguments, multi-contract projects, and live-chain reliability hardening. One breaking change: `close()` is now `suspend`.
 
-```
+```text
 Upgrade this Android project from Kuira SDK 0.1.0-alpha04 to 0.1.0-alpha05.
 
 1. Read the exact delta. See the [0.1.0-alpha05] section of:

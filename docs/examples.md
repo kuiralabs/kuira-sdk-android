@@ -5,7 +5,7 @@ hide:
 
 # Examples
 
-Working dApps built on the Kuira SDK — clone, build, and read the source. Copy a card's one-tap prompt into your coding agent and it clones the repo and walks the setup as a task list, or browse the source on GitHub.
+Working dApps built on the Kuira SDK that you can clone, build, and read. Copy a card's one-tap prompt into your coding agent and it clones the repo and walks through the setup as a task list, or browse the source on GitHub.
 
 <div class="kuira-examples">
 <article class="kuira-example">
@@ -23,7 +23,7 @@ Working dApps built on the Kuira SDK — clone, build, and read the source. Copy
 <span class="kuira-example__body">
 <span class="kuira-example__eyebrow">Example</span>
 <span class="kuira-example__title">BBoard</span>
-<span class="kuira-example__desc">An on-chain bulletin board — the deploy, call, and read flow end-to-end: create a board, post and take down messages, or connect to one someone shared.</span>
+<span class="kuira-example__desc">An on-chain bulletin board that shows the deploy, call, and read flow end to end: create a board, post and take down messages, or connect to one someone shared.</span>
 <span class="kuira-example__actions" data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/example-bboard-android/main/README.md" data-task="Clone the BBoard example and get it running on a device or emulator, then walk me through creating a board and posting a message on-chain." data-hide-raw="true"></span>
 <a class="kuira-example__link" href="https://github.com/kuiralabs/example-bboard-android">View on GitHub →</a>
 </span>

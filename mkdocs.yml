@@ -1,5 +1,5 @@
 site_name: Kuira Android SDK
-site_description: Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, contract runtime — one Gradle dependency.
+site_description: Android SDK for building Midnight zero-knowledge dApps. Passkey-derived identity, embedded wallet, and contract runtime in one Gradle dependency.
 site_url: https://kuiralabs.github.io/kuira-sdk-android/
 repo_url: https://github.com/kuiralabs/kuira-sdk-android
 repo_name: kuiralabs/kuira-sdk-android
@@ -110,7 +110,7 @@ nav:
     - Add Kuira to an Android project: recipes/add-kuira-to-an-android-project.md
     - Bind your app to a passkey domain: recipes/bind-your-app-to-a-passkey-domain.md
     - Set up Sigil identity: recipes/set-up-sigil-identity.md
-    - Hello Compact — write your first contract: recipes/hello-compact.md
+    - "Hello Compact: write your first contract": recipes/hello-compact.md
     - Deploy and call a Compact contract: recipes/deploy-and-call-a-compact-contract.md
     - Back up your wallet across devices: recipes/back-up-wallet-across-devices.md
     - Reveal & restore the recovery phrase: recipes/reveal-and-restore-the-recovery-phrase.md
@@ -119,7 +119,7 @@ nav:
   - API reference: api-reference.md
   - Roadmap: roadmap.md
   - Changelog: changelog.md
-  - Migration Prompts: migrating.md
+  - Migration prompts: migrating.md
   - Security: security.md
 
 extra:
@@ -128,7 +128,7 @@ extra:
       link: https://github.com/kuiralabs
     - icon: fontawesome/solid/cube
       link: https://central.sonatype.com/namespace/io.github.kuiralabs
-      name: Maven Central — io.github.kuiralabs
+      name: "Maven Central: io.github.kuiralabs"
   # ─── Version pins (single source of truth) ────────────────────────
   # Bump these here when shipping a new alpha; macros plugin substitutes
   # them everywhere the markdown uses {{ kuira_version }} etc.

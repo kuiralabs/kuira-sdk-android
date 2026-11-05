@@ -13,10 +13,7 @@ agent_bundle: https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main
 
 # Run `kuiraDoctor` before each release
 
-**Outcome:** the `kuiraDoctor` Gradle task runs five preflight checks
-against your app's configuration and surfaces every misconfiguration
-that the SDK would otherwise convert into a runtime crash on a user's
-device. Run it before each release; wire it into CI to gate builds.
+**Outcome:** the `kuiraDoctor` Gradle task runs five preflight checks against your app's configuration and reports every misconfiguration that the SDK would otherwise turn into a runtime crash on a user's device. Run it before each release, and wire it into CI to gate builds.
 
 <div data-copy-prompt="https://raw.githubusercontent.com/kuiralabs/kuira-sdk-android/main/docs/recipes/run-kuira-doctor.md"
      data-task="Wire kuiraDoctor into this Kuira-using Android project so it runs before each release build. Set kuiraContract.rpId to the project's passkey hostname so the assetlinks reachability check is active. Set kuiraContract.requireDoctorPass to true on CI / release-build configurations so FAIL severities gate the APK."></div>
@@ -27,15 +24,13 @@ device. Run it before each release; wire it into CI to gate builds.
 
 | Check | What goes wrong without it (on a user's device) |
 |---|---|
-| **minSdk floor** | Manifest merger surfaces `minSdkVersion N cannot be smaller than version 30` mid-build — but in the wrong place, deep in the AGP error stack. |
-| **Debug-cleartext manifest** | Localnet indexer connection fails with a generic `IOException`; user sees an unrecoverable "Loading…" state with no diagnostic. |
-| **`assetlinks.json` reachability + applicationId match** | Forge fails with `RP_ID_MISMATCH` / `PRF authentication failed` / silent biometric dismissal. Causes include: file not hosted, wrong hostname, Jekyll-stripped the `.well-known` path on GitHub Pages, applicationId not in the targets array. |
-| **Compact runtime pin** | QuickJS contract runtime crashes with `Unsupported bytecode version` the first time the user calls a circuit. |
-| **SDK-bundled-runtime layer** | The `@midnight-ntwrk/compact-runtime` bundled inside the SDK doesn't match the version your contract was compiled against — proofs fail or the runtime rejects the bytecode at call time. |
+| **minSdk floor** | Manifest merger reports `minSdkVersion N cannot be smaller than version 30` mid-build, but in the wrong place, deep in the AGP error stack. |
+| **Debug-cleartext manifest** | The localnet indexer connection fails with a generic `IOException`, and the user sees an unrecoverable "Loading…" state with no diagnostic. |
+| **`assetlinks.json` reachability + applicationId match** | Forge fails with `RP_ID_MISMATCH`, `PRF authentication failed`, or a silent biometric dismissal. Causes include a file that is not hosted, the wrong hostname, Jekyll stripping the `.well-known` path on GitHub Pages, or an applicationId missing from the targets array. |
+| **Compact runtime pin** | The QuickJS contract runtime crashes with `Unsupported bytecode version` the first time the user calls a circuit. |
+| **SDK-bundled-runtime layer** | The `@midnight-ntwrk/compact-runtime` bundled inside the SDK doesn't match the version your contract was compiled against: proofs fail, or the runtime rejects the bytecode at call time. |
 
-The runtime-pin check is also enforced by `validateKuiraContractSource`
-at build time independently; `kuiraDoctor` rolls it into a unified
-report so the consumer sees one pass/fail surface, not two.
+`validateKuiraContractSource` also enforces the runtime-pin check at build time on its own. `kuiraDoctor` rolls it into a unified report, so you see one pass/fail report instead of two.
 
 ---
 
@@ -66,7 +61,7 @@ Then run:
 ./gradlew :app:kuiraDoctor
 ```
 
-You'll see a unified report:
+You see a unified report:
 
 ```
 ─── kuiraDoctor ─────────────────────────────────────────
@@ -91,9 +86,7 @@ You'll see a unified report:
 4 passed, 0 warning, 1 error, 0 skipped
 ```
 
-The task does **not** fail by default — it logs the report and
-returns success. Wire `requireDoctorPass` to `true` to gate builds
-on the report (see "Gating CI" below).
+By default the task does **not** fail: it logs the report and returns success. Set `requireDoctorPass` to `true` to gate builds on the report (see "Gating CI" below).
 
 ---
 
@@ -101,10 +94,10 @@ on the report (see "Gating CI" below).
 
 | Symbol | Severity | When |
 |---|---|---|
-| ✓ | **PASS** | Check ran and passed. |
-| ⚠ | **WARN** | Check ran but couldn't be fully verified (network unreachable, ambiguous config). Doesn't fail the build regardless of `requireDoctorPass`. |
-| ✗ | **FAIL** | Check ran and found a real misconfiguration. Fails the build when `requireDoctorPass = true`. |
-| — | **SKIP** | Check couldn't run (missing prerequisite, e.g. `rpId` not set). Doesn't fail the build. |
+| ✓ | **PASS** | The check ran and passed. |
+| ⚠ | **WARN** | The check ran but couldn't fully verify the result (network unreachable, ambiguous config). Doesn't fail the build, whatever the value of `requireDoctorPass`. |
+| ✗ | **FAIL** | The check ran and found a real misconfiguration. Fails the build when `requireDoctorPass = true`. |
+| `—` | **SKIP** | The check couldn't run because a prerequisite is missing (for example, `rpId` is not set). Doesn't fail the build. |
 
 ---
 
@@ -112,15 +105,12 @@ on the report (see "Gating CI" below).
 
 ### Auto-discovery
 
-`kuiraDoctor` reads two values from your `app/build.gradle.kts` via
-simple regex:
+`kuiraDoctor` reads two values from your `app/build.gradle.kts` with a regex:
 
 - `applicationId` from `applicationId = "com.example.app"`
 - `minSdk` from `minSdk = 30`
 
-If your build script uses computed values or property delegates that
-the regex doesn't match, the corresponding checks downgrade to SKIP
-with a log line. Override explicitly via task properties if needed:
+If your build script uses computed values or property delegates that the regex doesn't match, the corresponding checks downgrade to SKIP with a log line. To override them, set the task properties:
 
 ```kotlin
 tasks.named<com.midnight.kuira.contract.KuiraDoctorTask>("kuiraDoctor") {
@@ -129,10 +119,7 @@ tasks.named<com.midnight.kuira.contract.KuiraDoctorTask>("kuiraDoctor") {
 }
 ```
 
-The task only exposes `applicationId`, `minSdk`, and `rpId`. The
-gating and source knobs — `requireDoctorPass`, `contractSource`,
-`expectedCompactRuntime` — are configured on the `kuiraContract { … }`
-extension, not on the task itself.
+The task only exposes `applicationId`, `minSdk`, and `rpId`. You configure the gating and source settings (`requireDoctorPass`, `contractSource`, and `expectedCompactRuntime`) on the `kuiraContract { … }` extension, not on the task.
 
 ### Gating CI
 
@@ -156,21 +143,16 @@ kuiraContract {
 }
 ```
 
-This keeps `requireDoctorPass = false` (warn-only) for local dev
-builds and flips it to `true` only when the CI job explicitly sets
-the property — devs are never blocked, the release lane is.
+This keeps `requireDoctorPass = false` (warn-only) for local dev builds and flips it to `true` only when the CI job sets the property. Local builds are never blocked; the release lane is.
 
 ### When `kuiraDoctor` doesn't run
 
-The task is **not wired into `preBuild`**. Reasoning:
+The task is **not wired into `preBuild`**, for two reasons:
 
-- The assetlinks check needs network I/O. Adding a network call to
-  every local build is hostile.
-- Most developers run `assembleDebug` many times per day. Re-running
-  preflight every time is wasteful.
+- The assetlinks check needs network I/O, and a network call on every local build slows you down.
+- Most developers run `assembleDebug` many times per day, and re-running preflight every time is wasteful.
 
-If you want to opt into `preBuild`-coupling (sacrificing the above
-for tighter local feedback), add to your `app/build.gradle.kts`:
+To couple it to `preBuild` anyway (giving up the above for tighter local feedback), add to your `app/build.gradle.kts`:
 
 ```kotlin
 tasks.named("preBuild") {
@@ -184,17 +166,11 @@ tasks.named("preBuild") {
 
 These are out of scope:
 
-- **`<queries>` declarations** for cross-app sigil enrollment.
-- **Hilt wiring** of `PasskeyConfig` (Dagger already catches this at
-  build time, just with a verbose error).
-- **Signing-cert fingerprint comparison** against the hosted
-  `assetlinks.json` (today it checks the file is reachable + lists
-  your `applicationId`; doesn't verify the listed SHA-256 matches
-  `./gradlew signingReport`).
+- `<queries>` declarations for cross-app sigil enrollment.
+- Hilt wiring of `PasskeyConfig`. Dagger already catches this at build time, with a verbose error.
+- Signing-cert fingerprint comparison against the hosted `assetlinks.json`. Today the check confirms the file is reachable and lists your `applicationId`; it doesn't verify that the listed SHA-256 matches `./gradlew signingReport`.
 
-For these classes today, see the
-[Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md)
-recipe's troubleshooting table.
+For these cases, see the troubleshooting table in [Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md).
 
 ---
 
@@ -202,18 +178,14 @@ recipe's troubleshooting table.
 
 | Symptom | What it means |
 |---|---|
-| Task succeeds but report shows ✗ FAIL rows | `requireDoctorPass` is `false` (the default). Set it to `true` to convert FAIL into a build failure. |
-| All checks report — SKIP | Plugin extension is unset / not configured. Set `source.set(...)` and `rpId.set(...)` to give checks something to verify. |
-| `assetlinks-reachability` always WARNs with "Could not reach" | Network unreachable or `https://<rpId>/` doesn't resolve. The check uses 5-second timeouts and treats network errors as WARN, not FAIL, so a CI environment without internet still ships. |
+| Task succeeds but report shows ✗ FAIL rows | `requireDoctorPass` is `false` (the default). Set it to `true` to turn FAIL into a build failure. |
+| All checks report `— SKIP` | The plugin extension is unset or not configured. Set `source.set(...)` and `rpId.set(...)` to give the checks something to verify. |
+| `assetlinks-reachability` always WARNs with "Could not reach" | The network is unreachable or `https://<rpId>/` doesn't resolve. The check uses 5-second timeouts and treats network errors as WARN, not FAIL, so a CI environment without internet still ships. |
 | `minSdk` reports SKIP | Auto-discovery didn't find `minSdk = N` in your `app/build.gradle.kts`. Set `tasks.named<KuiraDoctorTask>("kuiraDoctor") { minSdk.set(...) }` explicitly. |
 
 ---
 
 ## What's next
 
-- **[Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md)**
-  — the recipe `kuiraDoctor`'s assetlinks check verifies you've
-  followed.
-- **[Hello Compact](hello-compact.md)** — the compact-runtime-pin
-  check kicks in once you have a compiled contract under
-  `contract/src/managed/`.
+- **[Bind your app to a passkey domain](bind-your-app-to-a-passkey-domain.md)**: the recipe whose setup the `kuiraDoctor` assetlinks check verifies.
+- **[Hello Compact](hello-compact.md)**: the compact-runtime-pin check applies once you have a compiled contract under `contract/src/managed/`.

@@ -1,15 +1,10 @@
 # Releasing the Kuira SDK docs
 
-How to publish the docs site for a new SDK version. Most of the mechanical work is one
-script (`scripts/release-docs.sh`); this checklist wraps it with the steps it does not
-automate (changelog, roadmap, the Compact toolchain triple) plus verify-and-ship.
+How to publish the docs site for a new SDK version. One script (`scripts/release-docs.sh`) does most of the mechanical work; this checklist adds the steps it does not automate (changelog, roadmap, and the Compact toolchain triple) plus verification and shipping.
 
 ## When to run
 
-Only **after** the SDK version is tagged and published to Maven Central. The docs track
-the latest **published** release, not `HEAD`. Do not regenerate Dokka for an in-development
-version (e.g. `version=0.1.0-alpha05` in `gradle.properties` with no `v0.1.0-alpha05` tag):
-you would be documenting a moving API.
+Only **after** the SDK version is tagged and published to Maven Central. The docs track the latest **published** release, not `HEAD`. Do not regenerate Dokka for an in-development version (for example, `version=0.1.0-alpha05` in `gradle.properties` with no `v0.1.0-alpha05` tag): you would be documenting a moving API.
 
 ## The fast path
 
@@ -18,10 +13,7 @@ scripts/release-docs.sh <version>          # e.g. 0.1.0-alpha05
 scripts/release-docs.sh <version> --skip-dokka   # if docs/api is already at <version>
 ```
 
-That one command bumps `kuira_version` + `kuira_contract_plugin_version` in `mkdocs.yml`
-(and the README install coordinate), regenerates Dokka in the monorepo
-(`./gradlew dokkaHtmlMultiModule`) and rsyncs it into `docs/api/`, then runs the version
-guard. It does **not** touch the changelog, the roadmap, or the Compact toolchain triple.
+That one command bumps `kuira_version` and `kuira_contract_plugin_version` in `mkdocs.yml` (and the README install coordinate), regenerates Dokka in the monorepo (`./gradlew dokkaHtmlMultiModule`), rsyncs it into `docs/api/`, and then runs the version guard. It does **not** touch the changelog, the roadmap, or the Compact toolchain triple.
 
 ## Full checklist
 
